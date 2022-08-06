@@ -8,7 +8,11 @@ public class MapCreator : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
 
-    private const float WidthOfTile = 1;
+    private const float WidthOfTile = 0.8f;
+    private const float StartingXPosition = 0f;
+    private const float StartingZPosition = 0f;
+    private const int NumberOfRows = 10;
+    private const int NumberOfColumns = 10;
 
     public void Awake()
     {
@@ -23,13 +27,24 @@ public class MapCreator : MonoBehaviour
       return tile;
     }
 
-
-    public void CreateRow()
+    public void CreateMap()
     {
-      float zPosition = 0.0f;
-      for (float i = 0; i < 10; i++)
+      float xPosition = StartingXPosition;
+      float zPosition = StartingZPosition;
+      for(int i = 0; i < NumberOfColumns; i ++)
       {
-        CreateTile(new Vector3(0, 0, zPosition));
+        CreateRow(xPosition, zPosition);
+        xPosition -= WidthOfTile/2;
+        zPosition -= WidthOfTile/4;;
+      }
+
+    }
+
+    public void CreateRow(float xPosition, float zPosition)
+    {
+      for (float i = 0; i < NumberOfRows; i++)
+      {
+        CreateTile(new Vector3(xPosition, 0, zPosition));
         zPosition -= WidthOfTile/2;
       }
     }

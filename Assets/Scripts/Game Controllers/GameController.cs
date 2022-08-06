@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
-    GameObject mapCreator;
-    // Start is called before the first frame update
+    MapCreator mapCreator;
     void Start()
     {
+      mapCreator.CreateTile();
 
     }
 

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class CameraPivot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Vector3 isometricRotation = new Vector3(30, 45, 0);
 
-    // Update is called once per frame
-    void Update()
+    public void Awake()
     {
-        
+      transform.eulerAngles = isometricRotation;
     }
 }

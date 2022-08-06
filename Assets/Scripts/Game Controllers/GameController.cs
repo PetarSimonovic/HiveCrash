@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     MapCreator mapCreator;
     void Start()
     {
-      mapCreator.CreateTile();
+      mapCreator.CreateRow();
 
     }
 

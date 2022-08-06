@@ -6,12 +6,22 @@ using UnityEngine.TestTools;
 
 public class MapCreatorTest
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void MapTestSimplePasses()
+
+    private GameObject mapCreatorGameObject = new GameObject();
+    private MapCreator mapCreator;
+
+    [SetUp]
+    public void CreateHive()
     {
-      MapCreator mapCreator = new MapCreator();
-      Assert.IsTrue(mapCreator.Test());
+      mapCreator = mapCreatorGameObject.AddComponent(typeof(MapCreator)) as MapCreator;
+
+    }
+
+    [Test]
+    public void CreatesATile()
+    {
+     GameObject tile = mapCreator.CreateTile();
+     Assert.IsNotNull(tile);
     }
 
 

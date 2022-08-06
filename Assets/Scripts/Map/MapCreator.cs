@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class MapCreator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void Start()
-    {
 
+    [SerializeField]
+    private GameObject tilePrefab;
+
+
+    public GameObject CreateTile()
+    {
+      GameObject tile = Instantiate(tilePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+      Debug.Log("Creating Tile");
+      return tile;
     }
 
-    // Update is called once per frame
-    public void Update()
-    {
-
-    }
-
-    public bool Test()
+    public bool PlaceHex()
     {
       return true;
     }

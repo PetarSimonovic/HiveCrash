@@ -24,4 +24,9 @@ public class Bee
     {
       return this.inHive;
     }
+
+    public void Fly()
+    {
+      this.inHive = false;
+    }
 }

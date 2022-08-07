@@ -19,6 +19,15 @@ public class BeeLauncherTest
   }
 
   [Test]
+  public void ItCanSetItsLaunchPosition()
+  {
+    Vector3 launchPosition = new Vector3 (10, 10, 0);
+    beeLauncher.SetLaunchPosition(launchPosition);
+    Assert.AreEqual(launchPosition, beeLauncher.GetLaunchPosition());
+
+  }
+
+  [Test]
   public void BeeCanBeLoaded()
   {
     beeLauncher.LoadBee(testBee);

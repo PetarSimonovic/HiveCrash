@@ -67,6 +67,17 @@ public class HiveTest
     Assert.IsTrue(bee.IsInHive());
   }
 
+  [Test]
+  public void WillNotReturnAnyBeesIfAllHaveLeftHive()
+  {
+    foreach (Bee bee in testHive.GetBees())
+    {
+      bee.Fly();
+    }
+    Bee testBee = testHive.GetBee();
+    Assert.IsNull(testBee);
+  }
+
   private void addFiveBeesToHive()
   {
     for (int i = 0; i < 5; i++)

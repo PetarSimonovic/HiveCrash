@@ -14,6 +14,7 @@ public class HiveTest
     public void SetUp()
     {
       testHive = testHiveGameObject.AddComponent(typeof(Hive)) as Hive;
+      addFiveBeesToHive();
     }
 
     [Test]
@@ -44,11 +45,6 @@ public class HiveTest
     [Test]
     public void HiveCanAddBees()
     {
-      testHive.AddBee();
-      testHive.AddBee();
-      testHive.AddBee();
-      testHive.AddBee();
-      testHive.AddBee();
       int numberOfBees = testHive.GetBees().Count;
       Assert.AreEqual(numberOfBees, 5);
     }
@@ -56,9 +52,6 @@ public class HiveTest
     [Test]
     public void AddedBeesKnowTheirHiveId()
     {
-      testHive.AddBee();
-      testHive.AddBee();
-      testHive.AddBee();
       Bee beeOne = testHive.GetBees()[0];
       Bee beeTwo = testHive.GetBees()[1];
       Bee beeThree = testHive.GetBees()[2];
@@ -66,5 +59,20 @@ public class HiveTest
       Assert.AreEqual(testHive.GetId(), beeOne.GetHiveId());
       Assert.AreEqual(testHive.GetId(), beeOne.GetHiveId());
     }
+
+  [Test]
+  public void CanFindAndReturnABeeThatIsNotInFlight()
+  {
+    Bee bee = testHive.GetBee();
+    Assert.IsTrue(bee.IsInHive());
+  }
+
+  private void addFiveBeesToHive()
+  {
+    for (int i = 0; i < 5; i++)
+     {
+       testHive.AddBee();
+     }
+  }
 
 }

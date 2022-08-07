@@ -33,4 +33,11 @@ public class Hive : MonoBehaviour
     this.bees.Add(new Bee(this.GetId()));
   }
 
+
+    public Bee GetBee()
+    {
+      return this.bees.Find(bee => bee.IsInHive());
+    }
+
+
 }

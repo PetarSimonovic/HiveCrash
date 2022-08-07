@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
-    MapCreator mapCreator;
+    FogCreator fogCreator;
 
     [SerializeField]
     GameObject hivePrefab;
@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-      mapCreator.CreateMap();
+      fogCreator.CreateMap();
 
     }
 

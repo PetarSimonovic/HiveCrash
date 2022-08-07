@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - tilePrefab: {fileID: 7709826877703258075, guid: 33ed5cce9d8d24c5d9435426121cacbc,
+  - fogTilePrefab: {fileID: 7709826877703258075, guid: 33ed5cce9d8d24c5d9435426121cacbc,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

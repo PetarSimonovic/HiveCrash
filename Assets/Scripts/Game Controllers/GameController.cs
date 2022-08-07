@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     GameObject hivePrefab;
 
+    private bool hiveIsPlaced;
+
     void Start()
     {
       mapCreator.CreateMap();
@@ -24,20 +26,31 @@ public class GameController : MonoBehaviour
 
     private void checkInput()
     {
-
       if (Input.GetMouseButtonDown(0))
       {
-        Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        RaycastHit raycastHit;
-        if (Physics.Raycast(raycast, out raycastHit))
-        {
-          GameObject tile = raycastHit.transform.gameObject;
-          Vector3 hivePosition = tile.transform.position;
-          Debug.Log(tile);
-          Destroy(tile);
-          GameObject hive = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
-         }
-
+        if (hiveIsPlaced) {
+          launchBee();
+        } else {
+          placeHive();
+        }
       }
+    }
+
+    private void launchBee()
+    {
+      Debug.Log("Launching Bee");
+    }
+
+    private void placeHive()
+    {
+      Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+      RaycastHit raycastHit;
+      if (Physics.Raycast(raycast, out raycastHit))
+      {
+        GameObject tile = raycastHit.transform.gameObject;
+        Vector3 hivePosition = tile.transform.position;
+        GameObject hive = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
+        hiveIsPlaced = true;
+       }
     }
 }

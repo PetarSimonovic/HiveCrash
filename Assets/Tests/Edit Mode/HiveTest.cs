@@ -7,12 +7,13 @@ using UnityEngine.TestTools;
 public class HiveTest
 {
 
+    private GameObject testHiveGameObject = new GameObject();
     private Hive testHive;
 
     [SetUp]
     public void SetUp()
     {
-      testHive = new Hive();
+      testHive = testHiveGameObject.AddComponent(typeof(Hive)) as Hive;
     }
 
     [Test]

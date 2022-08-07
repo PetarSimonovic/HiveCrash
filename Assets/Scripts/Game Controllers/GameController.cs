@@ -6,6 +6,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]
     MapCreator mapCreator;
+
+    [SerializeField]
+    GameObject hivePrefab;
+
     void Start()
     {
       mapCreator.CreateMap();
@@ -28,8 +32,10 @@ public class GameController : MonoBehaviour
         if (Physics.Raycast(raycast, out raycastHit))
         {
           GameObject tile = raycastHit.transform.gameObject;
+          Vector3 hivePosition = tile.transform.position;
           Debug.Log(tile);
           Destroy(tile);
+          GameObject hive = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
          }
 
       }

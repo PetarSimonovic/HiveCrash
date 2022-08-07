@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hive
+public class Hive : MonoBehaviour
 {
   private bool isPlaced = false;
 

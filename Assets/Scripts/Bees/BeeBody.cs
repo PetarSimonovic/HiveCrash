@@ -13,7 +13,7 @@ public class BeeBody : MonoBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float moveSpeed = 15f;
 
     [SerializeField]
     private float angularVelocity = 0.9f;

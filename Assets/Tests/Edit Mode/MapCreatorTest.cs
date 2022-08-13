@@ -4,31 +4,31 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class FogCreatorTest
+public class MapCreatorTest
 {
 
-    private GameObject fogCreatorGameObject = new GameObject();
-    private FogCreator fogCreator;
+    private GameObject mapCreatorGameObject = new GameObject();
+    private MapCreator mapCreator;
     private Vector3 testCoordinate;
 
     [SetUp]
     public void SetUp()
     {
-      fogCreator = fogCreatorGameObject.AddComponent(typeof(FogCreator)) as FogCreator;
+      mapCreator = mapCreatorGameObject.AddComponent(typeof(MapCreator)) as MapCreator;
       Vector3 testCoordinate = new Vector3 (10, 10, 5);
     }
 
     [Test]
     public void CreatesATile()
     {
-     GameObject tile = fogCreator.CreateTile(testCoordinate);
+     GameObject tile = mapCreator.CreateTile(testCoordinate);
      Assert.IsNotNull(tile);
     }
 
     [Test]
     public void CreatesATileAtAGivenCoordinate()
     {
-     GameObject tile = fogCreator.CreateTile(testCoordinate);
+     GameObject tile = mapCreator.CreateTile(testCoordinate);
      Assert.AreEqual(testCoordinate, tile.transform.position);
     }
 

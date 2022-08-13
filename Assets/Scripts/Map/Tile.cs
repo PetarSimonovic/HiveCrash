@@ -20,4 +20,14 @@ public class Tile : MonoBehaviour
     {
 
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+      Debug.Log(transform.position);
+    }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+      Debug.Log(transform.position);
+    }
 }

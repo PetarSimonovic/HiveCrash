@@ -56,7 +56,7 @@ public class BeeLauncher : MonoBehaviour
       Vector3 direction = calculateDirection();
       Debug.Log("Direction");
       Debug.Log(direction);
-      beeBody.GetComponent<Rigidbody>().AddForce(launchPosition.x - endDragPosition.x, 0, launchPosition.z - endDragPosition.z);
+      beeBody.GetComponent<Rigidbody>().AddForce(-direction);
     }
 
 

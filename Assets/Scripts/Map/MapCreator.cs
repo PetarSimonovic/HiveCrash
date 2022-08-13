@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FogCreator : MonoBehaviour
+public class MapCreator : MonoBehaviour
 {
 
     [SerializeField]

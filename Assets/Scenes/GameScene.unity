@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc4ab3e287854be6a93bc80c7d59454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogCreator: {fileID: 4990110836534656903, guid: 8f00b362286e64ab396da855fe03bdb9,
+  mapCreator: {fileID: 4990110836534656903, guid: 8f00b362286e64ab396da855fe03bdb9,
     type: 3}
   hivePrefab: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
     type: 3}

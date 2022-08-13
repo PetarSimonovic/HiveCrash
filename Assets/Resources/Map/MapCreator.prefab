@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3830757702063824259}
   - component: {fileID: 4990110836534656903}
   m_Layer: 0
-  m_Name: FogCreator
+  m_Name: MapCreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97a86a67ddbe4024b377c16379720be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogTilePrefab: {fileID: 7709826877703258075, guid: 33ed5cce9d8d24c5d9435426121cacbc,
+  fogTilePrefab: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
     type: 3}

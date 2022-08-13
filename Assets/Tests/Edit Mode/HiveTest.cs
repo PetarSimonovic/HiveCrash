@@ -78,6 +78,14 @@ public class HiveTest
     Assert.IsNull(testBee);
   }
 
+  [Test]
+  public void ItCanSetItsPosition()
+  {
+    Vector3 testPosition = new Vector3 (10, 10, 10);
+    testHive.SetPosition(testPosition);
+    Assert.AreEqual(testPosition, testHive.GetPosition());
+  }
+
   private void addFiveBeesToHive()
   {
     for (int i = 0; i < 5; i++)

@@ -7,6 +7,7 @@ public class Hive : MonoBehaviour
 
   private bool isPlaced = false;
   private List<Bee> bees = new List<Bee>();
+  private Vector3 position;
 
   public void Place()
   {
@@ -34,9 +35,20 @@ public class Hive : MonoBehaviour
   }
 
 
-    public Bee GetBee()
+  public Bee GetBee()
+  {
+    return this.bees.Find(bee => bee.IsInHive());
+  }
+
+  public void SetPosition(Vector3 position)
+  {
+    this.position = position;
+  }
+
+
+    public Vector3 GetPosition()
     {
-      return this.bees.Find(bee => bee.IsInHive());
+      return this.position;
     }
 
 

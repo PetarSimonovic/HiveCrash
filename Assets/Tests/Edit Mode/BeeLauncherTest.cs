@@ -28,6 +28,14 @@ public class BeeLauncherTest
   }
 
   [Test]
+  public void ItCanSetItsEndDragPosition()
+  {
+    Vector3 endDragPosition = new Vector3 (10, 10, 0);
+    beeLauncher.SetEndDragPosition(endDragPosition);
+    Assert.AreEqual(endDragPosition, beeLauncher.GetEndDragPosition());
+  }
+
+  [Test]
   public void BeeCanBeLoaded()
   {
     beeLauncher.LoadBee(testBee);

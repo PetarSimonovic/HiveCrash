@@ -156,6 +156,8 @@ MonoBehaviour:
     type: 3}
   hivePrefab: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
     type: 3}
+  beeLauncher: {fileID: 73864365575355360, guid: 994302cf748c04c8292de50c7124b0e7,
+    type: 3}
 --- !u!4 &458978725
 Transform:
   m_ObjectHideFlags: 0

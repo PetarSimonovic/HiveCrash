@@ -10,11 +10,17 @@ public class GameController : MonoBehaviour
     [SerializeField]
     GameObject hivePrefab;
 
+    [SerializeField]
+    BeeLauncher beeLauncher;
+
+    Hive hive;
+
     private bool hiveIsPlaced;
 
     void Start()
     {
       fogCreator.CreateMap();
+
 
     }
 
@@ -29,16 +35,35 @@ public class GameController : MonoBehaviour
       if (Input.GetMouseButtonDown(0))
       {
         if (hiveIsPlaced) {
-          launchBee();
+          loadBee();
         } else {
           placeHive();
         }
       }
+      else if (Input.GetMouseButton(0))
+      {
+        Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        RaycastHit raycastHit;
+        if (Physics.Raycast(raycast, out raycastHit))
+        {
+          GameObject tile = raycastHit.transform.gameObject;
+          Vector3 clickPosition = tile.transform.position;
+          beeLauncher.SetEndDragPosition(clickPosition);
+        }
+      }
+      else if (Input.GetMouseButtonUp(0) && beeLauncher.GetLoadedBee() != null)
+      {
+        beeLauncher.LaunchBee();
+      }
     }
 
-    private void launchBee()
+    private void loadBee()
     {
-      Debug.Log("Launching Bee");
+      Debug.Log("Loading Bee");
+      Bee bee = hive.GetBee();
+      if (bee is not null) {
+        beeLauncher.LoadBee(bee);
+      }
     }
 
     private void placeHive()
@@ -49,8 +74,15 @@ public class GameController : MonoBehaviour
       {
         GameObject tile = raycastHit.transform.gameObject;
         Vector3 hivePosition = tile.transform.position;
-        GameObject hive = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
+        GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
+        hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
         hiveIsPlaced = true;
+        for (int i = 0; i < 5; i++)
+        {
+          hive.AddBee();
+        }
+        hive.SetPosition(hivePosition);
+        beeLauncher.SetLaunchPosition(hive.GetPosition());
        }
     }
 }

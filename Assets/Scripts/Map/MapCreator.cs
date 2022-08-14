@@ -27,7 +27,7 @@ public class MapCreator : MonoBehaviour
     {
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
-      CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/2, borderTilePrefab);
+      CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, borderTilePrefab);
       for(int i = 0; i < NumberOfColumns; i ++)
       {
         CreateColumn(xPosition, zPosition, fogTilePrefab);

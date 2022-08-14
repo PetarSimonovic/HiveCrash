@@ -8,6 +8,9 @@ public class MapCreator : MonoBehaviour
     [SerializeField]
     private GameObject fogTilePrefab;
 
+    [SerializeField]
+    private GameObject borderTilePrefab;
+
     private const float WidthOfTile = 1f;
     private const float StartingXPosition = 0f;
     private const float StartingZPosition = 0f;
@@ -35,17 +38,19 @@ public class MapCreator : MonoBehaviour
 
     public void CreateColumn(float xPosition, float zPosition)
     {
+      CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
       for (float i = 0; i < NumberOfRows; i++)
       {
-        CreateTile(new Vector3(xPosition, 0, zPosition));
+        CreateTile(new Vector3(xPosition, 0, zPosition), fogTilePrefab);
         zPosition += WidthOfTile/2;
       }
+      CreateTile(new Vector3(xPosition, 0, zPosition + WidthOfTile/2), borderTilePrefab);
     }
 
 
-    public GameObject CreateTile(Vector3 position)
+    public GameObject CreateTile(Vector3 position, GameObject tilePrefab)
     {
-      GameObject tile = Instantiate(fogTilePrefab, position, Quaternion.identity);
+      GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
       tile.SetActive(true);
       return tile;
     }

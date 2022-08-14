@@ -14,14 +14,7 @@ public class Tile : MonoBehaviour
     public void Start()
     {
       hex = this.gameObject.transform.GetChild(0).gameObject;
-      Debug.Log(hex);
-
       renderer = hex.GetComponent<MeshRenderer>();
-      Debug.Log("Renderer");
-      Debug.Log(renderer.material);
-
-
-
 
     }
 

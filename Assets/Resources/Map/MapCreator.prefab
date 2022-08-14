@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fogTilePrefab: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
     type: 3}
+  borderTilePrefab: {fileID: 1574014105834363074, guid: 1714a7eafedad403b95f116a126e011e,
+    type: 3}

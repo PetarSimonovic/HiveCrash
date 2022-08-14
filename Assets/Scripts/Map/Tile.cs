@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
 
     private GameObject hex;
 
+    private bool isHidden = true;
+
     private MeshRenderer renderer;
     // Start is called before the first frame update
     public void Start()
@@ -41,10 +43,11 @@ public class Tile : MonoBehaviour
     //
     public void OnTriggerEnter(Collider collision)
     {
-      Debug.Log(transform.position);
-      Debug.Log(renderer.material.color);
-      renderer.material.color = Color.green;
-      Debug.Log(renderer.material.color);
+      if (isHidden) {
+        renderer.material.color = Color.green;
+        transform.position = new Vector3 (transform.position.x, Random.Range(-0.1f, 0.1f), transform.position.z);
+        isHidden = false;
+      }
     }
 
 

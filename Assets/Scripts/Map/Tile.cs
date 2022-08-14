@@ -44,7 +44,7 @@ public class Tile : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
       if (isHidden) {
-        renderer.material.color = Color.green;
+        renderer.material = meadow;
         transform.position = new Vector3 (transform.position.x, Random.Range(-0.1f, 0.1f), transform.position.z);
         isHidden = false;
       }

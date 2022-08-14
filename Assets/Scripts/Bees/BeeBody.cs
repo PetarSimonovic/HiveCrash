@@ -13,7 +13,7 @@ public class BeeBody : MonoBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField]
-    private float moveSpeed = 15f;
+    private float moveSpeed = 5f;
 
     [SerializeField]
     private float angularVelocity = 0.9f;
@@ -27,6 +27,8 @@ public class BeeBody : MonoBehaviour
     private bool isIdling = false;
 
     private bool isOutsideHive = false;
+
+    private int hiveId;
 
 
 
@@ -43,64 +45,66 @@ public class BeeBody : MonoBehaviour
     {
 
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
-      transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+      if (moveSpeed > IDLE_SPEED)
+      {
+        moveSpeed = moveSpeed - 0.003f;
+        path.Add(transform.position);
+      }
+      else
+      {
+        moveSpeed = IDLE_SPEED;
+        isIdling = true;
+        float step = RETURN_SPEED * Time.deltaTime;
+        Vector3 destination = path.Last();
+        transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
+        if (transform.position == destination)
+        {
+          Debug.Log("Reached destination");
+          path.RemoveAt(path.Count - 1);
+        }
 
-      // if (moveSpeed > IDLE_SPEED)
+      }
+    }
+
+    private void OnTriggerExit(Collider2D other)
+    {
+        isOutsideHive = true;
+    }
+
+    private void OnTriggerEnter(Collider2D other)
+    {
+      // if (other.gameObject.tag == this.tag && isOutsideHive)
       // {
-      //   moveSpeed = moveSpeed - 0.003f;
-      //   path.Add(transform.position);
-      // }
-      // else
-      // {
-      //   moveSpeed = IDLE_SPEED;
-      //   isIdling = true;
-      //   float step = RETURN_SPEED * Time.deltaTime;
-      //   Vector3 destination = path.Last();
-      //   transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
-      //   if (transform.position == destination)
-      //   {
-      //     Debug.Log("Reached destination");
-      //     path.RemoveAt(path.Count - 1);
-      //     Debug.Log(path.Count);
-      //   }
-      //
+      //   isEnteringHive = true;
       // }
     }
 
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     isOutsideHive = true;
-    // }
-    //
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //   if (other.gameObject.tag == this.tag && isOutsideHive)
-    //   {
-    //     isEnteringHive = true;
-    //   }
-    // }
-    //
-    //
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //
-    //  if (isIdling)
-    //   {
-    //     bounceBack(other);
-    //   }
-    // }
-    //
-    // private void bounceBack(Collision2D other)
-    // {
-    //
-    //     // how much the character should be knocked back
-    //     var magnitude = 999;
-    //     // calculate force vector
-    //     var force = transform.position - other.transform.position;
-    //     // normalize force vector to get direction only and trim magnitude
-    //     force.Normalize();
-    //     rigidBody2d.AddForce(force * magnitude);
-    //
-    // }
+
+    private void OnCollisionEnter(Collision other)
+    {
+
+     if (isIdling)
+      {
+        bounceBack(other);
+      }
+    }
+
+    private void bounceBack(Collision other)
+    {
+
+        // how much the character should be knocked back
+        var magnitude = 999;
+        // calculate force vector
+        var force = transform.position - other.transform.position;
+        // normalize force vector to get direction only and trim magnitude
+        force.Normalize();
+        rigidBody.AddForce(force * magnitude);
+
+    }
+
+    public void SetHiveId(int hiveId)
+    {
+      this.hiveId = hiveId;
+    }
 
 }

@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
           loadBee();
         } else {
           placeHive();
+          addBees(hive);
         }
       }
       else if (Input.GetMouseButton(0))
@@ -76,12 +77,16 @@ public class GameController : MonoBehaviour
         GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
         hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
         hiveIsPlaced = true;
-        for (int i = 0; i < 5; i++)
-        {
-          hive.AddBee();
-        }
         hive.SetPosition(hivePosition);
         beeLauncher.SetLaunchPosition(hive.GetPosition());
        }
+    }
+
+    private void addBees(Hive hive)
+    {
+      for (int i = 0; i < 5; i++)
+      {
+        hive.AddBee();
+      }
     }
 }

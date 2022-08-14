@@ -45,7 +45,7 @@ public class MapCreator : MonoBehaviour
         CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
-      CreateTile(new Vector3(xPosition, 0, zPosition + WidthOfTile/2), borderTilePrefab);
+      CreateTile(new Vector3(xPosition, 0, zPosition), borderTilePrefab);
     }
 
 

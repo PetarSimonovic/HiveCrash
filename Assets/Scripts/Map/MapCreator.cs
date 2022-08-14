@@ -27,21 +27,22 @@ public class MapCreator : MonoBehaviour
     {
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
+      CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/2, borderTilePrefab);
       for(int i = 0; i < NumberOfColumns; i ++)
       {
-        CreateColumn(xPosition, zPosition);
+        CreateColumn(xPosition, zPosition, fogTilePrefab);
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
       }
 
     }
 
-    public void CreateColumn(float xPosition, float zPosition)
+    public void CreateColumn(float xPosition, float zPosition, GameObject tilePrefab)
     {
       CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
       for (float i = 0; i < NumberOfRows; i++)
       {
-        CreateTile(new Vector3(xPosition, 0, zPosition), fogTilePrefab);
+        CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
       CreateTile(new Vector3(xPosition, 0, zPosition + WidthOfTile/2), borderTilePrefab);

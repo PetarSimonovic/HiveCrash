@@ -13,7 +13,7 @@ public class BeeBody : MonoBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float moveSpeed = 10f;
 
     [SerializeField]
     private float angularVelocity = 0.9f;
@@ -66,13 +66,20 @@ public class BeeBody : MonoBehaviour
       }
     }
 
-    private void OnTriggerExit(Collider2D other)
+    private void OnTriggerExit(Collider other)
     {
-        isOutsideHive = true;
+    //    isOutsideHive = true;
     }
 
-    private void OnTriggerEnter(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
+      Debug.Log(other.gameObject.name.ToString());
+      if (other.gameObject.name == "hive")
+      {
+        Debug.Log("In Hive!");
+      }
+
+
       // if (other.gameObject.tag == this.tag && isOutsideHive)
       // {
       //   isEnteringHive = true;
@@ -82,6 +89,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+      Debug.Log(other.gameObject.name);
 
      if (isIdling)
       {

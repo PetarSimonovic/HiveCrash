@@ -9,7 +9,7 @@ public class BeeLauncher : MonoBehaviour
 
     private Bee loadedBee;
 
-    private bool isLoaded;
+    private bool isLoaded = false;
 
     private Vector3 launchPosition;
 
@@ -23,13 +23,11 @@ public class BeeLauncher : MonoBehaviour
     public void LoadBee(Bee bee)
     {
       this.loadedBee = bee;
-      Debug.Log("Bee loaded");
+      this.isLoaded = true;
     }
 
     public void SetLaunchPosition(Vector3 launchPosition)
     {
-      Debug.Log("Setting launch position");
-      Debug.Log(launchPosition);
       this.launchPosition = launchPosition;
     }
 
@@ -54,19 +52,19 @@ public class BeeLauncher : MonoBehaviour
       launchPosition.y = 1;
       var beeBody = Instantiate(beePrefab, launchPosition, Quaternion.identity); // Quaternion.identity affects rotation?
       Vector3 direction = calculateDirection();
-      Debug.Log("Direction");
-      Debug.Log(direction);
       beeBody.GetComponent<Rigidbody>().AddForce(-direction);
+      this.isLoaded = false;
     }
 
 
     private Vector3 calculateDirection()
     {
-      Debug.Log("launch position");
-      Debug.Log(this.launchPosition);
-      Debug.Log("end drag position");
-      Debug.Log(this.endDragPosition);
       return this.endDragPosition - this.launchPosition;
+    }
+
+    public bool IsLoaded()
+    {
+      return this.isLoaded;
     }
 
 

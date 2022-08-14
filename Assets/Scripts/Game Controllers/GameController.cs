@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
           beeLauncher.SetEndDragPosition(clickPosition);
         }
       }
-      else if (Input.GetMouseButtonUp(0) && beeLauncher.GetLoadedBee() != null)
+      else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
       {
         beeLauncher.LaunchBee();
       }
@@ -59,7 +59,6 @@ public class GameController : MonoBehaviour
 
     private void loadBee()
     {
-      Debug.Log("Loading Bee");
       Bee bee = hive.GetBee();
       if (bee is not null) {
         beeLauncher.LoadBee(bee);

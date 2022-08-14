@@ -7,10 +7,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103638239237355447, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_Name
-      value: Tile
+      value: BorderTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320591067212042563, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4320591067212042563, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}

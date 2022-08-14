@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour
       {
         GameObject tile = raycastHit.transform.gameObject;
         Vector3 hivePosition = tile.transform.position;
+        hivePosition.y += 0.2F;
         GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
         hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
         hiveIsPlaced = true;

@@ -34,7 +34,7 @@ public class MapCreator : MonoBehaviour
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
       }
-
+      CreateColumn(xPosition, zPosition - WidthOfTile/2, borderTilePrefab);
     }
 
     public void CreateColumn(float xPosition, float zPosition, GameObject tilePrefab)

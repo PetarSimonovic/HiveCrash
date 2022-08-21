@@ -12,12 +12,17 @@ public class BeeController : MonoBehaviour
           if (!bee.IsInHive())
           {
             GameObject beeBody = bee.GetBody();
-            if (beeBody.GetComponent<BeeBody>().isEnteringHive)
-            {
-                bee.Reset();
-                Destroy(beeBody);
-            }
+            checkBeeIsReturningToHive(bee, beeBody);
           }
         }
       }
+
+    private void checkBeeIsReturningToHive(Bee bee, GameObject beeBody)
+    {
+      if (beeBody.GetComponent<BeeBody>().isEnteringHive)
+      {
+          bee.Reset();
+          Destroy(beeBody);
+      }
+    }
 }

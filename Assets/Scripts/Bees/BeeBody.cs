@@ -13,7 +13,7 @@ public class BeeBody : MonoBehaviour
     private Rigidbody rigidBody;
 
     [SerializeField]
-    private float moveSpeed = 10f;
+    private float moveSpeed = 20f;
 
     [SerializeField]
     private float angularVelocity = 0.9f;
@@ -43,7 +43,6 @@ public class BeeBody : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
@@ -68,15 +67,19 @@ public class BeeBody : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-    //    isOutsideHive = true;
+      if (other.gameObject.name.ToString() == "hex")
+      {
+        Debug.Log("Leaving Hive!");
+        isOutsideHive = true;
+      }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      Debug.Log(other.gameObject.name.ToString());
-      if (other.gameObject.name == "hive")
+      if (other.gameObject.name.ToString() == "hex" && isOutsideHive)
       {
-        Debug.Log("In Hive!");
+        Debug.Log("Entering Hive!");
+        isEnteringHive = true;
       }
 
 
@@ -89,7 +92,6 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-      Debug.Log(other.gameObject.name);
 
      if (isIdling)
       {

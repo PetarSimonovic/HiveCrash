@@ -8,6 +8,7 @@ public class Bee
 
     private int hiveId;
     private bool inHive;
+    private GameObject body;
 
     public Bee(int hiveId)
     {
@@ -28,5 +29,20 @@ public class Bee
     public void Fly()
     {
       this.inHive = false;
+    }
+
+    public void Reset()
+    {
+      this.inHive = true;
+    }
+
+    public void SetBody(GameObject body)
+    {
+      this.body = body;
+    }
+
+    public GameObject GetBody()
+    {
+      return this.body;
     }
 }

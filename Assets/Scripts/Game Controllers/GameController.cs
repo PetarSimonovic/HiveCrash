@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     BeeLauncher beeLauncher;
 
+    [SerializeField]
+    BeeController beeController;
+
     Hive hive;
 
     private bool hiveIsPlaced;
@@ -20,14 +23,15 @@ public class GameController : MonoBehaviour
     void Start()
     {
       mapCreator.CreateMap();
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
       checkInput();
+      if (hiveIsPlaced) {
+        beeController.CheckBees(hive.GetBees());
+      }
     }
 
     private void checkInput()
@@ -74,7 +78,7 @@ public class GameController : MonoBehaviour
       {
         GameObject tile = raycastHit.transform.gameObject;
         Vector3 hivePosition = tile.transform.position;
-        hivePosition.y += 0.5F;
+      //  hivePosition.y += 0.5F;
         GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
         hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
         hiveIsPlaced = true;
@@ -91,4 +95,5 @@ public class GameController : MonoBehaviour
         hive.AddBee();
       }
     }
+
 }

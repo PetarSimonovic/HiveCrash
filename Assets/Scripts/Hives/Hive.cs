@@ -19,9 +19,9 @@ public class Hive : MonoBehaviour
     return this.isPlaced;
   }
 
-  public int GetId()
+  public string GetId()
   {
-    return this.GetInstanceID();
+    return this.GetInstanceID().ToString();
   }
 
   public List<Bee> GetBees()

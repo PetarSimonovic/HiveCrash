@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class BeeBody : MonoBehaviour
   {
-    public List<Vector3> path;
 
     public Vector3 hivePosition;
 
@@ -28,7 +28,7 @@ public class BeeBody : MonoBehaviour
 
     private bool isOutsideHive = false;
 
-    private int hiveId;
+    private string hiveId;
 
 
 
@@ -36,7 +36,6 @@ public class BeeBody : MonoBehaviour
     {
       isIdling = false;
       rigidBody = GetComponent<Rigidbody>();
-      path = new List<Vector3>();
       hivePosition = transform.position;
     }
 
@@ -47,21 +46,14 @@ public class BeeBody : MonoBehaviour
       if (moveSpeed > IDLE_SPEED)
       {
         moveSpeed = moveSpeed - 0.003f;
-        path.Add(transform.position);
       }
       else
       {
         moveSpeed = IDLE_SPEED;
         isIdling = true;
         float step = RETURN_SPEED * Time.deltaTime;
-        Vector3 destination = path.Last();
         transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
-        if (transform.position == destination)
-        {
-          Debug.Log("Reached destination");
-          path.RemoveAt(path.Count - 1);
-        }
-
+        transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
       }
     }
 
@@ -76,8 +68,10 @@ public class BeeBody : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      if (other.gameObject.name.ToString() == "hex" && isOutsideHive)
+      string otherId = getOtherId(other);
+      if (otherId == this.hiveId && isOutsideHive)
       {
+        Debug.Log(other.transform.parent.gameObject.name);
         Debug.Log("Entering Hive!");
         isEnteringHive = true;
       }
@@ -87,6 +81,20 @@ public class BeeBody : MonoBehaviour
       // {
       //   isEnteringHive = true;
       // }
+    }
+
+    private string getOtherId(Collider other)
+    {
+      string otherId;
+      try
+      {
+        otherId = other.transform.parent.gameObject.name;
+      }
+      catch (NullReferenceException ex)
+      {
+        otherId = "none";
+      }
+      return otherId;
     }
 
 
@@ -112,7 +120,7 @@ public class BeeBody : MonoBehaviour
 
     }
 
-    public void SetHiveId(int hiveId)
+    public void SetHiveId(string hiveId)
     {
       this.hiveId = hiveId;
     }

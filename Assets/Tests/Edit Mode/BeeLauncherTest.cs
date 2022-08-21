@@ -14,7 +14,7 @@ public class BeeLauncherTest
   [SetUp]
   public void SetUp()
   {
-    Bee testBee = new Bee(1);
+    Bee testBee = new Bee("1");
     beeLauncher = beeLauncherGameObject.AddComponent(typeof(BeeLauncher)) as BeeLauncher;
   }
 

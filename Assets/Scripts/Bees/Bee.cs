@@ -6,17 +6,17 @@ public class Bee
 {
     // Start is called before the first frame update
 
-    private int hiveId;
+    private string hiveId;
     private bool inHive;
     private GameObject body;
 
-    public Bee(int hiveId)
+    public Bee(string hiveId)
     {
       this.hiveId = hiveId;
       this.inHive = true;
     }
 
-    public int GetHiveId()
+    public string GetHiveId()
     {
       return this.hiveId;
     }

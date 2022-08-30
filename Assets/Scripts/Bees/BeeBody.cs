@@ -53,8 +53,8 @@ public class BeeBody : MonoBehaviour
         isIdling = true;
         float step = RETURN_SPEED * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
-        transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
       }
+      transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
     }
 
     private void OnTriggerExit(Collider other)

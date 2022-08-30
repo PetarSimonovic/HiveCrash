@@ -6,7 +6,10 @@ public class MapCreator : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject fogTilePrefab;
+    private GameObject meadowTilePrefab;
+
+    [SerializeField]
+    private GameObject rockTilePrefab;
 
     [SerializeField]
     private GameObject borderTilePrefab;
@@ -16,6 +19,7 @@ public class MapCreator : MonoBehaviour
     private const float StartingZPosition = 0f;
     private const int NumberOfRows = 30;
     private const int NumberOfColumns = 9;
+    private const int RockFrequency = 1;
 
     public void Awake()
     {
@@ -27,25 +31,29 @@ public class MapCreator : MonoBehaviour
     {
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
-      CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, borderTilePrefab);
+    //  CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, borderTilePrefab);
       for(int i = 0; i < NumberOfColumns; i ++)
       {
-        CreateColumn(xPosition, zPosition, fogTilePrefab);
+        CreateColumn(xPosition, zPosition);
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
       }
-      CreateColumn(xPosition, zPosition - WidthOfTile/2, borderTilePrefab);
+    //  CreateColumn(xPosition, zPosition - WidthOfTile/2, borderTilePrefab);
     }
 
-    public void CreateColumn(float xPosition, float zPosition, GameObject tilePrefab)
+    public void CreateColumn(float xPosition, float zPosition)
     {
-      CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
-      for (float i = 0; i < NumberOfRows; i++)
+  //    CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
+      GameObject tilePrefab;
+      int tileDecision;
+      for (int i = 0; i < NumberOfRows; i++)
       {
+        tileDecision = Random.Range(0, 10);
+        tilePrefab =  tileDecision == RockFrequency ? rockTilePrefab : meadowTilePrefab;
         CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
-      CreateTile(new Vector3(xPosition, 0, zPosition), borderTilePrefab);
+  //    CreateTile(new Vector3(xPosition, 0, zPosition), borderTilePrefab);
     }
 
 

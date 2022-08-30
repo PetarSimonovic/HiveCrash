@@ -5,7 +5,10 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField]
-    private Material meadow;
+    private Material material;
+
+    [SerializeField]
+    private float[] heightRange = new float[2];
 
     private GameObject hex;
 
@@ -20,34 +23,26 @@ public class Tile : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    public void Update()
-    {
-
-    }
-
-    public void DisperseFog()
-    {
-
-    }
-
-    // public void OnCollisionEnter(Collision collision)
-    // {
-    //   Debug.Log(transform.position);
-    //   Debug.Log(renderer.material.color);
-    //   renderer.material.color = Color.green;
-    //   Debug.Log(renderer.material.color);
-    //
-    //
-    // }
-    //
     public void OnTriggerEnter(Collider collision)
     {
       if (isHidden) {
-        renderer.material = meadow;
-        transform.position = new Vector3 (transform.position.x, Random.Range(-0.1f, 0.1f), transform.position.z);
-        isHidden = false;
+       reveal();
       }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+      if (isHidden) {
+       reveal();
+      }
+    }
+
+    private void reveal()
+    {
+      renderer.material = material;
+      Debug.Log(material);
+      transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);
+      isHidden = false;
     }
 
 

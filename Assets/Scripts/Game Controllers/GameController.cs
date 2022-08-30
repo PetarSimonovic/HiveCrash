@@ -77,7 +77,9 @@ public class GameController : MonoBehaviour
       if (Physics.Raycast(raycast, out raycastHit))
       {
         GameObject tile = raycastHit.transform.gameObject;
+        Debug.Log(tile);
         Vector3 hivePosition = tile.transform.position;
+        Debug.Log(hivePosition);
       //  hivePosition.y += 0.5F;
         GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
         hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
@@ -93,6 +95,7 @@ public class GameController : MonoBehaviour
     {
       for (int i = 0; i < 5; i++)
       {
+        Debug.Log("HERE!");
         hive.AddBee();
       }
     }

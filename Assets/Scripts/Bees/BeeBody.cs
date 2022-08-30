@@ -45,7 +45,7 @@ public class BeeBody : MonoBehaviour
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.003f;
+        moveSpeed = moveSpeed - 0.001f;
       }
       else
       {
@@ -101,10 +101,10 @@ public class BeeBody : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
 
-     if (isIdling)
-      {
+     // if (isIdling)
+     //  {
         bounceBack(other);
-      }
+      // }
     }
 
     private void bounceBack(Collision other)

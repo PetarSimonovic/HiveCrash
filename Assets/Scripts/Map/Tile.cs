@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     private GameObject hex;
 
-    private bool isHidden = true;
+    private bool isHidden = false;
 
     private MeshRenderer renderer;
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class Tile : MonoBehaviour
     {
       hex = this.gameObject.transform.GetChild(0).gameObject;
       renderer = hex.GetComponent<MeshRenderer>();
+      isHidden = true;
 
     }
 

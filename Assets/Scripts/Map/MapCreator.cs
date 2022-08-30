@@ -12,7 +12,10 @@ public class MapCreator : MonoBehaviour
     private GameObject rockTilePrefab;
 
     [SerializeField]
-    private GameObject borderTilePrefab;
+    private GameObject lakeTilePrefab;
+    //
+    // [SerializeField]
+    // private GameObject borderTilePrefab;
 
     private const float WidthOfTile = 1f;
     private const float StartingXPosition = 0f;
@@ -20,11 +23,6 @@ public class MapCreator : MonoBehaviour
     private const int NumberOfRows = 30;
     private const int NumberOfColumns = 9;
     private const int RockFrequency = 1;
-
-    public void Awake()
-    {
-
-    }
 
 
     public void CreateMap()
@@ -48,8 +46,7 @@ public class MapCreator : MonoBehaviour
       int tileDecision;
       for (int i = 0; i < NumberOfRows; i++)
       {
-        tileDecision = Random.Range(0, 10);
-        tilePrefab =  tileDecision == RockFrequency ? rockTilePrefab : meadowTilePrefab;
+        tilePrefab =  chooseTile();
         CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
@@ -62,5 +59,22 @@ public class MapCreator : MonoBehaviour
       GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
       tile.SetActive(true);
       return tile;
+    }
+
+    private GameObject chooseTile()
+    {
+      int tileDecision = Random.Range(0, 10);
+      switch(tileDecision)
+      {
+        case 1:
+          return rockTilePrefab;
+          break;
+        case 2:
+          return lakeTilePrefab;
+          break;
+        default:
+          return meadowTilePrefab;
+          break;
+      }
     }
 }

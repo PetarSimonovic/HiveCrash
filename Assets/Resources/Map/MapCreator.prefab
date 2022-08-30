@@ -48,5 +48,5 @@ MonoBehaviour:
     type: 3}
   rockTilePrefab: {fileID: 8636556772401490462, guid: 25ce333e6efd74da9917ae547e2065f8,
     type: 3}
-  borderTilePrefab: {fileID: 1574014105834363074, guid: 1714a7eafedad403b95f116a126e011e,
+  lakeTilePrefab: {fileID: 7029695215235656052, guid: 8c4f7cb42b2854915a9bb2f9e57f2aa1,
     type: 3}

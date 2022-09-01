@@ -46,9 +46,11 @@ public class GameController : MonoBehaviour
     {
       Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
       RaycastHit raycastHit;
+      GameObject tile;
       if (Physics.Raycast(raycast, out raycastHit))
       {
-        processMapInput(raycast, raycastHit);
+        tile = getTile(raycastHit);
+        processMapInput(tile.transform.position);
       }
       else 
       {
@@ -56,29 +58,28 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void processMapInput(Ray raycast, RaycastHit raycastHit)
+    private GameObject getTile(RaycastHit raycastHit)
     {
-      if (Input.GetMouseButtonDown(0) && Physics.Raycast(raycast, out raycastHit))
+      return raycastHit.transform.gameObject;
+    }
+
+    private void processMapInput(Vector3 clickPosition)
+    {
+      if (Input.GetMouseButtonDown(0))
       {
         if (hiveIsPlaced) {
-          Debug.Log("LoadBee!");
           loadBee();
         } else {
-          Debug.Log("PlaceHive!");
-          placeHive();
+          placeHive(clickPosition);
           addBees(hive);
         }
       }
-      else if (Input.GetMouseButton(0) && Physics.Raycast(raycast, out raycastHit))
+      else if (Input.GetMouseButton(0))
       {
-        Debug.Log("ProcessDrag!");
-        GameObject tile = raycastHit.transform.gameObject;
-        Vector3 clickPosition = tile.transform.position;
         beeLauncher.SetEndDragPosition(clickPosition);
       }
       else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
       {
-        Debug.Log("LaunchBee!");
         beeLauncher.LaunchBee();
       }
     }
@@ -91,25 +92,18 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void placeHive()
+    private void placeHive(Vector3 hivePosition)
     {
-      Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-      RaycastHit raycastHit;
-      if (Physics.Raycast(raycast, out raycastHit))
-      {
-        GameObject tile = raycastHit.transform.gameObject;
-        Debug.Log(tile);
-        Vector3 hivePosition = tile.transform.position;
-        Debug.Log(hivePosition);
-      //  hivePosition.y += 0.5F;
-        GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
-        hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
-        hiveIsPlaced = true;
-        hive.SetPosition(hivePosition);
-        hiveObject.name = hive.GetId();
-        Debug.Log(hiveObject.name);
-        beeLauncher.SetLaunchPosition(hive.GetPosition());
-       }
+      
+    //  hivePosition.y += 0.5F;
+      GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
+      hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
+      hiveIsPlaced = true;
+      hive.SetPosition(hivePosition);
+      hiveObject.name = hive.GetId();
+      Debug.Log(hiveObject.name);
+      beeLauncher.SetLaunchPosition(hive.GetPosition());
+      
     }
 
     private void addBees(Hive hive)

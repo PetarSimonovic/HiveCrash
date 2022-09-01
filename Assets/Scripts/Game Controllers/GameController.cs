@@ -21,11 +21,14 @@ public class GameController : MonoBehaviour
 
     Hive hive;
 
+
+
     private bool hiveIsPlaced;
 
     void Start()
     {
       mapCreator.CreateMap();
+      Debug.Log(cameraController);
     }
 
     // Update is called once per frame
@@ -47,7 +50,8 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
-      Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+      Vector3 touchPosition = Input.GetTouch(0).position;
+      Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
       RaycastHit raycastHit;
       GameObject tile;
       if (Physics.Raycast(raycast, out raycastHit))
@@ -57,7 +61,7 @@ public class GameController : MonoBehaviour
       }
       else 
       {
-        processCameraInput();
+        processCameraInput(touchPosition);
       }
     }
 
@@ -82,9 +86,16 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void processCameraInput()
+    private void processCameraInput(Vector3 touchPosition)
     {
-      Debug.Log("Processing Camera Input");
+       if (Input.GetMouseButtonDown(0))
+      {
+        cameraController.SetStartTouchPosition(touchPosition);
+      }
+      else if (Input.GetMouseButton(0))
+      {
+      cameraController.ProcessTouch(touchPosition);
+      }
     }
 
     private void processClickOnMap(Vector3 clickPosition)

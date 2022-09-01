@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
     MapCreator mapCreator;
 
     [SerializeField]
+    CameraController cameraController;
+
+    [SerializeField]
     GameObject hivePrefab;
 
     [SerializeField]
@@ -112,6 +115,7 @@ public class GameController : MonoBehaviour
     {
       
     //  hivePosition.y += 0.5F;
+      Debug.Log(hivePosition);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
       hiveIsPlaced = true;

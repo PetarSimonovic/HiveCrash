@@ -20,7 +20,7 @@ public class MapCreator : MonoBehaviour
     private const float WidthOfTile = 1f;
     private const float StartingXPosition = 0f;
     private const float StartingZPosition = 0f;
-    private const int NumberOfRows = 30;
+    private const int NumberOfRows = 9;
     private const int NumberOfColumns = 9;
     private const int RockFrequency = 1;
 

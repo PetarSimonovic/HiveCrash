@@ -41,7 +41,6 @@ public class Tile : MonoBehaviour
     private void reveal()
     {
       renderer.material = material;
-      Debug.Log(material);
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);
       isHidden = false;
     }

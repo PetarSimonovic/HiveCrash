@@ -36,28 +36,49 @@ public class GameController : MonoBehaviour
 
     private void checkInput()
     {
-      if (Input.GetMouseButtonDown(0))
+      if (Input.anyKey || Input.anyKeyDown || Input.GetMouseButtonUp(0))
+      {
+        processInput();
+      }
+    }
+
+    private void processInput()
+    {
+      Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+      RaycastHit raycastHit;
+      if (Physics.Raycast(raycast, out raycastHit))
+      {
+        processMapInput(raycast, raycastHit);
+      }
+      else 
+      {
+        Debug.Log("CAMERA INPUT");
+      }
+    }
+
+    private void processMapInput(Ray raycast, RaycastHit raycastHit)
+    {
+      if (Input.GetMouseButtonDown(0) && Physics.Raycast(raycast, out raycastHit))
       {
         if (hiveIsPlaced) {
+          Debug.Log("LoadBee!");
           loadBee();
         } else {
+          Debug.Log("PlaceHive!");
           placeHive();
           addBees(hive);
         }
       }
-      else if (Input.GetMouseButton(0))
+      else if (Input.GetMouseButton(0) && Physics.Raycast(raycast, out raycastHit))
       {
-        Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        RaycastHit raycastHit;
-        if (Physics.Raycast(raycast, out raycastHit))
-        {
-          GameObject tile = raycastHit.transform.gameObject;
-          Vector3 clickPosition = tile.transform.position;
-          beeLauncher.SetEndDragPosition(clickPosition);
-        }
+        Debug.Log("ProcessDrag!");
+        GameObject tile = raycastHit.transform.gameObject;
+        Vector3 clickPosition = tile.transform.position;
+        beeLauncher.SetEndDragPosition(clickPosition);
       }
       else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
       {
+        Debug.Log("LaunchBee!");
         beeLauncher.LaunchBee();
       }
     }
@@ -98,6 +119,11 @@ public class GameController : MonoBehaviour
         Debug.Log("HERE!");
         hive.AddBee();
       }
+    }
+
+    private void getClickPosition()
+    {
+
     }
 
 }

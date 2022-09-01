@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
       if (Physics.Raycast(raycast, out raycastHit))
       {
         tile = getTile(raycastHit);
-        processMapInput(tile.transform.position);
+        processMapInput(tile.transform.position, touchPosition);
       }
       else 
       {
@@ -70,11 +70,11 @@ public class GameController : MonoBehaviour
       return raycastHit.transform.gameObject;
     }
 
-    private void processMapInput(Vector3 clickPosition)
+    private void processMapInput(Vector3 tilePosition, Vector3 touchPosition)
     {
       if (Input.GetMouseButtonDown(0))
       {
-        processClickOnMap(clickPosition);
+        processClickOnMap(tilePosition);
       }
       else if (Input.GetMouseButton(0))
       {

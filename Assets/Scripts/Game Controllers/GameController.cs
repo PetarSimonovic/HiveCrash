@@ -67,11 +67,11 @@ public class GameController : MonoBehaviour
     {
       if (Input.GetMouseButtonDown(0))
       {
-        if (hiveIsPlaced) {
+        if (hiveIsPlaced) 
+        {
           loadBee();
         } else {
-          placeHive(clickPosition);
-          addBees(hive);
+          initaliseHive(clickPosition);
         }
       }
       else if (Input.GetMouseButton(0))
@@ -92,7 +92,13 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void placeHive(Vector3 hivePosition)
+    private void initaliseHive(Vector3 hivePosition)
+    {
+      Hive hive = createHive(hivePosition);
+      addBees(hive, 5);
+    }
+
+    private Hive createHive(Vector3 hivePosition)
     {
       
     //  hivePosition.y += 0.5F;
@@ -101,16 +107,14 @@ public class GameController : MonoBehaviour
       hiveIsPlaced = true;
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
-      Debug.Log(hiveObject.name);
       beeLauncher.SetLaunchPosition(hive.GetPosition());
-      
+      return hive;
     }
 
-    private void addBees(Hive hive)
+    private void addBees(Hive hive, int beeCount)
     {
-      for (int i = 0; i < 5; i++)
+      for (int i = 0; i < beeCount; i++)
       {
-        Debug.Log("HERE!");
         hive.AddBee();
       }
     }

@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
       }
       else 
       {
-        Debug.Log("CAMERA INPUT");
+        processCameraInput();
       }
     }
 
@@ -67,12 +67,7 @@ public class GameController : MonoBehaviour
     {
       if (Input.GetMouseButtonDown(0))
       {
-        if (hiveIsPlaced) 
-        {
-          loadBee();
-        } else {
-          initaliseHive(clickPosition);
-        }
+        processClickOnMap(clickPosition);
       }
       else if (Input.GetMouseButton(0))
       {
@@ -82,6 +77,21 @@ public class GameController : MonoBehaviour
       {
         beeLauncher.LaunchBee();
       }
+    }
+
+    private void processCameraInput()
+    {
+      Debug.Log("Processing Camera Input");
+    }
+
+    private void processClickOnMap(Vector3 clickPosition)
+    {
+      if (hiveIsPlaced) 
+        {
+          loadBee();
+        } else {
+          initaliseHive(clickPosition);
+        }
     }
 
     private void loadBee()

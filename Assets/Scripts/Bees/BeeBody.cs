@@ -85,16 +85,7 @@ public class BeeBody : MonoBehaviour
 
     private string getOtherId(Collider other)
     {
-      string otherId;
-      try
-      {
-        otherId = other.transform.parent.gameObject.name;
-      }
-      catch (NullReferenceException ex)
-      {
-        otherId = "none";
-      }
-      return otherId;
+      return other.transform.parent.gameObject.name;
     }
 
 

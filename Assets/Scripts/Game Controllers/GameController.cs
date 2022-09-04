@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
       mapCreator.CreateMap();
-      Debug.Log(cameraController);
     }
 
     // Update is called once per frame
@@ -52,12 +51,13 @@ public class GameController : MonoBehaviour
     {
       Vector3 touchPosition = Input.GetTouch(0).position;
       Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
+      Vector3 worldTouchPoint = Camera.main.ScreenToWorldPoint(touchPosition);
       RaycastHit raycastHit;
       GameObject tile;
       if (Physics.Raycast(raycast, out raycastHit))
       {
         tile = getTile(raycastHit);
-        processMapInput(tile.transform.position);
+        processMapInput(tile.transform.position, raycastHit.point);
       }
       else 
       {
@@ -70,15 +70,18 @@ public class GameController : MonoBehaviour
       return raycastHit.transform.gameObject;
     }
 
-    private void processMapInput(Vector3 tilePosition)
+    private void processMapInput(Vector3 tilePosition, Vector3 worldTouchPoint)
     {
+      Debug.Log("Processing map inputs");
+      Debug.Log(tilePosition);
+      Debug.Log(worldTouchPoint);
       if (Input.GetMouseButtonDown(0))
       {
         processClickOnMap(tilePosition);
       }
       else if (Input.GetMouseButton(0))
       {
-        beeLauncher.SetEndDragPosition(tilePosition);
+        beeLauncher.SetEndDragPosition(worldTouchPoint);
       }
       else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
       {
@@ -125,8 +128,6 @@ public class GameController : MonoBehaviour
     private Hive createHive(Vector3 hivePosition)
     {
       
-    //  hivePosition.y += 0.5F;
-      Debug.Log(hivePosition);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
       hiveIsPlaced = true;

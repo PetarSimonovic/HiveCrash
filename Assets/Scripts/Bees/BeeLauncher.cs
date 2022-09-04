@@ -7,13 +7,29 @@ public class BeeLauncher : MonoBehaviour
     [SerializeField]
     private GameObject beePrefab;
 
+    [SerializeField]
+    private Vector3 endOfTheLine;
+
     private Bee loadedBee;
 
     private bool isLoaded = false;
 
     private Vector3 launchPosition;
 
+    private float launchPositionY = 0.8f;
+
+    private float linePositionY = 2.0f;
+
     private Vector3 endDragPosition;
+
+    private LineRenderer lineRenderer;
+
+
+    private void Awake()
+    {
+      lineRenderer = GetComponent<LineRenderer>();
+      Debug.Log(lineRenderer);
+    }
 
     public Bee GetLoadedBee()
     {
@@ -22,6 +38,8 @@ public class BeeLauncher : MonoBehaviour
 
     public void LoadBee(Bee bee)
     {
+      Debug.Log("Linerenderer");
+      Debug.Log(lineRenderer);
       this.loadedBee = bee;
       this.isLoaded = true;
     }
@@ -29,6 +47,8 @@ public class BeeLauncher : MonoBehaviour
     public void SetLaunchPosition(Vector3 launchPosition)
     {
       this.launchPosition = launchPosition;
+      this.lineRenderer.SetPosition(0, new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
+
     }
 
     public Vector3 GetLaunchPosition()
@@ -38,7 +58,14 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
-      this.endDragPosition = new Vector3(endDragPosition.x, 1, endDragPosition.z);
+      Debug.Log("positions");
+      Debug.Log(endDragPosition);
+      this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
+      float xPosition = this.launchPosition.x - this.endDragPosition.x;
+      float zPosition = this.launchPosition.z - this.endDragPosition.z;
+      endOfTheLine = calculateDirection() + endDragPosition;
+      Debug.Log(endOfTheLine);
+      this.lineRenderer.SetPosition(1, endOfTheLine);
     }
 
     public Vector3 GetEndDragPosition()
@@ -61,7 +88,8 @@ public class BeeLauncher : MonoBehaviour
 
     private Vector3 calculateDirection()
     {
-      return this.endDragPosition - this.launchPosition;
+      Vector3 direction = this.endDragPosition - this.launchPosition;
+      return new Vector3(direction.x, launchPositionY, direction.z);
     }
 
     public bool IsLoaded()

@@ -25,13 +25,18 @@ public class GameController : MonoBehaviour
 
     private bool hiveIsPlaced;
 
-    void Start()
+    private void Awake() 
+    {
+     beeLauncher = Instantiate(beeLauncher);
+    }
+
+    private void Start()
     {
       mapCreator.CreateMap();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
       checkInput();
       if (hiveIsPlaced) {
@@ -72,9 +77,6 @@ public class GameController : MonoBehaviour
 
     private void processMapInput(Vector3 tilePosition, Vector3 worldTouchPoint)
     {
-      Debug.Log("Processing map inputs");
-      Debug.Log(tilePosition);
-      Debug.Log(worldTouchPoint);
       if (Input.GetMouseButtonDown(0))
       {
         processClickOnMap(tilePosition);

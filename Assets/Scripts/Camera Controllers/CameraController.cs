@@ -25,7 +25,6 @@ public class CameraController : MonoBehaviour
 
     public void ProcessTouch(Vector3 touchPosition)
     {
-        Debug.Log("Processing touch");
         settouchPosition(touchPosition);
         processZAxisRotation();
         processYAxisRotation();
@@ -45,7 +44,6 @@ public class CameraController : MonoBehaviour
 
     private void processZAxisRotation()
     {
-      Debug.Log(Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
       if (this.touchPosition.y < this.startTouchPosition.y)
       {
         rotateUp();
@@ -60,7 +58,6 @@ public class CameraController : MonoBehaviour
 
     private void processYAxisRotation()
     {
-      Debug.Log(Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
       if (this.touchPosition.x < this.startTouchPosition.x)
       {
         rotateLeft();
@@ -74,7 +71,6 @@ public class CameraController : MonoBehaviour
 
     private void rotateUp()
     {
-        Debug.Log("RotateUp");
         float xRotation = 0.1f;
         transform.Rotate(xRotation, 0.0f, 0.0f);
         camera.transform.LookAt(centreTile);
@@ -82,7 +78,6 @@ public class CameraController : MonoBehaviour
 
     private void rotateDown()
     {
-        Debug.Log("RotateDown");
         float xRotation = -0.1f;
         transform.Rotate(xRotation, 0.0f, 0.0f);
         camera.transform.LookAt(centreTile);
@@ -90,7 +85,6 @@ public class CameraController : MonoBehaviour
 
      private void rotateLeft()
     {
-        Debug.Log("RotateLeft");
         float yRotation = 0.1f;
         transform.Rotate(0.0f, yRotation, 0.0f);
         camera.transform.LookAt(centreTile);
@@ -98,7 +92,6 @@ public class CameraController : MonoBehaviour
 
     private void rotateRight()
     {
-        Debug.Log("RotatRight");
         float yRotation = -0.1f;
         transform.Rotate(0.0f, yRotation, 0.0f);
         camera.transform.LookAt(centreTile);

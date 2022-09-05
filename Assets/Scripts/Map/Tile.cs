@@ -21,6 +21,7 @@ public class Tile : MonoBehaviour
       hex = this.gameObject.transform.GetChild(0).gameObject;
       renderer = hex.GetComponent<MeshRenderer>();
       isHidden = true;
+      this.gameObject.name = material.ToString();
 
     }
 
@@ -43,6 +44,11 @@ public class Tile : MonoBehaviour
       renderer.material = material;
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);
       isHidden = false;
+    }
+
+    public bool IsHidden()
+    {
+      return isHidden;
     }
 
 

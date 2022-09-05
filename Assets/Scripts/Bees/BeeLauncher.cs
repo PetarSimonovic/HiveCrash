@@ -10,6 +10,9 @@ public class BeeLauncher : MonoBehaviour
     [SerializeField]
     private Vector3 endOfTheLine;
 
+    [SerializeField]
+    private BeeScope beeScope;
+
     private Bee loadedBee;
 
     private bool isLoaded = false;
@@ -22,13 +25,11 @@ public class BeeLauncher : MonoBehaviour
 
     private Vector3 endDragPosition;
 
-    private LineRenderer lineRenderer;
 
 
     private void Awake()
     {
-      lineRenderer = GetComponent<LineRenderer>();
-      Debug.Log(lineRenderer);
+      beeScope = GetComponent<BeeScope>();
     }
 
     public Bee GetLoadedBee()
@@ -38,8 +39,7 @@ public class BeeLauncher : MonoBehaviour
 
     public void LoadBee(Bee bee)
     {
-      Debug.Log("Linerenderer");
-      Debug.Log(lineRenderer);
+      beeScope.On();
       this.loadedBee = bee;
       this.isLoaded = true;
     }
@@ -47,9 +47,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetLaunchPosition(Vector3 launchPosition)
     {
       this.launchPosition = launchPosition;
-      this.endDragPosition = launchPosition;
-      this.lineRenderer.SetPosition(0, new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
-
+      beeScope.SetStartOfLine(new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
     }
 
     public Vector3 GetLaunchPosition()
@@ -60,10 +58,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
       this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      endOfTheLine = new Vector3(endDragPosition.x - launchPosition.x, launchPositionY, endDragPosition.z - launchPosition.z);
-      Debug.Log("End of the line");
-      Debug.Log(endOfTheLine);
-      this.lineRenderer.SetPosition(1, new Vector3(launchPosition.x - endOfTheLine.x, launchPositionY, launchPosition.z - endOfTheLine.z));
+      beeScope.SetEndOfLine(endDragPosition);
     }
 
     public Vector3 GetEndDragPosition()
@@ -81,6 +76,7 @@ public class BeeLauncher : MonoBehaviour
       beeBody.GetComponent<Rigidbody>().AddForce(-direction);
       this.loadedBee.SetBody(beeBody);
       this.isLoaded = false;
+      beeScope.Off();
     }
 
 

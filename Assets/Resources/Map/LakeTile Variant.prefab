@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: LakeTile Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: lake
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.299
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5794860282430713668, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_RootOrder

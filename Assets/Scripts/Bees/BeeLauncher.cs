@@ -47,6 +47,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetLaunchPosition(Vector3 launchPosition)
     {
       this.launchPosition = launchPosition;
+      this.endDragPosition = launchPosition;
       this.lineRenderer.SetPosition(0, new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
 
     }
@@ -58,14 +59,11 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
-      Debug.Log("positions");
-      Debug.Log(endDragPosition);
       this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      float xPosition = this.launchPosition.x - this.endDragPosition.x;
-      float zPosition = this.launchPosition.z - this.endDragPosition.z;
-      endOfTheLine = calculateDirection() + endDragPosition;
+      endOfTheLine = new Vector3(endDragPosition.x - launchPosition.x, launchPositionY, endDragPosition.z - launchPosition.z);
+      Debug.Log("End of the line");
       Debug.Log(endOfTheLine);
-      this.lineRenderer.SetPosition(1, endOfTheLine);
+      this.lineRenderer.SetPosition(1, new Vector3(launchPosition.x - endOfTheLine.x, launchPositionY, launchPosition.z - endOfTheLine.z));
     }
 
     public Vector3 GetEndDragPosition()

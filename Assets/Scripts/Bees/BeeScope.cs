@@ -15,6 +15,8 @@ public class BeeScope : MonoBehaviour
 
     private bool bounce;
 
+    private float lineWidth = 0.1f;
+
 
 
 
@@ -23,28 +25,47 @@ public class BeeScope : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-       lineRenderer = GetComponent<LineRenderer>();
+       calibrateLineRenderer(); 
        this.launchPositionY = 0.5f;
        bounce = false;
     }
 
-    private bool checkCollision()
+    private void calibrateLineRenderer()
     {
+       lineRenderer = GetComponent<LineRenderer>();
+       lineRenderer.SetWidth(lineWidth, lineWidth);
+
+    }
+
+    private Vector3 calculateDirection()
+    {
+      Vector3 direction = -(this.endPosition - this.startPosition);
+      return new Vector3(direction.x, launchPositionY, direction.z);
+    }
+
+    private void Update()
+    {    
         RaycastHit hit;
-        if (Physics.Raycast(endPosition, transform.forward, out hit))
+        if (Physics.Raycast(lineRenderer.GetPosition(1), calculateDirection(), out hit, lineWidth))
         {
-            GameObject other = hit.collider.transform.parent.gameObject;
-            if (other.tag == "rock")
-            {
-                Tile tile = other.GetComponent<Tile>();
-                if (!tile.IsHidden())
-                {
-                  Debug.Log("ROCK");
-                  return true;
-                }
-            }
+            checkIfRock(hit);
         }
-        return false;
+    }
+
+    private bool checkIfRock(RaycastHit hit)
+    {   
+        bool isRock = false;
+        GameObject other = hit.collider.transform.parent.gameObject;
+        if (other.tag == "rock")
+        {
+            Tile tile = other.GetComponent<Tile>();
+            if (!tile.IsHidden())
+            {
+                Debug.Log("ROCK");
+                isRock = true;
+            }
+        } 
+        return isRock;
     }
 
     // Update is called once per frame

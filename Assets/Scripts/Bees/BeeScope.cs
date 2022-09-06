@@ -90,7 +90,7 @@ public class BeeScope : MonoBehaviour
 
     public void SetEndPosition(Vector3 endPosition)
     {
-            this.endPosition = endPosition;
+        this.endPosition = endPosition;
     }
 
     public void DrawLine(Vector3 endDragPosition)
@@ -124,7 +124,7 @@ public class BeeScope : MonoBehaviour
     private void drawReflectedLine(RaycastHit hit)
     {
         Vector3 incomingVec = hit.point - startPosition;
-        Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
+        Vector3 reflectVec = Vector3.Reflect(incomingVec, hitNormal);
         lineRenderer.SetPosition(2, reflectVec);
     }
 

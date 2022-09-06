@@ -30,6 +30,8 @@ public class BeeBody : MonoBehaviour
 
     private string hiveId;
 
+    private Transform target;
+
 
 
     private void Start()

@@ -58,7 +58,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
       this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      beeScope.SetEndOfLine(endDragPosition);
+      beeScope.DrawLine(endDragPosition);
     }
 
     public Vector3 GetEndDragPosition()

@@ -28,4 +28,9 @@ public class Flower : MonoBehaviour
     {
         return this.isPlanted;
     }
+
+    public void CreateBody()
+    {
+     Instantiate(flowerBody, transform.position, Quaternion.identity); 
+    }
 }

@@ -62,10 +62,12 @@ public class FlowerController : MonoBehaviour
     private void plantFlower(Vector3 meadowPosition)
     {
       Vector3 flowerPosition = meadowPosition;
-      flowerPosition.y = 0.5f;  
+      flowerPosition.y = meadowPosition.y + 0.48f;  // change so it adjusts to meadow height
       var flower = Instantiate(flowerPrefab, flowerPosition, Quaternion.identity); // Quaternion.identity affects rotation?
-      flowers.Add(flower);  
-      Debug.Log("FLOWERS");
-      Debug.Log(flowers.Count);
+      flowers.Add(flower);
+      if (Random.Range(0, 10) == 1)
+      {
+        flower.GetComponent<Flower>().CreateBody();  
+      }
     }
 }

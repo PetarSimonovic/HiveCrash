@@ -7,6 +7,7 @@ TagManager:
   - rock
   - meadow
   - lake
+  - flower
   layers:
   - Default
   - TransparentFX

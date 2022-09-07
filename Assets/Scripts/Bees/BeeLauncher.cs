@@ -47,7 +47,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetLaunchPosition(Vector3 launchPosition)
     {
       this.launchPosition = launchPosition;
-      beeScope.SetStartOfLine(new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
+     // beeScope.SetStartOfLine(new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
     }
 
     public Vector3 GetLaunchPosition()
@@ -58,7 +58,7 @@ public class BeeLauncher : MonoBehaviour
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
       this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      beeScope.DrawLine(endDragPosition);
+     // beeScope.DrawLine(endDragPosition);
     }
 
     public Vector3 GetEndDragPosition()

@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private BeeController beeController;
 
+    [SerializeField]
+    private FlowerController flowerController;
+
+
     private Hive hive;
 
     private List<GameObject> tiles;
@@ -29,14 +33,12 @@ public class GameController : MonoBehaviour
 
     private void Awake() 
     {
-     instantiateObjects;
+     instantiateObjects();
     }
 
     private void Start()
     {
-      mapCreator.CreateMap();
-      tiles = mapCreator.GetTiles();
-
+      processTiles();
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class GameController : MonoBehaviour
     {
       checkInput();
       if (hiveIsPlaced) {
-        beeController.CheckBees(hive.GetBees());
+        checkControllers();
       }
     }
 
@@ -160,6 +162,20 @@ public class GameController : MonoBehaviour
     {
       beeLauncher = Instantiate(beeLauncher);
       mapCreator = Instantiate(mapCreator);
+      flowerController = Instantiate(flowerController);
+    }
+
+    private void checkControllers()
+    {
+      beeController.CheckBees(hive.GetBees());
+      flowerController.CheckMeadows();
+    }
+
+    private void processTiles()
+    {
+      mapCreator.CreateMap();
+      tiles = mapCreator.GetTiles();
+      flowerController.SetMeadows(tiles);
     }
 
 }

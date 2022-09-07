@@ -5,21 +5,23 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
-    MapCreator mapCreator;
+    private MapCreator mapCreator;
 
     [SerializeField]
-    CameraController cameraController;
+    private CameraController cameraController;
 
     [SerializeField]
-    GameObject hivePrefab;
+    private GameObject hivePrefab;
 
     [SerializeField]
-    BeeLauncher beeLauncher;
+    private BeeLauncher beeLauncher;
 
     [SerializeField]
-    BeeController beeController;
+    private BeeController beeController;
 
-    Hive hive;
+    private Hive hive;
+
+    private List<GameObject> tiles;
 
 
 
@@ -27,12 +29,14 @@ public class GameController : MonoBehaviour
 
     private void Awake() 
     {
-     beeLauncher = Instantiate(beeLauncher);
+     instantiateObjects;
     }
 
     private void Start()
     {
       mapCreator.CreateMap();
+      tiles = mapCreator.GetTiles();
+
     }
 
     // Update is called once per frame
@@ -150,6 +154,12 @@ public class GameController : MonoBehaviour
     private void getClickPosition()
     {
 
+    }
+
+    private void instantiateObjects()
+    {
+      beeLauncher = Instantiate(beeLauncher);
+      mapCreator = Instantiate(mapCreator);
     }
 
 }

@@ -13,6 +13,10 @@ public class MapCreator : MonoBehaviour
 
     [SerializeField]
     private GameObject lakeTilePrefab;
+
+    private List<GameObject> tiles = new List<GameObject>();
+
+
     //
     // [SerializeField]
     // private GameObject borderTilePrefab;
@@ -46,7 +50,7 @@ public class MapCreator : MonoBehaviour
       int tileDecision;
       for (int i = 0; i < NumberOfRows; i++)
       {
-        tilePrefab =  chooseTile();
+        tilePrefab = chooseTile();
         CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
@@ -58,6 +62,7 @@ public class MapCreator : MonoBehaviour
     {
       GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
       tile.SetActive(true);
+      this.tiles.Add(tile);
       return tile;
     }
 
@@ -76,5 +81,10 @@ public class MapCreator : MonoBehaviour
           return meadowTilePrefab;
           break;
       }
+    }
+
+    public List<GameObject> GetTiles()
+    {
+      return this.tiles;
     }
 }

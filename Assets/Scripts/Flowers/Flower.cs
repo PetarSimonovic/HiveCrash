@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
+    [SerializeField]
+    GameObject flowerBody;
+
     private bool isPlanted;
 
     void Awake()

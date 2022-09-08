@@ -7,7 +7,9 @@ public class Flower : MonoBehaviour
     [SerializeField]
     GameObject flowerBody;
 
-    private bool isPlanted;
+    public float timer;
+
+    private bool isInBloom;
 
     void Awake()
     {
@@ -21,16 +23,31 @@ public class Flower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      if (isInBloom)
+      {
+        checkTimer();
+      }
     }
 
-    public bool IsPlanted()
+
+    public bool IsInBloom()
     {
-        return this.isPlanted;
+        return this.isInBloom;
     }
 
     public void CreateBody()
     {
+     isInBloom = true;
      Instantiate(flowerBody, transform.position, Quaternion.identity); 
+    }
+
+    private void checkTimer()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0 )
+        {
+            Debug.Log("Time");
+            timer = 20;
+        }
     }
 }

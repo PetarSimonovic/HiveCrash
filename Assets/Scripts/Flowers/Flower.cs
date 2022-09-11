@@ -11,6 +11,8 @@ public class Flower : MonoBehaviour
 
     private bool isInBloom;
 
+    private bool blossom;
+
     void Awake()
     {
 
@@ -27,6 +29,15 @@ public class Flower : MonoBehaviour
       {
         checkTimer();
       }
+      if (blossom)
+      {
+        Blossom();
+      }
+    }
+
+    public void Blossom()
+    {
+        
     }
 
 
@@ -46,7 +57,7 @@ public class Flower : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0 )
         {
-            Debug.Log("Time");
+            blossom = true;
             timer = 20;
         }
     }

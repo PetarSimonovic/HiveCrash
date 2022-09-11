@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280851814807496123}
   - component: {fileID: 1100689699057610006}
+  - component: {fileID: 8605292104042892622}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -46,3 +47,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerBody: {fileID: 5914520805262201011, guid: dadd10e001e224bcf8b719c301f2ed9f,
     type: 3}
+  timer: 0
+--- !u!95 &8605292104042892622
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480754741978409165}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1fdcf688269c941a49ff1d794b974c01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

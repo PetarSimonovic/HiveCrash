@@ -7,13 +7,15 @@ public class Flower : MonoBehaviour
     [SerializeField]
     GameObject flowerBody;
 
+    GameObject flower;
+
     public float timer;
 
     private bool isPlanted;
 
     private bool inBloom;
 
-    private Animator animator;
+    private FlowerAnimator flowerAnimator;
 
 
     void Awake()
@@ -44,13 +46,15 @@ public class Flower : MonoBehaviour
     public void CreateBody()
     {
      isPlanted = true;
-     Instantiate(flowerBody, transform.position, Quaternion.identity); 
+     flower = Instantiate(flowerBody, transform.position, Quaternion.identity); 
+     flowerAnimator = flower.GetComponent<FlowerAnimator>();
     }
 
     private void openFlower()
     {
       inBloom = true;
       Debug.Log("Opening Flower");
+      flowerAnimator.Bloom();
      
 
 ;
@@ -61,6 +65,7 @@ public class Flower : MonoBehaviour
       inBloom = false;
 
       Debug.Log("Closing Flower");
+      flowerAnimator.Close();
 
 
     }

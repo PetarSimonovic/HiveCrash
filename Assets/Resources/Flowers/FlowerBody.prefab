@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 6725296807433118093}
   - component: {fileID: 447616586811871895}
   - component: {fileID: 616226129023540721}
-  - component: {fileID: 9046996147530559990}
+  - component: {fileID: -2976569102329879224}
   m_Layer: 0
   m_Name: FlowerBody
   m_TagString: flower
@@ -494,23 +494,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &9046996147530559990
-Animation:
+--- !u!114 &-2976569102329879224
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5914520805262201011}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 33760019dd63144eea67b865a633782b, type: 2}
-  - {fileID: 7400000, guid: 7457e910948b14a6f96418eda045ad35, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b229838cd79a4f8ab39a80c2facefbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6423895505270283871
 GameObject:
   m_ObjectHideFlags: 0

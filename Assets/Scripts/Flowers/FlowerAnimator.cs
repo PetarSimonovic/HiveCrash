@@ -10,20 +10,18 @@ public class FlowerAnimator : MonoBehaviour
     void Awake()
     {
      animator = GetComponent<Animator>();
-     Debug.Log(animator);
-     Debug.Log(animator.enabled);
-     Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
     }
 
     public void Bloom()
     {
      Debug.Log("In bloom on flowerAnimator");
-     GetComponent<Animator>().SetBool("InBloom", true);
+     animator.Play("Base Layer.OpenFlower", 0, 0.25f);
     }
 
     public void Close()
     {
         Debug.Log("In close on flowerAnimator");
-        GetComponent<Animator>().SetBool("InBloom", false);
+        animator.Play("Base Layer.CloseFlower", 0, 0.25f);
+
     }
 }

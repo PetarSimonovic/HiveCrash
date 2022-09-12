@@ -11,9 +11,9 @@ public class Flower : MonoBehaviour
 
     public float timer;
 
-    private bool isPlanted;
+    private bool isPlanted = false;
 
-    private bool inBloom;
+    private bool inBloom = false;
 
     private FlowerAnimator flowerAnimator;
 
@@ -55,9 +55,6 @@ public class Flower : MonoBehaviour
       inBloom = true;
       Debug.Log("Opening Flower");
       flowerAnimator.Bloom();
-     
-
-;
     }
 
     private void closeFlower()

@@ -30,6 +30,8 @@ public class BeeBody : MonoBehaviour
 
     private string hiveId;
 
+    private Flower flower;
+
     private Transform target;
 
 
@@ -78,11 +80,10 @@ public class BeeBody : MonoBehaviour
           break;
 
         case "flower":
-          Debug.Log("Bee on flower");
+          processFlowerCollision(other);
           break;
 
          default:
-          Debug.Log("Bee triggered " + otherObject);
           break;
       }
 
@@ -117,14 +118,22 @@ public class BeeBody : MonoBehaviour
       this.hiveId = hiveId;
     }
 
-    public void enterHive(Collider other)
+    private void enterHive(Collider other)
     {
+      // Just use a 'playerHive' tag instead of an ID?
       if (getHiveId(other) == this.hiveId && isOutsideHive)
         {
           Debug.Log(other.transform.parent.gameObject.name);
           Debug.Log("Entering Hive!");
           isEnteringHive = true;
         }
+    }
+
+    private void processFlowerCollision(Collider other)
+    {
+      flower = other.transform.parent.gameObject.GetComponent<Flower>();
+      Debug.Log(flower.IsInBloom());
+
     }
 
 }

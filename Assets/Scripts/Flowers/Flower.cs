@@ -37,6 +37,11 @@ public class Flower : MonoBehaviour
       }
     }
 
+      public bool IsInBloom()
+    {
+        return this.inBloom;
+    }
+
 
     public bool IsPlanted()
     {
@@ -46,7 +51,7 @@ public class Flower : MonoBehaviour
     public void CreateBody()
     {
      isPlanted = true;
-     flower = Instantiate(flowerBody, transform.position, Quaternion.identity); 
+     flower = Instantiate(flowerBody, transform.position, Quaternion.identity, this.transform); 
      flowerAnimator = flower.GetComponent<FlowerAnimator>();
     }
 

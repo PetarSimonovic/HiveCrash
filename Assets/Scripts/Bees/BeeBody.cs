@@ -32,11 +32,6 @@ public class BeeBody : MonoBehaviour
      [SerializeField]
     private float moveSpeed = 20f;
 
-    [SerializeField]
-    private float angularVelocity = 0.9f;
-
-
-
 
     private void Start()
     {
@@ -52,8 +47,9 @@ public class BeeBody : MonoBehaviour
      }
      else {
       moveBee();
-      fixBeeToYPosition();
      }
+     fixBeeToYPosition();
+
 
     }
 
@@ -75,6 +71,8 @@ public class BeeBody : MonoBehaviour
       moveSpeed = IDLE_SPEED;
       float step = RETURN_SPEED * Time.deltaTime;
       transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
+      Quaternion rotation = Quaternion.LookRotation(hivePosition, Vector3.down);
+      transform.rotation = rotation;
     }
 
     private void fixBeeToYPosition()
@@ -120,6 +118,7 @@ public class BeeBody : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("COLLIDE WITH" + other.gameObject);
+        collectingPollen = false;
         bounceBack(other);
     }
 
@@ -127,12 +126,12 @@ public class BeeBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 999;
+        var magnitude = 5;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-        rigidBody.AddForce(force * magnitude);
+        rigidBody.AddForce(force * magnitude, ForceMode.Impulse);
 
     }
 
@@ -156,12 +155,26 @@ public class BeeBody : MonoBehaviour
     {
       flower = other.transform.parent.gameObject.GetComponent<Flower>();
       checkPollenCollection();
+      if (collectingPollen)
+      {
+       moveSpeed = 0.6f;
+       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      }
     }
 
     private void placeBeeOnFlower()
-    {
-    
-      transform.position = flower.GetPosition();
+    {  
+      moveSpeed = moveSpeed > 0.2f ? moveSpeed - 0.02f : 0.2f;
+       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      float step = moveSpeed * Time.deltaTime;
+      Vector3 flowerPosition = flower.GetPosition();
+      Vector3 targetPosition = new Vector3(flowerPosition.x, Y_POSITION, flowerPosition.z);
+      if (transform.position != targetPosition) 
+      {
+        transform.position = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
+      }
+      Quaternion rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+      transform.rotation = rotation;
     }
 
     private void checkPollenCollection() 
@@ -171,8 +184,8 @@ public class BeeBody : MonoBehaviour
 
     private void collectPollen() 
     {
-      placeBeeOnFlower();
       checkPollenCollection();
+      placeBeeOnFlower();
     }
 
 }

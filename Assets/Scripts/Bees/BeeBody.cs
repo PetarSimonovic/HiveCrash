@@ -46,7 +46,12 @@ public class BeeBody : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-      rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+     moveBee();
+    }
+
+    private void moveBee()
+    {
+       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
         moveSpeed = moveSpeed - 0.001f;

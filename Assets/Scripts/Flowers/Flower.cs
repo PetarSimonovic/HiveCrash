@@ -15,6 +15,8 @@ public class Flower : MonoBehaviour
 
     private bool inBloom = false;
 
+    private Vector3 position;
+
     private FlowerAnimator flowerAnimator;
 
 
@@ -46,6 +48,16 @@ public class Flower : MonoBehaviour
     public bool IsPlanted()
     {
         return this.isPlanted;
+    }
+
+    public Vector3 GetPosition()
+      {
+        return this.position;
+      }
+
+    public void SetPosition(Vector3 position)
+    {
+      this.position = position;
     }
 
     public void CreateBody()

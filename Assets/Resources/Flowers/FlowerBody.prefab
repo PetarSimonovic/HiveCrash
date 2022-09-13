@@ -1015,7 +1015,6 @@ GameObject:
   - component: {fileID: 5981510092342368164}
   - component: {fileID: 7355851468125799602}
   - component: {fileID: 3842786800772359429}
-  - component: {fileID: 8078660975986882815}
   m_Layer: 0
   m_Name: stem
   m_TagString: Untagged
@@ -1088,17 +1087,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8078660975986882815
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9023292157831480849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

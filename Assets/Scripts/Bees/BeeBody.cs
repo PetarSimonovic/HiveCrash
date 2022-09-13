@@ -7,64 +7,81 @@ using UnityEngine;
 public class BeeBody : MonoBehaviour
   {
 
-    public Vector3 hivePosition;
+    public bool isEnteringHive = false;
 
-    private Vector3 lastTile;
-    private Rigidbody rigidBody;
+    private bool isOutsideHive = false;
 
-    [SerializeField]
-    private float moveSpeed = 20f;
-
-    [SerializeField]
-    private float angularVelocity = 0.9f;
+    private bool collectingPollen = false;
 
     private const float IDLE_SPEED = 1.5f;
 
     private const float RETURN_SPEED = 3f;
 
-    public bool isEnteringHive = false;
-
-    private bool isIdling = false;
-
-    private bool isOutsideHive = false;
+    private const float Y_POSITION = 0.7f;
 
     private string hiveId;
+
+    public Vector3 hivePosition;
+
+    private Rigidbody rigidBody;
 
     private Flower flower;
 
     private Transform target;
 
+     [SerializeField]
+    private float moveSpeed = 20f;
+
+    [SerializeField]
+    private float angularVelocity = 0.9f;
+
+
 
 
     private void Start()
     {
-      isIdling = false;
       rigidBody = GetComponent<Rigidbody>();
       hivePosition = transform.position;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-     moveBee();
+     if (collectingPollen)
+     {
+      collectPollen();
+     }
+     else {
+      moveBee();
+      fixBeeToYPosition();
+     }
+
     }
 
     private void moveBee()
     {
-       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
         moveSpeed = moveSpeed - 0.001f;
       }
       else
       {
-        moveSpeed = IDLE_SPEED;
-        isIdling = true;
-        float step = RETURN_SPEED * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
+       returnToHive();
       }
-      transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
     }
+
+    private void returnToHive()
+    {
+      moveSpeed = IDLE_SPEED;
+      float step = RETURN_SPEED * Time.deltaTime;
+      transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
+    }
+
+    private void fixBeeToYPosition()
+    {
+      transform.position = new Vector3(transform.position.x, Y_POSITION, transform.position.z);
+    }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -102,6 +119,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("COLLIDE WITH" + other.gameObject);
         bounceBack(other);
     }
 
@@ -137,8 +155,24 @@ public class BeeBody : MonoBehaviour
     private void processFlowerCollision(Collider other)
     {
       flower = other.transform.parent.gameObject.GetComponent<Flower>();
-      Debug.Log(flower.IsInBloom());
+      checkPollenCollection();
+    }
 
+    private void placeBeeOnFlower()
+    {
+    
+      transform.position = flower.GetPosition();
+    }
+
+    private void checkPollenCollection() 
+    {
+      collectingPollen = flower.IsInBloom();
+    }
+
+    private void collectPollen() 
+    {
+      placeBeeOnFlower();
+      checkPollenCollection();
     }
 
 }

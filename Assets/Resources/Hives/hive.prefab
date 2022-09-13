@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2229061753865260066}
   m_Layer: 0
   m_Name: hex
-  m_TagString: Untagged
+  m_TagString: hive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,6 +313,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: stem
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 89871f11d36c1451fb4045b7672b7892,
+        type: 3}
+      propertyPath: m_TagString
+      value: hive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89871f11d36c1451fb4045b7672b7892, type: 3}

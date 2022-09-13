@@ -61,7 +61,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-      if (other.gameObject.name.ToString() == "hex")
+      if (other.gameObject.tag.ToString() == "hive")
       {
         Debug.Log("Leaving Hive!");
         isOutsideHive = true;
@@ -70,22 +70,25 @@ public class BeeBody : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      string otherId = getOtherId(other);
-      if (otherId == this.hiveId && isOutsideHive)
-      {
-        Debug.Log(other.transform.parent.gameObject.name);
-        Debug.Log("Entering Hive!");
-        isEnteringHive = true;
+      string otherObject = other.gameObject.tag.ToString();
+      switch (otherObject) {
+          
+        case "hive":
+          enterHive(other);
+          break;
+
+        case "flower":
+          Debug.Log("Bee on flower");
+          break;
+
+         default:
+          Debug.Log("Bee triggered " + otherObject);
+          break;
       }
 
-
-      // if (other.gameObject.tag == this.tag && isOutsideHive)
-      // {
-      //   isEnteringHive = true;
-      // }
     }
 
-    private string getOtherId(Collider other)
+    private string getHiveId(Collider other)
     {
       return other.transform.parent.gameObject.name;
     }
@@ -93,11 +96,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-
-     // if (isIdling)
-     //  {
         bounceBack(other);
-      // }
     }
 
     private void bounceBack(Collision other)
@@ -116,6 +115,16 @@ public class BeeBody : MonoBehaviour
     public void SetHiveId(string hiveId)
     {
       this.hiveId = hiveId;
+    }
+
+    public void enterHive(Collider other)
+    {
+      if (getHiveId(other) == this.hiveId && isOutsideHive)
+        {
+          Debug.Log(other.transform.parent.gameObject.name);
+          Debug.Log("Entering Hive!");
+          isEnteringHive = true;
+        }
     }
 
 }

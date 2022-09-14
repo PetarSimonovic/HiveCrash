@@ -63,10 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5263791667e49e1923199b88d1e010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnteringHive: 0
   hivePosition: {x: 0, y: 0, z: 0}
   moveSpeed: 5
-  angularVelocity: 0.9
-  isEnteringHive: 0
 --- !u!136 &8498475446667374513
 CapsuleCollider:
   m_ObjectHideFlags: 0

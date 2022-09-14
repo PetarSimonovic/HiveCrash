@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private FlowerController flowerController;
 
-
     private Hive hive;
 
     private List<GameObject> tiles;

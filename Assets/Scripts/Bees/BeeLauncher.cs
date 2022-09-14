@@ -8,10 +8,7 @@ public class BeeLauncher : MonoBehaviour
     private GameObject beePrefab;
 
     [SerializeField]
-    private Vector3 endOfTheLine;
-
-    [SerializeField]
-    private BeeScope beeScope;
+    private BeeScope beeScopePrefab;
 
     private Bee loadedBee;
 
@@ -26,10 +23,8 @@ public class BeeLauncher : MonoBehaviour
     private Vector3 endDragPosition;
 
 
-
-    private void Awake()
+    private void Start()
     {
-      beeScope = GetComponent<BeeScope>();
     }
 
     public Bee GetLoadedBee()
@@ -39,7 +34,6 @@ public class BeeLauncher : MonoBehaviour
 
     public void LoadBee(Bee bee)
     {
-      beeScope.On();
       this.loadedBee = bee;
       this.isLoaded = true;
     }
@@ -47,7 +41,6 @@ public class BeeLauncher : MonoBehaviour
     public void SetLaunchPosition(Vector3 launchPosition)
     {
       this.launchPosition = launchPosition;
-     // beeScope.SetStartOfLine(new Vector3(launchPosition.x, launchPositionY, launchPosition.z));
     }
 
     public Vector3 GetLaunchPosition()
@@ -58,7 +51,14 @@ public class BeeLauncher : MonoBehaviour
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
       this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
+      targetScope();
+
      // beeScope.DrawLine(endDragPosition);
+    }
+
+    private void targetScope()
+    {
+
     }
 
     public Vector3 GetEndDragPosition()
@@ -76,7 +76,6 @@ public class BeeLauncher : MonoBehaviour
       beeBody.GetComponent<Rigidbody>().AddForce(-direction);
       this.loadedBee.SetBody(beeBody);
       this.isLoaded = false;
-      beeScope.Off();
     }
 
 

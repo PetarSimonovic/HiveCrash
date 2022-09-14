@@ -159,6 +159,8 @@ MonoBehaviour:
     type: 3}
   beeLauncher: {fileID: 73864365575355360, guid: 994302cf748c04c8292de50c7124b0e7,
     type: 3}
+  beeScope: {fileID: 2036163264261319619, guid: 60bf5ba76e8fa40d583c574c64db2347,
+    type: 3}
   beeController: {fileID: 49204925441863120, guid: 7d25449d718f34b449147085a627f6b8,
     type: 3}
   flowerController: {fileID: -1370986189296179200, guid: f977adc5d371d43e98a70769f8ab04aa,

@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8280218433801077109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8123768597481437160}
+  - component: {fileID: 5295881378572857661}
+  m_Layer: 3
+  m_Name: 'scopecollider '
+  m_TagString: rock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8123768597481437160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280218433801077109}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.274, z: -0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4075091391006976075}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &5295881378572857661
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280218433801077109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2190622540023885545, guid: 89871f11d36c1451fb4045b7672b7892, type: 3}
 --- !u!1001 &7558967339261380367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +53,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 885178997997303840, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: rock
+      objectReference: {fileID: 0}
     - target: {fileID: 1447841027605637036, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_IsKinematic
@@ -107,6 +158,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7176599913246566994, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: rock
+      objectReference: {fileID: 0}
     - target: {fileID: 7702239191243995746, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: material
@@ -124,3 +180,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9c405d9229264833aad40efef3e40f0, type: 3}
+--- !u!4 &4075091391006976075 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5794860282430713668, guid: d9c405d9229264833aad40efef3e40f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7558967339261380367}
+  m_PrefabAsset: {fileID: 0}

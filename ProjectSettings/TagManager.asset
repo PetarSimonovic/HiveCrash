@@ -9,11 +9,13 @@ TagManager:
   - lake
   - flower
   - hive
+  - scope
+  - bee
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - scope
   - Water
   - UI
   - 

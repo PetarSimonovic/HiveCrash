@@ -8,7 +8,7 @@ public class BeeLauncher : MonoBehaviour
     private GameObject beePrefab;
 
     [SerializeField]
-    private BeeScope beeScopePrefab;
+    private GameObject beeScopePrefab;
 
     private Bee loadedBee;
 
@@ -22,9 +22,24 @@ public class BeeLauncher : MonoBehaviour
 
     private Vector3 endDragPosition;
 
+    private GameObject scopeBee;
 
-    private void Start()
+    private bool scopeOn;
+
+
+    private void Update()
     {
+      if (scopeOn) 
+      {
+        handleScopeBee();
+      }
+
+    }
+
+    private void handleScopeBee()
+    {
+      Vector3 scopeBeePosition = scopeBee.transform.position;
+      scopeBee.transform.position = new Vector3(scopeBeePosition.x, launchPositionY, scopeBeePosition.z);
     }
 
     public Bee GetLoadedBee()
@@ -50,15 +65,23 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetEndDragPosition(Vector3 endDragPosition)
     {
-      this.endDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      targetScope();
+      Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
+      if (this.endDragPosition == newDragPosition)
+      {
+        return;
+      }
+      Destroy(scopeBee);
+      this.endDragPosition = newDragPosition;
+      launchScopeBee();
 
      // beeScope.DrawLine(endDragPosition);
     }
 
-    private void targetScope()
+    private void launchScopeBee()
     {
-
+      scopeBee = Instantiate(beeScopePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?
+      scopeBee.GetComponent<Rigidbody>().AddForce(-(calculateDirection() * 50), ForceMode.Impulse);
+      scopeOn = true;
     }
 
     public Vector3 GetEndDragPosition()
@@ -68,6 +91,8 @@ public class BeeLauncher : MonoBehaviour
 
     public void LaunchBee()
     {
+      Destroy(scopeBee);
+      scopeOn = false;
       this.loadedBee.Fly();
       launchPosition.y = 0.8f;
       Vector3 direction = calculateDirection();

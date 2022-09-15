@@ -162,9 +162,39 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: -5117700066308340382, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
       propertyPath: m_Name
+      value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013638940889411661, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_TagString
       value: bee
       objectReference: {fileID: 0}
     m_RemovedComponents: []

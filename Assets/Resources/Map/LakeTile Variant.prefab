@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 885178997997303840, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: lake
+      objectReference: {fileID: 0}
     - target: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_Name
@@ -91,6 +96,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176599913246566994, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: lake
       objectReference: {fileID: 0}
     - target: {fileID: 7702239191243995746, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}

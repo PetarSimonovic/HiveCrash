@@ -27,16 +27,21 @@ public class Tile : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-      if (isHidden) {
-       reveal();
-      }
+      checkCollision(collision);
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-      if (isHidden) {
+       checkCollision(collision.collider);
+    }
+
+    public void checkCollision(Collider other)
+    {
+      if (other.gameObject.tag != "scope" && isHidden) 
+      {
        reveal();
       }
+
     }
 
     private void reveal()

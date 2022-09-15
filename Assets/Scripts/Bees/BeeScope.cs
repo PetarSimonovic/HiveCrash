@@ -8,6 +8,8 @@ public class BeeScope : MonoBehaviour
 
     private Rigidbody rigidBody;
     private Collider collider;
+    private const float Y_POSITION = 0.5f; // always has to be same as Bee - inheritance
+
 
     private void Start()
     {
@@ -15,10 +17,23 @@ public class BeeScope : MonoBehaviour
         collider = GetComponent<Collider>();
     }
 
+    private void Update()
+    {
+        fixBeeToYPosition();
+    }
+
+    private void fixBeeToYPosition()
+    {
+      transform.position = new Vector3(transform.position.x, Y_POSITION, transform.position.z);
+    }
+
+
      private void OnCollisionEnter(Collision other)
     {
         bounceBack(other);
     }
+
+    
 
 
 

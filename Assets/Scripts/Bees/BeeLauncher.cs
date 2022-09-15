@@ -16,7 +16,7 @@ public class BeeLauncher : MonoBehaviour
 
     private Vector3 launchPosition;
 
-    private float launchPositionY = 0.8f;
+    private float launchPositionY = 0.5f;
 
     private float linePositionY = 2.0f;
 
@@ -95,7 +95,7 @@ public class BeeLauncher : MonoBehaviour
       Destroy(scopeBee);
       scopeOn = false;
       this.loadedBee.Fly();
-      launchPosition.y = 0.8f;
+      launchPosition.y = launchPositionY;
       Vector3 direction = calculateDirection();
       var beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(direction, Vector3.down)); // Quaternion.identity affects rotation?
       beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());

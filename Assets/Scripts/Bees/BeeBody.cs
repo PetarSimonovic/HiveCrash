@@ -18,7 +18,7 @@ public class BeeBody : MonoBehaviour
 
     private const float RETURN_SPEED = 3f;
 
-    private const float Y_POSITION = 0.7f;
+    private const float Y_POSITION = 0.5f;
 
     private string hiveId;
 

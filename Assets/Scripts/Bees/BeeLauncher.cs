@@ -49,6 +49,7 @@ public class BeeLauncher : MonoBehaviour
 
     public void LoadBee(Bee bee)
     {
+      Destroy(scopeBee);
       this.loadedBee = bee;
       this.isLoaded = true;
     }
@@ -80,7 +81,7 @@ public class BeeLauncher : MonoBehaviour
     private void launchScopeBee()
     {
       scopeBee = Instantiate(beeScopePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?
-      scopeBee.GetComponent<Rigidbody>().AddForce(-(calculateDirection() * 50), ForceMode.Impulse);
+      scopeBee.GetComponent<Rigidbody>().AddForce(-(calculateDirection() * 100), ForceMode.Impulse);
       scopeOn = true;
     }
 

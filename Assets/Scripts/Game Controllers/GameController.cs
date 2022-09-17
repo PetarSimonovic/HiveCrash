@@ -88,7 +88,10 @@ public class GameController : MonoBehaviour
       }
       else if (Input.GetMouseButton(0))
       {
-        beeLauncher.SetEndDragPosition(worldTouchPoint);
+        if (beeLauncher.IsLoaded())
+        {
+          beeLauncher.SetEndDragPosition(worldTouchPoint);
+        }
       }
       else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
       {

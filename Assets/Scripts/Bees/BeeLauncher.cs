@@ -44,9 +44,9 @@ public class BeeLauncher : MonoBehaviour
       this.isLoaded = true;
     }
 
-    public void SetLaunchPosition(Vector3 launchPosition)
+    public void SetLaunchPosition(Vector3 worldPosition)
     {
-      this.launchPosition = launchPosition;
+      this.launchPosition = new Vector3 (worldPosition.x, launchPositionY, worldPosition.z);
     }
 
     public Vector3 GetLaunchPosition()
@@ -91,7 +91,7 @@ public class BeeLauncher : MonoBehaviour
       Vector3 direction = calculateDirection();
       var beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(direction, Vector3.down)); // Quaternion.identity affects rotation?
       beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
-      beeBody.GetComponent<Rigidbody>().AddForce(-direction);
+      beeBody.GetComponent<Rigidbody>().AddForce(-direction, ForceMode.Impulse);
       this.loadedBee.SetBody(beeBody);
       reset();
     }

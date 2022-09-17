@@ -16,13 +16,12 @@ public class Tile : MonoBehaviour
 
     private MeshRenderer renderer;
     // Start is called before the first frame update
-    public void Start()
+    protected virtual void Start()
     {
       hex = this.gameObject.transform.GetChild(0).gameObject;
       renderer = hex.GetComponent<MeshRenderer>();
       isHidden = true;
       this.gameObject.name = material.ToString();
-
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -37,7 +36,7 @@ public class Tile : MonoBehaviour
 
     public void checkCollision(Collider other)
     {
-      if (other.gameObject.tag != "scope" && isHidden) 
+      if (isHidden) 
       {
        reveal();
       }

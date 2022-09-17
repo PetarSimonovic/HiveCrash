@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeeScope : MonoBehaviour
+public class ScopeBee : MonoBehaviour
 
 {
 
@@ -15,16 +15,6 @@ public class BeeScope : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
-    }
-
-    private void Update()
-    {
-        fixBeeToYPosition();
-    }
-
-    private void fixBeeToYPosition()
-    {
-      transform.position = new Vector3(transform.position.x, Y_POSITION, transform.position.z);
     }
 
 

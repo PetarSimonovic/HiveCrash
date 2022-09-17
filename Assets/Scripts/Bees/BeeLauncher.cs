@@ -8,7 +8,7 @@ public class BeeLauncher : MonoBehaviour
     private GameObject beePrefab;
 
     [SerializeField]
-    private GameObject beeScopePrefab;
+    private GameObject scopeBeePrefab;
 
     private Bee loadedBee;
 
@@ -26,21 +26,11 @@ public class BeeLauncher : MonoBehaviour
 
     private bool scopeOn;
 
+    private BeeBody beeProperties;
 
-    private void Update()
-    {
-      if (scopeOn) 
-      {
-        handleScopeBee();
-      }
+    private Rigidbody scopeBeeBody;
 
-    }
 
-    private void handleScopeBee()
-    {
-      Vector3 scopeBeePosition = scopeBee.transform.position;
-      scopeBee.transform.position = new Vector3(scopeBeePosition.x, launchPositionY, scopeBeePosition.z);
-    }
 
     public Bee GetLoadedBee()
     {
@@ -80,8 +70,11 @@ public class BeeLauncher : MonoBehaviour
 
     private void launchScopeBee()
     {
-      scopeBee = Instantiate(beeScopePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?
-      scopeBee.GetComponent<Rigidbody>().AddForce(-(calculateDirection() * 100), ForceMode.Impulse);
+      scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
+      scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
+      scopeBeeBody.AddForce(-(calculateDirection()));
+      beeProperties = beePrefab.GetComponent<BeeBody>();
+      scopeBeeBody.velocity = scopeBeeBody.velocity.normalized * beeProperties.GetMoveSpeed();;
       scopeOn = true;
     }
 
@@ -92,7 +85,6 @@ public class BeeLauncher : MonoBehaviour
 
     public void LaunchBee()
     {
-      Destroy(scopeBee);
       scopeOn = false;
       this.loadedBee.Fly();
       launchPosition.y = launchPositionY;
@@ -101,7 +93,15 @@ public class BeeLauncher : MonoBehaviour
       beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
       beeBody.GetComponent<Rigidbody>().AddForce(-direction);
       this.loadedBee.SetBody(beeBody);
+      reset();
+    }
+
+    public void reset()
+    {
+      Destroy(scopeBee);
+      scopeOn = false;
       this.isLoaded = false;
+      endDragPosition = launchPosition;
     }
 
 

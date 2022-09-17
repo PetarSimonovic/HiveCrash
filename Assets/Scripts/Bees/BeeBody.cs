@@ -18,8 +18,6 @@ public class BeeBody : MonoBehaviour
 
     private const float RETURN_SPEED = 3f;
 
-    private const float Y_POSITION = 0.5f;
-
     private string hiveId;
 
     public Vector3 hivePosition;
@@ -40,6 +38,7 @@ public class BeeBody : MonoBehaviour
       hivePosition = transform.position;
     }
 
+
     private void Update()
     {
      if (collectingPollen)
@@ -49,9 +48,6 @@ public class BeeBody : MonoBehaviour
      else {
       moveBee();
      }
-     fixBeeToYPosition();
-
-
     }
 
     private void moveBee()
@@ -74,11 +70,6 @@ public class BeeBody : MonoBehaviour
       transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
       Quaternion rotation = Quaternion.LookRotation(hivePosition, Vector3.down);
       transform.rotation = rotation;
-    }
-
-    private void fixBeeToYPosition()
-    {
-      transform.position = new Vector3(transform.position.x, Y_POSITION, transform.position.z);
     }
 
 
@@ -187,6 +178,11 @@ public class BeeBody : MonoBehaviour
     {
       checkPollenCollection();
       placeBeeOnFlower();
+    }
+
+    public float GetMoveSpeed()
+    {
+      return moveSpeed;
     }
 
 }

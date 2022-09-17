@@ -139,7 +139,7 @@ public class GameController : MonoBehaviour
 
     private Hive createHive(Vector3 hivePosition)
     {
-      
+      destroyExistingTile(hivePosition);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
       hiveIsPlaced = true;
@@ -160,6 +160,19 @@ public class GameController : MonoBehaviour
     private void getClickPosition()
     {
 
+    }
+
+    private void destroyExistingTile(Vector3 hivePosition)
+    {
+      foreach (GameObject tile in tiles)
+      {
+        if (tile.transform.position == hivePosition && tile.tag == "rock")
+          {
+            Debug.Log("HIVE ON ROCK!");
+            tiles.Remove(tile);
+            Destroy(tile);
+          }
+      }
     }
 
     private void instantiateObjects()

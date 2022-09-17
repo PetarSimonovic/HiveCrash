@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5295881378572857661}
   m_Layer: 3
   m_Name: 'scopecollider '
-  m_TagString: rock
+  m_TagString: scope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,8 @@ PrefabInstance:
       propertyPath: heightRange.Array.data[1]
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7702239191243995746, guid: d9c405d9229264833aad40efef3e40f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d9c405d9229264833aad40efef3e40f0, type: 3}
 --- !u!4 &4075091391006976075 stripped
 Transform:
@@ -201,3 +202,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7558967339261380367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8636556772401490462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7558967339261380367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4826487273562938319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636556772401490462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a1f1cb89f4d448d8a3651a23557da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 954f0c30fc62b4ec694508b8d72807ee, type: 2}
+  heightRange:
+  - 0.3
+  - 0.5

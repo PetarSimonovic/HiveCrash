@@ -9,7 +9,7 @@ public class Flower : MonoBehaviour
 
     GameObject flower;
 
-    public float timer;
+    public float timer; // move into separate tool?
 
     private bool isPlanted = false;
 

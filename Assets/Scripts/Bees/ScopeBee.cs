@@ -8,8 +8,6 @@ public class ScopeBee : MonoBehaviour
 
     private Rigidbody rigidBody;
     private Collider collider;
-    private const float Y_POSITION = 0.5f; // always has to be same as Bee - inheritance
-
 
     private void Start()
     {

@@ -72,7 +72,7 @@ public class BeeLauncher : MonoBehaviour
     {
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
-      scopeBeeBody.AddForce(-(calculateDirection()));
+      scopeBeeBody.AddForce(-(calculateDirection() * 100));
       beeProperties = beePrefab.GetComponent<BeeBody>();
       scopeBeeBody.velocity = scopeBeeBody.velocity.normalized * beeProperties.GetMoveSpeed();;
       scopeOn = true;

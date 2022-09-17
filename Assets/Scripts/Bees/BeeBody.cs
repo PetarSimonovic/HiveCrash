@@ -157,10 +157,9 @@ public class BeeBody : MonoBehaviour
     private void placeBeeOnFlower()
     {  
       moveSpeed = moveSpeed > 0.2f ? moveSpeed - 0.02f : 0.2f;
-       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       float step = moveSpeed * Time.deltaTime;
-      Vector3 flowerPosition = flower.GetPosition();
-      Vector3 targetPosition = new Vector3(flowerPosition.x, Y_POSITION, flowerPosition.z);
+      Vector3 targetPosition = flower.GetPosition();
       if (transform.position != targetPosition) 
       {
         transform.position = Vector3.MoveTowards(transform.localPosition, targetPosition, step);

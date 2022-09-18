@@ -6,8 +6,13 @@ public class Hive : MonoBehaviour
 {
 
   private bool isPlaced = false;
+  
   private List<Bee> bees = new List<Bee>();
+  
   private Vector3 position;
+
+  private int pollen;
+  
 
   public void Place()
   {
@@ -46,10 +51,16 @@ public class Hive : MonoBehaviour
   }
 
 
-    public Vector3 GetPosition()
-    {
-      return this.position;
-    }
+  public Vector3 GetPosition()
+  {
+    return this.position;
+  }
+
+  public void AddPollen(int pollen)
+  {
+    this.pollen += pollen;
+    Debug.Log("Hive pollen is " + this.pollen);
+  }
 
 
 }

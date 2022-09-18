@@ -23,7 +23,9 @@ public class BeeController : MonoBehaviour
     {
       if (beeBody.GetComponent<BeeBody>().isEnteringHive)
       {
+          hive.AddPollen(bee.GetPollen());
           bee.EnterHive();
+          bee.RemoveAllPollen();
           Destroy(beeBody);
       }
     }

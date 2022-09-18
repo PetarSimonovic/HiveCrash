@@ -47,7 +47,6 @@ public class MapCreator : MonoBehaviour
     {
   //    CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
       GameObject tilePrefab;
-      int tileDecision;
       for (int i = 0; i < NumberOfRows; i++)
       {
         tilePrefab = chooseTile();
@@ -73,13 +72,10 @@ public class MapCreator : MonoBehaviour
       {
         case 1:
           return rockTilePrefab;
-          break;
         case 2:
           return lakeTilePrefab;
-          break;
         default:
           return meadowTilePrefab;
-          break;
       }
     }
 

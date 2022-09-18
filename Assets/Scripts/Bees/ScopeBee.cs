@@ -7,12 +7,10 @@ public class ScopeBee : MonoBehaviour
 {
 
     private Rigidbody rigidBody;
-    private Collider collider;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
     }
 
 

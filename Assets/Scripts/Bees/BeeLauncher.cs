@@ -18,13 +18,9 @@ public class BeeLauncher : MonoBehaviour
 
     private float launchPositionY = 0.5f;
 
-    private float linePositionY = 2.0f;
-
     private Vector3 endDragPosition;
 
     private GameObject scopeBee;
-
-    private bool scopeOn;
 
     private BeeBody beeProperties;
 
@@ -75,7 +71,6 @@ public class BeeLauncher : MonoBehaviour
       scopeBeeBody.AddForce(-(calculateDirection()), ForceMode.Impulse);
       beeProperties = beePrefab.GetComponent<BeeBody>();
    //   scopeBeeBody.velocity = scopeBeeBody.velocity.normalized * (beeProperties.GetMoveSpeed() * 100);;
-      scopeOn = true;
     }
 
     public Vector3 GetEndDragPosition()
@@ -85,7 +80,6 @@ public class BeeLauncher : MonoBehaviour
 
     public void LaunchBee()
     {
-      scopeOn = false;
       this.loadedBee.Fly();
       launchPosition.y = launchPositionY;
       Vector3 direction = calculateDirection();
@@ -99,7 +93,6 @@ public class BeeLauncher : MonoBehaviour
     public void reset()
     {
       Destroy(scopeBee);
-      scopeOn = false;
       this.isLoaded = false;
       endDragPosition = launchPosition;
     }

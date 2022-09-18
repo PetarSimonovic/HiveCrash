@@ -116,8 +116,10 @@ public class GameController : MonoBehaviour
       if (hiveIsPlaced) 
         {
           loadBee();
-        } else {
+        } else 
+        {
           initaliseHive(clickPosition);
+          flowerController.SetMeadows(tiles);
         }
     }
 
@@ -139,7 +141,7 @@ public class GameController : MonoBehaviour
 
     private Hive createHive(Vector3 hivePosition)
     {
-      destroyExistingTile(hivePosition);
+      destroyTileBeneathHive(hivePosition);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
       hiveIsPlaced = true;
@@ -162,15 +164,15 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void destroyExistingTile(Vector3 hivePosition)
+    private void destroyTileBeneathHive(Vector3 hivePosition)
     {
       foreach (GameObject tile in tiles)
       {
-        if (tile.transform.position == hivePosition && tile.tag == "rock")
+        if (tile.transform.position == hivePosition)
           {
-            Debug.Log("HIVE ON ROCK!");
             tiles.Remove(tile);
             Destroy(tile);
+            break;
           }
       }
     }
@@ -192,7 +194,6 @@ public class GameController : MonoBehaviour
     {
       mapCreator.CreateMap();
       tiles = mapCreator.GetTiles();
-      flowerController.SetMeadows(tiles);
     }
 
 }

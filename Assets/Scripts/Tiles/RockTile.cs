@@ -17,11 +17,12 @@ public class RockTile : Tile
         scopeCollider.enabled = false;
     }
 
-    private void Update()
+     public void OnCollisionEnter(Collision collision)
     {
-        if (!this.IsHidden() && !scopeCollider.enabled)
-        {
-            scopeCollider.enabled = true;
-        }
+       if (this.IsHidden())
+       {
+        checkCollision(collision.collider);
+        scopeCollider.enabled = true;
+       }
     }
 }

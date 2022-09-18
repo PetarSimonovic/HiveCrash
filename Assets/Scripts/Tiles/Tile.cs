@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     private GameObject hex;
 
-    private bool isHidden = false;
+    protected bool isHidden = false;
 
     private MeshRenderer renderer;
     // Start is called before the first frame update
@@ -27,11 +27,6 @@ public class Tile : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
       checkCollision(collision);
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-       checkCollision(collision.collider);
     }
 
     public void checkCollision(Collider other)

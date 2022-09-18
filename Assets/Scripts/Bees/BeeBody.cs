@@ -109,7 +109,6 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("COLLIDE WITH" + other.gameObject);
         collectingPollen = false;
         bounceBack(other);
     }

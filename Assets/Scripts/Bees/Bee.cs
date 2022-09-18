@@ -55,11 +55,16 @@ public class Bee
     public void AddPollen()
     {
       pollen += pollenCollectionRate;
-      Debug.Log("bee pollen = " + pollen);
     }
 
     public int GetPollen()
     {
       return pollen;
+    }
+
+    public void RemoveAllPollen()
+    {
+      this.pollen = 0;
+      Debug.Log("Bee pollen is " + this.pollen);
     }
 }

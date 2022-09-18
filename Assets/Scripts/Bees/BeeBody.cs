@@ -14,6 +14,8 @@ public class BeeBody : MonoBehaviour
 
     private bool collectingPollen = false;
 
+    private bool isIdling = false;
+
     private const float IDLE_SPEED = 1.5f;
 
     private const float RETURN_SPEED = 3f;
@@ -65,6 +67,7 @@ public class BeeBody : MonoBehaviour
 
     private void returnToHive()
     {
+      isIdling = true;
       moveSpeed = IDLE_SPEED;
       float step = RETURN_SPEED * Time.deltaTime;
       transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
@@ -110,7 +113,10 @@ public class BeeBody : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         collectingPollen = false;
-        bounceBack(other);
+        if (isIdling) 
+        {
+          bounceBack(other);
+        };
     }
 
     private void bounceBack(Collision other)

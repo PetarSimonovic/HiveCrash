@@ -189,4 +189,9 @@ public class BeeBody : MonoBehaviour
       return moveSpeed;
     }
 
+    public bool CollectingPollen()
+    {
+      return collectingPollen;
+    }
+
 }

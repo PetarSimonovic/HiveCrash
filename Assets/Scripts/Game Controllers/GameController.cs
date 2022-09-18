@@ -149,6 +149,7 @@ public class GameController : MonoBehaviour
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
       beeLauncher.SetLaunchPosition(hive.GetPosition());
+      beeController.SetHive(hive);
       return hive;
     }
 

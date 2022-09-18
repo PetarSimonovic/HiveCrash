@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BeeController : MonoBehaviour
 {
+    private Hive hive;
     // Start is called before the first frame update
     public void CheckBees(List<Bee> bees)
       {
@@ -12,17 +13,31 @@ public class BeeController : MonoBehaviour
           if (!bee.IsInHive())
           {
             GameObject beeBody = bee.GetBody();
-            checkBeeIsReturningToHive(bee, beeBody);
+            checkBeeIsEnteringHive(bee, beeBody);
+            checkPollenCollection(bee, beeBody);
           }
         }
       }
 
-    private void checkBeeIsReturningToHive(Bee bee, GameObject beeBody)
+    private void checkBeeIsEnteringHive(Bee bee, GameObject beeBody)
     {
       if (beeBody.GetComponent<BeeBody>().isEnteringHive)
       {
-          bee.Reset();
+          bee.EnterHive();
           Destroy(beeBody);
       }
+    }
+
+    private void checkPollenCollection(Bee bee, GameObject beeBody)
+    {
+      if (beeBody.GetComponent<BeeBody>().CollectingPollen())
+      {
+        bee.AddPollen();
+      }
+    }
+
+    public void SetHive(Hive hive)
+    {
+      this.hive = hive;
     }
 }

@@ -7,7 +7,13 @@ public class Bee
     // Start is called before the first frame update
 
     private string hiveId;
+
     private bool inHive;
+
+    private int pollen;
+
+    private int pollenCollectionRate = 1;
+
     private GameObject body;
 
     public Bee(string hiveId)
@@ -31,7 +37,7 @@ public class Bee
       this.inHive = false;
     }
 
-    public void Reset()
+    public void EnterHive()
     {
       this.inHive = true;
     }
@@ -44,5 +50,16 @@ public class Bee
     public GameObject GetBody()
     {
       return this.body;
+    }
+
+    public void AddPollen()
+    {
+      pollen += pollenCollectionRate;
+      Debug.Log("bee pollen = " + pollen);
+    }
+
+    public int GetPollen()
+    {
+      return pollen;
     }
 }

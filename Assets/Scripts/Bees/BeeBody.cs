@@ -154,14 +154,14 @@ public class BeeBody : MonoBehaviour
       checkPollenCollection();
       if (collectingPollen)
       {
-       moveSpeed = 0.6f;
+       moveSpeed = IDLE_SPEED;
        rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       }
     }
 
     private void placeBeeOnFlower()
     {  
-      moveSpeed = moveSpeed > 0.2f ? moveSpeed - 0.02f : 0.2f;
+      moveSpeed = moveSpeed > 0.2f ? moveSpeed - 0.01f : 0.2f;
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       float step = moveSpeed * Time.deltaTime;
       Vector3 targetPosition = flower.GetPosition();

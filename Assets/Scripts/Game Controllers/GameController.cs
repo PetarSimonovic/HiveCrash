@@ -37,12 +37,13 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-      processTiles();
+      createMap();
     }
 
     // Update is called once per frame
     private void Update()
     {
+      checkIfMapIsComplete();
       checkInput();
       if (hiveIsPlaced) {
         checkControllers();
@@ -119,7 +120,7 @@ public class GameController : MonoBehaviour
         } else 
         {
           initaliseHive(clickPosition);
-          flowerController.SetMeadows(tiles);
+          updateFlowerController();
         }
     }
 
@@ -190,10 +191,27 @@ public class GameController : MonoBehaviour
       flowerController.CheckMeadows();
     }
 
-    private void processTiles()
+    private void createMap()
     {
       mapCreator.CreateMap();
       tiles = mapCreator.GetTiles();
+    }
+
+    private void updateFlowerController()
+    {
+      flowerController.SetMeadows(tiles);
+    }
+
+    private void checkIfMapIsComplete()
+    {
+      foreach (GameObject tile in tiles)
+      {
+        if (tile.GetComponent<Tile>().IsHidden() == true)
+        {
+          return;
+        }
+      }
+      Debug.Log("Map Complete");
     }
 
 }

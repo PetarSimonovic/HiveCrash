@@ -126,7 +126,6 @@ public class GameController : MonoBehaviour
     {
       Bee bee = hive.GetBee();
       if (bee is not null) {
-        Debug.Log(bee);
         beeLauncher.LoadBee(bee);
       }
     }

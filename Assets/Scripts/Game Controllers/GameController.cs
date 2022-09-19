@@ -26,8 +26,6 @@ public class GameController : MonoBehaviour
 
     private List<GameObject> tiles;
 
-
-
     private bool hiveIsPlaced;
 
     private void Awake() 
@@ -136,7 +134,7 @@ public class GameController : MonoBehaviour
     private void initaliseHive(Vector3 hivePosition)
     {
       Hive hive = createHive(hivePosition);
-      addBees(hive, 5);
+      beeController.AddBees(5);
     }
 
     private Hive createHive(Vector3 hivePosition)
@@ -150,19 +148,6 @@ public class GameController : MonoBehaviour
       beeLauncher.SetLaunchPosition(hive.GetPosition());
       beeController.SetHive(hive);
       return hive;
-    }
-
-    private void addBees(Hive hive, int beeCount)
-    {
-      for (int i = 0; i < beeCount; i++)
-      {
-        hive.AddBee();
-      }
-    }
-
-    private void getClickPosition()
-    {
-
     }
 
     private void destroyTileBeneathHive(Vector3 hivePosition)

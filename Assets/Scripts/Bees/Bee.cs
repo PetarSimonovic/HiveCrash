@@ -14,12 +14,23 @@ public class Bee
 
     private int pollenCollectionRate = 1;
 
+    private Timer timer;
+
+    private bool timeToEat = false;
+
     private GameObject body;
 
     public Bee(string hiveId)
     {
       this.hiveId = hiveId;
       this.inHive = true;
+      this.timer = timer;
+    }
+
+
+    public void SetTimer(Timer timer)
+    {
+      this.timer = timer;
     }
 
     public string GetHiveId()
@@ -67,4 +78,5 @@ public class Bee
       this.pollen = 0;
       Debug.Log("Bee pollen is " + this.pollen);
     }
+
 }

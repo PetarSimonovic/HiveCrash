@@ -250,6 +250,12 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!20 &569414348 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3168837201250792486, guid: ddf2394a528074329a45d90c5c433080,
+    type: 3}
+  m_PrefabInstance: {fileID: 746317547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +392,11 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.56198823
       objectReference: {fileID: 0}
+    - target: {fileID: 3168837201570505610, guid: ddf2394a528074329a45d90c5c433080,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 569414348}
     - target: {fileID: 3168837201570505611, guid: ddf2394a528074329a45d90c5c433080,
         type: 3}
       propertyPath: m_Name

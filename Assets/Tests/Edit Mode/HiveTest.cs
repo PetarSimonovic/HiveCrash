@@ -9,6 +9,7 @@ public class HiveTest
 
     private GameObject testHiveGameObject = new GameObject();
     private Hive testHive;
+    private Bee bee;
 
     [SetUp]
     public void SetUp()
@@ -90,7 +91,8 @@ public class HiveTest
   {
     for (int i = 0; i < 5; i++)
      {
-       testHive.AddBee();
+       var bee = new Bee(testHive.GetId());
+       testHive.AddBee(bee);
      }
   }
 

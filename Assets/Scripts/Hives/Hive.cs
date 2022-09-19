@@ -34,9 +34,9 @@ public class Hive : MonoBehaviour
     return this.bees;
   }
 
-  public void AddBee()
+  public void AddBee(Bee bee)
   {
-    this.bees.Add(new Bee(this.GetId()));
+    this.bees.Add(bee);
   }
 
 
@@ -59,7 +59,6 @@ public class Hive : MonoBehaviour
   public void AddPollen(int pollen)
   {
     this.pollen += pollen;
-    Debug.Log("Hive pollen is " + this.pollen);
   }
 
 

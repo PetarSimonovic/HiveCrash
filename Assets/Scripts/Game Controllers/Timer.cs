@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("In update on timer");
         checkTimer();
         reduceTimer();
     }
@@ -19,6 +20,8 @@ public class Timer : MonoBehaviour
     public void SetTime(float seconds)
     {
         this.seconds = seconds;
+        Debug.Log("Timer set to " + seconds);
+
     }
 
     private void checkTimer()

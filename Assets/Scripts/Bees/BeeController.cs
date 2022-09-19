@@ -65,6 +65,7 @@ public class BeeController : MonoBehaviour
     private void beeEat(Bee bee)
     {
       int hivePollen = hive.GetPollen();
+      Debug.Log("HivePollen " + hivePollen);
       {
         if (hivePollen >= bee.GetAppetite())
         {

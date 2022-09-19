@@ -59,11 +59,12 @@ public class Hive : MonoBehaviour
   public void SetPollen(int pollen)
   {
     this.pollen += pollen;
+    Debug.Log("hive pollen now " + this.pollen);
   }
 
   public int GetPollen()
   {
-    return this.pollen -= pollen;
+    return this.pollen;
   }
 
 

@@ -67,14 +67,12 @@ public class Flower : MonoBehaviour
     private void openFlower()
     {
       inBloom = true;
-      Debug.Log("Opening Flower");
       flowerAnimator.Bloom();
     }
 
     private void closeFlower()
     {
       inBloom = false;
-      Debug.Log("Closing Flower");
       flowerAnimator.Close();
 
 
@@ -99,7 +97,6 @@ public class Flower : MonoBehaviour
     private void initiateTimer()
     {
       timer = gameObject.GetComponent<Timer>();
-      Debug.Log("Timer is " + timer);
       timer.SetTime(20f);
     }
 }

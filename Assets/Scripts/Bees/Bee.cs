@@ -79,7 +79,6 @@ public class Bee
     public void RemoveAllPollen()
     {
       this.pollen = 0;
-      Debug.Log("Bee pollen is " + this.pollen);
     }
 
     public bool IsHungry()

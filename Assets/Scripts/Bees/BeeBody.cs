@@ -80,7 +80,6 @@ public class BeeBody : MonoBehaviour
     {
       if (other.gameObject.tag.ToString() == "hive")
       {
-        Debug.Log("Leaving Hive!");
         isOutsideHive = true;
       }
     }
@@ -142,8 +141,6 @@ public class BeeBody : MonoBehaviour
       // Just use a 'playerHive' tag instead of an ID?
       if (getHiveId(other) == this.hiveId && isOutsideHive)
         {
-          Debug.Log(other.transform.parent.gameObject.name);
-          Debug.Log("Entering Hive!");
           isEnteringHive = true;
         }
     }

@@ -14,14 +14,11 @@ public class FlowerAnimator : MonoBehaviour
 
     public void Bloom()
     {
-     Debug.Log("In bloom on flowerAnimator");
-     animator.Play("Base Layer.OpenFlower", 0, 0.25f);
+        animator.Play("Base Layer.OpenFlower", 0, 0.25f);
     }
 
     public void Close()
     {
-        Debug.Log("In close on flowerAnimator");
         animator.Play("Base Layer.CloseFlower", 0, 0.25f);
-
     }
 }

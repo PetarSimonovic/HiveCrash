@@ -7,6 +7,7 @@ public class BeeController : MonoBehaviour
     private Hive hive;
     private Bee bee;
     private Timer timer;
+    private float beeHungerInterval = 60f;
 
     private void Update()
     {
@@ -21,13 +22,24 @@ public class BeeController : MonoBehaviour
         {
           if (!bee.IsInHive())
           {
-            Debug.Log("Checking bee");
             GameObject beeBody = bee.GetBody();
             checkBeeIsEnteringHive(bee, beeBody);
             checkPollenCollection(bee, beeBody);
           }
+          checkBeeTimer(bee);
         }
       }
+
+    private void checkBeeTimer(Bee bee)
+    {
+      var timer = bee.GetTimer();
+      if (timer.GetTime() <= 1)
+      {
+        bee.SetHunger(true);
+        timer.SetTime(beeHungerInterval);
+        Debug.Log(bee.IsHungry());
+      }
+    }
 
     private void checkBeeIsEnteringHive(Bee bee, GameObject beeBody)
     {
@@ -67,7 +79,7 @@ public class BeeController : MonoBehaviour
     private Timer initaliseTimer()
     {
       var timer = gameObject.GetComponent<Timer>();
-      timer.SetTime(60f);
+      timer.SetTime(beeHungerInterval);
       return timer;
     }
 }

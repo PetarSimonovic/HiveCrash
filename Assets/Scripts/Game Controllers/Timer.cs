@@ -40,4 +40,11 @@ public class Timer : MonoBehaviour
         return this.on;
     }
 
+    public float GetTime()
+    {
+
+        return this.timer;
+
+    }
+
 }

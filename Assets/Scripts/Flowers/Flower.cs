@@ -97,6 +97,7 @@ public class Flower : MonoBehaviour
     private void initiateTimer()
     {
       timer = gameObject.GetComponent<Timer>();
+      timer.SetOn(true);
       timer.SetTime(20f);
     }
 }

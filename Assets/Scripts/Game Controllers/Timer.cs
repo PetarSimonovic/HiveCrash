@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 
     private float seconds;
 
-    private bool on = false;
+    private bool on;
 
     private void Update()
     {
@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour
     public void SetTime(float seconds)
     {
         this.seconds = seconds;
-
     }
 
     private void checkTimer()
@@ -42,9 +41,12 @@ public class Timer : MonoBehaviour
 
     public float GetTime()
     {
-
         return this.timer;
+    }
 
+    public void SetOn(bool on)
+    {
+        this.on = on;
     }
 
 }

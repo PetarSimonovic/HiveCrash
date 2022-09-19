@@ -16,6 +16,10 @@ public class Bee
 
     private int pollenCollectionRate = 1;
 
+    private int appetite = 1000;
+
+    private float beeHungerInterval = 60f;
+
     private Timer timer;
 
     private GameObject body;
@@ -35,6 +39,13 @@ public class Bee
     {
       this.timer = timer;
     }
+
+    public void ResetTimer()
+    {
+       this.timer.SetTime(beeHungerInterval);
+       this.isHungry = false; // workaround for bees starting hungry because timer is 0
+    }
+
 
     public string GetHiveId()
     {
@@ -89,6 +100,11 @@ public class Bee
     public void SetHunger(bool hunger)
     {
       this.isHungry = hunger;
+    }
+
+    public int GetAppetite()
+    {
+      return this.appetite;
     }
 
 }

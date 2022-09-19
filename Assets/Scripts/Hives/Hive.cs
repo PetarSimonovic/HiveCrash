@@ -56,9 +56,14 @@ public class Hive : MonoBehaviour
     return this.position;
   }
 
-  public void AddPollen(int pollen)
+  public void SetPollen(int pollen)
   {
     this.pollen += pollen;
+  }
+
+  public int GetPollen()
+  {
+    return this.pollen -= pollen;
   }
 
 

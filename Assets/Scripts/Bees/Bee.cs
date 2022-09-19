@@ -30,7 +30,6 @@ public class Bee
     public void SetTimer(Timer timer)
     {
       this.timer = timer;
-      Debug.Log("Bee timer is " + timer);
     }
 
     public string GetHiveId()

@@ -134,7 +134,6 @@ public class GameController : MonoBehaviour
     private void initaliseHive(Vector3 hivePosition)
     {
       Hive hive = createHive(hivePosition);
-      beeController.AddBees(5);
     }
 
     private Hive createHive(Vector3 hivePosition)
@@ -146,7 +145,10 @@ public class GameController : MonoBehaviour
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
       beeLauncher.SetLaunchPosition(hive.GetPosition());
+      beeController = Instantiate(beeController);
       beeController.SetHive(hive);
+      beeController.AddBees(5);
+
       return hive;
     }
 
@@ -172,7 +174,6 @@ public class GameController : MonoBehaviour
 
     private void checkControllers()
     {
-      beeController.CheckBees(hive.GetBees());
       flowerController.CheckMeadows();
     }
 

@@ -7,13 +7,21 @@ public class BeeController : MonoBehaviour
     private Hive hive;
     private Bee bee;
     private Timer timer;
-    // Start is called before the first frame update
-    public void CheckBees(List<Bee> bees)
+
+    private void Update()
+    {
+      checkBees();
+    }
+
+
+
+    private void checkBees()
       {
-        foreach (Bee bee in bees)
+        foreach (Bee bee in hive.GetBees())
         {
           if (!bee.IsInHive())
           {
+            Debug.Log("Checking bee");
             GameObject beeBody = bee.GetBody();
             checkBeeIsEnteringHive(bee, beeBody);
             checkPollenCollection(bee, beeBody);

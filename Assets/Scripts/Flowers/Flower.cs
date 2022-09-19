@@ -5,11 +5,11 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     [SerializeField]
-    GameObject flowerBody;
+    private GameObject flowerBody;
 
-    GameObject flower;
+    public Timer timer; 
 
-    public float timer; // move into separate tool?
+    private GameObject flower;
 
     private bool isPlanted = false;
 
@@ -20,18 +20,15 @@ public class Flower : MonoBehaviour
     private FlowerAnimator flowerAnimator;
 
 
-    void Awake()
-    {
-    //  animator = GetComponent<Animator>();
-    }
 
-    void Start()
+
+   private void Start()
     {
-        
+      initiateTimer();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
       if (isPlanted)
       {
@@ -77,7 +74,6 @@ public class Flower : MonoBehaviour
     private void closeFlower()
     {
       inBloom = false;
-
       Debug.Log("Closing Flower");
       flowerAnimator.Close();
 
@@ -87,17 +83,23 @@ public class Flower : MonoBehaviour
 
     private void checkTimer()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0 )
+        if (inBloom != timer.IsOn())
         {
+            inBloom = timer.IsOn();
             if (inBloom) {
-              closeFlower();
+              openFlower();
             }
             else 
             {
-              openFlower();
+              closeFlower();
             }
-            timer = 20;
         }
+    }
+
+    private void initiateTimer()
+    {
+      timer = gameObject.GetComponent<Timer>();
+      Debug.Log("Timer is " + timer);
+      timer.SetTime(20f);
     }
 }

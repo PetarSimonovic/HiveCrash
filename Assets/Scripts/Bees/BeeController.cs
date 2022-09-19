@@ -5,8 +5,8 @@ using UnityEngine;
 public class BeeController : MonoBehaviour
 {
     private Hive hive;
-
     private Bee bee;
+    private Timer timer;
     // Start is called before the first frame update
     public void CheckBees(List<Bee> bees)
       {
@@ -49,8 +49,17 @@ public class BeeController : MonoBehaviour
     {
       for (int i = 0; i < beeCount; i++)
       {
+        timer = initaliseTimer();
         var bee =  new Bee(this.hive.GetId());
+        bee.SetTimer(timer);
         hive.AddBee(bee);
       }
+    }
+
+    private Timer initaliseTimer()
+    {
+      var timer = gameObject.GetComponent<Timer>();
+      timer.SetTime(60f);
+      return timer;
     }
 }

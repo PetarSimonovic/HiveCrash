@@ -24,13 +24,13 @@ public class Bee
     {
       this.hiveId = hiveId;
       this.inHive = true;
-      this.timer = timer;
     }
 
 
     public void SetTimer(Timer timer)
     {
       this.timer = timer;
+      Debug.Log("Bee timer is " + timer);
     }
 
     public string GetHiveId()

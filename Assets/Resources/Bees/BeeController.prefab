@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8160367398999155963}
   - component: {fileID: 49204925441863120}
+  - component: {fileID: -8933541592972179476}
   m_Layer: 0
   m_Name: BeeController
   m_TagString: Untagged
@@ -42,5 +43,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d955283626ec64f018d6845f322618be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8933541592972179476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783485931044537240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

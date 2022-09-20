@@ -6,7 +6,9 @@ public class Bee
 {
 
     private string name; 
-    
+
+    private int health = 3;
+
     private string hiveId;
 
     private bool isHungry = false;
@@ -105,6 +107,26 @@ public class Bee
     public int GetAppetite()
     {
       return this.appetite;
+    }
+
+    public void ReduceHealth()
+    {
+      this.health -= 1;
+    }
+
+    public void IncreaseHealth()
+    {
+      this.health += 1;
+    }
+
+    public string GetName()
+    {
+      return this.name;
+    }
+
+    public int GetHealth()
+    {
+      return this.health;
     }
 
 }

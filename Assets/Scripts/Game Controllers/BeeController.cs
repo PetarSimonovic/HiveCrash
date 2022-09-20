@@ -7,10 +7,12 @@ public class BeeController : MonoBehaviour
     private Hive hive;
     private Bee bee;
     private BeeNamer beeNamer = new BeeNamer();
+    private List<Bee> deadBees = new List<Bee>();
 
     private void Update()
     {
       checkBees();
+      removeDeadBees();
     }
 
 
@@ -26,9 +28,10 @@ public class BeeController : MonoBehaviour
           }
           else if (bee.IsHungry())
           {
-             beeEat(bee);
+             eat(bee);
           }
           checkBeeTimer(bee);
+          checkBeeHealth(bee);
         }
       }
 
@@ -59,20 +62,41 @@ public class BeeController : MonoBehaviour
       }
     }
 
-    private void beeEat(Bee bee)
+    private void eat(Bee bee)
     {
       int hivePollen = hive.GetPollen();
       Debug.Log("HivePollen " + hivePollen);
       if (hivePollen >= bee.GetAppetite())
       {
         hive.SetPollen(-bee.GetAppetite());
-        Debug.Log("bee has eaten - hive pollen now " + hive.GetPollen());
+        Debug.Log(bee.GetName() + "has eaten - hive pollen now " + hive.GetPollen());
+        bee.IncreaseHealth();
       }
       else 
       {
-        Debug.Log("Not enough food");
+        Debug.Log("Not enough food for " + bee.GetName());
+        bee.ReduceHealth();
       }
+      Debug.Log(bee.GetName() + " health: " + bee.GetHealth());
       bee.SetHunger(false);
+    }
+
+    private void checkBeeHealth(Bee bee)
+    {
+      deadBees = new List<Bee>();
+      if (bee.GetHealth() < 0)
+      {
+        deadBees.Add(bee);
+      }
+    }
+
+    private void removeDeadBees()
+    {
+      foreach (Bee bee in deadBees)
+      {
+        hive.RemoveBee(bee);
+      }
+      Debug.Log(hive.GetBees().Count + "bees remain");
     }
 
     public void SetHive(Hive hive)

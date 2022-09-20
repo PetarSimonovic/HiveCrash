@@ -67,5 +67,11 @@ public class Hive : MonoBehaviour
     return this.pollen;
   }
 
+  public void RemoveBee(Bee bee)
+  {
+    this.bees.Remove(bee);
+    Debug.Log(bee.GetName() + " has died");
+  }
+
 
 }

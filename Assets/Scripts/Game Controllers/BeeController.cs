@@ -96,7 +96,6 @@ public class BeeController : MonoBehaviour
       {
         hive.RemoveBee(bee);
       }
-      Debug.Log(hive.GetBees().Count + "bees remain");
     }
 
     public void SetHive(Hive hive)

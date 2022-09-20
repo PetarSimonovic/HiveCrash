@@ -9,20 +9,24 @@ public class RockTile : Tile
 
     private Collider scopeCollider;
 
-    protected override void Start()
+    private void Awake()
     {
-        base.Start();
         colliders = GetComponentsInChildren<Collider>();
         scopeCollider = colliders[1]; // improve this: find the scopecollider in the array; don't rely on position
         scopeCollider.enabled = false;
     }
+    
+    protected override void reveal()
+    {
+        base.reveal();
+        scopeCollider.enabled = true;
+    }
 
      public void OnCollisionEnter(Collision collision)
     {
-       if (this.IsHidden())
+       if (this.isHidden)
        {
         checkCollision(collision.collider);
-        scopeCollider.enabled = true;
        }
     }
 }

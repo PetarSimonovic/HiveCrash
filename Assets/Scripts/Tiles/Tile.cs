@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
       this.gameObject.name = material.ToString();
     }
 
-    public void OnTriggerEnter(Collider collision)
+    protected virtual void OnTriggerEnter(Collider collision)
     {
       checkCollision(collision);
     }
@@ -38,7 +38,7 @@ public class Tile : MonoBehaviour
 
     }
 
-    private void reveal()
+    protected virtual void reveal()
     {
       mesh.material = material;
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -194,6 +195,7 @@ public class GameController : MonoBehaviour
         }
       }
       Debug.Log("Map Complete");
+      restartGame();
     }
 
     private void initaliseBeeController()
@@ -201,6 +203,11 @@ public class GameController : MonoBehaviour
       beeController = Instantiate(beeController);
       beeController.SetHive(hive);
       beeController.AddBees(5);
+    }
+
+    private void restartGame()
+    {
+     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

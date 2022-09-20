@@ -222,5 +222,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 954f0c30fc62b4ec694508b8d72807ee, type: 2}
   heightRange:
-  - 0.3
+  - 0.4
   - 0.5

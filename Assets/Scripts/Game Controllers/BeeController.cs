@@ -79,6 +79,7 @@ public class BeeController : MonoBehaviour
       }
       Debug.Log(bee.GetName() + " health: " + bee.GetHealth());
       bee.SetHunger(false);
+      bee.RestartHungerTimer();
     }
 
     private void checkBeeHealth(Bee bee)
@@ -96,6 +97,7 @@ public class BeeController : MonoBehaviour
       {
         hive.RemoveBee(bee);
       }
+      deadBees.Clear();
     }
 
     public void SetHive(Hive hive)

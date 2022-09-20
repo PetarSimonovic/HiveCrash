@@ -99,6 +99,11 @@ public class Bee
       return this.isHungry;
     }
 
+    public void RestartHungerTimer()
+    {
+      this.timer.Restart();
+    }
+
     public void SetHunger(bool hunger)
     {
       this.isHungry = hunger;

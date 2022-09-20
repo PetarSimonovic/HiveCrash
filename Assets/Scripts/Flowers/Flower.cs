@@ -98,6 +98,6 @@ public class Flower : MonoBehaviour
     {
       timer = gameObject.GetComponent<Timer>();
       timer.SetOn(true);
-      timer.SetTime(20f);
+      timer.SetCountdownSeconds(20f);
     }
 }

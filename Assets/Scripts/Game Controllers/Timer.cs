@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     private float seconds;
 
     private bool on;
+    
 
     private void Update()
     {
@@ -16,9 +17,14 @@ public class Timer : MonoBehaviour
         reduceTimer();
     }
 
-    public void SetTime(float seconds)
+    public void SetCountdownSeconds(float seconds)
     {
         this.seconds = seconds;
+    }
+
+    public void Restart()
+    {
+       this.timer = this.seconds;
     }
 
     private void checkTimer()

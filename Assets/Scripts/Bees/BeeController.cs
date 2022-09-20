@@ -6,13 +6,11 @@ public class BeeController : MonoBehaviour
 {
     private Hive hive;
     private Bee bee;
-    private Timer timer;
 
     private void Update()
     {
       checkBees();
     }
-
 
 
     private void checkBees()
@@ -34,10 +32,8 @@ public class BeeController : MonoBehaviour
       }
 
     private void checkBeeTimer(Bee bee)
-    {
-      var timer = bee.GetTimer();
-    
-      if (timer.GetTime() <= 1)
+    {    
+      if (bee.GetTimer().GetTime() < 1)
       {
         bee.SetHunger(true);
       }
@@ -66,20 +62,16 @@ public class BeeController : MonoBehaviour
     {
       int hivePollen = hive.GetPollen();
       Debug.Log("HivePollen " + hivePollen);
+      if (hivePollen >= bee.GetAppetite())
       {
-        if (hivePollen >= bee.GetAppetite())
-        {
-          hive.SetPollen(-bee.GetAppetite());
-          Debug.Log("bee has eaten - hive pollen now " + hive.GetPollen());
-          bee.ResetTimer();
-        }
-        else 
-        {
-          Debug.Log("Not enough food");
-          bee.ResetTimer();
-        }
-        bee.SetHunger(false);
+        hive.SetPollen(-bee.GetAppetite());
+        Debug.Log("bee has eaten - hive pollen now " + hive.GetPollen());
       }
+      else 
+      {
+        Debug.Log("Not enough food");
+      }
+      bee.SetHunger(false);
     }
 
     public void SetHive(Hive hive)
@@ -91,17 +83,16 @@ public class BeeController : MonoBehaviour
     {
       for (int i = 0; i < beeCount; i++)
       {
-        timer = initaliseTimer();
-        var bee =  new Bee(this.hive.GetId());
-        bee.SetTimer(timer);
-        bee.ResetTimer();
+        Timer timer = initaliseTimer();
+        Bee bee =  new Bee(this.hive.GetId(), timer);
         hive.AddBee(bee);
       }
     }
 
     private Timer initaliseTimer()
     {
-      var timer = gameObject.GetComponent<Timer>();
+      Debug.Log("initialising timer");
+      Timer timer = gameObject.GetComponent<Timer>();
       return timer;
     }
 }

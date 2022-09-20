@@ -18,7 +18,7 @@ public class Bee
 
     private int appetite = 1000;
 
-    private float beeHungerInterval = 60f;
+    private float hungerInterval = 60f;
 
     private Timer timer;
 
@@ -30,20 +30,18 @@ public class Bee
       this.inHive = true;
     }
 
+    public Bee(string hiveId, Timer timer)
+    {
+      this.hiveId = hiveId;
+      this.inHive = true;
+      this.timer = timer;
+      timer.SetCountdownSeconds(this.hungerInterval);
+      timer.Restart();
+    }
+
     public Timer GetTimer()
     {
       return this.timer;
-    }
-
-    public void SetTimer(Timer timer)
-    {
-      this.timer = timer;
-    }
-
-    public void ResetTimer()
-    {
-       this.timer.SetTime(beeHungerInterval);
-       this.isHungry = false; // workaround for bees starting hungry because timer is 0
     }
 
 

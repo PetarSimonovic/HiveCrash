@@ -6,6 +6,7 @@ public class BeeController : MonoBehaviour
 {
     private Hive hive;
     private Bee bee;
+    private BeeNamer beeNamer = new BeeNamer();
 
     private void Update()
     {
@@ -84,7 +85,9 @@ public class BeeController : MonoBehaviour
       for (int i = 0; i < beeCount; i++)
       {
         Timer timer = initaliseTimer();
-        Bee bee =  new Bee(this.hive.GetId(), timer);
+        string name = beeNamer.ChooseName();
+        Bee bee =  new Bee(name, this.hive.GetId(), timer);
+        Debug.Log(name + " added to hive");
         hive.AddBee(bee);
       }
     }

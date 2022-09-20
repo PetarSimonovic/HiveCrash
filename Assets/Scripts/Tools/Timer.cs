@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     private float timer;
 
-    private float seconds;
+    private float countdownSeconds;
 
     private bool on;
     
@@ -17,14 +17,14 @@ public class Timer : MonoBehaviour
         reduceTimer();
     }
 
-    public void SetCountdownSeconds(float seconds)
+    public void SetCountdownSeconds(float countdownSeconds)
     {
-        this.seconds = seconds;
+        this.countdownSeconds = countdownSeconds;
     }
 
     public void Restart()
     {
-       this.timer = this.seconds;
+       this.timer = this.countdownSeconds;
     }
 
     private void checkTimer()
@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
 
     private void reduceTimer()
     {
-       timer = timer < 0 ? seconds : timer;
+       timer = timer < 0 ? countdownSeconds : timer;
        timer -= Time.deltaTime;
     }
 

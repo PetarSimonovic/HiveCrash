@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bee
 {
-    // Start is called before the first frame update
 
+    private string name; 
+    
     private string hiveId;
 
     private bool isHungry = false;
@@ -30,8 +31,9 @@ public class Bee
       this.inHive = true;
     }
 
-    public Bee(string hiveId, Timer timer)
+    public Bee(string name, string hiveId, Timer timer)
     {
+      this.name = name;
       this.hiveId = hiveId;
       this.inHive = true;
       this.timer = timer;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4608119378313109636}
   - component: {fileID: 1864832601340573533}
   - component: {fileID: 1735694253726921170}
-  - component: {fileID: 3915555261921928745}
+  - component: {fileID: 6699702700628628638}
   m_Layer: 3
   m_Name: ScopeBee
   m_TagString: scope
@@ -165,8 +165,8 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!136 &3915555261921928745
-CapsuleCollider:
+--- !u!135 &6699702700628628638
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -175,7 +175,6 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 3a2ff4798676d4914b5035dd93437a7e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.14
-  m_Height: 0.3
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}

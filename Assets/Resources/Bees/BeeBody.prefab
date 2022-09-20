@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8047048267425654706}
   - component: {fileID: 2507982554032830908}
   - component: {fileID: 350233685129850469}
-  - component: {fileID: 8498475446667374513}
+  - component: {fileID: 3084565828060223333}
   m_Layer: 0
   m_Name: BeeBody
   m_TagString: Untagged
@@ -66,8 +66,8 @@ MonoBehaviour:
   isEnteringHive: 0
   hivePosition: {x: 0, y: 0, z: 0}
   moveSpeed: 5
---- !u!136 &8498475446667374513
-CapsuleCollider:
+--- !u!135 &3084565828060223333
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -76,9 +76,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 3a2ff4798676d4914b5035dd93437a7e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.14
-  m_Height: 0.3
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8047048267853687428
 PrefabInstance:

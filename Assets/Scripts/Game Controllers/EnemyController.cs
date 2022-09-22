@@ -31,7 +31,6 @@ public class EnemyController : MonoBehaviour
     {
         int index = Random.Range(0, tiles.Count);
         GameObject tile = tiles[index];
-        Debug.Log(tile);
         tiles.Remove(tile);
         Destroy(tile);
         enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);

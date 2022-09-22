@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meadowTilePrefab: {fileID: 7455096924687889296, guid: dda461ef2cf1e4b77bdb1e21382843f9,
     type: 3}
-  rockTilePrefab: {fileID: 8636556772401490462, guid: 25ce333e6efd74da9917ae547e2065f8,
+  rockTilePrefab: {fileID: 1413986199650237591, guid: 7c29a1717d27c4437bb9b3964534c592,
     type: 3}
   lakeTilePrefab: {fileID: 7029695215235656052, guid: 8c4f7cb42b2854915a9bb2f9e57f2aa1,
     type: 3}

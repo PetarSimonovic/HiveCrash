@@ -77,7 +77,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHiveTile
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}
 --- !u!1 &8513762686584291158 stripped
 GameObject:
@@ -97,7 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1c26314d8ed4a7b834321ca347b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: df2a877814b6741f8ad8e4f8664b8bc2, type: 2}
   heightRange:
   - 0
   - 0
+  enemyHive: {fileID: 7431270116050065195, guid: 2839ab8feca9143b59c0af5eea9a3978,
+    type: 3}

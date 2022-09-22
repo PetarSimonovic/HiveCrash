@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.collab-proxy": "1.17.1",
+    "com.unity.collab-proxy": "1.17.2",
     "com.unity.feature.mobile": "1.0.0",
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.postprocessing": "3.2.2",

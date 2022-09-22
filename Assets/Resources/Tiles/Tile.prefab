@@ -45,7 +45,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2190622540023885545, guid: 89871f11d36c1451fb4045b7672b7892, type: 3}
+  m_Mesh: {fileID: 2190622540023885545, guid: 31afb6173824a40f582ad7494acd35e6, type: 3}
 --- !u!1 &2251217204324887825
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c5f498f5c284e8baa9a8dd2c6c54a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meadow: {fileID: 2100000, guid: df2a877814b6741f8ad8e4f8664b8bc2, type: 2}
+  material: {fileID: 0}
+  heightRange:
+  - 0
+  - 0
 --- !u!54 &1447841027605637036
 Rigidbody:
   m_ObjectHideFlags: 0

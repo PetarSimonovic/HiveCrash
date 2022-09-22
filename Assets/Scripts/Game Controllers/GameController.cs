@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private FlowerController flowerController;
 
+    [SerializeField]
+    private EnemyController enemyController;
+
     private Hive hive;
 
     private List<GameObject> tiles;
@@ -119,6 +122,7 @@ public class GameController : MonoBehaviour
         } else 
         {
           initaliseHive(clickPosition);
+          initialiseEnemies();
           updateFlowerController();
         }
     }
@@ -135,6 +139,12 @@ public class GameController : MonoBehaviour
     {
       Hive hive = createHive(hivePosition);
       initaliseBeeController();
+    }
+
+    private void initialiseEnemies()
+    {
+      enemyController.SetPlayerHive(hive);
+      enemyController.PlaceEnemyHive(tiles);
     }
 
     private Hive createHive(Vector3 hivePosition)
@@ -160,13 +170,6 @@ public class GameController : MonoBehaviour
             break;
           }
       }
-    }
-
-    private void instantiateObjects()
-    {
-      beeLauncher = Instantiate(beeLauncher);
-      mapCreator = Instantiate(mapCreator);
-      flowerController = Instantiate(flowerController);
     }
 
     private void checkControllers()
@@ -209,5 +212,14 @@ public class GameController : MonoBehaviour
     {
      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    private void instantiateObjects()
+    {
+      beeLauncher = Instantiate(beeLauncher);
+      mapCreator = Instantiate(mapCreator);
+      flowerController = Instantiate(flowerController);
+      enemyController = Instantiate(enemyController);
+    }
+
 
 }

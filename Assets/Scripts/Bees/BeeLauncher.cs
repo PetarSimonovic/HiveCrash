@@ -42,7 +42,7 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetLaunchPosition(Vector3 worldPosition)
     {
-      this.launchPosition = new Vector3 (worldPosition.x, launchPositionY, worldPosition.z);
+      this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);
     }
 
     public Vector3 GetLaunchPosition()

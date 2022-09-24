@@ -16,10 +16,15 @@ public class Tile : MonoBehaviour
 
     private MeshRenderer mesh;
     // Start is called before the first frame update
-    protected virtual void Start()
+
+    protected virtual void  Awake()
     {
       hex = this.gameObject.transform.GetChild(0).gameObject;
       mesh = hex.GetComponent<MeshRenderer>();
+    }
+
+    protected virtual void Start()
+    {
       isHidden = true;
       this.gameObject.name = material.ToString();
     }
@@ -48,6 +53,13 @@ public class Tile : MonoBehaviour
     public bool IsHidden()
     {
       return isHidden;
+    }
+
+    public float GetHeight()
+    {
+      Vector3 bounds = this.mesh.bounds.size;
+      Debug.Log(bounds);
+      return bounds.z;
     }
 
 

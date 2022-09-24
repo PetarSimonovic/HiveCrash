@@ -9,8 +9,9 @@ public class ColliderTile : Tile
 
     private Collider scopeCollider;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         colliders = GetComponentsInChildren<Collider>();
         scopeCollider = colliders[1]; // improve this: find the scopecollider in the array; don't rely on position
         scopeCollider.enabled = false;

@@ -150,6 +150,8 @@ public class GameController : MonoBehaviour
     private Hive createHive(Vector3 hivePosition)
     {
       destroyTileBeneathHive(hivePosition);
+      GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
+      hivePosition = new Vector3(hivePosition.x, (tile.transform.position.y + (tile.GetComponent<Tile>().GetHeight()/4)), hivePosition.z);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.AddComponent(typeof(Hive)) as Hive;
       hiveIsPlaced = true;

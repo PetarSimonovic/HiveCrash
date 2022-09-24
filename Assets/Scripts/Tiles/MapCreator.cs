@@ -49,7 +49,7 @@ public class MapCreator : MonoBehaviour
       GameObject tilePrefab;
       for (int i = 0; i < NumberOfRows; i++)
       {
-        tilePrefab = chooseTile();
+        tilePrefab = chooseRandomTile();
         CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
         zPosition += WidthOfTile/2;
       }
@@ -65,7 +65,7 @@ public class MapCreator : MonoBehaviour
       return tile;
     }
 
-    private GameObject chooseTile()
+    private GameObject chooseRandomTile()
     {
       int tileDecision = Random.Range(0, 10);
       switch(tileDecision)
@@ -78,6 +78,20 @@ public class MapCreator : MonoBehaviour
           return meadowTilePrefab;
       }
     }
+
+    public GameObject GetTile(string tile)
+    {
+      switch(tile)
+      {
+        case "rock":
+          return rockTilePrefab;
+        case "lake":
+          return lakeTilePrefab;
+        default:
+          return meadowTilePrefab;
+      }
+    }
+  
 
     public List<GameObject> GetTiles()
     {

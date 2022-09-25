@@ -34,6 +34,8 @@ public class EnemyController : MonoBehaviour
         tiles.Remove(tile);
         Destroy(tile);
         enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);
-        tiles.Add(enemyHiveTile);
+        Debug.Log("Enemy");
+        Debug.Log(tile.transform.position);
+       // tiles.Add(enemyHiveTile);
     }
 }

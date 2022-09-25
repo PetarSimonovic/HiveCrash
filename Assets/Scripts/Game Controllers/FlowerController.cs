@@ -12,6 +12,8 @@ public class FlowerController : MonoBehaviour
 
     private List<GameObject> meadows = new List<GameObject>();
 
+    private Vector3 hivePosition;
+
 
     void Start()
     {
@@ -39,10 +41,11 @@ public class FlowerController : MonoBehaviour
     {   
         foreach (GameObject meadow in meadows)
         {
-            if (!isHidden(meadow))
+             Vector3 meadowPosition = meadow.transform.position;
+            if (!isHidden(meadow) && meadowPosition != this.hivePosition)
             { 
                
-               plantFlower(meadow.transform.position);
+               plantFlower(meadowPosition);
             }
         }
         removeRevealedMeadows();
@@ -70,5 +73,10 @@ public class FlowerController : MonoBehaviour
       {
         flower.GetComponent<Flower>().CreateBody();  
       }
+    }
+
+    public void SetHivePosition(Vector3 hivePosition)
+    {
+        this.hivePosition = hivePosition;
     }
 }

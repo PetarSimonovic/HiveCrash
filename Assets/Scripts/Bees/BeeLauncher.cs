@@ -5,37 +5,27 @@ using UnityEngine;
 public class BeeLauncher : MonoBehaviour
 {
     [SerializeField]
-    private GameObject beePrefab;
+    protected GameObject beePrefab;
 
-    [SerializeField]
-    private GameObject scopeBeePrefab;
+    protected Bee loadedBee;
 
-    private Bee loadedBee;
+    protected bool isLoaded = false;
 
-    private bool isLoaded = false;
+    protected Vector3 launchPosition;
 
-    private Vector3 launchPosition;
+    protected float launchPositionY = 0.5f;
 
-    private float launchPositionY = 0.5f;
+    protected Vector3 endDragPosition;
 
-    private Vector3 endDragPosition;
-
-    private GameObject scopeBee;
-
-    private BeeBody beeProperties;
-
-    private Rigidbody scopeBeeBody;
-
-
+    protected BeeBody beeProperties;
 
     public Bee GetLoadedBee()
     {
       return this.loadedBee;
     }
 
-    public void LoadBee(Bee bee)
+    public virtual void LoadBee(Bee bee)
     {
-      Destroy(scopeBee);
       this.loadedBee = bee;
       this.isLoaded = true;
     }
@@ -50,28 +40,12 @@ public class BeeLauncher : MonoBehaviour
       return this.launchPosition;
     }
 
-    public void SetEndDragPosition(Vector3 endDragPosition)
+    public virtual void SetEndDragPosition(Vector3 endDragPosition)
     {
       Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      if (this.endDragPosition == newDragPosition)
-      {
-        return;
-      }
-      Destroy(scopeBee);
       this.endDragPosition = newDragPosition;
-      launchScopeBee();
 
      // beeScope.DrawLine(endDragPosition);
-    }
-
-    private void launchScopeBee()
-    {
-      scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
-      scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
-      Vector3 direction = calculateDirection();
-      scopeBeeBody.AddForce(-(calculateDirection()));
-      beeProperties = beePrefab.GetComponent<BeeBody>();
-   //   scopeBeeBody.velocity = scopeBeeBody.velocity.normalized * (beeProperties.GetMoveSpeed() * 100);;
     }
 
     public Vector3 GetEndDragPosition()
@@ -91,15 +65,14 @@ public class BeeLauncher : MonoBehaviour
       reset();
     }
 
-    public void reset()
+    protected virtual void reset()
     {
-      Destroy(scopeBee);
       this.isLoaded = false;
       endDragPosition = launchPosition;
     }
 
 
-    private Vector3 calculateDirection()
+    protected Vector3 calculateDirection()
     {
       Vector3 direction = this.endDragPosition - this.launchPosition;
       return new Vector3(direction.x, launchPositionY, direction.z);

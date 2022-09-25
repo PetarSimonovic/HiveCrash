@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511281119512912225}
   - component: {fileID: 3259069402334111668}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: 'scopecollider '
   m_TagString: rock
   m_Icon: {fileID: 0}

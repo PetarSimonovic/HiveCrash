@@ -14,6 +14,7 @@ public class PlayerBeeLauncher : BeeLauncher
  
     public override void SetEndDragPosition(Vector3 endDragPosition)
     {
+      Debug.Log("HER!");
       Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
       if (this.endDragPosition == newDragPosition)
       {
@@ -30,6 +31,7 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private void launchScopeBee()
     {
+      Debug.Log("launching scope bee");
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();

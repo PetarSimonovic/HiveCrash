@@ -157,7 +157,7 @@ MonoBehaviour:
   cameraController: {fileID: 1825747556}
   hivePrefab: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
     type: 3}
-  beeLauncher: {fileID: 73864365575355360, guid: 994302cf748c04c8292de50c7124b0e7,
+  beeLauncher: {fileID: 8605789134918623136, guid: 4ac1c0bb6a3774c24802ba1e8d30c8ae,
     type: 3}
   beeController: {fileID: 49204925441863120, guid: 7d25449d718f34b449147085a627f6b8,
     type: 3}

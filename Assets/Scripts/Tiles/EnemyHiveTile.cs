@@ -10,7 +10,6 @@ public class EnemyHiveTile : ColliderTile
     protected override void reveal()
     {
         base.reveal();
-        Debug.Log("Hive here");
         Instantiate(enemyHive, transform.position, Quaternion.identity);
     }
 }

@@ -11,16 +11,6 @@ public class PlayerBeeLauncher : BeeLauncher
     private GameObject scopeBee;
 
     private Rigidbody scopeBeeBody;
-
-
-
-    public override void LoadBee(Bee bee)
-    {
-      base.LoadBee(bee);
-    //  Destroy(scopeBee);
-    }
-
-
  
     public override void SetEndDragPosition(Vector3 endDragPosition)
     {
@@ -40,7 +30,6 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private void launchScopeBee()
     {
-      Debug.Log("Launching scopeBee");
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();

@@ -15,11 +15,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - scope
+  - Scope
   - Water
   - UI
-  - postprocessing
-  - 
+  - Postprocessing
+  - Tiles
   - 
   - 
   - 

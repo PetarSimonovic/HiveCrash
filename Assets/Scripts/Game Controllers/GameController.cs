@@ -118,21 +118,13 @@ public class GameController : MonoBehaviour
     {
       if (hiveIsPlaced) 
         {
-          loadBee();
+          beeLauncher.LoadBee();
         } else 
         {
           initaliseHive(clickPosition);
           initialiseEnemies();
           updateFlowerController();
         }
-    }
-
-    private void loadBee()
-    {
-      Bee bee = hive.GetBee();
-      if (bee is not null) {
-        beeLauncher.LoadBee(bee);
-      }
     }
 
     private void initaliseHive(Vector3 hivePosition)
@@ -158,7 +150,7 @@ public class GameController : MonoBehaviour
       hiveIsPlaced = true;
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
-      beeLauncher.SetLaunchPosition(hive.GetPosition());
+      beeLauncher.SetHive(hive);
       return hive;
     }
 

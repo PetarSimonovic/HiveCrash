@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     private GameObject hex;
 
-    protected bool isHidden = false;
+    protected bool isHidden = true; // why does this have to be false then immediately set to true in start?
 
     private MeshRenderer mesh;
     // Start is called before the first frame update
@@ -25,7 +25,6 @@ public class Tile : MonoBehaviour
 
     protected virtual void Start()
     {
-      isHidden = true;
       this.gameObject.name = material.ToString();
     }
 
@@ -60,6 +59,13 @@ public class Tile : MonoBehaviour
       Vector3 bounds = this.mesh.bounds.size;
       Debug.Log(bounds);
       return bounds.z;
+    }
+
+    public void GetDebugData() 
+    {
+      Debug.Log("Enemy tile here");
+      Debug.Log(isHidden);
+      Debug.Log(this.gameObject.name = material.ToString());
     }
 
 

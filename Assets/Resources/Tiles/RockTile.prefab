@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5114661365349208569}
   - component: {fileID: 4631251776630332302}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: collider
   m_TagString: rock
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 996034972397545009}
   - component: {fileID: 1780418649297204778}
   - component: {fileID: -399620350877015072}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: RockTile
   m_TagString: rock
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511281119512912225}
   - component: {fileID: 3259069402334111668}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: 'scopecollider '
   m_TagString: rock
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 5530109696933939612}
   - component: {fileID: 5902757307871790930}
   - component: {fileID: 3987726662029197509}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: hex
   m_TagString: rock
   m_Icon: {fileID: 0}

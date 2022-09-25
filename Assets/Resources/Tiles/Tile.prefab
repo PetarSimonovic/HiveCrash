@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5357171959781212287}
   - component: {fileID: 5541415589015063048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 103638239237355447}
   - component: {fileID: 7702239191243995746}
   - component: {fileID: 1447841027605637036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4619698788834760730}
   - component: {fileID: 6721724239280772820}
   - component: {fileID: 4320591067212042563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hex
   m_TagString: Untagged
   m_Icon: {fileID: 0}

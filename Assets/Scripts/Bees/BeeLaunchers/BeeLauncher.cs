@@ -9,6 +9,8 @@ public class BeeLauncher : MonoBehaviour
 
     protected Bee loadedBee;
 
+    protected Hive hive;
+
     protected bool isLoaded = false;
 
     protected Vector3 launchPosition;
@@ -24,12 +26,18 @@ public class BeeLauncher : MonoBehaviour
       return this.loadedBee;
     }
 
-    public virtual void LoadBee(Bee bee)
+    public void LoadBee()
     {
-      this.loadedBee = bee;
-      this.isLoaded = true;
+      Bee bee = hive.GetBee();
+      if (bee is not null) 
+      {
+       this.loadedBee = bee;
+       this.isLoaded = true;
+      }
     }
 
+
+ 
     public void SetLaunchPosition(Vector3 worldPosition)
     {
       this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);
@@ -81,6 +89,12 @@ public class BeeLauncher : MonoBehaviour
     public bool IsLoaded()
     {
       return this.isLoaded;
+    }
+
+    public void SetHive(Hive hive)
+    {
+      this.hive = hive;
+      SetLaunchPosition(hive.GetPosition());
     }
 
 

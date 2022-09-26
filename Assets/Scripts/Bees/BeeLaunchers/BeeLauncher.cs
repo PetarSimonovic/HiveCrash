@@ -36,6 +36,12 @@ public class BeeLauncher : MonoBehaviour
       }
     }
 
+     public void LoadBee(Bee bee)
+    {
+       this.loadedBee = bee;
+       this.isLoaded = true;
+    }
+
 
  
     public void SetLaunchPosition(Vector3 worldPosition)
@@ -95,6 +101,11 @@ public class BeeLauncher : MonoBehaviour
     {
       this.hive = hive;
       SetLaunchPosition(hive.GetPosition());
+    }
+
+    public float GetLaunchPositionY()
+    {
+      return this.launchPositionY;
     }
 
 

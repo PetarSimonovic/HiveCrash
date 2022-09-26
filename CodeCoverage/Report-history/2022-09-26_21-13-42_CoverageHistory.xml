@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2022-09-26_21-13-42" tag="">
+  <assembly name="Assembly-CSharp-Editor">
+    <class name="ReadmeEditor" coveredlines="0" coverablelines="140" totallines="242" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="PlayMode">
+    <class name="BeeLauncherTests" coveredlines="14" coverablelines="19" totallines="66" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Scripts">
+    <class name="Bee" coveredlines="14" coverablelines="73" totallines="137" coveredbranches="0" totalbranches="0" />
+    <class name="BeeBody" coveredlines="5" coverablelines="110" totallines="194" coveredbranches="0" totalbranches="0" />
+    <class name="BeeController" coveredlines="0" coverablelines="93" totallines="126" coveredbranches="0" totalbranches="0" />
+    <class name="BeeLauncher" coveredlines="15" coverablelines="63" totallines="112" coveredbranches="0" totalbranches="0" />
+    <class name="BeeNamer" coveredlines="0" coverablelines="6" totallines="636" coveredbranches="0" totalbranches="0" />
+    <class name="CameraController" coveredlines="1" coverablelines="56" totallines="100" coveredbranches="0" totalbranches="0" />
+    <class name="CameraPivot" coveredlines="0" coverablelines="7" totallines="17" coveredbranches="0" totalbranches="0" />
+    <class name="ColliderTile" coveredlines="0" coverablelines="16" totallines="33" coveredbranches="0" totalbranches="0" />
+    <class name="EnemyBeeLauncher" coveredlines="0" coverablelines="4" totallines="18" coveredbranches="0" totalbranches="0" />
+    <class name="EnemyController" coveredlines="0" coverablelines="20" totallines="52" coveredbranches="0" totalbranches="0" />
+    <class name="EnemyHiveTile" coveredlines="0" coverablelines="4" totallines="15" coveredbranches="0" totalbranches="0" />
+    <class name="Flower" coveredlines="0" coverablelines="53" totallines="103" coveredbranches="0" totalbranches="0" />
+    <class name="FlowerAnimator" coveredlines="0" coverablelines="9" totallines="24" coveredbranches="0" totalbranches="0" />
+    <class name="FlowerController" coveredlines="0" coverablelines="46" totallines="82" coveredbranches="0" totalbranches="0" />
+    <class name="GameController" coveredlines="0" coverablelines="138" totallines="220" coveredbranches="0" totalbranches="0" />
+    <class name="Hive" coveredlines="12" coverablelines="37" totallines="77" coveredbranches="0" totalbranches="0" />
+    <class name="MapCreator" coveredlines="1" coverablelines="41" totallines="100" coveredbranches="0" totalbranches="0" />
+    <class name="PlayerBeeLauncher" coveredlines="0" coverablelines="21" totallines="47" coveredbranches="0" totalbranches="0" />
+    <class name="ScopeBee" coveredlines="0" coverablelines="3" totallines="39" coveredbranches="0" totalbranches="0" />
+    <class name="Tile" coveredlines="0" coverablelines="36" totallines="72" coveredbranches="0" totalbranches="0" />
+    <class name="Timer" coveredlines="0" coverablelines="28" totallines="58" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Tests">
+    <class name="BeeLauncherTest" coveredlines="11" coverablelines="17" totallines="45" coveredbranches="0" totalbranches="0" />
+    <class name="CameraPivotTest" coveredlines="0" coverablelines="4" totallines="18" coveredbranches="0" totalbranches="0" />
+    <class name="HiveTest" coveredlines="39" coverablelines="54" totallines="99" coveredbranches="0" totalbranches="0" />
+    <class name="MapCreatorTest" coveredlines="6" coverablelines="9" totallines="36" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>

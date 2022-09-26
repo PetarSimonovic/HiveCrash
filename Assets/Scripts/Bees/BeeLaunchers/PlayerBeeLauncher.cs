@@ -36,8 +36,6 @@ public class PlayerBeeLauncher : BeeLauncher
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();
       scopeBeeBody.AddForce(-(calculateDirection()));
-      beeProperties = beePrefab.GetComponent<BeeBody>();
-      Debug.Log(beeProperties);
     }
 
     protected override void reset()

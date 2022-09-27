@@ -51,7 +51,7 @@ MonoBehaviour:
     type: 3}
   beeController: {fileID: 49204925441863120, guid: 7d25449d718f34b449147085a627f6b8,
     type: 3}
-  enemyHivePrefab: {fileID: 7431270116050065195, guid: 2839ab8feca9143b59c0af5eea9a3978,
+  enemyHivePrefab: {fileID: 7516243428675172222, guid: 2839ab8feca9143b59c0af5eea9a3978,
     type: 3}
 --- !u!114 &7227615150679960081
 MonoBehaviour:

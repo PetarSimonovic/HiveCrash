@@ -5,4 +5,8 @@ using UnityEngine;
 public class EnemyBeeLauncher : BeeLauncher
 {
     
+      protected override void reset()
+        {
+        this.isLoaded = false;
+        }
 }

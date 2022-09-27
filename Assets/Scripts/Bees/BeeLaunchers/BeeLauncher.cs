@@ -58,14 +58,14 @@ public class BeeLauncher : MonoBehaviour
       return this.launchPosition;
     }
 
-    public void LaunchBee()
+    public virtual void LaunchBee()
     {
       this.loadedBee.Fly();
       launchPosition.y = launchPositionY;
       Vector3 direction = calculateDirection();
       var beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(direction, Vector3.down)); // Quaternion.identity affects rotation?
       beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
-      beeBody.GetComponent<Rigidbody>().AddForce(-direction);
+      beeBody.GetComponent<Rigidbody>().AddForce(direction);
       this.loadedBee.SetBody(beeBody);
       reset();
     }
@@ -77,10 +77,10 @@ public class BeeLauncher : MonoBehaviour
     }
 
 
-    protected Vector3 calculateDirection()
+    protected virtual Vector3 calculateDirection()
     {
       Vector3 direction = this.endDragPosition - this.launchPosition;
-      return new Vector3(direction.x, launchPositionY, direction.z);
+      return direction;
     }
 
     public bool IsLoaded()

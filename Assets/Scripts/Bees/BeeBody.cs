@@ -93,7 +93,6 @@ public class BeeBody : MonoBehaviour
     private void processCollision(Collider other)
     {
       string otherObject = other.gameObject.tag.ToString();
-      Debug.Log(otherObject);
       switch (otherObject) { 
         case "hive":
           enterHive(other);
@@ -110,7 +109,9 @@ public class BeeBody : MonoBehaviour
 
     private string getHiveId(Collider other)
     {
-      return other.transform.parent.gameObject.name;
+      string id = other.transform.parent.gameObject.name;
+      Debug.Log(id);
+      return id;
     }
 
 
@@ -144,9 +145,11 @@ public class BeeBody : MonoBehaviour
 
     private void enterHive(Collider other)
     {
+      Debug.Log("Trying to enter hive");
       // Just use a 'playerHive' tag instead of an ID?
       if (getHiveId(other) == this.hiveId && isOutsideHive)
         {
+          Debug.Log("Entering hive");
           isEnteringHive = true;
         }
     }

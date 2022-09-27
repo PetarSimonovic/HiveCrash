@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeeBody
       objectReference: {fileID: 0}
+    - target: {fileID: 3113081500205004430, guid: 643ed44870261400dae32eba06a717fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: bee
+      objectReference: {fileID: 0}
     - target: {fileID: 5131550573604677452, guid: 643ed44870261400dae32eba06a717fd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

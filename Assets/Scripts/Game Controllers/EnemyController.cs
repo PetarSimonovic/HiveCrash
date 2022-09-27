@@ -103,7 +103,7 @@ public class EnemyController : MonoBehaviour
       private void initialiseBeeLauncher()
       {
         beeLauncher.SetLaunchPosition(enemyHive.GetPosition());
-        beeLauncher.SetEndDragPosition(playerHive.GetPosition());
+        beeLauncher.SetEndDragPosition(-playerHive.GetPosition());
         beeLauncher.SetHive(enemyHive);
       }
 

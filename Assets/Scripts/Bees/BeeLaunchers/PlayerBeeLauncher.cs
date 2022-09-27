@@ -38,13 +38,19 @@ public class PlayerBeeLauncher : BeeLauncher
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.LookRotation(calculateDirection(), Vector3.down)); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();
-      scopeBeeBody.AddForce(-(calculateDirection()));
+      scopeBeeBody.AddForce((calculateDirection()));
     }
 
     protected override void reset()
     {
       base.reset();
       Destroy(scopeBee);
+    }
+
+     protected override Vector3 calculateDirection()
+    {
+      Vector3 direction = this.endDragPosition - this.launchPosition;
+      return -direction;
     }
 
 }

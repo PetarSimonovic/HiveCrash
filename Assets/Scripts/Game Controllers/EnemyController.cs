@@ -56,10 +56,7 @@ public class EnemyController : MonoBehaviour
         enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
         enemyHiveIsPlaced = true;
-
-     //   beeLauncher.SetLaunchPosition(enemyHiveTile.transform.position);
-       // beeLauncher.SetEndDragPosition(playerHive.GetPosition());
-       // tiles.Add(enemyHiveTile);
+        tiles.Add(enemyHiveTile);
     }
 
         private void initaliseBeeController()
@@ -82,24 +79,37 @@ public class EnemyController : MonoBehaviour
         {
             timer.SetOn(true);
             timer.Restart();
-          //  launchBee();
+            launchBee();
         }
       }
 
       private void activate()
       {
         activated = true;
-        placeHive();
+        initaliseHive();
         initaliseBeeController();
         initaliseTimer();
+        initialiseBeeLauncher();
       }  
 
-      private void placeHive()
+      private void initaliseHive()
       {
         enemyHivePrefab = Instantiate(enemyHivePrefab, enemyHiveTile.transform.position, Quaternion.identity);
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         enemyHive.SetPosition(enemyHivePrefab.transform.position);
         enemyHivePrefab.name = enemyHive.GetId();
+      }
+
+      private void initialiseBeeLauncher()
+      {
+        beeLauncher.SetLaunchPosition(enemyHive.GetPosition());
+        beeLauncher.SetEndDragPosition(playerHive.GetPosition());
         beeLauncher.SetHive(enemyHive);
+      }
+
+      private void launchBee()
+      {
+        beeLauncher.LoadBee();
+        beeLauncher.LaunchBee();
       }
 }

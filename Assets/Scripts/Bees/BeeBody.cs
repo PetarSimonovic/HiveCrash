@@ -86,9 +86,15 @@ public class BeeBody : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+      processCollision(other);
+
+    }
+
+    private void processCollision(Collider other)
+    {
       string otherObject = other.gameObject.tag.ToString();
-      switch (otherObject) {
-          
+      Debug.Log(otherObject);
+      switch (otherObject) { 
         case "hive":
           enterHive(other);
           break;
@@ -100,7 +106,6 @@ public class BeeBody : MonoBehaviour
          default:
           break;
       }
-
     }
 
     private string getHiveId(Collider other)
@@ -111,6 +116,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        processCollision(other.collider);
         collectingPollen = false;
         if (isIdling) 
         {

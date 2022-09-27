@@ -12,7 +12,7 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private Rigidbody scopeBeeBody;
  
-    public void SetEndDragPosition(Vector3 endDragPosition)
+    public override void SetEndDragPosition(Vector3 endDragPosition)
     {
       Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
       if (this.endDragPosition == newDragPosition)

@@ -42,8 +42,12 @@ public class BeeLauncher : MonoBehaviour
        this.isLoaded = true;
     }
 
+     public virtual void SetEndDragPosition(Vector3 endDragPosition)
+    {
+      this.endDragPosition = endDragPosition;
+    }
 
- 
+
     public void SetLaunchPosition(Vector3 worldPosition)
     {
       this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);

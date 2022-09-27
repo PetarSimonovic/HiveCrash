@@ -112,7 +112,7 @@ public class BeeController : MonoBehaviour
         Timer timer = initaliseTimer();
         string name = beeNamer.ChooseName();
         Bee bee =  new Bee(name, this.hive.GetId(), timer);
-        Debug.Log(name + " added to hive");
+        Debug.Log(name + bee.GetHiveId() + " added to hive" + this.hive.GetId());
         hive.AddBee(bee);
       }
     }

@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
     private void initialiseEnemies()
     {
       enemyController.SetPlayerHive(hive);
-      enemyController.PlaceEnemyHive(tiles);
+      enemyController.PlaceEnemyTile(tiles);
     }
 
     private Hive createHive(Vector3 hivePosition)
@@ -192,7 +192,6 @@ public class GameController : MonoBehaviour
           return;
         }
       }
-      Debug.Log("Map Complete");
       restartGame();
     }
 

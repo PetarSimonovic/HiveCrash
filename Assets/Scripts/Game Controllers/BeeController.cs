@@ -119,7 +119,6 @@ public class BeeController : MonoBehaviour
 
     private Timer initaliseTimer()
     {
-      Debug.Log("initialising timer");
       Timer timer = gameObject.GetComponent<Timer>();
       return timer;
     }

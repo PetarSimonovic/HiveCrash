@@ -10,6 +10,5 @@ public class EnemyHiveTile : ColliderTile
     protected override void reveal()
     {
         base.reveal();
-        Instantiate(enemyHive, transform.position, Quaternion.identity);
     }
 }

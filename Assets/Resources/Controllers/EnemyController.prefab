@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903964742169351235}
   - component: {fileID: 5888405589446877573}
+  - component: {fileID: 7227615150679960081}
   m_Layer: 0
   m_Name: EnemyController
   m_TagString: Untagged
@@ -46,5 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHiveTile: {fileID: 8513762686584291158, guid: e2b77297eb007476abc53b8a91a2c293,
     type: 3}
-  beeLauncher: {fileID: 2619722335325673094, guid: 7a1e3a64f960f4b2280d30a2b9d498eb,
+  beeLauncher: {fileID: 4324656204987742343, guid: 7a1e3a64f960f4b2280d30a2b9d498eb,
     type: 3}
+  beeController: {fileID: 49204925441863120, guid: 7d25449d718f34b449147085a627f6b8,
+    type: 3}
+  enemyHivePrefab: {fileID: 7431270116050065195, guid: 2839ab8feca9143b59c0af5eea9a3978,
+    type: 3}
+--- !u!114 &7227615150679960081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7199651518805647323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

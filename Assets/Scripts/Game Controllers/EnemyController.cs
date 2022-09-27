@@ -8,11 +8,18 @@ public class EnemyController : MonoBehaviour
     private GameObject enemyHiveTile;
 
     [SerializeField]
-    private GameObject beeLauncher;
+    private EnemyBeeLauncher beeLauncher; // This is GameObject ...
 
-    private bool discovered;
+    [SerializeField]
+    private BeeController beeController; // But this is BeeController?!?
+
+    [SerializeField]
+    private GameObject enemyHivePrefab;
+
+    private bool activated;
 
     private Hive playerHive;
+
 
     private Hive enemyHive;
 
@@ -20,11 +27,18 @@ public class EnemyController : MonoBehaviour
 
     private Tile enemyHiveTileStatus;
 
+    private Timer timer;
+
+
     void Update()
     {
         if (enemyHiveIsPlaced && !enemyHiveTileStatus.IsHidden()) 
         {
-            Debug.Log("Enemy ACTIVATED");
+            if (!activated)
+            {
+                activate();
+            }
+            checkTimer();
         }
     }
 
@@ -33,15 +47,13 @@ public class EnemyController : MonoBehaviour
         this.playerHive = playerHive;
     }
 
-    public void PlaceEnemyHive(List<GameObject> tiles)
+    public void PlaceEnemyTile(List<GameObject> tiles)
     {
         int index = Random.Range(0, tiles.Count);
         GameObject tile = tiles[index];
         tiles.Remove(tile);
         Destroy(tile);
         enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);
-        Debug.Log("Enemy");
-        Debug.Log(tile.transform.position);
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
         enemyHiveIsPlaced = true;
 
@@ -49,4 +61,45 @@ public class EnemyController : MonoBehaviour
        // beeLauncher.SetEndDragPosition(playerHive.GetPosition());
        // tiles.Add(enemyHiveTile);
     }
+
+        private void initaliseBeeController()
+        {
+            beeController = Instantiate(beeController);
+            beeController.SetHive(enemyHive);
+            beeController.AddBees(5);
+        }
+
+      private void initaliseTimer()
+        {
+        timer = gameObject.GetComponent<Timer>();
+        timer.SetOn(true);
+        timer.SetCountdownSeconds(10f);
+        }
+
+      private void checkTimer()
+      {
+        if (!timer.IsOn())
+        {
+            timer.SetOn(true);
+            timer.Restart();
+          //  launchBee();
+        }
+      }
+
+      private void activate()
+      {
+        activated = true;
+        placeHive();
+        initaliseBeeController();
+        initaliseTimer();
+      }  
+
+      private void placeHive()
+      {
+        enemyHivePrefab = Instantiate(enemyHivePrefab, enemyHiveTile.transform.position, Quaternion.identity);
+        enemyHive = enemyHivePrefab.GetComponent<Hive>();
+        enemyHive.SetPosition(enemyHivePrefab.transform.position);
+        enemyHivePrefab.name = enemyHive.GetId();
+        beeLauncher.SetHive(enemyHive);
+      }
 }

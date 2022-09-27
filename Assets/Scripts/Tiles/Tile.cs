@@ -57,14 +57,11 @@ public class Tile : MonoBehaviour
     public float GetHeight()
     {
       Vector3 bounds = this.mesh.bounds.size;
-      Debug.Log(bounds);
       return bounds.z;
     }
 
     public void GetDebugData() 
     {
-      Debug.Log("Enemy tile here");
-      Debug.Log(isHidden);
       Debug.Log(this.gameObject.name = material.ToString());
     }
 

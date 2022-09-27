@@ -90,20 +90,20 @@ public class BeeBody : MonoBehaviour
 
     }
 
-    private void processCollision(Collider other)
+    private bool processCollision(Collider other)
     {
       string otherObject = other.gameObject.tag.ToString();
       switch (otherObject) { 
         case "hive":
           enterHive(other);
-          break;
+          return true;
 
         case "flower":
           processFlowerCollision(other);
-          break;
+          return true;
 
          default:
-          break;
+          return false;
       }
     }
 
@@ -117,12 +117,14 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        processCollision(other.collider);
+        if (!processCollision(other.collider))
+        {
         collectingPollen = false;
         if (isIdling) 
-        {
-          bounceBack(other);
-        };
+          {
+            bounceBack(other);
+          };
+        }
     }
 
     private void bounceBack(Collision other)

@@ -5,8 +5,14 @@ using UnityEngine;
 public class EnemyBeeLauncher : BeeLauncher
 {
     
-      protected override void reset()
-        {
+    protected override void reset()
+    {
         this.isLoaded = false;
-        }
+    }
+
+    protected override Vector3 calculateDirection()
+    {
+        Vector3 direction =  this.launchPosition - this.endDragPosition;
+        return -direction;
+    }
 }

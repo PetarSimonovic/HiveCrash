@@ -12,9 +12,8 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private Rigidbody scopeBeeBody;
  
-    public override void SetEndDragPosition(Vector3 endDragPosition)
+    public void SetEndDragPosition(Vector3 endDragPosition)
     {
-      Debug.Log("HER!");
       Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
       if (this.endDragPosition == newDragPosition)
       {
@@ -25,6 +24,11 @@ public class PlayerBeeLauncher : BeeLauncher
       launchScopeBee();
 
      // beeScope.DrawLine(endDragPosition);
+    }
+
+     public Vector3 GetEndDragPosition()
+    {
+      return this.endDragPosition;
     }
 
 

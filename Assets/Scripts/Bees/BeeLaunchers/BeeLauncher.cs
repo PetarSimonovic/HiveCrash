@@ -54,19 +54,6 @@ public class BeeLauncher : MonoBehaviour
       return this.launchPosition;
     }
 
-    public virtual void SetEndDragPosition(Vector3 endDragPosition)
-    {
-      Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      this.endDragPosition = newDragPosition;
-
-     // beeScope.DrawLine(endDragPosition);
-    }
-
-    public Vector3 GetEndDragPosition()
-    {
-      return this.endDragPosition;
-    }
-
     public void LaunchBee()
     {
       this.loadedBee.Fly();

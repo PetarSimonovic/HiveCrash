@@ -35,13 +35,20 @@ public class BeeLauncherTests
     }
 
     [Test]
-    public void ItCanLaunchABee()
+    public void ItCanLaunchABeeBody()
     {
         beeLauncher.LoadBee(testBee);
         Assert.IsNull(testBee.GetBody());
         beeLauncher.LaunchBee();
         Assert.IsInstanceOf<GameObject>(testBee.GetBody());
+    }
 
+     [Test]
+    public void ItCanTellABeeToFly()
+    {
+        beeLauncher.LoadBee(testBee);
+        beeLauncher.LaunchBee();
+        Assert.IsFalse(testBee.IsInHive());
     }
 
 

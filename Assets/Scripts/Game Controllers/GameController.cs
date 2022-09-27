@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     private GameObject hivePrefab;
 
     [SerializeField]
-    private BeeLauncher beeLauncher;
+    private PlayerBeeLauncher beeLauncher;
 
     [SerializeField]
     private BeeController beeController;

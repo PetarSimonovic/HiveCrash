@@ -13,7 +13,7 @@ public class BeeLauncherTests
     [SetUp]
     public void SetUp()
     {
-        Bee testBee = new Bee("1");
+        testBee = new Bee("1");
         beeLauncherObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Bees/BeeLaunchers/BeeLauncher"));
         beeLauncher = beeLauncherObject.GetComponent<BeeLauncher>();
     }
@@ -32,6 +32,16 @@ public class BeeLauncherTests
         Assert.IsFalse(beeLauncher.IsLoaded());
         beeLauncher.LoadBee(testBee);
         Assert.IsTrue(beeLauncher.IsLoaded());
+    }
+
+    [Test]
+    public void ItCanLaunchABee()
+    {
+        beeLauncher.LoadBee(testBee);
+        Assert.IsNull(testBee.GetBody());
+        beeLauncher.LaunchBee();
+        Assert.IsInstanceOf<GameObject>(testBee.GetBody());
+
     }
 
 

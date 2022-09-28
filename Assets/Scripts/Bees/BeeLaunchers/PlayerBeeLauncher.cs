@@ -15,11 +15,11 @@ public class PlayerBeeLauncher : BeeLauncher
     public override void SetEndPosition(Vector3 endPosition)
     {
       Vector3 newPosition = new Vector3(endPosition.x, launchPositionY, endPosition.z);
-      if (this.endPosition == newDragPosition)
+      if (this.endPosition == newPosition)
       {
         return;
       }
-      this.endPosition = newDragPosition;
+      this.endPosition = newPosition;
       Destroy(scopeBee);
       launchScopeBee();
     }

@@ -12,26 +12,17 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private Rigidbody scopeBeeBody;
  
-    public override void SetEndDragPosition(Vector3 endDragPosition)
+    public override void SetEndPosition(Vector3 endPosition)
     {
-      Vector3 newDragPosition = new Vector3(endDragPosition.x, launchPositionY, endDragPosition.z);
-      if (this.endDragPosition == newDragPosition)
+      Vector3 newPosition = new Vector3(endPosition.x, launchPositionY, endPosition.z);
+      if (this.endPosition == newDragPosition)
       {
         return;
       }
-      this.endDragPosition = newDragPosition;
+      this.endPosition = newDragPosition;
       Destroy(scopeBee);
       launchScopeBee();
-
-     // beeScope.DrawLine(endDragPosition);
     }
-
-     public Vector3 GetEndDragPosition()
-    {
-      return this.endDragPosition;
-    }
-
-
 
     private void launchScopeBee()
     {
@@ -49,7 +40,7 @@ public class PlayerBeeLauncher : BeeLauncher
 
      protected override Vector3 calculateDirection()
     {
-      Vector3 direction = this.endDragPosition - this.launchPosition;
+      Vector3 direction = this.endPosition - this.launchPosition;
       return -direction;
     }
 

@@ -17,7 +17,7 @@ public class BeeLauncher : MonoBehaviour
 
     protected float launchPositionY = 0.5f;
 
-    protected Vector3 endDragPosition;
+    protected Vector3 endPosition;
 
     protected BeeBody beeProperties;
 
@@ -42,22 +42,6 @@ public class BeeLauncher : MonoBehaviour
        this.isLoaded = true;
     }
 
-     public virtual void SetEndDragPosition(Vector3 endDragPosition)
-    {
-      this.endDragPosition = endDragPosition;
-    }
-
-
-    public void SetLaunchPosition(Vector3 worldPosition)
-    {
-      this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);
-    }
-
-    public Vector3 GetLaunchPosition()
-    {
-      return this.launchPosition;
-    }
-
     public virtual void LaunchBee()
     {
       this.loadedBee.Fly();
@@ -73,13 +57,13 @@ public class BeeLauncher : MonoBehaviour
     protected virtual void reset()
     {
       this.isLoaded = false;
-      endDragPosition = launchPosition;
+      endPosition = launchPosition;
     }
 
 
     protected virtual Vector3 calculateDirection()
     {
-      Vector3 direction = this.endDragPosition - this.launchPosition;
+      Vector3 direction = this.endPosition - this.launchPosition;
       return direction;
     }
 
@@ -98,6 +82,27 @@ public class BeeLauncher : MonoBehaviour
     {
       return this.launchPositionY;
     }
+
+    public void SetLaunchPosition(Vector3 worldPosition)
+    {
+      this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);
+    }
+
+    public Vector3 GetLaunchPosition()
+    {
+      return this.launchPosition;
+    }
+
+    public virtual void SetEndPosition(Vector3 endPosition)
+    {
+      this.endPosition = endPosition;
+    }
+
+    public Vector3 GetEndPosition()
+    {
+      return this.endPosition;
+    }
+
 
 
 }

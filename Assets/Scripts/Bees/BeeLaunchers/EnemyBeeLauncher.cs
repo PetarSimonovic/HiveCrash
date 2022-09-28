@@ -12,6 +12,6 @@ public class EnemyBeeLauncher : BeeLauncher
 
     protected override Vector3 calculateDirection()
     {
-        return (this.endDragPosition - this.launchPosition).normalized;
+        return (this.endPosition - this.launchPosition).normalized;
     }
 }

@@ -57,7 +57,7 @@ public class BeeBody : MonoBehaviour
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.02f;
+        moveSpeed = moveSpeed - 0.008f;
       }
       else
       {
@@ -76,13 +76,15 @@ public class BeeBody : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
+      Debug.Log(other.gameObject.tag.ToString());
       if (other.gameObject.tag.ToString() == "hive")
       {
         isOutsideHive = true;
       }
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -93,6 +95,7 @@ public class BeeBody : MonoBehaviour
     private bool processCollision(Collider other)
     {
       string otherObject = other.gameObject.tag.ToString();
+      Debug.Log(otherObject);
       switch (otherObject) { 
         case "hive":
           enterHive(other);
@@ -125,6 +128,12 @@ public class BeeBody : MonoBehaviour
             bounceBack(other);
           };
         }
+    }
+
+     private void OnCollisionStay(Collision other)
+    {
+        processCollision(other.collider);
+        
     }
 
     private void bounceBack(Collision other)

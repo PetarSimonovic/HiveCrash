@@ -62,10 +62,7 @@ public class GameController : MonoBehaviour
       if (Input.touchCount > 0)
       {
         touch = Input.GetTouch(0);
-        if (Input.anyKey || Input.anyKeyDown || Input.GetMouseButtonUp(0))
-        {
           processInput();
-        }
       }
     }
 
@@ -94,20 +91,17 @@ public class GameController : MonoBehaviour
 
     private void processMapInput(Vector3 tilePosition, Vector3 worldTouchPoint)
     {
-      if (Input.GetMouseButtonDown(0))
+      switch(touch.phase)
       {
-        processClickOnMap(tilePosition);
-      }
-      else if (Input.GetMouseButton(0))
-      {
-        if (beeLauncher.IsLoaded())
-        {
+      case TouchPhase.Began:
+        processTouchOnMap(tilePosition);
+        break;
+      case TouchPhase.Moved:
           beeLauncher.SetEndPosition(worldTouchPoint);
-        }
-      }
-      else if (Input.GetMouseButtonUp(0) && beeLauncher.IsLoaded())
-      {
-        beeLauncher.LaunchBee();
+        break;
+      case TouchPhase.Ended:
+          beeLauncher.LaunchBee();
+        break;
       }
     }
 
@@ -127,7 +121,7 @@ public class GameController : MonoBehaviour
        }
     }
 
-    private void processClickOnMap(Vector3 clickPosition)
+    private void processTouchOnMap(Vector3 clickPosition)
     {
       if (hiveIsPlaced) 
         {

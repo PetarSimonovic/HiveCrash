@@ -15,7 +15,7 @@ public class BeeLauncher : MonoBehaviour
 
     protected Vector3 launchPosition;
 
-    protected float launchPositionY = 0.6f;
+    protected float launchPositionY = 0.7f;
 
     protected Vector3 endPosition;
 

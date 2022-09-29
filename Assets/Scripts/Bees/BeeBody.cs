@@ -49,7 +49,15 @@ public class BeeBody : MonoBehaviour
      }
      else {
       moveBee();
+      rotateBeeForward();
+      spinBee(); 
+
      }
+    }
+
+    private void spinBee()
+    {
+      transform.Rotate(new Vector3(0, 0, 9f));
     }
 
     private void moveBee()
@@ -57,12 +65,17 @@ public class BeeBody : MonoBehaviour
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.02f;
+        moveSpeed = moveSpeed - 0.01f;
       }
       else
       {
        returnToHive();
       }
+    }
+
+    private void rotateBeeForward(){
+      Quaternion rotation = Quaternion.LookRotation(rigidBody.velocity, Vector3.up);
+      transform.rotation = rotation;
     }
 
     private void returnToHive()
@@ -71,7 +84,7 @@ public class BeeBody : MonoBehaviour
       moveSpeed = IDLE_SPEED;
       float step = RETURN_SPEED * Time.deltaTime;
       transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
-      Quaternion rotation = Quaternion.LookRotation(hivePosition, Vector3.down);
+      Quaternion rotation = Quaternion.LookRotation(hivePosition, Vector3.up);
       transform.rotation = rotation;
     }
 
@@ -124,11 +137,6 @@ public class BeeBody : MonoBehaviour
           };
     }
 
-    // private void OnCollisionStay(Collision other)
-    // {
-    //     processCollision(other.collider);
-    // }
-
     private void bounceBack(Collision other)
     {
 
@@ -149,11 +157,8 @@ public class BeeBody : MonoBehaviour
 
     private void enterHive(Collider other)
     {
-      Debug.Log("Trying to enter hive");
-      // Just use a 'playerHive' tag instead of an ID?
       if (getHiveId(other) == this.hiveId && isOutsideHive)
         {
-          Debug.Log("Entering hive");
           isEnteringHive = true;
         }
     }
@@ -175,7 +180,7 @@ public class BeeBody : MonoBehaviour
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       float step = RETURN_SPEED * Time.deltaTime;
       transform.position = Vector3.MoveTowards(transform.localPosition, flower.GetPosition(), step);
-      Quaternion rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+      Quaternion rotation = Quaternion.LookRotation(Vector3.up, Vector3.up);
       transform.rotation = rotation;
     }
 

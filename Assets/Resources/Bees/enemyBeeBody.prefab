@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7372705103550867599}
   - component: {fileID: 4630684809353592662}
   - component: {fileID: 7949324645395433046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: enemyBeeBody
   m_TagString: bee
   m_Icon: {fileID: 0}
@@ -168,13 +168,28 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d57c561f842574ea985d462791ed7c9b, type: 2}
     - target: {fileID: -6733177361254619370, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
       propertyPath: m_TagString
       value: bee
       objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
       propertyPath: m_TagString
       value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: -5117700066308340382, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -5117700066308340382, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
@@ -198,6 +213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
       propertyPath: m_TagString
       value: bee
       objectReference: {fileID: 0}
@@ -213,8 +233,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d57c561f842574ea985d462791ed7c9b, type: 2}
     - target: {fileID: 8513859187771203891, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
       propertyPath: m_TagString
       value: bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013638940889411661, guid: d403c790e0d6e463396840dde6ca2c8a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9013638940889411661, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}

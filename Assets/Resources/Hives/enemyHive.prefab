@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2999166324109222984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5343801637097163116}
+  - component: {fileID: 7634458448484272272}
+  - component: {fileID: 6439167726310961501}
+  m_Layer: 0
+  m_Name: collider
+  m_TagString: hive
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5343801637097163116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999166324109222984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.56, z: -0}
+  m_LocalScale: {x: 0.43000004, y: 0.43000004, z: 0.43000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7135073174579604932}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7634458448484272272
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999166324109222984}
+  m_Mesh: {fileID: -806024180829847847, guid: f7f322191d4f84f568a489f64217dabe, type: 3}
+--- !u!64 &6439167726310961501
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999166324109222984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -806024180829847847, guid: f7f322191d4f84f568a489f64217dabe, type: 3}
 --- !u!1 &3562063142245475598
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +66,6 @@ GameObject:
   - component: {fileID: 8823560020138843602}
   - component: {fileID: 5707447655292628368}
   - component: {fileID: 5440778762717932264}
-  - component: {fileID: 4631765166128445139}
   m_Layer: 0
   m_Name: hex
   m_TagString: hive
@@ -84,20 +138,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4631765166128445139
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562063142245475598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -806024180829847847, guid: f7f322191d4f84f568a489f64217dabe, type: 3}
 --- !u!1 &7516243428675172222
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +150,7 @@ GameObject:
   - component: {fileID: 8752197675387552249}
   - component: {fileID: 7756382538184197829}
   - component: {fileID: 7743828193252040904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemyHive
   m_TagString: hive
   m_Icon: {fileID: 0}
@@ -130,6 +170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8823560020138843602}
+  - {fileID: 5343801637097163116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

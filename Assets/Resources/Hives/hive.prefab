@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2942048629335635091}
   - component: {fileID: 4181161369615414191}
   - component: {fileID: 8752485405987206689}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hive
   m_TagString: hive
   m_Icon: {fileID: 0}
@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3157544339471001784}
+  - {fileID: 1566814176901556876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,7 +117,6 @@ GameObject:
   - component: {fileID: 3157544339471001784}
   - component: {fileID: 2204126815165503738}
   - component: {fileID: 1883573075057483650}
-  - component: {fileID: 1289464556893832121}
   m_Layer: 0
   m_Name: hex
   m_TagString: hive
@@ -189,15 +189,56 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1289464556893832121
+--- !u!1 &7884252085643713883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566814176901556876}
+  - component: {fileID: 8501783578500606783}
+  - component: {fileID: 7567094968472168452}
+  m_Layer: 0
+  m_Name: collider
+  m_TagString: hive
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1566814176901556876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884252085643713883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.56, z: -0}
+  m_LocalScale: {x: 0.43000004, y: 0.43000004, z: 0.43000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3649767215139149998}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8501783578500606783
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884252085643713883}
+  m_Mesh: {fileID: -806024180829847847, guid: f7f322191d4f84f568a489f64217dabe, type: 3}
+--- !u!64 &7567094968472168452
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6975144811444408420}
+  m_GameObject: {fileID: 7884252085643713883}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1

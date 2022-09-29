@@ -76,7 +76,7 @@ public class BeeBody : MonoBehaviour
     }
 
 
-    private void OnCollisionExit(Collision other)
+    private void OnTriggerExit(Collider other)
     {
       if (other.gameObject.tag.ToString() == "hive")
       {
@@ -117,20 +117,17 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!processCollision(other.collider))
-        {
         collectingPollen = false;
         if (isIdling) 
           {
             bounceBack(other);
           };
-        }
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        processCollision(other.collider);
-    }
+    // private void OnCollisionStay(Collision other)
+    // {
+    //     processCollision(other.collider);
+    // }
 
     private void bounceBack(Collision other)
     {

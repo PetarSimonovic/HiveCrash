@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
+
 
 public class GameController : MonoBehaviour
 {
@@ -32,6 +34,9 @@ public class GameController : MonoBehaviour
 
     private bool hiveIsPlaced;
 
+    private Touch touch;
+
+
     private void Awake() 
     {
      instantiateObjects();
@@ -54,15 +59,19 @@ public class GameController : MonoBehaviour
 
     private void checkInput()
     {
-      if (Input.anyKey || Input.anyKeyDown || Input.GetMouseButtonUp(0))
+      if (Input.touchCount > 0)
       {
-        processInput();
+        touch = Input.GetTouch(0);
+        if (Input.anyKey || Input.anyKeyDown || Input.GetMouseButtonUp(0))
+        {
+          processInput();
+        }
       }
     }
 
     private void processInput()
     {
-      Vector3 touchPosition = Input.GetTouch(0).position;
+      Vector3 touchPosition = touch.position;
       Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = Camera.main.ScreenToWorldPoint(touchPosition);
       RaycastHit raycastHit;
@@ -104,14 +113,18 @@ public class GameController : MonoBehaviour
 
     private void processCameraInput(Vector3 touchPosition)
     {
-       if (Input.GetMouseButtonDown(0))
-      {
-        cameraController.SetStartTouchPosition(touchPosition);
-      }
-      else if (Input.GetMouseButton(0))
-      {
-      cameraController.ProcessTouch(touchPosition);
-      }
+       switch (touch.phase)
+       {
+        case TouchPhase.Began:
+          cameraController.SetStartTouchPosition(touchPosition);
+          break;
+        case TouchPhase.Moved: 
+          cameraController.ProcessTouch(touchPosition);
+          break;
+        default:
+          cameraController.ProcessTouch(touchPosition);
+          break;
+       }
     }
 
     private void processClickOnMap(Vector3 clickPosition)

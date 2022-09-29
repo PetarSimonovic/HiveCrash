@@ -625,8 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9986db5da794590945b137ea1a3e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hivePollenUI: {fileID: 0}
-  hivePollen: 0
+  hivePollenUI: {fileID: 1330351589}
 --- !u!1 &1186417444
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +704,7 @@ PrefabInstance:
     - target: {fileID: 986233465092696145, guid: eaef949e020824b93bf5c7991f129fc6,
         type: 3}
       propertyPath: m_Name
-      value: Text (TMP) (1)
+      value: PollenCountValue
       objectReference: {fileID: 0}
     - target: {fileID: 6080342793050691598, guid: eaef949e020824b93bf5c7991f129fc6,
         type: 3}
@@ -820,6 +819,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1330351587}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1330351589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7573429711573777399, guid: eaef949e020824b93bf5c7991f129fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330351587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1825747556 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3168837201570505610, guid: ddf2394a528074329a45d90c5c433080,
@@ -842,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 986233465092696145, guid: eaef949e020824b93bf5c7991f129fc6,
         type: 3}
       propertyPath: m_Name
-      value: Text (TMP)
+      value: PollenCountLabel
       objectReference: {fileID: 0}
     - target: {fileID: 6080342793050691598, guid: eaef949e020824b93bf5c7991f129fc6,
         type: 3}

@@ -174,14 +174,10 @@ public class BeeBody : MonoBehaviour
 
     private void placeBeeOnFlower()
     {  
-      moveSpeed = moveSpeed > 0.2f ? moveSpeed - 0.01f : 0.2f;
+      moveSpeed = IDLE_SPEED;
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
-      float step = moveSpeed * Time.deltaTime;
-      Vector3 targetPosition = flower.GetPosition();
-      if (transform.position != targetPosition) 
-      {
-        transform.position = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
-      }
+      float step = RETURN_SPEED * Time.deltaTime;
+      transform.position = Vector3.MoveTowards(transform.localPosition, flower.GetPosition(), step);
       Quaternion rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
       transform.rotation = rotation;
     }

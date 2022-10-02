@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3157544339471001784}
   - component: {fileID: 2204126815165503738}
   - component: {fileID: 1883573075057483650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hex
   m_TagString: hive
   m_Icon: {fileID: 0}

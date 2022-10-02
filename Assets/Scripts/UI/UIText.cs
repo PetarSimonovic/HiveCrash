@@ -17,6 +17,6 @@ public class UIText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hivePollenUI.SetText("It works!");
+        hivePollenUI.SetText("100%");
     }
 }

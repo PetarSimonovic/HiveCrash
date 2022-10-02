@@ -123,14 +123,16 @@ public class GameController : MonoBehaviour
 
     private void processTouchOnMap(Vector3 clickPosition)
     {
-      if (hiveIsPlaced) 
+      switch (hiveIsPlaced) 
         {
-          beeLauncher.LoadBee();
-        } else 
-        {
+        case false:
           initaliseHive(clickPosition);
           initialiseEnemies();
           updateFlowerController();
+          break;
+        default:
+          beeLauncher.LoadBee();
+          break;
         }
     }
 

@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private EnemyController enemyController;
 
+    [SerializeField]
+    private DisplayController displayController;
+
     private Hive hive;
 
     private List<GameObject> tiles;
@@ -222,6 +225,7 @@ public class GameController : MonoBehaviour
       mapCreator = Instantiate(mapCreator);
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
+      displayController = Instantiate(displayController);
     }
 
 

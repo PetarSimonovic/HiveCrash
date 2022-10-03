@@ -69,7 +69,7 @@ public class BeeController : MonoBehaviour
       if (hivePollen >= bee.GetAppetite())
       {
         hive.SetPollen(-bee.GetAppetite());
-        bee.SetMessage(bee.GetName() + "has eaten - hive pollen now " + hive.GetPollen());
+        bee.SetMessage(bee.GetName() + " has eaten");
         bee.IncreaseHealth();
       }
       else 

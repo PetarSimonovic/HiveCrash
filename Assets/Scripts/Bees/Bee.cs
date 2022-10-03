@@ -136,9 +136,14 @@ public class Bee
       return this.health;
     }
 
-    public void SetMessage(string text)
+    public void SetMessage(string message)
     {
-      
+      this.message = message;
+    }
+
+    public string GetMessage()
+    {
+      return this.message;
     }
 
 }

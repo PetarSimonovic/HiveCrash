@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class DisplayController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject hivePollenCount;
+
     private Hive hive;
 
-    void Start()
-    {
-        
-    }
+    private bool gameStarted = false;
 
 
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (gameStarted)
+        {
+            hivePollenCount.GetComponent<UIText>().SetText(hive.GetPollen().ToString());
+        }
     }
 
     public void SetHive(Hive hive)
     {
         this.hive = hive;
+        this.gameStarted = true;
     }
 }

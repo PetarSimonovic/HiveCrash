@@ -65,7 +65,7 @@ public class BeeBody : MonoBehaviour
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.01f;
+        moveSpeed = moveSpeed - 0.02f;
       }
       else
       {

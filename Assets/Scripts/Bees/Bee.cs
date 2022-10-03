@@ -23,6 +23,8 @@ public class Bee
 
     private float hungerInterval = 60f;
 
+    private string message;
+
     private Timer timer;
 
     private GameObject body;
@@ -132,6 +134,11 @@ public class Bee
     public int GetHealth()
     {
       return this.health;
+    }
+
+    public void SetMessage(string text)
+    {
+      
     }
 
 }

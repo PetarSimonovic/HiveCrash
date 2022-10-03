@@ -69,12 +69,12 @@ public class BeeController : MonoBehaviour
       if (hivePollen >= bee.GetAppetite())
       {
         hive.SetPollen(-bee.GetAppetite());
-        Debug.Log(bee.GetName() + "has eaten - hive pollen now " + hive.GetPollen());
+        bee.SetMessage(bee.GetName() + "has eaten - hive pollen now " + hive.GetPollen());
         bee.IncreaseHealth();
       }
       else 
       {
-        Debug.Log("Not enough food for " + bee.GetName());
+        bee.SetMessage("Not enough food for " + bee.GetName());
         bee.ReduceHealth();
       }
       Debug.Log(bee.GetName() + " health: " + bee.GetHealth());
@@ -112,7 +112,7 @@ public class BeeController : MonoBehaviour
         Timer timer = initaliseTimer();
         string name = beeNamer.ChooseName();
         Bee bee =  new Bee(name, this.hive.GetId(), timer);
-        Debug.Log(name + bee.GetHiveId() + " added to hive" + this.hive.GetId());
+        bee.SetMessage(name + " hatched");
         hive.AddBee(bee);
       }
     }

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class UIText : MonoBehaviour
 {
-    [SerializeField]
-    private TMP_Text hivePollenUI;
+    private TMP_Text uiText;
 
-    private int hivePollen;
-
-    void Start()
+    void Awake()
     {
-        
+        uiText  = GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        hivePollenUI.SetText("100%");
+    }
+
+    public void SetText(string text)
+    {
+      uiText.SetText(text);
     }
 }

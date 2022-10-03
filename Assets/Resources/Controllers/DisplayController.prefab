@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7202777998787486340}
   - component: {fileID: 7202777998787486341}
   - component: {fileID: 7202777998787486342}
-  - component: {fileID: 7202777998787486346}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -103,19 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7202777998787486346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202777998787486343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9986db5da794590945b137ea1a3e8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hivePollenUI: {fileID: 787939031729243575}
 --- !u!1 &8392772389612942713
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d0557bb7be64729a6f5107d21ccbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hivePollenCount: {fileID: 7951851100551681553}
 --- !u!1001 &7202777998613642816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,23 +265,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7573429711573777399, guid: eaef949e020824b93bf5c7991f129fc6,
+        type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaef949e020824b93bf5c7991f129fc6, type: 3}
---- !u!114 &787939031729243575 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7573429711573777399, guid: eaef949e020824b93bf5c7991f129fc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 7202777998613642816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &4005072137495373390 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6080342793050691598, guid: eaef949e020824b93bf5c7991f129fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7202777998613642816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7951851100551681553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 986233465092696145, guid: eaef949e020824b93bf5c7991f129fc6,
     type: 3}
   m_PrefabInstance: {fileID: 7202777998613642816}
   m_PrefabAsset: {fileID: 0}
@@ -418,9 +404,10 @@ PrefabInstance:
     - target: {fileID: 7573429711573777399, guid: eaef949e020824b93bf5c7991f129fc6,
         type: 3}
       propertyPath: m_text
-      value: 'pollen: '
+      value: 'POLLEN: '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7526342558137837434, guid: eaef949e020824b93bf5c7991f129fc6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eaef949e020824b93bf5c7991f129fc6, type: 3}
 --- !u!224 &3685603195921526857 stripped
 RectTransform:

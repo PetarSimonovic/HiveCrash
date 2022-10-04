@@ -47,14 +47,13 @@ public class BeeLauncher : MonoBehaviour
       if (isLoaded && endPosition != launchPosition)
       {
         this.loadedBee.Fly();
-        launchPosition.y = launchPositionY;
         Vector3 direction = calculateDirection();
         var beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(direction, Vector3.forward)); // Quaternion.identity affects rotation?
         beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
         beeBody.GetComponent<Rigidbody>().AddForce(direction);
         this.loadedBee.SetBody(beeBody);
-        reset();
       }
+       reset();
     }
 
     protected virtual void reset()

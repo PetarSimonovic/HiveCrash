@@ -9,8 +9,6 @@ public class BeeLauncher : MonoBehaviour
 
     protected Bee loadedBee;
 
-    protected Hive hive;
-
     protected bool isLoaded = false;
 
     protected Vector3 launchPosition;
@@ -89,12 +87,6 @@ public class BeeLauncher : MonoBehaviour
     public float GetLaunchPositionY()
     {
       return this.launchPositionY;
-    }
-
-
-    public Hive GetHive()
-    {
-      return this.hive;
     }
 
     public Bee GetLoadedBee()

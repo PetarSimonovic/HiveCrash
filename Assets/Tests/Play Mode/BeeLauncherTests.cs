@@ -39,7 +39,8 @@ public class BeeLauncherTests
     public void ItCanGetALoadedBee()
     {
         beeLauncher.LoadBee(testBee);
-        Assert.AreEqual(testBee, beeLauncher.GetLoadedBee());
+        Bee loadedBee = beeLauncher.GetLoadedBee();
+        Assert.AreEqual(testBee,loadedBee);
 
     }
 
@@ -73,10 +74,10 @@ public class BeeLauncherTests
     [Test]
     public void ItCanSetItsEndPositionAndAdjustsForYPositionLock()
     {
-        Vector3 launchPosition = new Vector3 (10, 10, 0);
-        Vector3 launchPositionYOffset = new Vector3(launchPosition.x, launchPosition.y + beeLauncher.GetLaunchPositionY(), launchPosition.z);
-        beeLauncher.SetLaunchPosition(launchPosition);
-        Assert.AreEqual(launchPositionYOffset, beeLauncher.GetLaunchPosition());
+        Vector3 endPosition = new Vector3 (10, 10, 0);
+        Vector3 endPositionYOffset = new Vector3(endPosition.x, endPosition.y + beeLauncher.GetLaunchPositionY(), endPosition.z);
+        beeLauncher.SetEndPosition(endPosition);
+        Assert.AreEqual(endPositionYOffset, beeLauncher.GetEndPosition());
     }
 
     [Test]

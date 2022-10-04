@@ -61,12 +61,17 @@ public class BeeLauncher : MonoBehaviour
       return this.isLoaded;
     }
 
+    private Vector3 fixYPosition(Vector3 position)
+    {
+      return new Vector3 (position.x, position.y + launchPositionY, position.z);
+    }
+
 
     // Getters and Setters
 
     public void SetLaunchPosition(Vector3 worldPosition)
     {
-      this.launchPosition = new Vector3 (worldPosition.x, worldPosition.y + launchPositionY, worldPosition.z);
+      this.launchPosition = fixYPosition(worldPosition);
     }
 
     public Vector3 GetLaunchPosition()
@@ -74,9 +79,9 @@ public class BeeLauncher : MonoBehaviour
       return this.launchPosition;
     }
 
-    public virtual void SetEndPosition(Vector3 endPosition)
+    public virtual void SetEndPosition(Vector3 worldPosition)
     {
-      this.endPosition = endPosition;
+      this.endPosition = fixYPosition(worldPosition);
     }
 
     public Vector3 GetEndPosition()

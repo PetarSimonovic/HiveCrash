@@ -103,12 +103,11 @@ public class EnemyController : MonoBehaviour
       private void initialiseBeeLauncher()
       {
         beeLauncher.SetLaunchPosition(enemyHive.GetPosition());
-        beeLauncher.SetHive(enemyHive);
       }
 
       private void launchBee()
       {
-        beeLauncher.LoadBee();
+        beeLauncher.LoadBee(enemyHive.GetBee());
         Vector3 endPosition = new Vector3 (Random.Range(-4.0f, 4.0f), 0.5f, Random.Range(-4.0f, 4.0f));
         beeLauncher.SetEndPosition(endPosition);
         if (beeLauncher.IsLoaded()) {

@@ -21,25 +21,14 @@ public class BeeLauncher : MonoBehaviour
 
     protected BeeBody beeProperties;
 
-    public Bee GetLoadedBee()
+    
+    public void LoadBee(Bee bee)
     {
-      return this.loadedBee;
-    }
-
-    public void LoadBee()
-    {
-      Bee bee = hive.GetBee();
       if (bee is not null) 
       {
        this.loadedBee = bee;
        this.isLoaded = true;
       }
-    }
-
-     public void LoadBee(Bee bee)
-    {
-       this.loadedBee = bee;
-       this.isLoaded = true;
     }
 
     public virtual void LaunchBee()
@@ -74,16 +63,8 @@ public class BeeLauncher : MonoBehaviour
       return this.isLoaded;
     }
 
-    public void SetHive(Hive hive)
-    {
-      this.hive = hive;
-      SetLaunchPosition(hive.GetPosition());
-    }
 
-    public float GetLaunchPositionY()
-    {
-      return this.launchPositionY;
-    }
+    // Getters and Setters
 
     public void SetLaunchPosition(Vector3 worldPosition)
     {
@@ -105,6 +86,20 @@ public class BeeLauncher : MonoBehaviour
       return this.endPosition;
     }
 
+    public float GetLaunchPositionY()
+    {
+      return this.launchPositionY;
+    }
 
+
+    public Hive GetHive()
+    {
+      return this.hive;
+    }
+
+    public Bee GetLoadedBee()
+    {
+      return this.loadedBee;
+    }
 
 }

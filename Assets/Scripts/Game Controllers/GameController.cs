@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
           updateFlowerController();
           break;
         default:
-          beeLauncher.LoadBee();
+          beeLauncher.LoadBee(hive.GetBee());
           break;
         }
     }
@@ -162,7 +162,7 @@ public class GameController : MonoBehaviour
       hiveIsPlaced = true;
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
-      beeLauncher.SetHive(hive);
+      beeLauncher.SetLaunchPosition(hive.GetPosition());
       displayController.SetHive(hive);
       return hive;
     }

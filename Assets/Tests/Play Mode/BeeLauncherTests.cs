@@ -9,13 +9,16 @@ public class BeeLauncherTests
     private BeeLauncher beeLauncher;
     private GameObject beeLauncherObject;
     private Bee testBee;
+    private Vector3 launchPosition;
+    private Vector3 endPosition;
 
     [SetUp]
     public void SetUp()
     {
-        testBee = new Bee("1");
-        beeLauncherObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Bees/BeeLaunchers/BeeLauncher"));
-        beeLauncher = beeLauncherObject.GetComponent<BeeLauncher>();
+        setUpBeeLauncher();
+        setUpTestBee();
+        setLaunchPosition();
+        setLaunchPosition();
     }
 
     [TearDown]
@@ -24,14 +27,20 @@ public class BeeLauncherTests
         Object.Destroy(beeLauncherObject);
     }
 
-   // A Test behaves as an ordinary method
     [Test]
     public void ItCanLoadABee()
     {
-        // Use the Assert class to test conditions
         Assert.IsFalse(beeLauncher.IsLoaded());
         beeLauncher.LoadBee(testBee);
         Assert.IsTrue(beeLauncher.IsLoaded());
+    }
+
+    [Test]
+    public void ItCanGetALoadedBee()
+    {
+        beeLauncher.LoadBee(testBee);
+        Assert.AreEqual(testBee, beeLauncher.GetLoadedBee());
+
     }
 
     [Test]
@@ -61,7 +70,7 @@ public class BeeLauncherTests
         Assert.AreEqual(launchPositionYOffset, beeLauncher.GetLaunchPosition());
     }
 
-       [Test]
+    [Test]
     public void ItCanSetItsEndPositionAndAdjustsForYPositionLock()
     {
         Vector3 launchPosition = new Vector3 (10, 10, 0);
@@ -71,33 +80,52 @@ public class BeeLauncherTests
     }
 
     [Test]
-    public void ItCanResetItself()
+    public void IsNotLoadedAfterBeeIsLaunched()
     {
         beeLauncher.LoadBee(testBee);
         beeLauncher.LaunchBee();
-        Vector3 launchPosition = new Vector3 (10, 10, 0);
-        beeLauncher.SetLaunchPosition(launchPosition);
+        Assert.IsFalse(beeLauncher.IsLoaded());
+    }
 
+
+    [Test]
+    public void EndPositionIsTheSameAsLaunchPositionAfterBeeIsLaunched()
+    {
+        beeLauncher.LoadBee(testBee);
+        beeLauncher.LaunchBee();
+        Assert.AreEqual(beeLauncher.GetLaunchPosition(), beeLauncher.GetEndPosition());
+    }
+
+
+
+    // Initalisation methods
+
+    private void setUpBeeLauncher()
+    {
+        beeLauncherObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Bees/BeeLaunchers/BeeLauncher"));
+        beeLauncher = beeLauncherObject.GetComponent<BeeLauncher>();
+    }
+
+    private void setUpTestBee()
+    {
+        testBee = new Bee("1");
+    }
+
+    private void setLaunchPosition()
+    {
+        launchPosition = new Vector3 (10, 10, 0);
+        beeLauncher.SetLaunchPosition(launchPosition);
+       
+    }
+
+    private void setEndPosition()
+    {
+        endPosition = new Vector3 (0, 10, 0);
+        beeLauncher.SetEndPosition(endPosition);
     }
 
 
 }
 
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    // [UnityTest]
-    // public IEnumerator ItCanLoadABee()
-    // {
-    //     Assert.IsFalse(beeLauncher.IsLoaded());
-    //     beeLauncher.LoadBee(testBee);
-    //     Assert.IsTrue(beeLauncher.IsLoaded());
 
-
-
-
-    //     // Use the Assert class to test conditions.
-    //     // Use yield to skip a frame.
-    //     yield return null;
-    // }
-// }

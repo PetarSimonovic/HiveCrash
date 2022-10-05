@@ -37,7 +37,7 @@ public class FlowerController : MonoBehaviour
         } 
     }
 
-    public void CheckMeadows()
+    public void PlantRevealedMeadows()
     {   
         foreach (GameObject meadow in meadows)
         {

@@ -81,7 +81,7 @@ public class Bee
       return this.body;
     }
 
-    public void AddPollen()
+    public void CollectPollen()
     {
       pollen += pollenCollectionRate;
     }
@@ -144,6 +144,11 @@ public class Bee
     public string GetMessage()
     {
       return this.message;
+    }
+
+    public void SetPollenCollectionRate(int pollenCollectionRate)
+    {
+      this.pollenCollectionRate = pollenCollectionRate;
     }
 
 }

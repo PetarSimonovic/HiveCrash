@@ -182,7 +182,7 @@ public class GameController : MonoBehaviour
 
     private void checkControllers()
     {
-      flowerController.CheckMeadows();
+      flowerController.PlantRevealedMeadows();
     }
 
     private void createMap()

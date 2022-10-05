@@ -58,7 +58,7 @@ public class BeeController : MonoBehaviour
     {
       if (beeBody.GetComponent<BeeBody>().CollectingPollen())
       {
-        bee.AddPollen();
+        bee.CollectPollen();
       }
     }
 

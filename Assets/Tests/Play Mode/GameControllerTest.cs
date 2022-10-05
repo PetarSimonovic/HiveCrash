@@ -19,6 +19,13 @@ public class GameControllerTest
         gameController = gameControllerObject.GetComponent<GameController>();
     }
 
+      
+    [TearDown]
+    public void Teardown()
+    {
+        Object.Destroy(gameControllerObject);
+    }
+
     [Test]
     public void GameControllerHasACollectionOfTiles()
     {

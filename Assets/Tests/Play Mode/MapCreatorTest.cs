@@ -9,7 +9,7 @@ public class MapCreatorTest
     private GameObject mapCreatorObject;
     private MapCreator mapCreator;
 
-     [SetUp]
+    [SetUp]
     public void SetUp()
     {
         mapCreatorObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Tools/MapCreator"));
@@ -17,6 +17,12 @@ public class MapCreatorTest
 
         // gameControllerObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Controllers/GameController"));
         // gameController = gameControllerObject.GetComponent<GameController>();
+    }
+
+    [TearDown]
+    public void Teardown()
+    {
+        Object.Destroy(mapCreatorObject);
     }
 
 
@@ -28,6 +34,27 @@ public class MapCreatorTest
         mapCreator.CreateMap();
         tiles = mapCreator.GetTiles();
         Assert.AreNotEqual(0, tiles.Count);
+    }
+
+    [Test]
+    public void ItCanReturnARockTile()
+    {
+        GameObject tile = mapCreator.GetTile("rock");
+        Assert.AreEqual("rock", tile.tag);
+    }
+
+       [Test]
+    public void ItCanReturnAMeadowTile()
+    {
+        GameObject tile = mapCreator.GetTile("meadow");
+        Assert.AreEqual("meadow", tile.tag);
+    }
+
+       [Test]
+    public void ItCanReturnALakeTile()
+    {
+        GameObject tile = mapCreator.GetTile("lake");
+        Assert.AreEqual("lake", tile.tag);
     }
 
    

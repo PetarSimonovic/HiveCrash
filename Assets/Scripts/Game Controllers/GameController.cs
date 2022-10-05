@@ -229,5 +229,12 @@ public class GameController : MonoBehaviour
       displayController = Instantiate(displayController);
     }
 
+    // Getters and Setters
+
+    public List<GameObject> GetTiles() 
+    {
+      return this.tiles;
+    }
+
 
 }

@@ -162,7 +162,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.11
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2568213613234906205
 MonoBehaviour:
@@ -178,7 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnteringHive: 0
   hivePosition: {x: 0, y: 0, z: 0}
-  moveSpeed: 20
 --- !u!1001 &3560666749585971763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,17 +193,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
@@ -259,7 +258,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7601226680800833775, guid: d403c790e0d6e463396840dde6ca2c8a,
         type: 3}

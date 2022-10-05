@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8255567828160528010}
   - component: {fileID: 4608119378313109636}
-  - component: {fileID: 1864832601340573533}
   - component: {fileID: 1735694253726921170}
   - component: {fileID: 6699702700628628638}
+  - component: {fileID: 2568213613234906205}
   m_Layer: 3
   m_Name: ScopeBee
   m_TagString: scope
@@ -52,21 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 2
---- !u!114 &1864832601340573533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8255567828160528005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5263791667e49e1923199b88d1e010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnteringHive: 0
-  hivePosition: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
 --- !u!96 &1735694253726921170
 TrailRenderer:
   serializedVersion: 2
@@ -179,6 +164,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2568213613234906205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255567828160528005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b230c697ee4fc4c5a961a9a34fa89aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnteringHive: 0
+  hivePosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 20
 --- !u!1001 &3560666749585971763
 PrefabInstance:
   m_ObjectHideFlags: 0

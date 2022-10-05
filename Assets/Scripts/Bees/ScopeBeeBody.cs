@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScopeBeeBody : BeeBody
-
 {
 
-    private Rigidbody rigidBody;
+    private bool hasStopped;
 
-    private void Start()
+    protected override void Update()
     {
-        rigidBody = GetComponent<Rigidbody>();
+    //  if (!hasStopped) 
+    //  {
+      moveBee();
+    // }
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+      string otherObject = other.gameObject.tag.ToString();
+      if (otherObject == "hive" && isOutsideHive) 
+      {
+        stopMoving();
+      }
+    }
 
-    //  private void OnCollisionEnter(Collision other)
-    // {
-    //     bounceBack(other);
-    // }
-
-    
-
-
-
-    // private void bounceBack(Collision other)
-    // {
-       
-    //  // how much the character should be knocked back
-    //     var magnitude = 100;
-    //     // calculate force vector
-    //     var force = transform.position - other.transform.position;
-    //     // normalize force vector to get direction only and trim magnitude
-    //     force.Normalize();
-    //     rigidBody.AddForce(force * magnitude);
-
-    // }
+    private void stopMoving()
+    {
+        Debug.Log("Stoping scope motion");
+        moveSpeed = 0.0f;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        isOutsideHive = false;
+        hasStopped = true;
+    }
 
 }

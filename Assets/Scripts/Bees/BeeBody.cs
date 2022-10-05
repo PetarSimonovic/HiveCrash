@@ -10,7 +10,7 @@ public class BeeBody : MonoBehaviour
 
     public bool isEnteringHive = false;
 
-    private bool isOutsideHive = false;
+    protected bool isOutsideHive = false;
 
     private bool collectingPollen = false;
 
@@ -24,24 +24,24 @@ public class BeeBody : MonoBehaviour
 
     public Vector3 hivePosition;
 
-    private Rigidbody rigidBody;
+    protected Rigidbody rigidBody;
 
     private Flower flower;
 
     private Transform target;
 
-     [SerializeField]
-    private float moveSpeed = 20f;
+    protected float moveSpeed = 6f;
 
 
     private void Start()
     {
+      Debug.Log("moveSpeed " + moveSpeed);
       rigidBody = GetComponent<Rigidbody>();
       hivePosition = transform.position;
     }
 
 
-    private void Update()
+    protected virtual void Update()
     {
      if (collectingPollen)
      {
@@ -60,7 +60,7 @@ public class BeeBody : MonoBehaviour
       transform.Rotate(new Vector3(0, 0, 9f));
     }
 
-    private void moveBee()
+    protected virtual void moveBee()
     {
       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
@@ -97,7 +97,7 @@ public class BeeBody : MonoBehaviour
       }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
       processCollision(other);
 

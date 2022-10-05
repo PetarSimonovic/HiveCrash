@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScopeBee : MonoBehaviour
+public class ScopeBeeBody : BeeBody
 
 {
 

@@ -141,7 +141,7 @@ public class BeeBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 10;
+        var magnitude = 35;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
@@ -157,6 +157,7 @@ public class BeeBody : MonoBehaviour
 
     private void enterHive(Collider other)
     {
+      Debug.Log("trying to enter hive " + isOutsideHive);
       if (isOutsideHive)
         {
           isEnteringHive = true;

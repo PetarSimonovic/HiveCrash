@@ -157,7 +157,7 @@ public class BeeBody : MonoBehaviour
 
     private void enterHive(Collider other)
     {
-      if (getHiveId(other) == this.hiveId && isOutsideHive)
+      if (isOutsideHive)
         {
           isEnteringHive = true;
         }

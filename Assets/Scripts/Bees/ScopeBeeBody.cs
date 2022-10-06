@@ -5,8 +5,6 @@ using UnityEngine;
 public class ScopeBeeBody : BeeBody
 {
 
-    private bool hasStopped;
-
     protected override void Update()
     {
     //  if (!hasStopped) 
@@ -26,12 +24,10 @@ public class ScopeBeeBody : BeeBody
 
     private void stopMoving()
     {
-        Debug.Log("Stoping scope motion");
         moveSpeed = 0.0f;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         isOutsideHive = false;
-        hasStopped = true;
     }
 
 }

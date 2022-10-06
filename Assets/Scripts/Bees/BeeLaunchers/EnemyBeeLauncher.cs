@@ -10,9 +10,9 @@ public class EnemyBeeLauncher : BeeLauncher
         this.isLoaded = false;
     }
 
-    protected override Vector3 calculateDirection()
-    {
-      Vector3 direction = this.endPosition - this.launchPosition;
-      return -direction;
-    }
+    // protected override Vector3 calculateDirection()
+    // {
+    //   Vector3 direction = this.endPosition - this.launchPosition;
+    //   return direction;
+    // }
 }

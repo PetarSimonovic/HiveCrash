@@ -24,7 +24,7 @@ public class DisplayController : MonoBehaviour
     {
         if (gameStarted)
         {
-            hivePollenCount.GetComponent<UIText>().SetText(hive.GetPollen().ToString());
+            hivePollenCount.GetComponent<UIText>().SetText(hive.GetPollenPercentage() + "%");
             beeCount.GetComponent<UIText>().SetText(hive.GetBees().Count.ToString());
             infoPane.GetComponent<UIText>().SetText(getBeeInfo());
         }
@@ -47,4 +47,5 @@ public class DisplayController : MonoBehaviour
 
         return beeInfo;
     } 
+
 }

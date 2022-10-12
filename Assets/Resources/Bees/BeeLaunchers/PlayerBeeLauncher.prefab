@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beePrefab: {fileID: 8047048267425654717, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
     type: 3}
-  scopeBeePrefab: {fileID: 8255567828160528005, guid: 60bf5ba76e8fa40d583c574c64db2347,
+  scopeBeePrefab: {fileID: 4569761366483259690, guid: 7e827efebe1e347c7a4c4931050abaf6,
     type: 3}

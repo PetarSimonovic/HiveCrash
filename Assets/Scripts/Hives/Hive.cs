@@ -13,6 +13,8 @@ public class Hive : MonoBehaviour
   private Vector3 position;
 
   private int pollen;
+
+  private int pollenCapacity = 10000;
   
 
   public void Place()
@@ -60,12 +62,19 @@ public class Hive : MonoBehaviour
   public void SetPollen(int pollen)
   {
     this.pollen += pollen;
-    Debug.Log("hive pollen now " + this.pollen);
+    Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
   public int GetPollen()
   {
     return this.pollen;
+  }
+
+  public int GetPollenPercentage()
+  {
+   var decimalValue = ((decimal)this.pollen/(decimal)this.pollenCapacity) * 100;
+   return (int)decimalValue;
+  
   }
 
   public void RemoveBee(Bee bee)

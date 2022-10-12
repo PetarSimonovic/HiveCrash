@@ -48,20 +48,25 @@ public class Hive : MonoBehaviour
     return this.bees.Find(bee => bee.IsInHive());
   }
 
-  public void SetPosition(Vector3 position)
-  {
-    this.position = position;
-  }
+  
 
-
-  public Vector3 GetPosition()
+  public void RemoveBee(Bee bee)
   {
-    return this.position;
+    this.bees.Remove(bee);
+    Debug.Log(bee.GetName() + " has died");
   }
 
   public void SetPollen(int pollen)
   {
     this.pollen += pollen;
+    if (this.pollen > this.pollenCapacity) 
+    {
+      this.pollen = this.pollenCapacity;
+    }
+    else if (this.pollen < 0)
+    {
+      this.pollen = 0;
+    }
     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -77,11 +82,21 @@ public class Hive : MonoBehaviour
   
   }
 
-  public void RemoveBee(Bee bee)
+  public void SetPollenCapacity(int pollenCapacity)
   {
-    this.bees.Remove(bee);
-    Debug.Log(bee.GetName() + " has died");
+    this.pollenCapacity = pollenCapacity;
   }
 
+
+  public void SetPosition(Vector3 position)
+  {
+    this.position = position;
+  }
+
+
+  public Vector3 GetPosition()
+  {
+    return this.position;
+  }
 
 }

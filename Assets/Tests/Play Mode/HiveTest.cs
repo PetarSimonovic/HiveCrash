@@ -87,6 +87,26 @@ public class HiveTest
     Assert.AreEqual(testPosition, testHive.GetPosition());
   }
 
+  [Test]
+  public void HivePollenCannotExceedItsPollenCapacity()
+  {
+    testHive.SetPollenCapacity(100);
+    testHive.SetPollen(50);
+    Assert.AreEqual(50, testHive.GetPollen());
+    testHive.SetPollen(70);
+    Assert.AreEqual(100, testHive.GetPollen());
+    testHive.SetPollen(1000);
+    Assert.AreEqual(100, testHive.GetPollen());
+  }
+
+  [Test]
+  public void HivePollenCannotGoBelowZero()
+  {
+    testHive.SetPollenCapacity(100);
+    testHive.SetPollen(-110);
+    Assert.AreEqual(0, testHive.GetPollen());
+  }
+
   private void addFiveBeesToHive()
   {
     for (int i = 0; i < 5; i++)

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 566378014621957339, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: m_TagString
-      value: hive
+      value: meadow
       objectReference: {fileID: 0}
     - target: {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
@@ -21,6 +21,11 @@ PrefabInstance:
         type: 3}
       propertyPath: heightRange.Array.data[1]
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928283460454243457, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3760278011820489165, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
@@ -77,10 +82,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5033989624260485307, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7497512406429150889, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: m_TagString
-      value: hive
+      value: meadow
       objectReference: {fileID: 0}
     - target: {fileID: 8897323176816589720, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
@@ -95,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 9100556733023408371, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: m_TagString
-      value: hive
+      value: meadow
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}

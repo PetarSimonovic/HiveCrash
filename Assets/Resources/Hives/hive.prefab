@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2942048629335635091}
   - component: {fileID: 4181161369615414191}
   - component: {fileID: 8752485405987206689}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: hive
   m_TagString: hive
   m_Icon: {fileID: 0}

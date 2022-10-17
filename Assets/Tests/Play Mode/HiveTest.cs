@@ -88,22 +88,36 @@ public class HiveTest
   }
 
   [Test]
-  public void HivePollenCannotExceedItsPollenCapacity()
+  public void HiveCanAddPollen()
   {
     testHive.SetPollenCapacity(100);
-    testHive.SetPollen(50);
+    testHive.AddPollen(50);
     Assert.AreEqual(50, testHive.GetPollen());
-    testHive.SetPollen(70);
+  }
+
+  [Test]
+  public void HivePollenCannotExceedItsPollenCapacity()
+  {
+    
+    testHive.AddPollen(70);
+    Assert.AreEqual(70, testHive.GetPollen());
+    testHive.AddPollen(1000);
     Assert.AreEqual(100, testHive.GetPollen());
-    testHive.SetPollen(1000);
-    Assert.AreEqual(100, testHive.GetPollen());
+  }
+
+  [Test]
+  public void HiveCanLosePollen()
+  {
+    testHive.SetPollenCapacity(100);
+    testHive.RemovePollen(30);
+    Assert.AreEqual(70, testHive.GetPollen());
   }
 
   [Test]
   public void HivePollenCannotGoBelowZero()
   {
     testHive.SetPollenCapacity(100);
-    testHive.SetPollen(-110);
+    testHive.RemovePollen(-110);
     Assert.AreEqual(0, testHive.GetPollen());
   }
 

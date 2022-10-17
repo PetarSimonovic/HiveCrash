@@ -53,6 +53,8 @@ MonoBehaviour:
     type: 3}
   enemyHivePrefab: {fileID: 7516243428675172222, guid: 2839ab8feca9143b59c0af5eea9a3978,
     type: 3}
+  displayController: {fileID: -974149619326059351, guid: b7ea7fd5b366e4165a9645799f6087b5,
+    type: 3}
 --- !u!114 &7227615150679960081
 MonoBehaviour:
   m_ObjectHideFlags: 0

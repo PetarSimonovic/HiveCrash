@@ -9,6 +9,9 @@ public class DisplayController : MonoBehaviour
     private GameObject hivePollenCount;
 
     [SerializeField]
+    private GameObject enemyPollenCount;
+
+    [SerializeField]
     private GameObject beeCount;
 
     [SerializeField]
@@ -16,7 +19,11 @@ public class DisplayController : MonoBehaviour
 
     private Hive hive;
 
+    private Hive enemyHive;
+
     private bool gameStarted = false;
+
+    private bool enemyDiscovered = false;
 
 
 
@@ -28,12 +35,22 @@ public class DisplayController : MonoBehaviour
             beeCount.GetComponent<UIText>().SetText(hive.GetBees().Count.ToString());
             infoPane.GetComponent<UIText>().SetText(getBeeInfo());
         }
+        if (enemyDiscovered)
+        {
+            enemyPollenCount.GetComponent<UIText>().SetText(enemyHive.GetPollenPercentage() + "%");
+        }
     }
 
     public void SetHive(Hive hive)
     {
         this.hive = hive;
         this.gameStarted = true;
+    }
+
+      public void SetEnemyHive(Hive enemyHive)
+    {
+        this.enemyHive = enemyHive;
+        this.enemyDiscovered = true;
     }
 
     private string getBeeInfo()

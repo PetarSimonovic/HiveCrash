@@ -227,6 +227,7 @@ public class GameController : MonoBehaviour
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
       displayController = Instantiate(displayController);
+      enemyController.SetDisplayController(displayController);
     }
 
     // Getters and Setters

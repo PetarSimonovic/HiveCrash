@@ -86,6 +86,11 @@ public class Bee
       pollen += pollenCollectionRate;
     }
 
+     public void AddPollen(int pollen)
+    {
+      this.pollen += pollen;
+    }
+
     public int GetPollen()
     {
       return pollen;

@@ -27,10 +27,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1349456046749391561, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
+      objectReference: {fileID: 0}
     - target: {fileID: 1840729872957901751, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840729872957901751, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507982554032830908, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3746245871640392694, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
@@ -42,20 +57,40 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5558050101426916754, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
+      objectReference: {fileID: 0}
     - target: {fileID: 6293390308304859110, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293390308304859110, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
       objectReference: {fileID: 0}
     - target: {fileID: 6707531492695499908, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6707531492695499908, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
+      objectReference: {fileID: 0}
     - target: {fileID: 7164578374002300885, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164578374002300885, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
       objectReference: {fileID: 0}
     - target: {fileID: 8047048267425654706, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
@@ -122,6 +157,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8047048267425654717, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_TagString
+      value: scope
+      objectReference: {fileID: 0}
     - target: {fileID: 8732443775545271701, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -136,20 +176,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5820856355327440535}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8775126121942367169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4569761366483259690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b230c697ee4fc4c5a961a9a34fa89aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnteringHive: 0
-  hivePosition: {x: 0, y: 0, z: 0}
 --- !u!96 &4465060377241234637
 TrailRenderer:
   serializedVersion: 2
@@ -249,3 +275,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-8775126121942367169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569761366483259690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b230c697ee4fc4c5a961a9a34fa89aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnteringHive: 0
+  hivePosition: {x: 0, y: 0, z: 0}

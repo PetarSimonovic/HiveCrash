@@ -8,6 +8,8 @@ using UnityEngine;
 public class BeeBody : MonoBehaviour
   {
 
+    private Bee bee;
+
     public bool isEnteringHive = false;
 
     protected bool isOutsideHive = false;
@@ -35,7 +37,6 @@ public class BeeBody : MonoBehaviour
 
     private void Start()
     {
-      Debug.Log("moveSpeed " + moveSpeed);
       rigidBody = GetComponent<Rigidbody>();
       hivePosition = transform.position;
     }
@@ -120,11 +121,9 @@ public class BeeBody : MonoBehaviour
       }
     }
 
-    private string getHiveId(Collider other)
+    public string GetHiveId()
     {
-      string id = other.transform.parent.gameObject.name;
-      Debug.Log(id);
-      return id;
+      return this.hiveId;
     }
 
 
@@ -157,7 +156,6 @@ public class BeeBody : MonoBehaviour
 
     private void enterHive(Collider other)
     {
-      Debug.Log("trying to enter hive " + isOutsideHive);
       if (isOutsideHive)
         {
           isEnteringHive = true;
@@ -205,5 +203,15 @@ public class BeeBody : MonoBehaviour
     {
       return collectingPollen;
     }
+
+    public void SetBee(Bee bee)
+    {
+      this.bee = bee;
+    }
+
+      public Bee GetBee()
+      {
+        return this.bee;
+      }
  
 }

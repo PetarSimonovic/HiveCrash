@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private GameObject enemyHivePrefab;
 
+    [SerializeField]
+    private DisplayController displayController;
+
     private bool activated;
 
     private Hive playerHive;
@@ -57,6 +60,9 @@ public class EnemyController : MonoBehaviour
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
         enemyHiveIsPlaced = true;
         tiles.Add(enemyHiveTile);
+        Debug.Log("Enemy Hive is");
+        Debug.Log(enemyHiveTile.tag);
+        Debug.Log(enemyHiveTile);
     }
 
         private void initaliseBeeController()
@@ -96,6 +102,7 @@ public class EnemyController : MonoBehaviour
       {
         enemyHivePrefab = Instantiate(enemyHivePrefab, enemyHiveTile.transform.position, Quaternion.identity);
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
+        displayController.SetEnemyHive(enemyHive);
         enemyHive.SetPosition(enemyHivePrefab.transform.position);
         enemyHivePrefab.name = enemyHive.GetId();
       }
@@ -113,5 +120,15 @@ public class EnemyController : MonoBehaviour
         if (beeLauncher.IsLoaded()) {
           beeLauncher.LaunchBee();
         }
+      }
+
+      public Hive GetEnemyHive()
+      {
+        return this.enemyHive;
+      }
+
+      public void SetDisplayController(DisplayController displayController)
+      {
+        this.displayController = displayController;
       }
 }

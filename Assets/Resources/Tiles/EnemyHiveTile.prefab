@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 566378014621957339, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: hive
+      objectReference: {fileID: 0}
     - target: {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: heightRange.Array.data[0]
@@ -72,10 +77,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7497512406429150889, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: hive
+      objectReference: {fileID: 0}
     - target: {fileID: 8897323176816589720, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: m_Name
       value: EnemyHiveTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897323176816589720, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: hive
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100556733023408371, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: hive
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}
@@ -102,5 +122,5 @@ MonoBehaviour:
   heightRange:
   - 0
   - 0
-  enemyHive: {fileID: 7431270116050065195, guid: 2839ab8feca9143b59c0af5eea9a3978,
+  enemyHive: {fileID: 7516243428675172222, guid: 2839ab8feca9143b59c0af5eea9a3978,
     type: 3}

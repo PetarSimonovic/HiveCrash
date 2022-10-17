@@ -56,18 +56,25 @@ public class Hive : MonoBehaviour
     Debug.Log(bee.GetName() + " has died");
   }
 
-  public void SetPollen(int pollen)
+  public void AddPollen(int pollen)
   {
     this.pollen += pollen;
     if (this.pollen > this.pollenCapacity) 
     {
       this.pollen = this.pollenCapacity;
     }
-    else if (this.pollen < 0)
+   
+    Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
+  }
+
+  public void RemovePollen(int pollen) 
+  { 
+    this.pollen -= pollen;
+    if (this.pollen < 0)
     {
       this.pollen = 0;
     }
-    Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
+     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
   public int GetPollen()
@@ -98,5 +105,27 @@ public class Hive : MonoBehaviour
   {
     return this.position;
   }
+
+  private int calculatePollenTaken()
+  {
+    int pollenTaken = this.pollen - 100 <= 0 ? this.pollen : 100;
+    return pollenTaken;
+  }
+
+  private void OnCollisionEnter(Collision other)
+  {
+    Debug.Log("Hive Collision!");
+    if (other.gameObject.tag == "bee")
+    {
+      Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
+
+      bee.SetMessage(bee.GetName() + " attacked hive");
+      int pollenTaken = calculatePollenTaken();
+      RemovePollen(pollenTaken);
+      bee.AddPollen(pollenTaken);
+    }
+  }
+    
+
 
 }

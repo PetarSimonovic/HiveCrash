@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: meadow
       objectReference: {fileID: 0}
+    - target: {fileID: 1447841027605637036, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2251217204324887825, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_Name

@@ -24,6 +24,8 @@ public class PlayerBeeLauncher : BeeLauncher
         return;
       }
       this.endPosition = newPosition;
+
+      /// side effects? move into different method
       Destroy(scopeBee);
       launchScopeBee();
     }

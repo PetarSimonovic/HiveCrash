@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hive : MonoBehaviour
 {
 
+  private Rigidbody rigidBody;
 
   private bool isPlaced = false;
   
@@ -16,10 +17,19 @@ public class Hive : MonoBehaviour
 
   private int pollenCapacity = 10000;
   
+  private void Awake()
+  {
+    rigidBody = GetComponent<Rigidbody>();
+    Debug.Log("Rigidbody");
+    Debug.Log(rigidBody.mass);
+  }
 
   public void Place()
   {
+    Debug.Log("PLACED!");
     this.isPlaced = true;
+    
+
   }
 
   public bool IsPlaced()
@@ -63,7 +73,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = this.pollenCapacity;
     }
-   
+    setMass();
     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -74,7 +84,14 @@ public class Hive : MonoBehaviour
     {
       this.pollen = 0;
     }
+     setMass();
      Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
+  }
+
+  private void setMass()
+  {
+    this.rigidBody.mass = (float)this.pollen;
+    Debug.Log("mass: " + this.rigidBody.mass);
   }
 
   public int GetPollen()

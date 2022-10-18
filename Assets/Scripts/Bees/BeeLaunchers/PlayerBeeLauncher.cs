@@ -18,6 +18,10 @@ public class PlayerBeeLauncher : BeeLauncher
       if (this.endPosition == newPosition)
       {
         return;
+      } 
+      else if (!isLoaded) 
+      {
+        return;
       }
       this.endPosition = newPosition;
       Destroy(scopeBee);

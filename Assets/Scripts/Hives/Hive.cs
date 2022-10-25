@@ -133,15 +133,11 @@ public class Hive : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   {
-    Debug.Log("Hive Collision!");
-    if (other.gameObject.tag == "scope")
-    {
-      rigidBody.isKinematic=true;
-      Debug.Log("Scope bee hit hive - ignoring collision");
-
-    }
     if (other.gameObject.tag == "bee")
     {
+      rigidBody.isKinematic = false;
+      var force = transform.position - other.transform.position;
+      rigidBody.AddForce(force * 100, ForceMode.Impulse);
       Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
       bee.SetMessage(bee.GetName() + " attacked hive");
       int pollenTaken = calculatePollenTaken();
@@ -152,7 +148,7 @@ public class Hive : MonoBehaviour
 
   private void OnCollisionExit(Collision other)
   {
-    rigidBody.isKinematic = false;
+    rigidBody.isKinematic = true;
   }
 
    private void OnTriggerEnter(Collider other)

@@ -74,7 +74,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = this.pollenCapacity;
     }
-   // setMass();
+   setMass();
     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -85,7 +85,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = 0;
     }
-    // setMass();
+    setMass();
      Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 

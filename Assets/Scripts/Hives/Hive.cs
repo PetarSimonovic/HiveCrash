@@ -74,7 +74,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = this.pollenCapacity;
     }
-   setMass();
+  // setMass();
     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -85,7 +85,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = 0;
     }
-    setMass();
+   // setMass();
      Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -133,9 +133,14 @@ public class Hive : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   {
+    // if (other.gameObject.tag == "scope")
+    // {
+    //   Debug.Log("scope on enemy");
+    //   rigidBody.isKinematic = true;
+    //   return;
+    // }
     if (other.gameObject.tag == "bee")
     {
-      rigidBody.isKinematic = false;
       var force = transform.position - other.transform.position;
       rigidBody.AddForce(force * 100, ForceMode.Impulse);
       Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
@@ -143,22 +148,6 @@ public class Hive : MonoBehaviour
       int pollenTaken = calculatePollenTaken();
       RemovePollen(pollenTaken);
       bee.AddPollen(pollenTaken);
-    }
-  }
-
-  private void OnCollisionExit(Collision other)
-  {
-    rigidBody.isKinematic = true;
-  }
-
-   private void OnTriggerEnter(Collider other)
-  {
-    Debug.Log("Hive Trigger!");
-    if (other.gameObject.tag == "bee")
-    {
-      Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
-
-      bee.SetMessage(bee.GetName() + " passed through hive");
     }
   }
 

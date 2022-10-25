@@ -7,10 +7,8 @@ public class ScopeBeeBody : BeeBody
 
     protected override void Update()
     {
-    //  if (!hasStopped) 
-    //  {
       moveBee();
-    // }
+      rotateBeeForward();
     }
 
     protected override void OnTriggerEnter(Collider other)

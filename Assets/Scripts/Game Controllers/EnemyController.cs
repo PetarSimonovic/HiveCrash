@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!activated)
             {
-                activate();
+                activate();            
             }
             checkTimer();
         }
@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Enemy Hive is");
         Debug.Log(enemyHiveTile.tag);
         Debug.Log(enemyHiveTile);
+        
     }
 
         private void initaliseBeeController()
@@ -105,6 +106,8 @@ public class EnemyController : MonoBehaviour
         displayController.SetEnemyHive(enemyHive);
         enemyHive.SetPosition(enemyHivePrefab.transform.position);
         enemyHivePrefab.name = enemyHive.GetId();
+        Debug.Log("Enemy Hive mass");
+        Debug.Log(enemyHive.GetHiveMass());
       }
 
       private void initialiseBeeLauncher()

@@ -20,8 +20,9 @@ public class Hive : MonoBehaviour
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
-    Debug.Log("Rigidbody");
+    Debug.Log("Hive Mass");
     Debug.Log(rigidBody.mass);
+    AddPollen(this.pollenCapacity);
   }
 
   public void Place()
@@ -73,7 +74,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = this.pollenCapacity;
     }
-    setMass();
+   // setMass();
     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
@@ -84,13 +85,14 @@ public class Hive : MonoBehaviour
     {
       this.pollen = 0;
     }
-     setMass();
+    // setMass();
      Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
   private void setMass()
   {
-    this.rigidBody.mass = (float)this.pollen;
+    var percentage = GetPollenPercentage();
+    this.rigidBody.mass = (float)percentage/10;
     Debug.Log("mass: " + this.rigidBody.mass);
   }
 
@@ -142,6 +144,23 @@ public class Hive : MonoBehaviour
       bee.AddPollen(pollenTaken);
     }
   }
+
+   private void OnTriggerEnter(Collider other)
+  {
+    Debug.Log("Hive Trigger!");
+    if (other.gameObject.tag == "bee")
+    {
+      Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
+
+      bee.SetMessage(bee.GetName() + " passed through hive");
+    }
+  }
+
+  public float GetHiveMass() 
+  {
+    Debug.Log("HIVE MASS " + rigidBody.mass);
+    return rigidBody.mass;
+  } 
     
 
 

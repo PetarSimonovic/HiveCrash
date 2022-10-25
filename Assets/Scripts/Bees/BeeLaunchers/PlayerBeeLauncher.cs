@@ -35,7 +35,7 @@ public class PlayerBeeLauncher : BeeLauncher
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.identity); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();
-      scopeBeeBody.AddForce((calculateDirection()));
+      scopeBeeBody.AddForceAtPosition(calculateDirection().normalized, launchPosition, ForceMode.Impulse);
     }
 
     protected override void reset()

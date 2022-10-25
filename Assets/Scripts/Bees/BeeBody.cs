@@ -51,22 +51,17 @@ public class BeeBody : MonoBehaviour
      else {
       moveBee();
       rotateBeeForward();
-      spinBee(); 
-
      }
     }
 
-    private void spinBee()
-    {
-      transform.Rotate(new Vector3(0, 0, 9f));
-    }
+  
 
     protected virtual void moveBee()
     {
-      rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      //rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.02f;
+        moveSpeed = moveSpeed - 0.05f;
       }
       else
       {
@@ -74,7 +69,7 @@ public class BeeBody : MonoBehaviour
       }
     }
 
-    private void rotateBeeForward(){
+    protected virtual void rotateBeeForward(){
       Quaternion rotation = Quaternion.LookRotation(rigidBody.velocity, Vector3.up);
       transform.rotation = rotation;
     }
@@ -109,6 +104,7 @@ public class BeeBody : MonoBehaviour
       string otherObject = other.gameObject.tag.ToString();
       switch (otherObject) { 
         case "hive":
+          Debug.Log("enteringHive");
           enterHive(other);
           return true;
 
@@ -145,7 +141,7 @@ public class BeeBody : MonoBehaviour
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-        rigidBody.AddForce(force * magnitude, ForceMode.Impulse);
+        rigidBody.AddForce(force);
 
     }
 
@@ -176,7 +172,7 @@ public class BeeBody : MonoBehaviour
     private void placeBeeOnFlower()
     {  
       moveSpeed = IDLE_SPEED;
-      rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+     // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       float step = RETURN_SPEED * Time.deltaTime;
       transform.position = Vector3.MoveTowards(transform.localPosition, flower.GetPosition(), step);
       Quaternion rotation = Quaternion.LookRotation(Vector3.up, Vector3.up);

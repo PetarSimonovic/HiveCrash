@@ -11,14 +11,14 @@ public class BeeLauncherTests
     private Bee testBee;
     private Vector3 launchPosition;
     private Vector3 endPosition;
+    private GameObject hivePrefab;
+    private Hive hive;
 
     [SetUp]
     public void SetUp()
     {
         setUpBeeLauncher();
         setUpTestBee();
-        setLaunchPosition();
-        setLaunchPosition();
     }
 
     [TearDown]
@@ -61,25 +61,6 @@ public class BeeLauncherTests
         Assert.IsFalse(testBee.IsInHive());
     }
 
-
-    [Test]
-    public void ItCanSetItsLaunchPositionAndAdjustsForYPositionLock()
-    {
-        Vector3 launchPosition = new Vector3 (10, 10, 0);
-        Vector3 launchPositionYOffset = new Vector3(launchPosition.x, launchPosition.y + beeLauncher.GetLaunchPositionY(), launchPosition.z);
-        beeLauncher.SetLaunchPosition(launchPosition);
-        Assert.AreEqual(launchPositionYOffset, beeLauncher.GetLaunchPosition());
-    }
-
-    [Test]
-    public void ItCanSetItsEndPositionAndAdjustsForYPositionLock()
-    {
-        Vector3 endPosition = new Vector3 (10, 10, 0);
-        Vector3 endPositionYOffset = new Vector3(endPosition.x, endPosition.y + beeLauncher.GetLaunchPositionY(), endPosition.z);
-        beeLauncher.SetEndPosition(endPosition);
-        Assert.AreEqual(endPositionYOffset, beeLauncher.GetEndPosition());
-    }
-
     [Test]
     public void IsNotLoadedAfterBeeIsLaunched()
     {
@@ -89,13 +70,7 @@ public class BeeLauncherTests
     }
 
 
-    [Test]
-    public void EndPositionIsTheSameAsLaunchPositionAfterBeeIsLaunched()
-    {
-        beeLauncher.LoadBee(testBee);
-        beeLauncher.LaunchBee();
-        Assert.AreEqual(beeLauncher.GetLaunchPosition(), beeLauncher.GetEndPosition());
-    }
+
 
 
 
@@ -105,6 +80,8 @@ public class BeeLauncherTests
     {
         beeLauncherObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Bees/BeeLaunchers/BeeLauncher"));
         beeLauncher = beeLauncherObject.GetComponent<BeeLauncher>();
+        hivePrefab = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Hives/Hive"));
+        beeLauncher.SetHive(hivePrefab.GetComponent<Hive>());
     }
 
     private void setUpTestBee()
@@ -112,12 +89,6 @@ public class BeeLauncherTests
         testBee = new Bee("1");
     }
 
-    private void setLaunchPosition()
-    {
-        launchPosition = new Vector3 (10, 10, 0);
-        beeLauncher.SetLaunchPosition(launchPosition);
-       
-    }
 
     private void setEndPosition()
     {

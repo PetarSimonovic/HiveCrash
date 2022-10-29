@@ -17,12 +17,14 @@ public class Hive : MonoBehaviour
 
   private int pollenCapacity = 10000;
   
+  
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
-    Debug.Log("Hive Mass");
-    Debug.Log(rigidBody.mass);
-    AddPollen(this.pollenCapacity);
+    Debug.Log("Hive Created");
+    Debug.Log("rigidody mass " + rigidBody.mass);
+    Debug.Log("rigidbody " + rigidBody);
+    //AddPollen(this.pollenCapacity);
   }
 
   public void Place()
@@ -75,7 +77,6 @@ public class Hive : MonoBehaviour
       this.pollen = this.pollenCapacity;
     }
   // setMass();
-    Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
   public void RemovePollen(int pollen) 
@@ -86,7 +87,6 @@ public class Hive : MonoBehaviour
       this.pollen = 0;
     }
    // setMass();
-     Debug.Log("hive pollen now " + GetPollen() + " " + GetPollenPercentage());
   }
 
   private void setMass()
@@ -122,7 +122,7 @@ public class Hive : MonoBehaviour
 
   public Vector3 GetPosition()
   {
-    return this.position;
+    return transform.position;
   }
 
   private int calculatePollenTaken()
@@ -132,17 +132,11 @@ public class Hive : MonoBehaviour
   }
 
   private void OnCollisionEnter(Collision other)
-  {
-    // if (other.gameObject.tag == "scope")
-    // {
-    //   Debug.Log("scope on enemy");
-    //   rigidBody.isKinematic = true;
-    //   return;
-    // }
+  { 
     if (other.gameObject.tag == "bee")
     {
-      var force = transform.position - other.transform.position;
-      rigidBody.AddForce(force * 100, ForceMode.Impulse);
+      Vector3 force = transform.position - other.transform.position;
+      rigidBody.AddForce(force * 55, ForceMode.Impulse);
       Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
       bee.SetMessage(bee.GetName() + " attacked hive");
       int pollenTaken = calculatePollenTaken();
@@ -156,7 +150,6 @@ public class Hive : MonoBehaviour
     Debug.Log("HIVE MASS " + rigidBody.mass);
     return rigidBody.mass;
   } 
-    
 
 
 }

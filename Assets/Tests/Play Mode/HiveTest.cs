@@ -7,14 +7,15 @@ using UnityEngine.TestTools;
 public class HiveTest
 {
 
-    private GameObject testHiveGameObject = new GameObject();
+    private GameObject testHivePrefab;
     private Hive testHive;
     private Bee bee;
 
     [SetUp]
     public void SetUp()
     {
-      testHive = testHiveGameObject.AddComponent(typeof(Hive)) as Hive;
+      testHivePrefab = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Hives/Hive"));
+      testHive = testHivePrefab.GetComponent<Hive>();
       addFiveBeesToHive();
     }
 
@@ -79,13 +80,13 @@ public class HiveTest
     Assert.IsNull(testBee);
   }
 
-  [Test]
-  public void ItCanSetItsPosition()
-  {
-    Vector3 testPosition = new Vector3 (10, 10, 10);
-    testHive.SetPosition(testPosition);
-    Assert.AreEqual(testPosition, testHive.GetPosition());
-  }
+  // [Test]
+  // public void ItCanSetItsPosition()
+  // {
+  //   Vector3 testPosition = new Vector3 (10, 10, 10);
+  //   testHive.SetPosition(testPosition);
+  //   Assert.AreEqual(testPosition, testHive.GetPosition());
+  // }
 
   [Test]
   public void HiveCanAddPollen()
@@ -98,7 +99,7 @@ public class HiveTest
   [Test]
   public void HivePollenCannotExceedItsPollenCapacity()
   {
-    
+    testHive.SetPollenCapacity(100);
     testHive.AddPollen(70);
     Assert.AreEqual(70, testHive.GetPollen());
     testHive.AddPollen(1000);
@@ -117,7 +118,7 @@ public class HiveTest
   public void HivePollenCannotGoBelowZero()
   {
     testHive.SetPollenCapacity(100);
-    testHive.RemovePollen(-110);
+    testHive.RemovePollen(110);
     Assert.AreEqual(0, testHive.GetPollen());
   }
 

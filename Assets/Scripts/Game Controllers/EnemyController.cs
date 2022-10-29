@@ -8,10 +8,10 @@ public class EnemyController : MonoBehaviour
     private GameObject enemyHiveTile;
 
     [SerializeField]
-    private EnemyBeeLauncher beeLauncher; // This is GameObject ...
+    private BeeLauncher beeLauncher; 
 
     [SerializeField]
-    private BeeController beeController; // But this is BeeController?!?
+    private BeeController beeController; 
 
     [SerializeField]
     private GameObject enemyHivePrefab;
@@ -66,14 +66,14 @@ public class EnemyController : MonoBehaviour
         
     }
 
-        private void initaliseBeeController()
+        private void initialiseBeeController()
         {
             beeController = Instantiate(beeController);
             beeController.SetHive(enemyHive);
             beeController.AddBees(5);
         }
 
-      private void initaliseTimer()
+      private void initialiseTimer()
         {
         timer = gameObject.GetComponent<Timer>();
         timer.SetOn(true);
@@ -93,27 +93,22 @@ public class EnemyController : MonoBehaviour
       private void activate()
       {
         activated = true;
-        initaliseHive();
-        initaliseBeeController();
-        initaliseTimer();
-        initialiseBeeLauncher();
+        initialiseHive();
+        initialiseBeeController();
+        initialiseTimer();
       }  
 
-      private void initaliseHive()
+      private void initialiseHive()
       {
         enemyHivePrefab = Instantiate(enemyHivePrefab, enemyHiveTile.transform.position, Quaternion.identity);
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         displayController.SetEnemyHive(enemyHive);
-        enemyHive.SetPosition(enemyHivePrefab.transform.position);
         enemyHivePrefab.name = enemyHive.GetId();
-        Debug.Log("Enemy Hive mass");
-        Debug.Log(enemyHive.GetHiveMass());
+        beeLauncher.SetHive(enemyHive);
+
+
       }
 
-      private void initialiseBeeLauncher()
-      {
-        beeLauncher.SetLaunchPosition(enemyHive.GetPosition());
-      }
 
       private void launchBee()
       {

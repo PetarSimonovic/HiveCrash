@@ -32,10 +32,12 @@ public class PlayerBeeLauncher : BeeLauncher
 
     private void launchScopeBee()
     {
+      Vector3 launchPosition = fixYPosition(hive.GetPosition());
       scopeBee = Instantiate(scopeBeePrefab, launchPosition, Quaternion.identity); // Quaternion.identity affects rotation?    
       scopeBeeBody = scopeBee.GetComponent<Rigidbody>();
       Vector3 direction = calculateDirection();
-      scopeBeeBody.AddForceAtPosition(calculateDirection().normalized, launchPosition, ForceMode.Impulse);
+      scopeBee.GetComponent<BeeBody>().SetHive(hive);
+      ApplyForceToBeeBody(scopeBee.GetComponent<Rigidbody>(), launchPosition);
     }
 
     protected override void reset()
@@ -46,7 +48,7 @@ public class PlayerBeeLauncher : BeeLauncher
 
      protected override Vector3 calculateDirection()
     {
-      Vector3 direction = this.endPosition - this.launchPosition;
+      Vector3 direction = this.endPosition - hive.GetPosition();
       return -direction;
     }
 

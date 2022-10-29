@@ -24,7 +24,7 @@ public class BeeBody : MonoBehaviour
 
     private string hiveId;
 
-    public Vector3 hivePosition;
+    public float hivePositionY;
 
     protected Rigidbody rigidBody;
 
@@ -34,11 +34,12 @@ public class BeeBody : MonoBehaviour
 
     protected float moveSpeed = 6f;
 
+    private Hive hive;
 
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
-      hivePosition = transform.position;
+      hivePositionY = rigidBody.transform.position.y;
     }
 
 
@@ -58,13 +59,14 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void moveBee()
     {
-      //rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.05f;
+        moveSpeed = moveSpeed - 0.08f;
       }
       else
       {
+       GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized;
        returnToHive();
       }
     }
@@ -79,9 +81,8 @@ public class BeeBody : MonoBehaviour
       isIdling = true;
       moveSpeed = IDLE_SPEED;
       float step = RETURN_SPEED * Time.deltaTime;
-      transform.position = Vector3.MoveTowards(transform.localPosition, hivePosition, step);
-      Quaternion rotation = Quaternion.LookRotation(hivePosition, Vector3.up);
-      transform.rotation = rotation;
+      Vector3 hivePosition = new Vector3 (hive.GetPosition().x, hivePositionY, hive.GetPosition().z);
+      transform.position = Vector3.MoveTowards(transform.position, hivePosition, step);
     }
 
 
@@ -95,11 +96,11 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-      processCollision(other);
+      processTriggerCollision(other);
 
     }
 
-    private bool processCollision(Collider other)
+    private bool processTriggerCollision(Collider other)
     {
       string otherObject = other.gameObject.tag.ToString();
       switch (otherObject) { 
@@ -136,12 +137,12 @@ public class BeeBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 35;
+        var magnitude = 100;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-        rigidBody.AddForce(force);
+        rigidBody.AddForce(force * magnitude);
 
     }
 
@@ -205,9 +206,14 @@ public class BeeBody : MonoBehaviour
       this.bee = bee;
     }
 
-      public Bee GetBee()
-      {
-        return this.bee;
-      }
+    public Bee GetBee()
+    {
+      return this.bee;
+    }
+
+    public void SetHive(Hive hive)
+    {
+      this.hive = hive;
+    }
  
 }

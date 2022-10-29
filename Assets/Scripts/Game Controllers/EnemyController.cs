@@ -100,7 +100,8 @@ public class EnemyController : MonoBehaviour
 
       private void initialiseHive()
       {
-        enemyHivePrefab = Instantiate(enemyHivePrefab, enemyHiveTile.transform.position, Quaternion.identity);
+        Vector3 hivePosition = new Vector3(enemyHiveTile.transform.position.x, 0.70f, enemyHiveTile.transform.position.z);
+        enemyHivePrefab = Instantiate(enemyHivePrefab, hivePosition, Quaternion.identity);
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         displayController.SetEnemyHive(enemyHive);
         enemyHivePrefab.name = enemyHive.GetId();

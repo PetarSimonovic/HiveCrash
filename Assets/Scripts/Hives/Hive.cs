@@ -136,7 +136,7 @@ public class Hive : MonoBehaviour
     if (other.gameObject.tag == "bee")
     {
       Vector3 force = transform.position - other.transform.position;
-      rigidBody.AddForce(force * 5, ForceMode.Impulse);
+      rigidBody.AddForce(force, ForceMode.Impulse);
       Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
       bee.SetMessage(bee.GetName() + " attacked hive");
       int pollenTaken = calculatePollenTaken();

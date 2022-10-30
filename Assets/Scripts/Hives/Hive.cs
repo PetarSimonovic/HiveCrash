@@ -24,7 +24,7 @@ public class Hive : MonoBehaviour
     Debug.Log("Hive Created");
     Debug.Log("rigidody mass " + rigidBody.mass);
     Debug.Log("rigidbody " + rigidBody);
-    //AddPollen(this.pollenCapacity);
+    AddPollen(this.pollenCapacity);
   }
 
   public void Place()
@@ -76,7 +76,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = this.pollenCapacity;
     }
-  // setMass();
+ // setMass();
   }
 
   public void RemovePollen(int pollen) 
@@ -86,7 +86,7 @@ public class Hive : MonoBehaviour
     {
       this.pollen = 0;
     }
-   // setMass();
+  // setMass();
   }
 
   private void setMass()
@@ -136,7 +136,7 @@ public class Hive : MonoBehaviour
     if (other.gameObject.tag == "bee")
     {
       Vector3 force = transform.position - other.transform.position;
-      rigidBody.AddForce(force * 55, ForceMode.Impulse);
+      rigidBody.AddForce(force * 15, ForceMode.Impulse);
       Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
       bee.SetMessage(bee.GetName() + " attacked hive");
       int pollenTaken = calculatePollenTaken();

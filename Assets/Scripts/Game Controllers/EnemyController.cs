@@ -56,13 +56,11 @@ public class EnemyController : MonoBehaviour
         GameObject tile = tiles[index];
         tiles.Remove(tile);
         Destroy(tile);
+        Vector3 tilePosition = new Vector3 (tile.transform.position.x, 0.1f, tile.transform.position.y);
         enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
         enemyHiveIsPlaced = true;
         tiles.Add(enemyHiveTile);
-        Debug.Log("Enemy Hive is");
-        Debug.Log(enemyHiveTile.tag);
-        Debug.Log(enemyHiveTile);
         
     }
 
@@ -100,7 +98,7 @@ public class EnemyController : MonoBehaviour
 
       private void initialiseHive()
       {
-        Vector3 hivePosition = new Vector3(enemyHiveTile.transform.position.x, 0.70f, enemyHiveTile.transform.position.z);
+        Vector3 hivePosition = new Vector3(enemyHiveTile.transform.position.x, 1.0f, enemyHiveTile.transform.position.z);
         enemyHivePrefab = Instantiate(enemyHivePrefab, hivePosition, Quaternion.identity);
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         displayController.SetEnemyHive(enemyHive);

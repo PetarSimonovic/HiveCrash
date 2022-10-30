@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6307228710554657482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119640377834133979}
+  - component: {fileID: 4407470820128950534}
+  m_Layer: 7
+  m_Name: groundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119640377834133979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307228710554657482}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4138916539746352387}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &4407470820128950534
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307228710554657482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2190622540023885545, guid: 31afb6173824a40f582ad7494acd35e6, type: 3}
 --- !u!1001 &963579298194932942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,6 +156,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1338303385014707439, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25ce333e6efd74da9917ae547e2065f8, type: 3}
+--- !u!4 &4138916539746352387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3760278011820489165, guid: 25ce333e6efd74da9917ae547e2065f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 963579298194932942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8513762686584291158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8897323176816589720, guid: 25ce333e6efd74da9917ae547e2065f8,
@@ -130,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: df2a877814b6741f8ad8e4f8664b8bc2, type: 2}
   heightRange:
-  - 0
-  - 0
+  - 0.1
+  - 0.1
   enemyHive: {fileID: 7516243428675172222, guid: 2839ab8feca9143b59c0af5eea9a3978,
     type: 3}

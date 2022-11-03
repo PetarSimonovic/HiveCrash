@@ -10,10 +10,14 @@ The game currently runs in Unity's mobile simulator and can be built for iOS.
 
 Click, drag back and release to launch a bee from the hive.
 
+Explore the map.
+
 Collect pollen from flowers that are in bloom: bees need to eat pollen to survive.
 
-Explore the map. 
+Ping bees at enemey hives to attack. 
 
-Ping bees at enemey hives to attack. Bees that hit a hive will steal pollen from it and return it to their home.
+Bees that hit a hive will steal pollen from it and return it to their home.
 
-Nudge the rival hive off the map or into a lake to defeat it.
+The more pollen a hive has, the heavier it is. Light hives are easy for even the smallest bee to move.
+
+Nudge the rival hive off the map or into a lake to defeat it, before its bees push you over the edge.

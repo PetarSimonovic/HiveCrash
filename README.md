@@ -14,6 +14,6 @@ Collect pollen from flowers: bees need to eat pollen to survive.
 
 Explore the map. 
 
-If you discover an enemy hive, ping bees at it to attach. Bees that hit a hive will steal pollen from it and nudge it.
+Ping bees at enemey hives to attack. Bees that hit a hive will steal pollen from it and return it to their home.
 
-Push the rival hive off the map or into a lake to defeat it.
+Nudge the rival hive off the map or into a lake to defeat it.

@@ -14,7 +14,7 @@ Explore the map.
 
 Collect pollen from flowers that are in bloom: bees need to eat pollen to survive.
 
-Ping bees at enemey hives to attack. 
+Ping bees at enemy hives to attack. 
 
 Bees that hit a hive will steal pollen from it and return the spoils to their home.
 

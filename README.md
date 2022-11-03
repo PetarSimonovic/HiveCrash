@@ -16,7 +16,7 @@ Collect pollen from flowers that are in bloom: bees need to eat pollen to surviv
 
 Ping bees at enemey hives to attack. 
 
-Bees that hit a hive will steal pollen from it and return it to their home.
+Bees that hit a hive will steal pollen from it and return the spoils to their home.
 
 The more pollen a hive has, the heavier it is. Light hives are easy for even the smallest bee to move.
 

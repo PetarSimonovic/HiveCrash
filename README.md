@@ -8,7 +8,7 @@ The game currently runs in Unity's mobile simulator and can be built for iOS.
 
 ## How to play
 
-Pull back and release to launch a bee from the hive.
+Click, drag back and release to launch a bee from the hive.
 
 Collect pollen from flowers: bees need to eat pollen to survive.
 

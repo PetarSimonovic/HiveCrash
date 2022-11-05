@@ -26,7 +26,6 @@ public class Hive : MonoBehaviour
 
   public void Place()
   {
-    Debug.Log("PLACED!");
     this.isPlaced = true;
     
 
@@ -63,7 +62,7 @@ public class Hive : MonoBehaviour
   public void RemoveBee(Bee bee)
   {
     this.bees.Remove(bee);
-    Debug.Log(bee.GetName() + " has died");
+    bee.SetMessage(bee.GetName() + " has died");
   }
 
   public void AddPollen(int pollen)
@@ -90,7 +89,6 @@ public class Hive : MonoBehaviour
   {
     var percentage = GetPollenPercentage();
     this.rigidBody.mass = (float)percentage/10;
-    Debug.Log("mass: " + this.rigidBody.mass);
   }
 
   public int GetPollen()
@@ -159,7 +157,6 @@ public class Hive : MonoBehaviour
 
   public float GetHiveMass() 
   {
-    Debug.Log("HIVE MASS " + rigidBody.mass);
     return rigidBody.mass;
   } 
 

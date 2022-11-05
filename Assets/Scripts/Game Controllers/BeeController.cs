@@ -65,7 +65,6 @@ public class BeeController : MonoBehaviour
     private void eat(Bee bee)
     {
       int hivePollen = hive.GetPollen();
-      Debug.Log("HivePollen " + hivePollen);
       if (hivePollen >= bee.GetAppetite())
       {
         hive.RemovePollen(bee.GetAppetite());
@@ -77,7 +76,6 @@ public class BeeController : MonoBehaviour
         bee.SetMessage("Not enough food for " + bee.GetName());
         bee.ReduceHealth();
       }
-      Debug.Log(bee.GetName() + " health: " + bee.GetHealth());
       bee.SetHunger(false);
       bee.RestartHungerTimer();
     }

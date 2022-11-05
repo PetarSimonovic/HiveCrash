@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: df86c61e42ed0422294724adae3f5a73, type: 2}
+    - target: {fileID: 2524819369605079251, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2942048629335635091, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -80,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
         type: 3}
       propertyPath: m_Name
-      value: EnemyHive
+      value: enemyHive
       objectReference: {fileID: 0}
     - target: {fileID: 6975144811444408420, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
         type: 3}
@@ -88,6 +93,11 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7567094968472168452, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920813215587389693, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
         type: 3}
       propertyPath: m_IsTrigger
       value: 0

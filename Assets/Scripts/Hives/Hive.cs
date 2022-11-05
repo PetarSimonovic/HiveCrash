@@ -133,6 +133,7 @@ public class Hive : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   { 
+    Debug.Log(other.gameObject);
     if (other.gameObject.tag == "bee")
     {
       Vector3 force = transform.position - other.transform.position;

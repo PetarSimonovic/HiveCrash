@@ -145,12 +145,12 @@ PrefabInstance:
     - target: {fileID: 7702239191243995746, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: heightRange.Array.data[0]
-      value: 0.1
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7702239191243995746, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: heightRange.Array.data[1]
-      value: 0.1
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9c405d9229264833aad40efef3e40f0, type: 3}

@@ -105,7 +105,6 @@ public class BeeBody : MonoBehaviour
       string otherObject = other.gameObject.tag.ToString();
       switch (otherObject) { 
         case "hive":
-          Debug.Log("enteringHive");
           enterHive(other);
           return true;
 
@@ -126,11 +125,34 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        collectingPollen = false;
-        if (isIdling) 
-          {
-            bounceBack(other);
-          };
+        string otherObject = other.gameObject.tag.ToString();
+        switch(otherObject) {
+          case "bee":
+            BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
+            explode(otherBeeBody);
+            break;
+         default:
+            if (isIdling) {
+              bounceBack(other);
+            };
+            break;
+        }        
+    }
+
+    private void explode(BeeBody otherBeeBody) {
+      collectingPollen = false;
+      switch (otherBeeBody.hiveId == this.hiveId) 
+      { 
+        case true:
+          Debug.Log("Friendly collision");
+          break;
+        case false:
+          Debug.Log("Enemy collision");
+          break;
+        default:
+          Debug.Log("Non bee collision?");
+          break;
+      }
     }
 
     private void bounceBack(Collision other)

@@ -36,10 +36,13 @@ public class BeeBody : MonoBehaviour
 
     private Hive hive;
 
+    private BeeExploder beeExploder;
+
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
       hivePositionY = rigidBody.transform.position.y;
+      beeExploder = new BeeExploder();
     }
 
 
@@ -125,18 +128,11 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        string otherObject = other.gameObject.tag.ToString();
-        switch(otherObject) {
-          case "bee":
-            BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
-            explode(otherBeeBody);
-            break;
-         default:
-            if (isIdling) {
-              bounceBack(other);
-            };
-            break;
-        }        
+      if (isIdling) {
+        bounceBack(other);
+      } else if (collectingPollen) {
+        explode(other.gameObject.GetComponent<BeeBody>());
+      }
     }
 
     private void explode(BeeBody otherBeeBody) {
@@ -145,13 +141,10 @@ public class BeeBody : MonoBehaviour
       { 
         case true:
           Debug.Log("Friendly collision");
-          break;
-        case false:
-          Debug.Log("Enemy collision");
-          break;
+          return;
         default:
-          Debug.Log("Non bee collision?");
-          break;
+          beeExploder.explodeBee(rigidBody.transform);
+          return;
       }
     }
 

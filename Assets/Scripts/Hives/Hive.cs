@@ -21,9 +21,6 @@ public class Hive : MonoBehaviour
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
-    Debug.Log("Hive Created");
-    Debug.Log("rigidody mass " + rigidBody.mass);
-    Debug.Log("rigidbody " + rigidBody);
     AddPollen(this.pollenCapacity);
   }
 
@@ -133,16 +130,31 @@ public class Hive : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   { 
-    if (other.gameObject.tag == "bee")
-    {
-      Vector3 force = transform.position - other.transform.position;
-      rigidBody.AddForce(force, ForceMode.Impulse);
-      Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
-      bee.SetMessage(bee.GetName() + " attacked hive");
-      int pollenTaken = calculatePollenTaken();
-      RemovePollen(pollenTaken);
-      bee.AddPollen(pollenTaken);
-    }
+    switch (other.gameObject.tag) {
+        case "scope":
+          rigidBody.velocity = Vector3.zero;
+          rigidBody.angularVelocity = Vector3.zero;
+          break;
+        
+        case "bee":
+          Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
+          applyForce(other);
+          bee.SetMessage(bee.GetName() + " attacked hive");
+          int pollenTaken = calculatePollenTaken();
+          RemovePollen(pollenTaken);
+          bee.AddPollen(pollenTaken);
+          break;
+      
+        default:
+          break;
+      }
+  }
+
+  private void applyForce(Collision other)
+  {
+    rigidBody.isKinematic = false;
+    Vector3 force = transform.position - other.transform.position;
+    rigidBody.AddForce(force, ForceMode.Impulse);
   }
 
   public float GetHiveMass() 

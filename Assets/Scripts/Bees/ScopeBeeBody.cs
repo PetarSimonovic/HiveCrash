@@ -14,6 +14,7 @@ public class ScopeBeeBody : BeeBody
     protected override void OnTriggerEnter(Collider other)
     {
       string otherObject = other.gameObject.tag.ToString();
+      Debug.Log(otherObject);
       if (otherObject == "hive" && isOutsideHive) 
       {
         stopMoving();

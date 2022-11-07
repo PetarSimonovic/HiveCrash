@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BeeBody : MonoBehaviour
   {
-
+  
     private Bee bee;
 
     public bool isEnteringHive = false;

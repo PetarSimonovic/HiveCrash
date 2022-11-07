@@ -15,17 +15,6 @@ public class FlowerController : MonoBehaviour
     private Vector3 hivePosition;
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetMeadows(List<GameObject> tiles)
     {
         foreach (GameObject tile in tiles)
@@ -41,11 +30,12 @@ public class FlowerController : MonoBehaviour
     {   
         foreach (GameObject meadow in meadows)
         {
-             Vector3 meadowPosition = meadow.transform.position;
+            Vector3 meadowPosition = meadow.transform.position;
+            Tile meadowTile = meadow.GetComponent<Tile>();
             if (!isHidden(meadow) && meadowPosition != this.hivePosition)
             { 
                
-               plantFlower(meadowPosition);
+               plantFlower(meadowPosition, meadowTile);
             }
         }
         removeRevealedMeadows();
@@ -62,18 +52,19 @@ public class FlowerController : MonoBehaviour
         meadows.RemoveAll(meadow => !isHidden(meadow));
     }
 
-    private void plantFlower(Vector3 meadowPosition)
+    private void plantFlower(Vector3 meadowPosition, Tile meadowTile)
     {
       Vector3 flowerPosition = meadowPosition;
       flowerPosition.y = meadowPosition.y + 0.48f;  // change so it adjusts to meadow height
-      var flower = Instantiate(flowerPrefab, flowerPosition, Quaternion.identity); // Quaternion.identity affects rotation?
+      GameObject flower = Instantiate(flowerPrefab, flowerPosition, Quaternion.identity); // Quaternion.identity affects rotation?
       flowers.Add(flower);
       flower.GetComponent<Flower>().SetPosition(flowerPosition);
-      if (Random.Range(0, 10) == 1)
+      if (Random.Range(0, 10) == 1 || Globals.test &&(meadowTile.column == 4 && meadowTile.row == 6))
       {
         flower.GetComponent<Flower>().CreateBody();  
       }
     }
+
 
     public void SetHivePosition(Vector3 hivePosition)
     {

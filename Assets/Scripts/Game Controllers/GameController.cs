@@ -79,6 +79,7 @@ public class GameController : MonoBehaviour
       if (Physics.Raycast(raycast, out raycastHit))
       {
         tile = getTile(raycastHit);
+        if (Globals.test) {tile.GetComponent<Tile>().PrintPosition();}
         processMapInput(tile.transform.position, raycastHit.point);
       }
       else 
@@ -156,6 +157,7 @@ public class GameController : MonoBehaviour
       destroyTileBeneathHive(hivePosition);
       flowerController.SetHivePosition(hivePosition);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
+      tile.tag = "playerHiveTile";
       hivePosition = new Vector3(hivePosition.x, (tile.transform.position.y + (tile.GetComponent<Tile>().GetHeight()/4)), hivePosition.z);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.GetComponent<Hive>();

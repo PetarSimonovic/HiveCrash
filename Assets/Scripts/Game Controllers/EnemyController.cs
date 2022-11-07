@@ -32,6 +32,8 @@ public class EnemyController : MonoBehaviour
 
     private Timer timer;
 
+    private bool test = true;
+
 
     void Update()
     {
@@ -52,8 +54,17 @@ public class EnemyController : MonoBehaviour
 
     public void PlaceEnemyTile(List<GameObject> tiles)
     {
-        int index = Random.Range(0, tiles.Count);
-        GameObject tile = tiles[index];
+        GameObject tile;
+
+        if (Globals.test) 
+        {
+         tile = tiles.Find(t => t.GetComponent<Tile>().column == 4 && t.GetComponent<Tile>().row == 7);
+        } 
+        else 
+        {
+          int index = Random.Range(0, tiles.Count);
+          tile = tiles[index];
+        }
         tiles.Remove(tile);
         Destroy(tile);
         Vector3 tilePosition = new Vector3 (tile.transform.position.x, 0.1f, tile.transform.position.y);

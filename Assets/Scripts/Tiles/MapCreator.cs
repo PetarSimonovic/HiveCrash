@@ -34,23 +34,25 @@ public class MapCreator : MonoBehaviour
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
     //  CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, borderTilePrefab);
-      for(int i = 0; i < NumberOfColumns; i ++)
+      for(int column = 0; column < NumberOfColumns; column ++)
       {
-        CreateColumn(xPosition, zPosition);
+        CreateColumn(xPosition, zPosition, column);
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
       }
     //  CreateColumn(xPosition, zPosition - WidthOfTile/2, borderTilePrefab);
     }
 
-    public void CreateColumn(float xPosition, float zPosition)
+    public void CreateColumn(float xPosition, float zPosition, int column)
     {
   //    CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), borderTilePrefab);
       GameObject tilePrefab;
-      for (int i = 0; i < NumberOfRows; i++)
+      for (int row = 0; row < NumberOfRows; row++)
       {
         tilePrefab = chooseRandomTile();
-        CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
+        GameObject tile = CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
+        tile.GetComponent<Tile>().row = row;
+        tile.GetComponent<Tile>().column = column;
         zPosition += WidthOfTile/2;
       }
   //    CreateTile(new Vector3(xPosition, 0, zPosition), borderTilePrefab);
@@ -67,6 +69,9 @@ public class MapCreator : MonoBehaviour
 
     private GameObject chooseRandomTile()
     {
+      if (Globals.test) {
+        return meadowTilePrefab;
+      }
       int tileDecision = Random.Range(0, 10);
       switch(tileDecision)
       {

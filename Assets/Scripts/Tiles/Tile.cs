@@ -15,7 +15,10 @@ public class Tile : MonoBehaviour
     protected bool isHidden = true; // why does this have to be false then immediately set to true in start?
 
     private MeshRenderer mesh;
-    // Start is called before the first frame update
+
+    public int row;
+
+    public int column;
 
     protected virtual void  Awake()
     {
@@ -28,9 +31,9 @@ public class Tile : MonoBehaviour
       this.gameObject.name = material.ToString();
     }
 
-    protected virtual void OnTriggerEnter(Collider collision)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-      checkCollision(collision);
+      checkCollision(other);
     }
 
     public void checkCollision(Collider other)
@@ -63,6 +66,11 @@ public class Tile : MonoBehaviour
     public void GetDebugData() 
     {
       Debug.Log(this.gameObject.name = material.ToString());
+    }
+
+    public void PrintPosition()
+    {
+      Debug.Log("Column: " + column + "| Row:  " + row);
     }
 
 

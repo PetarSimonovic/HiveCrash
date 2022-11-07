@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
 
     private Timer timer;
 
-    private bool test = true;
 
 
     void Update()

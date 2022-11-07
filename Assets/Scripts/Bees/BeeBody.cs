@@ -128,14 +128,18 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-      if (isIdling) {
+      if (isIdling) 
+      {
         bounceBack(other);
-      } else if (collectingPollen) {
-        explode(other.gameObject.GetComponent<BeeBody>());
+      }
+       else if (collectingPollen) 
+      {
+        BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
+        checkIfBeeKilledInCollision(otherBeeBody);
       }
     }
 
-    private void explode(BeeBody otherBeeBody) {
+    private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
       collectingPollen = false;
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
@@ -143,6 +147,8 @@ public class BeeBody : MonoBehaviour
           Debug.Log("Friendly collision");
           return;
         default:
+          bee.SetHealth(0);
+          bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
           beeExploder.explodeBee(rigidBody.transform);
           return;
       }
@@ -172,6 +178,7 @@ public class BeeBody : MonoBehaviour
       if (isOutsideHive)
         {
           isEnteringHive = true;
+          stopMoving();
         }
     }
 
@@ -231,5 +238,14 @@ public class BeeBody : MonoBehaviour
     {
       this.hive = hive;
     }
+
+    protected virtual void stopMoving()
+    {
+        moveSpeed = 0.0f;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        isOutsideHive = false;
+    }
+
  
 }

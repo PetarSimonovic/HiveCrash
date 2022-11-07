@@ -51,6 +51,7 @@ public class BeeController : MonoBehaviour
           bee.EnterHive();
           bee.RemoveAllPollen();
           Destroy(beeBody);
+          Destroy(bee.GetBody());
       }
     }
 
@@ -73,8 +74,9 @@ public class BeeController : MonoBehaviour
       }
       else 
       {
-        bee.SetMessage("Not enough food for " + bee.GetName());
         bee.ReduceHealth();
+        string message = bee.GetHealth() <= 0 ? bee.GetName() + " died of hunger" : "Not enough food for " + bee.GetName();
+        bee.SetMessage(message);
       }
       bee.SetHunger(false);
       bee.RestartHungerTimer();
@@ -82,8 +84,7 @@ public class BeeController : MonoBehaviour
 
     private void checkBeeHealth(Bee bee)
     {
-      deadBees = new List<Bee>();
-      if (bee.GetHealth() < 0)
+      if (bee.GetHealth() <= 0)
       {
         deadBees.Add(bee);
       }
@@ -94,6 +95,7 @@ public class BeeController : MonoBehaviour
       foreach (Bee bee in deadBees)
       {
         hive.RemoveBee(bee);
+        Destroy(bee.GetBody());
       }
       deadBees.Clear();
     }

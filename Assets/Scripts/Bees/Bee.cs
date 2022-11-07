@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bee
+public class Bee 
 {
 
     private string name; 
@@ -69,6 +69,7 @@ public class Bee
     public void EnterHive()
     {
       this.inHive = true;
+      
     }
 
     public void SetBody(GameObject body)
@@ -154,6 +155,11 @@ public class Bee
     public void SetPollenCollectionRate(int pollenCollectionRate)
     {
       this.pollenCollectionRate = pollenCollectionRate;
+    }
+
+    public void SetHealth(int health)
+    {
+      this.health = health;
     }
 
 }

@@ -19,13 +19,4 @@ public class ScopeBeeBody : BeeBody
         stopMoving();
       }
     }
-
-    private void stopMoving()
-    {
-        moveSpeed = 0.0f;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        isOutsideHive = false;
-    }
-
 }

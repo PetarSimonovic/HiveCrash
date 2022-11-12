@@ -19,6 +19,8 @@ public class Flower : MonoBehaviour
 
     private FlowerAnimator flowerAnimator;
 
+    private bool hasBee;
+
 
 
 
@@ -73,6 +75,7 @@ public class Flower : MonoBehaviour
     private void closeFlower()
     {
       inBloom = false;
+      RemoveBee();
       flowerAnimator.Close();
 
 
@@ -99,5 +102,17 @@ public class Flower : MonoBehaviour
       timer = gameObject.GetComponent<Timer>();
       timer.SetOn(true);
       timer.SetCountdownSeconds(20f);
+    }
+
+    public void PlaceBee() {
+      hasBee = true;
+    }
+
+    public void RemoveBee() {
+      hasBee = false;
+    }
+
+    public bool HasBee() {
+      return hasBee;
     }
 }

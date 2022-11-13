@@ -36,7 +36,6 @@ private bool isPlayer;
         beeParts.Clear();
         this.position = position;
         this.isPlayer = isPlayer;
-        Debug.Log("exploding bee  " + isPlayer);
         addBeeParts();
         addForceToBeeParts();
         
@@ -77,16 +76,16 @@ private bool isPlayer;
         int direction = Random.Range(1, 5);
         switch (direction) {
             case 1:
-                rigidBody.AddForce(-transform.right * forceMultiplier, ForceMode.Impulse);
+                rigidBody.AddForce(-transform.right, ForceMode.Impulse);
                 break;
             case 2: 
-                rigidBody.AddForce(transform.right * forceMultiplier, ForceMode.Impulse);
+                rigidBody.AddForce(transform.right, ForceMode.Impulse);
                 break;
             case 3: 
-                rigidBody.AddForce(transform.forward * forceMultiplier, ForceMode.Impulse);
+                rigidBody.AddForce(transform.forward, ForceMode.Impulse);
                 break;
             default: 
-                rigidBody.AddForce(-transform.forward * forceMultiplier, ForceMode.Impulse);
+                rigidBody.AddForce(-transform.forward, ForceMode.Impulse);
                 break;
 
 

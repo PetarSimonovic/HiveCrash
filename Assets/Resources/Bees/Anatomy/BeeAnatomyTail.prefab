@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845955877116840698}
   - component: {fileID: 6934700854082575994}
-  - component: {fileID: 808802033876483317}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BeeAnatomyTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 457555716797373304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5529608381821333799}
@@ -42,7 +41,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457555716797373304}
   serializedVersion: 2
-  m_Mass: 0.5
+  m_Mass: 0.4
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 1
@@ -50,19 +49,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &808802033876483317
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457555716797373304}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2567203692406138506
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +60,8 @@ GameObject:
   - component: {fileID: 5529608381821333799}
   - component: {fileID: 7597476532925150427}
   - component: {fileID: 5203186367701588438}
-  m_Layer: 0
+  - component: {fileID: 9171256930549278294}
+  m_Layer: 13
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,9 +76,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2567203692406138506}
   m_LocalRotation: {x: 0.00000022024048, y: 0.00000006158883, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1845955877116840698}
   m_RootOrder: 0
@@ -146,3 +133,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9171256930549278294
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567203692406138506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3613567641014311022, guid: d403c790e0d6e463396840dde6ca2c8a, type: 3}

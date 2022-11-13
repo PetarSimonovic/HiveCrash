@@ -1,17 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1511882559937300654
+--- !u!1001 &1617168392855030143
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 201389061376914268, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.00001
-      objectReference: {fileID: 0}
     - target: {fileID: 3464932112834229024, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_Drag
@@ -20,12 +15,27 @@ PrefabInstance:
     - target: {fileID: 3464932112834229024, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_Mass
-      value: 0.4
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
@@ -45,22 +55,22 @@ PrefabInstance:
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8502596
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.5263636
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
@@ -70,23 +80,42 @@ PrefabInstance:
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -63.52
       objectReference: {fileID: 0}
     - target: {fileID: 5311661364764960672, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5692852602066611434, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692852602066611434, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692852602066611434, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692852602066611434, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6228892016299439650, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_Name
-      value: BeeAnatomyYellowHex
+      value: BeeAnatomyBlackHex
       objectReference: {fileID: 0}
     - target: {fileID: 8116394115551729281, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7a8c16d530f9642589609398d9c95796, type: 2}
-    m_RemovedComponents:
-    - {fileID: 201389061376914268, guid: 58c8007221cb44b6b8b48085bb4ec7a8, type: 3}
+      objectReference: {fileID: 2100000, guid: d57c561f842574ea985d462791ed7c9b, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c8007221cb44b6b8b48085bb4ec7a8, type: 3}

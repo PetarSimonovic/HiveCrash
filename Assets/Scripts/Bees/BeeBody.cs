@@ -153,6 +153,7 @@ public class BeeBody : MonoBehaviour
           ReturnToHive();
           break;
         default:
+          beeExploder = Instantiate(beeExploder);
           bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
           Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
           beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);

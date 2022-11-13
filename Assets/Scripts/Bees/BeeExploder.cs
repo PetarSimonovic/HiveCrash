@@ -29,16 +29,34 @@ private List<GameObject> beeParts = new List<GameObject>();
 
 private float forceMultiplier = 1.5f;
 
+private Timer timer;
+
+private bool timing;
+
 private bool isPlayer;
+
+
+    private void Update() {
+      // if (!timer.IsOn() && beeParts.Count > 0) {destroyBeeParts();}
+    }
 
     public void explodeBee(Vector3 position, bool isPlayer) 
     {   
         beeParts.Clear();
+        initialiseTimer();
         this.position = position;
         this.isPlayer = isPlayer;
         addBeeParts();
         addForceToBeeParts();
         
+    }
+
+    private void initialiseTimer()
+    {
+        Debug.Log("Initialising timer");
+        timer = gameObject.GetComponent<Timer>();
+        timer.SetOn(true);
+        timer.SetCountdownSeconds(10f);
     }
 
     private void addBeeParts() {
@@ -90,6 +108,13 @@ private bool isPlayer;
 
 
         }
+    }
+
+    private void destroyBeeParts() {
+        foreach (GameObject beePart in beeParts) {
+            Destroy(beePart);
+        }
+        beeParts.Clear();
     }
 
 

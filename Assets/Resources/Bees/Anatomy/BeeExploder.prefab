@@ -44,4 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ad84fa769c4ee78a310e315a73da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beeAnatomyHexBlack: {fileID: 0}
+  beeAnatomyHexBlack: {fileID: 939579068877769498, guid: 96c3b1f59c65f4b819ce089e1cd8818d,
+    type: 3}
+  beeAnatomyHexYellow: {fileID: 4794699062762847884, guid: beaccb9ac4a9345a993b0c682d42a201,
+    type: 3}
+  beeAnatomyHexOrange: {fileID: 6228892016299439650, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+    type: 3}
+  beeAnatomyTail: {fileID: 457555716797373304, guid: cfa2a9e3f27e540e3a7f6bac8e8e28c4,
+    type: 3}
+  beeAnatomyHead: {fileID: 5437932392761484775, guid: c10e0ca9fbaef444d94d7b8cc0724be9,
+    type: 3}

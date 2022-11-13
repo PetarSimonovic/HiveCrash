@@ -13,6 +13,8 @@ public class BeeBody : MonoBehaviour
     private GameObject beeExploder;
     private Bee bee;
 
+    private bool isPlayer;
+
     public bool isEnteringHive = false;
 
     protected bool isOutsideHive = false;
@@ -135,14 +137,14 @@ public class BeeBody : MonoBehaviour
       }
        else if (collectingPollen) 
       {
+        collectingPollen = false;
+        flower.RemoveBee();
         BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
         checkIfBeeKilledInCollision(otherBeeBody);
       }
     }
 
     private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
-      collectingPollen = false;
-      flower.RemoveBee();
 
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
@@ -153,11 +155,12 @@ public class BeeBody : MonoBehaviour
         default:
           bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
           Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
-          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition());
+          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
           bee.SetHealth(0);
           break;
       }
           otherBeeBody.ReturnToHive();
+          otherBeeBody.flower.RemoveBee();
 
     }
 
@@ -254,6 +257,15 @@ public class BeeBody : MonoBehaviour
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         isOutsideHive = false;
+    }
+
+    public void SetPlayer(bool isPlayer) 
+    {
+      this.isPlayer = isPlayer;
+    }
+
+    public bool IsPlayer() {
+      return this.isPlayer;
     }
 
  

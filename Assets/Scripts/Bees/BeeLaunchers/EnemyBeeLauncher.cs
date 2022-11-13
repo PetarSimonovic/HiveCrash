@@ -5,6 +5,10 @@ using UnityEngine;
 public class EnemyBeeLauncher : BeeLauncher
 {
     
+
+    protected override void Start() {
+      SetIsPlayer(false);
+    }
     protected override void reset()
     {
         this.isLoaded = false;

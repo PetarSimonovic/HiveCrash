@@ -11,6 +11,7 @@ TagManager:
   - hive
   - scope
   - bee
+  - playerHiveTile
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - EnemyHive
   - PlayerBee
   - EnemyBee
-  - 
+  - NoInteraction
   - 
   - 
   - 

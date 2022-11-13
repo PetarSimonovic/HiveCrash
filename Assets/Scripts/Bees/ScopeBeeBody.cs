@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScopeBeeBody : BeeBody
 {
 
+  
     protected override void Update()
     {
       moveBee();

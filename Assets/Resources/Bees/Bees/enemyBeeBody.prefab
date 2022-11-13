@@ -63,6 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5263791667e49e1923199b88d1e010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beeExploder: {fileID: 5687970307939334544, guid: bac3c8b86bfc84bfb8afae6357ce1045,
+    type: 3}
   isEnteringHive: 0
   hivePositionY: 0
 --- !u!135 &7949324645395433046

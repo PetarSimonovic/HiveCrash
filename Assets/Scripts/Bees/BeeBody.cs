@@ -8,6 +8,9 @@ using UnityEngine;
 public class BeeBody : MonoBehaviour
   {
   
+
+   [SerializeField]
+    private GameObject beeExploder;
     private Bee bee;
 
     public bool isEnteringHive = false;
@@ -36,13 +39,11 @@ public class BeeBody : MonoBehaviour
 
     private Hive hive;
 
-    private BeeExploder beeExploder;
 
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
       hivePositionY = rigidBody.transform.position.y;
-      beeExploder = new BeeExploder();
     }
 
 
@@ -141,20 +142,22 @@ public class BeeBody : MonoBehaviour
 
     private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
       collectingPollen = false;
+      flower.RemoveBee();
+
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
         case true:
           Debug.Log("Friendly collision");
+          ReturnToHive();
           break;
         default:
-          bee.SetHealth(0);
           bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
-          beeExploder.explodeBee(rigidBody.transform);
+          Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
+          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition());
+          bee.SetHealth(0);
           break;
       }
-          ReturnToHive();
           otherBeeBody.ReturnToHive();
-          flower.RemoveBee();
 
     }
 
@@ -162,7 +165,7 @@ public class BeeBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 250;
+        var magnitude = 350;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude

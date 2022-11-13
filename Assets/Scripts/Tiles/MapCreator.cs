@@ -33,14 +33,14 @@ public class MapCreator : MonoBehaviour
     {
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
-    //  CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, borderTilePrefab);
+   //   CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, lakeTilePrefab);
       for(int column = 0; column < NumberOfColumns; column ++)
       {
         CreateColumn(xPosition, zPosition, column);
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
       }
-    //  CreateColumn(xPosition, zPosition - WidthOfTile/2, borderTilePrefab);
+    // CreateColumn(xPosition, zPosition - WidthOfTile/2, lakeTilePrefab);
     }
 
     public void CreateColumn(float xPosition, float zPosition, int column)

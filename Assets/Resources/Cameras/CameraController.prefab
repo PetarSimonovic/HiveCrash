@@ -129,5 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7488eb2e5515c402d88298d6bf2b308f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centreTile: {x: 2, y: 0, z: 2}
-  camera: {fileID: 3168837201250792486}
+  centreTile: {x: 4.5, y: 0, z: 4.5}
+  mainCamera: {fileID: 0}

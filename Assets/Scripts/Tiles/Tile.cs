@@ -40,12 +40,12 @@ public class Tile : MonoBehaviour
     {
       if (isHidden) 
       {
-       reveal();
+       Reveal();
       }
 
     }
 
-    protected virtual void reveal()
+    public virtual void Reveal()
     {
       mesh.material = material;
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);

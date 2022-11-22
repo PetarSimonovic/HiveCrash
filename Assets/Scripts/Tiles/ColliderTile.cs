@@ -13,21 +13,22 @@ public class ColliderTile : Tile
     {
         base.Awake();
         colliders = GetComponentsInChildren<Collider>();
+        
         scopeCollider = colliders[1]; // improve this: find the scopecollider in the array; don't rely on position
         scopeCollider.enabled = false;
     }
     
-    protected override void reveal()
+    public override void Reveal()
     {
-        base.reveal();
+        base.Reveal();
         scopeCollider.enabled = true;
     }
 
-     public void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-       if (this.isHidden)
-       {
+        if (this.isHidden)
+        {
         checkCollision(collision.collider);
-       }
+        }
     }
 }

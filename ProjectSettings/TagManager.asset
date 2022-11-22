@@ -12,6 +12,7 @@ TagManager:
   - scope
   - bee
   - playerHiveTile
+  - lakeBed
   layers:
   - Default
   - TransparentFX

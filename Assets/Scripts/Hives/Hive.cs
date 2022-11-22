@@ -133,7 +133,9 @@ public class Hive : MonoBehaviour
           rigidBody.velocity = Vector3.zero;
           rigidBody.angularVelocity = Vector3.zero;
           break;
-        
+        case "lakeBed":
+          Debug.Log("HIVE SANK!!!!!");
+          break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
           applyForce(other);

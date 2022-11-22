@@ -131,21 +131,25 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-      if (isIdling) 
+      Debug.Log("colliosion with " + other.gameObject.tag == "bee");
+      if (isIdling && other.gameObject.tag != "bee") 
       {
         bounceBack(other);
       }
-       else if (collectingPollen) 
+      else if (collectingPollen) 
       {
         collectingPollen = false;
         flower.RemoveBee();
         BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
         checkIfBeeKilledInCollision(otherBeeBody);
+
       }
+
     }
 
     private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
-
+      collectingPollen = false;
+      flower.RemoveBee();
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
         case true:
@@ -153,11 +157,7 @@ public class BeeBody : MonoBehaviour
           ReturnToHive();
           break;
         default:
-          beeExploder = Instantiate(beeExploder);
-          bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
-          Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + bee.GetName() + bee.GetHealth());
-          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
-          bee.SetHealth(0);
+          explodeBee(otherBeeBody);
           break;
       }
           otherBeeBody.ReturnToHive();
@@ -165,11 +165,20 @@ public class BeeBody : MonoBehaviour
 
     }
 
+    private void explodeBee(BeeBody otherBeeBody) 
+    {
+          beeExploder = Instantiate(beeExploder);
+          this.bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
+          Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
+          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
+          this.bee.SetHealth(0);
+    }
+
     private void bounceBack(Collision other)
     {
 
         // how much the character should be knocked back
-        var magnitude = 350;
+        var magnitude = 270;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude

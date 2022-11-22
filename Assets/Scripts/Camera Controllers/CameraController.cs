@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log("Setting camera position at " + centreTile);
         transform.position = centreTile;
         mainCamera.transform.LookAt(centreTile);
     }
@@ -83,7 +84,7 @@ public class CameraController : MonoBehaviour
         mainCamera.transform.LookAt(centreTile);
     }
 
-     private void rotateLeft()
+    private void rotateLeft()
     {
         float yRotation = 0.2f;
         transform.Rotate(0.0f, yRotation, 0.0f);

@@ -7,8 +7,8 @@ public class EnemyHiveTile : ColliderTile
     [SerializeField]
     GameObject enemyHive;
 
-    protected override void reveal()
+    public override void Reveal()
     {
-        base.reveal();
+        base.Reveal();
     }
 }

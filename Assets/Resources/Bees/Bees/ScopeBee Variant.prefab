@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
+    - target: {fileID: 311451829507498278, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
     - target: {fileID: 891502140314803291, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_CastShadows
@@ -112,6 +117,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
+    - target: {fileID: 3748965079155287215, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
+    - target: {fileID: 4188929906827268334, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
+    - target: {fileID: 4319067995488931467, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
     - target: {fileID: 5558050101426916754, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
@@ -122,6 +142,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: scope
       objectReference: {fileID: 0}
+    - target: {fileID: 5656791975104673605, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3847bff62da2a49fd87029e3dac7a729, type: 2}
     - target: {fileID: 6293390308304859110, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
         type: 3}
       propertyPath: m_Layer
@@ -357,5 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b230c697ee4fc4c5a961a9a34fa89aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beeExploder: {fileID: 0}
   isEnteringHive: 0
   hivePositionY: 0

@@ -61,16 +61,16 @@ private bool isPlayer;
 
     private void addBeeParts() {
 
-       GameObject hexBlack = instantiateBeePart(beeAnatomyHexBlack);
-       GameObject hexOne = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
-       GameObject hexTwo = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
-       GameObject tail = instantiateBeePart(beeAnatomyTail);
-       GameObject head = instantiateBeePart(beeAnatomyHead); 
-       beeParts.Add(hexBlack);
-       beeParts.Add(hexOne);
-       beeParts.Add(hexTwo);
-       beeParts.Add(tail);
-       beeParts.Add(head);
+        GameObject hexBlack = instantiateBeePart(beeAnatomyHexBlack);
+        GameObject hexOne = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
+        GameObject hexTwo = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
+        GameObject tail = instantiateBeePart(beeAnatomyTail);
+        GameObject head = instantiateBeePart(beeAnatomyHead); 
+        beeParts.Add(hexBlack);
+        beeParts.Add(hexOne);
+        beeParts.Add(hexTwo);
+        beeParts.Add(tail);
+        beeParts.Add(head);
     }
 
     private GameObject instantiateBeePart(GameObject part) {

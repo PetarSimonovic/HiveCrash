@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 public static class Globals
 {
-    public static bool test = false;    
+    public static bool test = true;    
 }

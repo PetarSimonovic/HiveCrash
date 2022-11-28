@@ -119,6 +119,7 @@ public class MapCreator : MonoBehaviour
 
     private GameObject chooseRandomTile()
     {
+      Debug.Log("TEST IS " + Globals.test);
       if (Globals.test) {
         return meadowTilePrefab;
       }

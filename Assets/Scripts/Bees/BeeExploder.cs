@@ -85,7 +85,7 @@ private bool isPlayer;
             Debug.Log(beePart);
             Rigidbody rigidBody = beePart.GetComponent<Rigidbody>();
             rigidBody.AddForce(transform.up * forceMultiplier, ForceMode.Impulse);
-           applyRandomDirectionalForce(rigidBody);
+            applyRandomDirectionalForce(rigidBody);
         }
     }
 

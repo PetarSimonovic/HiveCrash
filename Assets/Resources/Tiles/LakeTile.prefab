@@ -62,6 +62,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lakeBedCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 2338884524149936851, guid: d9c405d9229264833aad40efef3e40f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: lakeBed
+      objectReference: {fileID: 0}
     - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_LocalScale.z

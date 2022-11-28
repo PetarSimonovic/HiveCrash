@@ -18,7 +18,7 @@ public class MapCreator : MonoBehaviour
 
     private List<List<int>> map = new List<List<int>>(); 
 
-    bool usePremadeMaps = false;
+    bool usePremadeMaps = true;
 
     private Cartographer cartographer;
 
@@ -53,12 +53,14 @@ public class MapCreator : MonoBehaviour
     {
       float xPosition = StartingXPosition;
       float zPosition = StartingZPosition;
+      int columnNumber = 0;
    //   CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, lakeTilePrefab);
       foreach (List<int> column in map)
       {
-        CreateColumn(xPosition, zPosition, column);
+        CreateColumn(xPosition, zPosition, column, columnNumber);
         xPosition += WidthOfTile/2;
         zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
+        columnNumber++;
       }
     // CreateColumn(xPosition, zPosition - WidthOfTile/2, lakeTilePrefab);
     }
@@ -77,20 +79,31 @@ public class MapCreator : MonoBehaviour
     // CreateColumn(xPosition, zPosition - WidthOfTile/2, lakeTilePrefab);
     }
 
-      public void CreateColumn(float xPosition, float zPosition, List<int> column)
-    {
-   //   CreateTile(new Vector3(xPosition, 0, zPosition - WidthOfTile/2), lakeTilePrefab);
-      foreach (int tileType in column)
+      public void CreateColumn(float xPosition, float zPosition, List<int> column, int columnNumber)
       {
-        GameObject tilePrefab = tileType == 0 ? lakeTilePrefab : chooseRandomTile();
-        GameObject tile = CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
-      //  tile.GetComponent<Tile>().row = row;
-       // tile.GetComponent<Tile>().column = column;
-        if (tileType == 0) {tile.GetComponent<Tile>().Reveal();}
-        zPosition += WidthOfTile/2;
+        int row = 0;
+        foreach (int tileType in column)
+        {
+          GameObject tilePrefab = tileType == 0 ? lakeTilePrefab : chooseRandomTile();
+          GameObject tile = CreateTile(new Vector3(xPosition, 0, zPosition), tilePrefab);
+          tile.GetComponent<Tile>().row = row;
+          tile.GetComponent<Tile>().column = columnNumber;
+          if (tileType == 0) {configureLakeBorderTile(tile);}
+          zPosition += WidthOfTile/2;
+          row++;
+          Debug.Log("Row " + row + " Column " + columnNumber);
+        }
+    //   CreateTile(new Vector3(xPosition, 0, zPosition), lakeTilePrefab);
       }
-  //   CreateTile(new Vector3(xPosition, 0, zPosition), lakeTilePrefab);
-    }
+
+      public void configureLakeBorderTile(GameObject tileGameObject)
+      {
+        Tile tile = tileGameObject.GetComponent<Tile>();
+        tile.Reveal();
+        tile.SetBorderTile();
+      }
+
+    
 
     public void CreateColumn(float xPosition, float zPosition, int column)
     {
@@ -119,7 +132,6 @@ public class MapCreator : MonoBehaviour
 
     private GameObject chooseRandomTile()
     {
-      Debug.Log("TEST IS " + Globals.test);
       if (Globals.test) {
         return meadowTilePrefab;
       }

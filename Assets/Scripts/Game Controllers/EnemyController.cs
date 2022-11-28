@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
 
         if (Globals.test) 
         {
-         tile = tiles.Find(t => t.GetComponent<Tile>().column == 4 && t.GetComponent<Tile>().row == 7);
+          tile = tiles.Find(t => t.GetComponent<Tile>().column == 4 && t.GetComponent<Tile>().row == 7);
         } 
         else 
         {

@@ -80,7 +80,14 @@ public class GameController : MonoBehaviour
       {
         tile = getTile(raycastHit);
         if (Globals.test) {tile.GetComponent<Tile>().PrintPosition();}
-        processMapInput(tile.transform.position, raycastHit.point);
+        if (tile.GetComponent<Tile>().IsBorderTile() && !hiveIsPlaced) 
+        {
+          Debug.Log("Clicked on border");
+        } 
+        else 
+        {
+          processMapInput(tile.transform.position, raycastHit.point);
+        }
       }
       else 
       {
@@ -111,26 +118,26 @@ public class GameController : MonoBehaviour
 
     private void processCameraInput(Vector3 touchPosition)
     {
-       switch (touch.phase)
-       {
-        case TouchPhase.Began:
-          cameraController.SetStartTouchPosition(touchPosition);
-          break;
-        case TouchPhase.Moved: 
-          cameraController.ProcessTouch(touchPosition);
-          break;
-        default:
-          cameraController.ProcessTouch(touchPosition);
-          break;
-       }
-    }
+      switch (touch.phase)
+        {
+          case TouchPhase.Began:
+            cameraController.SetStartTouchPosition(touchPosition);
+            break;
+          case TouchPhase.Moved: 
+            cameraController.ProcessTouch(touchPosition);
+            break;
+          default:
+            cameraController.ProcessTouch(touchPosition);
+            break;
+        }
+      }
 
     private void processTouchOnMap(Vector3 clickPosition)
     {
       switch (hiveIsPlaced) 
         {
         case false:
-          initaliseHive(clickPosition);
+          initialiseHive(clickPosition);
           initialiseEnemies();
           updateFlowerController();
           break;
@@ -140,7 +147,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void initaliseHive(Vector3 hivePosition)
+    private void initialiseHive(Vector3 hivePosition)
     {
       Hive hive = createHive(hivePosition);
       initaliseBeeController();

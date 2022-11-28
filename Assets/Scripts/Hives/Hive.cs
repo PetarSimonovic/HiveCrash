@@ -133,7 +133,7 @@ public class Hive : MonoBehaviour
           rigidBody.velocity = Vector3.zero;
           rigidBody.angularVelocity = Vector3.zero;
           break;
-        case "lakeBed":
+        case "lake":
           Debug.Log("HIVE SANK!!!!!");
           break;
         case "bee":

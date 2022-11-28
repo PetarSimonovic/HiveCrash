@@ -20,6 +20,8 @@ public class Tile : MonoBehaviour
 
     public int column;
 
+    public bool isBorderTile;
+
     protected virtual void  Awake()
     {
       hex = this.gameObject.transform.GetChild(0).gameObject;
@@ -40,7 +42,7 @@ public class Tile : MonoBehaviour
     {
       if (isHidden) 
       {
-       Reveal();
+        Reveal();
       }
 
     }
@@ -71,6 +73,16 @@ public class Tile : MonoBehaviour
     public void PrintPosition()
     {
       Debug.Log("Column: " + column + "| Row:  " + row);
+    }
+
+    public void SetBorderTile()
+    {
+      isBorderTile = true;
+    }
+
+    public bool IsBorderTile() 
+    {
+      return isBorderTile;
     }
 
 

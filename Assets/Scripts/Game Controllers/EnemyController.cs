@@ -57,12 +57,15 @@ public class EnemyController : MonoBehaviour
 
         if (Globals.test) 
         {
-          tile = tiles.Find(t => t.GetComponent<Tile>().column == 4 && t.GetComponent<Tile>().row == 7);
+          tile = tiles.Find(t => t.GetComponent<Tile>().column == 14 && t.GetComponent<Tile>().row == 9);
         } 
         else 
         {
-          int index = Random.Range(0, tiles.Count);
-          tile = tiles[index];
+          tile = chooseEnemyHiveTile(tiles);
+          while (tile.GetComponent<Tile>().IsBorderTile())
+          {
+            tile = chooseEnemyHiveTile(tiles);
+          }
         }
         tiles.Remove(tile);
         Destroy(tile);
@@ -72,6 +75,12 @@ public class EnemyController : MonoBehaviour
         enemyHiveIsPlaced = true;
         tiles.Add(enemyHiveTile);
         
+    }
+
+    private GameObject chooseEnemyHiveTile(List<GameObject> tiles) 
+    {
+          int index = Random.Range(0, tiles.Count);
+          return tiles[index];
     }
 
         private void initialiseBeeController()

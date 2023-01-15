@@ -51,14 +51,18 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void Update()
     {
-     if (collectingPollen)
-     {
-      collectPollen();
-     }
-     else {
-      moveBee();
-      rotateBeeForward();
-     }
+      if (hive.HasCrashed()) 
+      {
+        explodeBee();
+      }
+      else if (collectingPollen)
+      {
+        collectPollen();
+      }
+      else {
+        moveBee();
+        rotateBeeForward();
+      }
     }
 
   
@@ -72,8 +76,8 @@ public class BeeBody : MonoBehaviour
       }
       else
       {
-       GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized;
-       ReturnToHive();
+        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized;
+        ReturnToHive();
       }
     }
 
@@ -169,6 +173,14 @@ public class BeeBody : MonoBehaviour
           beeExploder = Instantiate(beeExploder);
           this.bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
           beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
+          this.bee.SetHealth(0);
+    }
+
+    private void explodeBee() 
+    {
+          beeExploder = Instantiate(beeExploder);
+          this.bee.SetMessage(this.bee.GetName() + " has no hive");
+          beeExploder.GetComponent<BeeExploder>().explodeBee(transform.position, isPlayer);
           this.bee.SetHealth(0);
     }
 

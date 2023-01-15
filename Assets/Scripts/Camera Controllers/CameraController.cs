@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
 
 
-    [SerializeField]
-    private Vector3 centreTile = new Vector3(2.00f, 0.00f, 2.00f);
+
+    private Vector3 centreTile = new Vector3(3.50f, 0.50f, 3.20f);
 
     [SerializeField]
     Camera mainCamera;

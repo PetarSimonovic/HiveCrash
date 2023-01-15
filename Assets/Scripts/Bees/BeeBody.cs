@@ -131,7 +131,6 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-      Debug.Log("colliosion with " + other.gameObject.tag == "bee");
       if (isIdling && other.gameObject.tag != "bee") 
       {
         bounceBack(other);
@@ -169,7 +168,6 @@ public class BeeBody : MonoBehaviour
     {
           beeExploder = Instantiate(beeExploder);
           this.bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
-          Debug.Log(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
           beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
           this.bee.SetHealth(0);
     }

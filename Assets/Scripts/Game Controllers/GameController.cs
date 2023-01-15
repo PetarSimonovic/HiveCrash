@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
       checkInput();
       if (hiveIsPlaced) {
         checkControllers();
+        checkHive();
       }
     }
 
@@ -244,6 +245,15 @@ public class GameController : MonoBehaviour
     public List<GameObject> GetTiles() 
     {
       return this.tiles;
+    }
+
+    public void checkHive() 
+    {
+      if (hive.HasCrashed()) 
+      {
+        Debug.Log("Hive crashed. Game over");
+        restartGame();
+      }
     }
 
 

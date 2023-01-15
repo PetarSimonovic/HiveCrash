@@ -53,7 +53,6 @@ private bool isPlayer;
 
     private void initialiseTimer()
     {
-        Debug.Log("Initialising timer");
         timer = gameObject.GetComponent<Timer>();
         timer.SetOn(true);
         timer.SetCountdownSeconds(10f);
@@ -80,9 +79,7 @@ private bool isPlayer;
     }
 
     private void addForceToBeeParts() {
-        Debug.Log("Adding Force");
         foreach (GameObject beePart in beeParts) {
-            Debug.Log(beePart);
             Rigidbody rigidBody = beePart.GetComponent<Rigidbody>();
             rigidBody.AddForce(transform.up * forceMultiplier, ForceMode.Impulse);
             applyRandomDirectionalForce(rigidBody);

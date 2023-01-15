@@ -91,7 +91,6 @@ public class MapCreator : MonoBehaviour
           if (tileType == 0) {configureLakeBorderTile(tile);}
           zPosition += WidthOfTile/2;
           row++;
-          Debug.Log("Row " + row + " Column " + columnNumber);
         }
     //   CreateTile(new Vector3(xPosition, 0, zPosition), lakeTilePrefab);
       }

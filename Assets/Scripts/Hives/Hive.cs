@@ -8,6 +8,8 @@ public class Hive : MonoBehaviour
   private Rigidbody rigidBody;
 
   private bool isPlaced = false;
+
+  private bool crashed = false; 
   
   private List<Bee> bees = new List<Bee>();
   
@@ -63,6 +65,12 @@ public class Hive : MonoBehaviour
   {
     this.bees.Remove(bee);
     bee.SetMessage(bee.GetName() + " has died");
+    if (this.bees.Count <= 0) 
+    {
+      this.crashed = true;
+      Debug.Log("All bees died");
+    }
+
   }
 
   public void AddPollen(int pollen)
@@ -98,8 +106,8 @@ public class Hive : MonoBehaviour
 
   public int GetPollenPercentage()
   {
-   var decimalValue = ((decimal)this.pollen/(decimal)this.pollenCapacity) * 100;
-   return (int)decimalValue;
+    var decimalValue = ((decimal)this.pollen/(decimal)this.pollenCapacity) * 100;
+    return (int)decimalValue;
   
   }
 
@@ -134,7 +142,8 @@ public class Hive : MonoBehaviour
           rigidBody.angularVelocity = Vector3.zero;
           break;
         case "lake":
-          Debug.Log("HIVE SANK!!!!!");
+          Debug.Log("Hive sank");
+          this.crashed = true;
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
@@ -161,6 +170,11 @@ public class Hive : MonoBehaviour
   {
     return rigidBody.mass;
   } 
+
+  public bool HasCrashed() 
+  {
+    return this.crashed;
+  }
 
 
 }

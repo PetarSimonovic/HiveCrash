@@ -151,7 +151,7 @@ public class BeeBody : MonoBehaviour
     }
 
     private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
-      collectingPollen = false;
+      collectingPollen = false; // repetition?
       flower.RemoveBee();
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
@@ -165,7 +165,6 @@ public class BeeBody : MonoBehaviour
       }
           otherBeeBody.ReturnToHive();
           otherBeeBody.flower.RemoveBee();
-
     }
 
     private void explodeBee(BeeBody otherBeeBody) 

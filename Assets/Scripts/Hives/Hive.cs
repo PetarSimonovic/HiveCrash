@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hive : MonoBehaviour
 {
+  [SerializeField]
+  private GameObject textBubblePrefab;
 
   private Rigidbody rigidBody;
 
@@ -24,13 +26,13 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     AddPollen(this.pollenCapacity);
+    launchTextBubble(GetPollen().ToString());
+
   }
 
   public void Place()
   {
     this.isPlaced = true;
-    
-
   }
 
   public bool IsPlaced()
@@ -174,6 +176,14 @@ public class Hive : MonoBehaviour
   public bool HasCrashed() 
   {
     return this.crashed;
+  }
+
+  public void launchTextBubble(string message)
+  {
+    Vector3 textPosition = GetPosition();
+    textPosition.y = 1.00f;
+    GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
+  //  textBubble.GetComponent<UIText>().SetText();
   }
 
 

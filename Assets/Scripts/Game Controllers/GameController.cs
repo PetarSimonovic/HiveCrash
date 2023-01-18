@@ -236,7 +236,7 @@ public class GameController : MonoBehaviour
       mapCreator = Instantiate(mapCreator);
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
-      displayController = Instantiate(displayController);
+      //displayController = Instantiate(displayController);
       enemyController.SetDisplayController(displayController);
     }
 
@@ -249,7 +249,7 @@ public class GameController : MonoBehaviour
 
     public void checkHive() 
     {
-      if (hive.HasCrashed()) 
+      if (hive.HasCrashed() || hive.GetBees().Count <= 0) 
       {
         Debug.Log("Hive crashed. Game over");
         restartGame();

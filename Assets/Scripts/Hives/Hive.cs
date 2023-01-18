@@ -183,7 +183,7 @@ public class Hive : MonoBehaviour
     Vector3 textPosition = GetPosition();
     textPosition.y = 1.00f;
     GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
-  //  textBubble.GetComponent<UIText>().SetText();
+    textBubble.GetComponent<UIText>().SetText(message);
   }
 
 

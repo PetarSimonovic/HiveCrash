@@ -111,7 +111,9 @@ public class Flower : MonoBehaviour
 
     private void createPollenCloud()
     {
-      pollenCloud = Instantiate(pollenCloudPrefab, flower.transform.position, Quaternion.identity);
+      Vector3 pollenCloudPositiion = flower.transform.position;
+      pollenCloudPositiion.y = 0.75f;
+      pollenCloud = Instantiate(pollenCloudPrefab, pollenCloudPositiion, Quaternion.identity);
     }
 
     public void PlaceBee() {

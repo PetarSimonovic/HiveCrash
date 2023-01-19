@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
 
     public void Restart()
     {
-       this.timer = this.countdownSeconds;
+        this.timer = this.countdownSeconds;
     }
 
     private void checkTimer()
@@ -36,8 +36,8 @@ public class Timer : MonoBehaviour
 
     private void reduceTimer()
     {
-       timer = timer < 0 ? countdownSeconds : timer;
-       timer -= Time.deltaTime;
+        timer = timer < 0 ? countdownSeconds : timer;
+        timer -= Time.deltaTime;
     }
 
     public bool IsOn()

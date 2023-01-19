@@ -151,6 +151,7 @@ public class GameController : MonoBehaviour
     private void initialiseHive(Vector3 hivePosition)
     {
       Hive hive = createHive(hivePosition);
+      hive.LaunchTextBubble("Hive built");
       initaliseBeeController();
     }
 
@@ -227,7 +228,7 @@ public class GameController : MonoBehaviour
 
     private void restartGame()
     {
-     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void instantiateObjects()
@@ -251,7 +252,7 @@ public class GameController : MonoBehaviour
     {
       if (hive.HasCrashed() || hive.GetBees().Count <= 0) 
       {
-        Debug.Log("Hive crashed. Game over");
+        hive.LaunchTextBubble("Hive crashed");
         restartGame();
       }
     }

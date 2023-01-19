@@ -25,9 +25,7 @@ public class Hive : MonoBehaviour
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
-    AddPollen(this.pollenCapacity);
-    launchTextBubble(GetPollen().ToString());
-
+    this.pollen = this.pollenCapacity;
   }
 
   public void Place()
@@ -61,8 +59,6 @@ public class Hive : MonoBehaviour
     return this.bees.Find(bee => bee.IsInHive());
   }
 
-  
-
   public void RemoveBee(Bee bee)
   {
     this.bees.Remove(bee);
@@ -83,6 +79,7 @@ public class Hive : MonoBehaviour
       this.pollen = this.pollenCapacity;
     }
   setMass();
+  LaunchTextBubble("+" + pollen.ToString(), true);
   }
 
   public void RemovePollen(int pollen) 
@@ -93,6 +90,8 @@ public class Hive : MonoBehaviour
       this.pollen = 0;
     }
   setMass();
+  LaunchTextBubble("-" + pollen.ToString(), false);
+
   }
 
   private void setMass()
@@ -178,13 +177,11 @@ public class Hive : MonoBehaviour
     return this.crashed;
   }
 
-  public void launchTextBubble(string message)
+  public void LaunchTextBubble(string message, bool isPositive = true)
   {
     Vector3 textPosition = GetPosition();
     textPosition.y = 1.00f;
     GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
-    textBubble.GetComponent<UIText>().SetText(message);
+    textBubble.GetComponent<TextBubble>().SetText(message, isPositive);
   }
-
-
 }

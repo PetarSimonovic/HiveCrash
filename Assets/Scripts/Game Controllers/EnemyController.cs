@@ -123,8 +123,7 @@ public class EnemyController : MonoBehaviour
         displayController.SetEnemyHive(enemyHive);
         enemyHivePrefab.name = enemyHive.GetId();
         beeLauncher.SetHive(enemyHive);
-
-
+        enemyHive.LaunchTextBubble("Rival hive disturbed");
       }
 
 

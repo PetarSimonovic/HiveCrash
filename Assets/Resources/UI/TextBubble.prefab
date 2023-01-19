@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2478037892468496937}
   - component: {fileID: 675890171090186785}
   - component: {fileID: 3409008857337489196}
-  - component: {fileID: 8743593085659176356}
+  - component: {fileID: 3319297673840367838}
+  - component: {fileID: 6339038415916130301}
   m_Layer: 0
   m_Name: TextBubble
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 675890171090186785}
   m_maskType: 0
---- !u!114 &8743593085659176356
+--- !u!114 &3319297673840367838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,6 +183,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1698945753379636350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9986db5da794590945b137ea1a3e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6339038415916130301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698945753379636350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55651b76559f8438885518642934a438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

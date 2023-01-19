@@ -28,7 +28,7 @@ public class BeeController : MonoBehaviour
           }
           else if (bee.IsHungry())
           {
-             eat(bee);
+            eat(bee);
           }
           checkBeeTimer(bee);
           checkBeeHealth(bee);

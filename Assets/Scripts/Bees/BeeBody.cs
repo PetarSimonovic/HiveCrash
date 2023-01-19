@@ -11,6 +11,7 @@ public class BeeBody : MonoBehaviour
 
    [SerializeField]
     private GameObject beeExploder;
+    
     private Bee bee;
 
     private bool isPlayer;
@@ -218,9 +219,9 @@ public class BeeBody : MonoBehaviour
       checkPollenCollection();
       if (collectingPollen)
       {
-       flower.PlaceBee();
-       moveSpeed = IDLE_SPEED;
-       rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+        flower.PlaceBee();
+        moveSpeed = IDLE_SPEED;
+        rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       }
     }
 

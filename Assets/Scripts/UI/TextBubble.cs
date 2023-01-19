@@ -11,6 +11,9 @@ public class TextBubble : MonoBehaviour
 
     private float countDownSeconds = 5.0f;
 
+    private float riseSpeed = 0.008f;
+    
+
     void Awake()
     {
         getComponents();
@@ -20,7 +23,7 @@ public class TextBubble : MonoBehaviour
     void Update()
     {
         checkIfTimerIsUp();
-        transform.position += new Vector3(0, 0.006f, 0);
+        transform.position += new Vector3(0, riseSpeed, 0);
 
     }
 

@@ -75,8 +75,8 @@ public class BeeController : MonoBehaviour
       else 
       {
         bee.ReduceHealth();
-        string message = bee.GetHealth() <= 0 ? bee.GetName() + " died of hunger" : "Not enough food for " + bee.GetName();
-        bee.SetMessage(message);
+        string message = bee.GetHealth() <= 0 ? bee.GetName() + " died of hunger" : "No food for " + bee.GetName();
+        hive.LaunchTextBubble(message, false);
       }
       bee.SetHunger(false);
       bee.RestartHungerTimer();
@@ -112,7 +112,8 @@ public class BeeController : MonoBehaviour
         Timer timer = initaliseTimer();
         string name = beeNamer.ChooseName();
         Bee bee =  new Bee(name, this.hive.GetId(), timer);
-        bee.SetMessage(name + " hatched");
+        string message = name + " hatched";
+        hive.LaunchTextBubble(message);
         hive.AddBee(bee);
       }
     }

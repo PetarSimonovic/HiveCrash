@@ -62,7 +62,8 @@ public class Hive : MonoBehaviour
   public void RemoveBee(Bee bee)
   {
     this.bees.Remove(bee);
-    bee.SetMessage(bee.GetName() + " has died");
+    string message = bee.GetName() + " died";
+    LaunchTextBubble(message, false);
     if (this.bees.Count <= 0) 
     {
       this.crashed = true;

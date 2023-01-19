@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
     private void Awake() 
     {
-     instantiateObjects();
+      instantiateObjects();
     }
 
     private void Start()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3409008857337489196}
   - component: {fileID: 3319297673840367838}
   - component: {fileID: 6339038415916130301}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TextBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}

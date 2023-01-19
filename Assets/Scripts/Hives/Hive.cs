@@ -80,7 +80,6 @@ public class Hive : MonoBehaviour
       this.pollen = this.pollenCapacity;
     }
   setMass();
-  LaunchTextBubble("+" + pollen.ToString(), true);
   }
 
   public void RemovePollen(int pollen) 
@@ -181,7 +180,7 @@ public class Hive : MonoBehaviour
   public void LaunchTextBubble(string message, bool isPositive = true)
   {
     Vector3 textPosition = GetPosition();
-    textPosition.y = 1.00f;
+    textPosition.y = 1.50f;
     GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
     textBubble.GetComponent<TextBubble>().SetText(message, isPositive);
   }

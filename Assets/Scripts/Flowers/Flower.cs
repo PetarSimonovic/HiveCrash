@@ -7,6 +7,11 @@ public class Flower : MonoBehaviour
     [SerializeField]
     private GameObject flowerBody;
 
+    [SerializeField]
+    private GameObject pollenCloudPrefab;
+
+    private GameObject pollenCloud;
+
     public Timer timer; 
 
     private GameObject flower;
@@ -61,9 +66,9 @@ public class Flower : MonoBehaviour
 
     public void CreateBody()
     {
-     isPlanted = true;
-     flower = Instantiate(flowerBody, transform.position, Quaternion.identity, this.transform); 
-     flowerAnimator = flower.GetComponent<FlowerAnimator>();
+      isPlanted = true;
+      flower = Instantiate(flowerBody, transform.position, Quaternion.identity, this.transform); 
+      flowerAnimator = flower.GetComponent<FlowerAnimator>();
     }
 
     private void openFlower()
@@ -104,17 +109,26 @@ public class Flower : MonoBehaviour
       timer.SetCountdownSeconds(20f);
     }
 
+    private void createPollenCloud()
+    {
+      pollenCloud = Instantiate(pollenCloudPrefab, flower.transform.position, Quaternion.identity);
+    }
+
     public void PlaceBee() {
       hasBee = true;
+      createPollenCloud();
+
     }
 
     public void RemoveBee() {
       hasBee = false;
+      Destroy(pollenCloud);
     }
 
     public bool HasBee() {
       return hasBee;
     }
+
 
     
 }

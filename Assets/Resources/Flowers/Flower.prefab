@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerBody: {fileID: 5914520805262201011, guid: dadd10e001e224bcf8b719c301f2ed9f,
     type: 3}
-  timerPrefab: {fileID: 155570893530016440, guid: 7c7832ca735c743a6a53ab4a114c4b20,
+  pollenCloudPrefab: {fileID: 2074237740946173504, guid: 2ce10f7e33189450789c2ec58889e800,
     type: 3}
+  timer: {fileID: 0}
 --- !u!114 &-5343254838585585512
 MonoBehaviour:
   m_ObjectHideFlags: 0

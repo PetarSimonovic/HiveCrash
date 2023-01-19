@@ -65,6 +65,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beeExploder: {fileID: 5687970307939334544, guid: bac3c8b86bfc84bfb8afae6357ce1045,
     type: 3}
+  textBubblePrefab: {fileID: 1698945753379636350, guid: 1ae3bc3888e0b4c59a569cfe2fffbc97,
+    type: 3}
   isEnteringHive: 0
   hivePositionY: 0
 --- !u!135 &3084565828060223333

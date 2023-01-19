@@ -9,8 +9,11 @@ public class BeeBody : MonoBehaviour
   {
   
 
-   [SerializeField]
+    [SerializeField]
     private GameObject beeExploder;
+
+    [SerializeField]
+    private GameObject textBubblePrefab;
     
     private Bee bee;
 
@@ -123,7 +126,7 @@ public class BeeBody : MonoBehaviour
           processFlowerCollision(other);
           return true;
 
-         default:
+        default:
           return false;
       }
     }
@@ -171,7 +174,8 @@ public class BeeBody : MonoBehaviour
     private void explodeBee(BeeBody otherBeeBody) 
     {
           beeExploder = Instantiate(beeExploder);
-          this.bee.SetMessage(otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName() + this.bee.GetHealth());
+          string message = otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName();
+          LaunchTextBubble(message, false);
           beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
           this.bee.SetHealth(0);
     }
@@ -179,7 +183,8 @@ public class BeeBody : MonoBehaviour
     private void explodeBee() 
     {
           beeExploder = Instantiate(beeExploder);
-          this.bee.SetMessage(this.bee.GetName() + " has no hive");
+          string message = this.bee.GetName() + " lost its hive";
+          LaunchTextBubble(message, false);
           beeExploder.GetComponent<BeeExploder>().explodeBee(transform.position, isPlayer);
           this.bee.SetHealth(0);
     }
@@ -286,6 +291,14 @@ public class BeeBody : MonoBehaviour
 
     public bool IsPlayer() {
       return this.isPlayer;
+    }
+
+    public void LaunchTextBubble(string message, bool isPositive = true)
+    {
+      Vector3 textPosition = transform.position;
+      textPosition.y = 1.00f;
+      GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
+      textBubble.GetComponent<TextBubble>().SetText(message, isPositive);
     }
 
  

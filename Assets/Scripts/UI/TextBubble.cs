@@ -9,9 +9,9 @@ public class TextBubble : MonoBehaviour
 
     private Timer timer;
 
-    private float countDownSeconds = 5.0f;
+    private float countDownSeconds = 10.0f;
 
-    private float riseSpeed = 0.009f;
+    private float riseSpeed = 0.003f;
     
 
     void Awake()
@@ -26,6 +26,8 @@ public class TextBubble : MonoBehaviour
         transform.position += new Vector3(0, riseSpeed, 0);
 
     }
+
+
 
     public void SetText(string text, bool isPositive)
     {
@@ -63,4 +65,15 @@ public class TextBubble : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // private void OnCollisionEnter(Collision other) 
+    // {
+    //     Debug.Log("TEXT COllission");
+    //     var magnitude = 20;
+
+    //     var force = transform.position - other.transform.position;
+    //     // normalize force vector to get direction only and trim magnitude
+    //    // force.Normalize();
+    //     gameObject.GetComponent<Rigidbody>().AddForce(force * magnitude);
+    // }
 }

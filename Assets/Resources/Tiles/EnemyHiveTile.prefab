@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: meadow
       objectReference: {fileID: 0}
+    - target: {fileID: 8093964597249405221, guid: 25ce333e6efd74da9917ae547e2065f8,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8897323176816589720, guid: 25ce333e6efd74da9917ae547e2065f8,
         type: 3}
       propertyPath: m_Name
@@ -184,5 +189,8 @@ MonoBehaviour:
   heightRange:
   - 0.1
   - 0.1
+  row: 0
+  column: 0
+  isBorderTile: 0
   enemyHive: {fileID: 7516243428675172222, guid: 2839ab8feca9143b59c0af5eea9a3978,
     type: 3}

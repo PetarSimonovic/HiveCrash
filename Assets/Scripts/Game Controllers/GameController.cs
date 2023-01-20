@@ -80,7 +80,9 @@ public class GameController : MonoBehaviour
       if (Physics.Raycast(raycast, out raycastHit))
       {
         tile = getTile(raycastHit);
+        if (tile.layer == 14) {return;}
         if (Globals.test) {tile.GetComponent<Tile>().PrintPosition();}
+        Debug.Log(tile);
         if (tile.GetComponent<Tile>().IsBorderTile() && !hiveIsPlaced) 
         {
           Debug.Log("Clicked on border");

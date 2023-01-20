@@ -30,8 +30,8 @@ public class BeeLauncher : MonoBehaviour
     {
       if (bee is not null) 
       {
-       this.loadedBee = bee;
-       this.isLoaded = true;
+        this.loadedBee = bee;
+        this.isLoaded = true;
       }
     }
 
@@ -50,7 +50,7 @@ public class BeeLauncher : MonoBehaviour
         this.loadedBee.SetBody(beeBody);
         ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), launchPosition);
       }
-       reset();
+        reset();
     }
 
     protected virtual void ApplyForceToBeeBody(Rigidbody bee, Vector3 launchPosition)

@@ -139,7 +139,7 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-      if (isIdling && other.gameObject.tag != "bee") 
+      if (isIdling) //&& other.gameObject.tag == "bee" 
       {
         bounceBack(other);
       }
@@ -148,7 +148,10 @@ public class BeeBody : MonoBehaviour
         collectingPollen = false;
         flower.RemoveBee();
         BeeBody otherBeeBody = other.gameObject.GetComponent<BeeBody>();
-        checkIfBeeKilledInCollision(otherBeeBody);
+        if (otherBeeBody != null) 
+          { 
+            checkIfBeeKilledInCollision(otherBeeBody);
+          }
 
       }
 

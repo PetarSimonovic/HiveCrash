@@ -153,8 +153,7 @@ public class GameController : MonoBehaviour
     private void initialiseHive(Vector3 hivePosition)
     {
       Hive hive = createHive(hivePosition);
-      hive.LaunchTextBubble("Hive built");
-      initaliseBeeController();
+      initialiseBeeController();
     }
 
     private void initialiseEnemies()
@@ -220,7 +219,7 @@ public class GameController : MonoBehaviour
       restartGame();
     }
 
-    private void initaliseBeeController()
+    private void initialiseBeeController()
     {
       beeController = Instantiate(beeController);
       beeController.SetHive(hive);

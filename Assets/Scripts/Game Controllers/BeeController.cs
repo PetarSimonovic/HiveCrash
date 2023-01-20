@@ -72,8 +72,9 @@ public class BeeController : MonoBehaviour
       if (hivePollen >= bee.GetAppetite())
       {
         hive.RemovePollen(bee.GetAppetite());
-        string message = bee.GetName() + " has eaten";
+        string message = bee.GetName() + " ate";
         hive.LaunchTextBubble(message);
+        hive.LaunchTextBubble("Pollen -" + bee.GetAppetite(), false);
         bee.IncreaseHealth();
       }
       else 
@@ -107,6 +108,8 @@ public class BeeController : MonoBehaviour
     public void SetHive(Hive hive)
     {
       this.hive = hive;
+      hive.LaunchTextBubble("Hive built");
+
     }
 
     public void AddBees(int beeCount)

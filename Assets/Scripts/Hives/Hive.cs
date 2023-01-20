@@ -90,7 +90,6 @@ public class Hive : MonoBehaviour
       this.pollen = 0;
     }
   setMass();
-  LaunchTextBubble("-" + pollen.ToString(), false);
 
   }
 

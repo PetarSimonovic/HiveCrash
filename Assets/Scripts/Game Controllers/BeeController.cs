@@ -48,9 +48,8 @@ public class BeeController : MonoBehaviour
       if (beeBody.GetComponent<BeeBody>().isEnteringHive)
       {
           hive.AddPollen(bee.GetPollen());
-          string message = (bee.GetName() + " brought home " + bee.GetPollen().ToString() + " pollen");
+          string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
           hive.LaunchTextBubble(message, true);
-
           bee.EnterHive();
           bee.RemoveAllPollen();
           Destroy(beeBody);
@@ -72,9 +71,8 @@ public class BeeController : MonoBehaviour
       if (hivePollen >= bee.GetAppetite())
       {
         hive.RemovePollen(bee.GetAppetite());
-        string message = bee.GetName() + " ate";
-        hive.LaunchTextBubble(message);
-        hive.LaunchTextBubble("Pollen -" + bee.GetAppetite(), false);
+        string message = bee.GetName() + " ate: -" + bee.GetAppetite() + " pollen";
+        hive.LaunchTextBubble(message, false);
         bee.IncreaseHealth();
       }
       else 

@@ -11,7 +11,7 @@ public class TextBubble : MonoBehaviour
 
     private float countDownSeconds = 10.0f;
 
-    private float riseSpeed = 0.003f;
+    private float riseSpeed = 0.006f;
     
 
     void Awake()
@@ -66,14 +66,13 @@ public class TextBubble : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter(Collision other) 
-    // {
-    //     Debug.Log("TEXT COllission");
-    //     var magnitude = 20;
+    private void OnCollisionEnter(Collision other) 
+    {
+        var magnitude = 20;
 
-    //     var force = transform.position - other.transform.position;
-    //     // normalize force vector to get direction only and trim magnitude
-    //    // force.Normalize();
-    //     gameObject.GetComponent<Rigidbody>().AddForce(force * magnitude);
-    // }
+        var force = transform.position - other.transform.position;
+        // normalize force vector to get direction only and trim magnitude
+        force.Normalize();
+        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3 (0f, 0f, Random.Range(-20.0f, 20.0f)));
+    }
 }

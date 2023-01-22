@@ -54,7 +54,6 @@ public class EnemyController : MonoBehaviour
     public void PlaceEnemyTile(List<GameObject> tiles)
     {
         GameObject tile;
-
         if (Globals.test) 
         {
           tile = tiles.Find(t => t.GetComponent<Tile>().column == 14 && t.GetComponent<Tile>().row == 9);
@@ -62,19 +61,30 @@ public class EnemyController : MonoBehaviour
         else 
         {
           tile = chooseEnemyHiveTile(tiles);
-          while (tile.GetComponent<Tile>().IsBorderTile())
+          while (invalidPositionForEnemy(tile))
           {
             tile = chooseEnemyHiveTile(tiles);
           }
         }
+        Vector3 tilePosition = new Vector3 (tile.transform.position.x, 0.1f, tile.transform.position.z);
         tiles.Remove(tile);
         Destroy(tile);
-        Vector3 tilePosition = new Vector3 (tile.transform.position.x, 0.1f, tile.transform.position.y);
-        enemyHiveTile = Instantiate(enemyHiveTile, tile.transform.position, Quaternion.identity);
+        Debug.Log("Enemy is at " + tilePosition);
+        Debug.Log("Distance from player is"); 
+        
+        enemyHiveTile = Instantiate(enemyHiveTile, tilePosition, Quaternion.identity);
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
         enemyHiveIsPlaced = true;
         tiles.Add(enemyHiveTile);
         
+    }
+
+    private bool invalidPositionForEnemy(GameObject tile) 
+    {
+      return (
+          tile.GetComponent<Tile>().IsBorderTile() || 
+          Vector3.Distance(tile.transform.position, playerHive.GetPosition()) < 3f
+      );
     }
 
     private GameObject chooseEnemyHiveTile(List<GameObject> tiles) 

@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour
         tile = getTile(raycastHit);
         if (tile.layer == 14) {return;}
         if (Globals.test) {tile.GetComponent<Tile>().PrintPosition();}
-        if (tile.tag != "tile") {
+        if (tile.tag == "hive") {
           Debug.Log(tile.tag);
           processMapInput(tile.transform.position, raycastHit.point);
         }
@@ -205,15 +205,23 @@ public class GameController : MonoBehaviour
 
     private void surroundHiveWithMeadows(int hiveRow, int hiveColumn)
     {
+      TileChecker tileChecker = new TileChecker();
+      List<GameObject> tilesToChange = new List<GameObject>();
       foreach (GameObject tile in tiles) 
       {
-        TileChecker tileChecker = new TileChecker();
         int tileRow = tile.GetComponent<Tile>().row;
         int tileColumn = tile.GetComponent<Tile>().column;
         if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
         {
-          tile.GetComponent<Tile>().Reveal();
+          tilesToChange.Add(tile);
         }
+      }
+      foreach (GameObject tile in tilesToChange)
+      {
+          if (tile.GetComponent<Tile>().IsBorderTile()) {continue; }
+          Vector3 tilePosition = tile.transform.position;
+          GameObject meadowTile = mapCreator.CreateTile(tilePosition, mapCreator.GetTile("meadow"));
+          meadowTile.GetComponent<Tile>().Reveal();
       }
     }
 

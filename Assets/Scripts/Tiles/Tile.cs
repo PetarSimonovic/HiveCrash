@@ -12,6 +12,8 @@ public class Tile : MonoBehaviour
 
     private GameObject hex;
 
+    private bool nextToHive;
+
     protected bool isHidden = true; // why does this have to be false then immediately set to true in start?
 
     private MeshRenderer mesh;
@@ -33,13 +35,18 @@ public class Tile : MonoBehaviour
       this.gameObject.name = material.ToString();
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
       checkCollision(other);
     }
 
     public void checkCollision(Collider other)
     {
+      if (other.gameObject.tag == "hive")
+      {
+        Debug.Log("I'm next to the hive!");
+        nextToHive = true;
+      }
       if (isHidden) 
       {
         Reveal();
@@ -49,6 +56,7 @@ public class Tile : MonoBehaviour
 
     public virtual void Reveal()
     {
+      Debug.Log(material);
       mesh.material = material;
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);
       isHidden = false;
@@ -83,6 +91,11 @@ public class Tile : MonoBehaviour
     public bool IsBorderTile() 
     {
       return isBorderTile;
+    }
+
+    public bool IsNextToHive() 
+    {
+      return nextToHive;
     }
 
 

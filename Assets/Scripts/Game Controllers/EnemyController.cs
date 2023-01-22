@@ -23,7 +23,6 @@ public class EnemyController : MonoBehaviour
 
     private Hive playerHive;
 
-
     private Hive enemyHive;
 
     private bool enemyHiveIsPlaced;
@@ -42,6 +41,7 @@ public class EnemyController : MonoBehaviour
             {
                 activate();            
             }
+            checkHive();
             checkTimer();
         }
     }
@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviour
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         enemyHivePrefab.name = enemyHive.GetId();
         beeLauncher.SetHive(enemyHive);
-        enemyHive.LaunchTextBubble("Rival hive disturbed");
+        enemyHive.LaunchTextBubble("Rival hive disturbed", false);
       }
 
 
@@ -145,4 +145,12 @@ public class EnemyController : MonoBehaviour
       {
         this.displayController = displayController;
       }
+
+    private void checkHive() 
+    {
+      if (enemyHive.HasCrashed()) 
+      {
+        enemyHive.LaunchTextBubble("HiveCrash", false);
+      }
+    }
 }

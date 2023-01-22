@@ -83,8 +83,11 @@ public class GameController : MonoBehaviour
         tile = getTile(raycastHit);
         if (tile.layer == 14) {return;}
         if (Globals.test) {tile.GetComponent<Tile>().PrintPosition();}
-        Debug.Log(tile);
-        if (tile.GetComponent<Tile>().IsBorderTile() && !hiveIsPlaced) 
+        if (tile.tag != "tile") {
+          Debug.Log(tile.tag);
+          processMapInput(tile.transform.position, raycastHit.point);
+        }
+        else if (tile.GetComponent<Tile>().IsBorderTile() && !hiveIsPlaced) 
         {
           Debug.Log("Clicked on border");
         } 
@@ -185,6 +188,7 @@ public class GameController : MonoBehaviour
       {
         if (tile.transform.position == hivePosition)
           {
+            Debug.Log("Hive is on: " + tile.GetComponent<Tile>().row + " | " + tile.GetComponent<Tile>().column);
             tiles.Remove(tile);
             Destroy(tile);
             break;
@@ -251,9 +255,9 @@ public class GameController : MonoBehaviour
 
     public void checkHive() 
     {
-      if (hive.HasCrashed() || hive.GetBees().Count <= 0) 
+      if (hive.HasCrashed()) 
       {
-        hive.LaunchTextBubble("Hive crashed");
+        hive.LaunchTextBubble("HiveCrash", false);
         restartGame();
       }
     }

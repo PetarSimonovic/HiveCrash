@@ -34,8 +34,7 @@ public class FlowerController : MonoBehaviour
             Tile meadowTile = meadow.GetComponent<Tile>();
             if (!isHidden(meadow) && meadowPosition != this.hivePosition)
             { 
-               
-               plantFlower(meadowPosition, meadowTile);
+                plantFlower(meadowPosition, meadowTile);
             }
         }
         removeRevealedMeadows();

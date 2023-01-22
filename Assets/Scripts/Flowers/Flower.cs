@@ -82,8 +82,6 @@ public class Flower : MonoBehaviour
       inBloom = false;
       RemoveBee();
       flowerAnimator.Close();
-
-
     }
 
 

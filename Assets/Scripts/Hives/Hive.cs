@@ -62,12 +62,10 @@ public class Hive : MonoBehaviour
   public void RemoveBee(Bee bee)
   {
     this.bees.Remove(bee);
-    string message = bee.GetName() + " died";
-    LaunchTextBubble(message, false);
     if (this.bees.Count <= 0) 
     {
       this.crashed = true;
-      Debug.Log("All bees died");
+      LaunchTextBubble("No more bees", false);
     }
 
   }
@@ -142,16 +140,17 @@ public class Hive : MonoBehaviour
           rigidBody.angularVelocity = Vector3.zero;
           break;
         case "lake":
-          Debug.Log("Hive sank");
+          LaunchTextBubble("Hive drowned", false);
           this.crashed = true;
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
           applyForce(other);
-          bee.SetMessage(bee.GetName() + " attacked hive");
           int pollenTaken = calculatePollenTaken();
           RemovePollen(pollenTaken);
           bee.AddPollen(pollenTaken);
+          string message = bee.GetName() + " stole " +  pollenTaken.ToString() + " pollen";
+          LaunchTextBubble(message, false);
           break;
       
         default:

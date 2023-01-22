@@ -120,7 +120,7 @@ public class BeeBody : MonoBehaviour
       switch (otherObject) { 
         case "hive":
           enterHive(other);
-          return true;
+          return true; // ?? Why is it returning a bool
 
         case "flower":
           processFlowerCollision(other);

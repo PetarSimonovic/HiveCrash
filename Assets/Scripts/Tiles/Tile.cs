@@ -44,8 +44,8 @@ public class Tile : MonoBehaviour
     {
       if (other.gameObject.tag == "hive")
       {
-        Debug.Log("I'm next to the hive!");
         nextToHive = true;
+        Reveal();
       }
       if (isHidden) 
       {
@@ -56,7 +56,6 @@ public class Tile : MonoBehaviour
 
     public virtual void Reveal()
     {
-      Debug.Log(material);
       mesh.material = material;
       transform.position = new Vector3 (transform.position.x, Random.Range(heightRange[0], heightRange[1]), transform.position.z);
       isHidden = false;

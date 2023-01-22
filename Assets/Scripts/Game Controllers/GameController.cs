@@ -168,10 +168,15 @@ public class GameController : MonoBehaviour
 
     private Hive createHive(Vector3 hivePosition)
     {
-      destroyTileBeneathHive(hivePosition);
+      GameObject chosenTile = getTileBeneathHive(hivePosition);
+      int row = chosenTile.GetComponent<Tile>().row;
+      int column = chosenTile.GetComponent<Tile>().column;
+      destroyTile(chosenTile);
       flowerController.SetHivePosition(hivePosition);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
       tile.tag = "playerHiveTile";
+      tile.GetComponent<Tile>().row = row;
+      tile.GetComponent<Tile>().column = column;
       hivePosition = new Vector3(hivePosition.x, (tile.transform.position.y + (tile.GetComponent<Tile>().GetHeight()/4)), hivePosition.z);
       GameObject hiveObject = Instantiate(hivePrefab, hivePosition, Quaternion.identity);
       hive = hiveObject.GetComponent<Hive>();
@@ -179,20 +184,36 @@ public class GameController : MonoBehaviour
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
       beeLauncher.SetHive(hive);
+      Debug.Log("Hive is on: ");
+      tile.GetComponent<Tile>().PrintPosition();
+      surroundHiveWithMeadows(row, column);
       return hive;
     }
 
-    private void destroyTileBeneathHive(Vector3 hivePosition)
+    private GameObject getTileBeneathHive(Vector3 hivePosition) 
     {
-      foreach (GameObject tile in tiles)
+      
+      return tiles.Find(tile => tile.transform.position == hivePosition);
+
+    }
+
+    private void destroyTile(GameObject tile)
+    {
+      tiles.Remove(tile);
+      Destroy(tile);
+    }
+
+    private void surroundHiveWithMeadows(int hiveRow, int hiveColumn)
+    {
+      foreach (GameObject tile in tiles) 
       {
-        if (tile.transform.position == hivePosition)
-          {
-            Debug.Log("Hive is on: " + tile.GetComponent<Tile>().row + " | " + tile.GetComponent<Tile>().column);
-            tiles.Remove(tile);
-            Destroy(tile);
-            break;
-          }
+        TileChecker tileChecker = new TileChecker();
+        int tileRow = tile.GetComponent<Tile>().row;
+        int tileColumn = tile.GetComponent<Tile>().column;
+        if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
+        {
+          tile.GetComponent<Tile>().Reveal();
+        }
       }
     }
 

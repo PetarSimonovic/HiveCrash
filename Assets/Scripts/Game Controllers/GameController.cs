@@ -207,19 +207,23 @@ public class GameController : MonoBehaviour
     {
       TileChecker tileChecker = new TileChecker();
       List<GameObject> tilesToChange = new List<GameObject>();
-      foreach (GameObject tile in tiles) 
+      List<Coordinate> coordinates = tileChecker.GetAdjacentTiles(hiveColumn);
+      Debug.Log(coordinates[0]);
+      foreach (Coordinate coordinate in coordinates ) 
       {
-        int tileRow = tile.GetComponent<Tile>().row;
-        int tileColumn = tile.GetComponent<Tile>().column;
-        if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
-        {
-          tilesToChange.Add(tile);
-        }
+       // Debug.Log(coordinate);
+        // int tileRow = tile.GetComponent<Tile>().row;
+        // int tileColumn = tile.GetComponent<Tile>().column;
+        // if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
+        // {
+        //   tilesToChange.Add(tile);
+        // }
       }
       foreach (GameObject tile in tilesToChange)
       {
           if (tile.GetComponent<Tile>().IsBorderTile()) {continue; }
           Vector3 tilePosition = tile.transform.position;
+          destroyTile(tile);
           GameObject meadowTile = mapCreator.CreateTile(tilePosition, mapCreator.GetTile("meadow"));
           meadowTile.GetComponent<Tile>().Reveal();
       }

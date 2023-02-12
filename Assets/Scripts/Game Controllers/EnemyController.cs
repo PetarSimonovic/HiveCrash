@@ -66,17 +66,21 @@ public class EnemyController : MonoBehaviour
             tile = chooseEnemyHiveTile(tiles);
           }
         }
-        Vector3 tilePosition = new Vector3 (tile.transform.position.x, 0.1f, tile.transform.position.z);
+        Vector3 tilePosition = tile.transform.position;
+        int row = tile.GetComponent<Tile>().row;
+        int column = tile.GetComponent<Tile>().column;
         tiles.Remove(tile);
         Destroy(tile);
-        Debug.Log("Enemy is at " + tilePosition);
-        Debug.Log("Distance from player is"); 
-        
         enemyHiveTile = Instantiate(enemyHiveTile, tilePosition, Quaternion.identity);
         enemyHiveTileStatus = enemyHiveTile.GetComponent<Tile>();
+        enemyHiveTileStatus.row = row;
+        enemyHiveTileStatus.column = column;
         enemyHiveIsPlaced = true;
         tiles.Add(enemyHiveTile);
-        
+        Debug.Log("Enemy is at ");
+        tile.GetComponent<Tile>().PrintPosition();
+        Debug.Log("Distance from player is"); 
+        Debug.Log(Vector3.Distance(tilePosition, playerHive.GetPosition()));   
     }
 
     private bool invalidPositionForEnemy(GameObject tile) 

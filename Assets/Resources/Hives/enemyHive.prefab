@@ -87,6 +87,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyHive
       objectReference: {fileID: 0}
+    - target: {fileID: 5404234298746927186, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6975144811444408420, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
         type: 3}
       propertyPath: m_Layer

@@ -164,4 +164,16 @@ public class MapCreator : MonoBehaviour
     {
       return this.tiles;
     }
+
+    public void DestroyTile(GameObject tile)
+    {
+      tiles.Remove(tile);
+      Destroy(tile);
+    }
+
+    public GameObject GetMeadowTilePrefab() 
+    {
+      return this.meadowTilePrefab;
+
+    }
 }

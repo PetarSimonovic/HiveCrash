@@ -171,7 +171,7 @@ public class GameController : MonoBehaviour
       GameObject chosenTile = getTileBeneathHive(hivePosition);
       int row = chosenTile.GetComponent<Tile>().row;
       int column = chosenTile.GetComponent<Tile>().column;
-      destroyTile(chosenTile);
+      mapCreator.DestroyTile(chosenTile);
       flowerController.SetHivePosition(hivePosition);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
       tile.tag = "playerHiveTile";
@@ -197,11 +197,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void destroyTile(GameObject tile)
-    {
-      tiles.Remove(tile);
-      Destroy(tile);
-    }
+    
 
     private void surroundHiveWithMeadows(int hiveRow, int hiveColumn)
     {
@@ -223,7 +219,7 @@ public class GameController : MonoBehaviour
       {
           if (tile.GetComponent<Tile>().IsBorderTile()) {continue; }
           Vector3 tilePosition = tile.transform.position;
-          destroyTile(tile);
+          mapCreator.DestroyTile(tile);
           GameObject meadowTile = mapCreator.CreateTile(tilePosition, mapCreator.GetTile("meadow"));
           meadowTile.GetComponent<Tile>().Reveal();
       }

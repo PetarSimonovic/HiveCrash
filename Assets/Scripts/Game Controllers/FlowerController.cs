@@ -29,7 +29,7 @@ public class FlowerController : MonoBehaviour
     public void PlantRevealedMeadows()
     {   
         foreach (GameObject meadow in meadows)
-        {
+        {   
             Vector3 meadowPosition = meadow.transform.position;
             Tile meadowTile = meadow.GetComponent<Tile>();
             if (!isHidden(meadow) && meadowPosition != this.hivePosition)

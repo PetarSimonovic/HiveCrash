@@ -137,9 +137,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 0}
+  meadowMaterial: {fileID: 2100000, guid: df2a877814b6741f8ad8e4f8664b8bc2, type: 2}
   heightRange:
   - 0
   - 0
+  row: 0
+  column: 0
+  isBorderTile: 0
 --- !u!54 &1447841027605637036
 Rigidbody:
   m_ObjectHideFlags: 0

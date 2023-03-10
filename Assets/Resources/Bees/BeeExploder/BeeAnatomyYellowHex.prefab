@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 3136010004289007146, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: 208400d04335a41d6bcbc568c5b78aaf,
+        type: 3}
     - target: {fileID: 3464932112834229024, guid: 58c8007221cb44b6b8b48085bb4ec7a8,
         type: 3}
       propertyPath: m_Drag

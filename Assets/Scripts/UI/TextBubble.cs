@@ -11,7 +11,7 @@ public class TextBubble : MonoBehaviour
 
     private float countDownSeconds = 10.0f;
 
-    private float riseSpeed = 0.009f;
+    private float riseSpeed = 0.01f;
     
 
     void Awake()

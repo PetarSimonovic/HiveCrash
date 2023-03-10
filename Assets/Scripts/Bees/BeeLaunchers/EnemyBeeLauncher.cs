@@ -13,7 +13,10 @@ public class EnemyBeeLauncher : BeeLauncher
     {
         this.isLoaded = false;
     }
-
+    public override void SetEndPosition(Vector3 worldPosition)
+    {
+      this.endPosition = fixYPosition(worldPosition);
+    }
     // protected override Vector3 calculateDirection()
     // {
     //   Vector3 direction = this.endPosition - this.launchPosition;

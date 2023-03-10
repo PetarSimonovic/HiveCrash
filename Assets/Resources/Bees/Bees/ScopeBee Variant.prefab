@@ -346,8 +346,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.005932808
-        value: 0.078125
+        time: 0.0031251907
+        value: 0.027496338
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -408,5 +408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beeExploder: {fileID: 0}
+  textBubblePrefab: {fileID: 0}
   isEnteringHive: 0
   hivePositionY: 0

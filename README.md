@@ -12,9 +12,7 @@ Click, drag back and release to launch a bee from the hive.
 
 Explore the map.
 
-Collect pollen from flowers that are in bloom: bees need to eat pollen to survive. 
-
-But take care: all bees are vulnerable when collecting pollen. Take out your rivals when they're on a flower. 
+Collect pollen from flowers that are in bloom: bees need to eat pollen to survive.
 
 Ping bees at enemy hives to attack. 
 

@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
     {
       checkIfMapIsComplete();
       checkInput();
-      if (hiveIsPlaced && mapCreator.IsHiveSurrounded()) {
+      if (hiveIsPlaced) {
         checkControllers();
         checkHive();
       }
@@ -146,6 +146,7 @@ public class GameController : MonoBehaviour
         case false:
           initialiseHive(clickPosition);
           initialiseEnemies();
+          updateFlowerController();
           break;
         default:
           beeLauncher.LoadBee(hive.GetBee());
@@ -185,6 +186,7 @@ public class GameController : MonoBehaviour
       beeLauncher.SetHive(hive);
       Debug.Log("Hive is on: ");
       tile.GetComponent<Tile>().PrintPosition();
+      surroundHiveWithMeadows(row, column);
       return hive;
     }
 
@@ -197,7 +199,31 @@ public class GameController : MonoBehaviour
 
     
 
-  
+    private void surroundHiveWithMeadows(int hiveRow, int hiveColumn)
+    {
+      TileChecker tileChecker = new TileChecker();
+      List<GameObject> tilesToChange = new List<GameObject>();
+      List<Coordinate> coordinates = tileChecker.GetAdjacentTiles(hiveColumn);
+      Debug.Log(coordinates[0]);
+      foreach (Coordinate coordinate in coordinates ) 
+      {
+       // Debug.Log(coordinate);
+        // int tileRow = tile.GetComponent<Tile>().row;
+        // int tileColumn = tile.GetComponent<Tile>().column;
+        // if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
+        // {
+        //   tilesToChange.Add(tile);
+        // }
+      }
+      foreach (GameObject tile in tilesToChange)
+      {
+          if (tile.GetComponent<Tile>().IsBorderTile()) {continue; }
+          Vector3 tilePosition = tile.transform.position;
+          mapCreator.DestroyTile(tile);
+          GameObject meadowTile = mapCreator.CreateTile(tilePosition, mapCreator.GetTile("meadow"));
+          meadowTile.GetComponent<Tile>().Reveal();
+      }
+    }
 
     private void checkControllers()
     {
@@ -244,7 +270,6 @@ public class GameController : MonoBehaviour
       beeLauncher = Instantiate(beeLauncher);
       mapCreator = Instantiate(mapCreator);
       flowerController = Instantiate(flowerController);
-      mapCreator.SetFlowerController(flowerController);
       enemyController = Instantiate(enemyController);
       //displayController = Instantiate(displayController);
       enemyController.SetDisplayController(displayController);

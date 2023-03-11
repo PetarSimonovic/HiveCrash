@@ -14,21 +14,13 @@ public class MapCreator : MonoBehaviour
     [SerializeField]
     private GameObject lakeTilePrefab;
 
-    private List<GameObject> hiveAdjacentTiles = new List<GameObject>(); 
-
     private List<GameObject> tiles = new List<GameObject>();
 
     private List<List<int>> map = new List<List<int>>(); 
 
-    private bool isHiveSurrounded = false;
-
-    private int meadowsAroundHive = 0;
-
     bool usePremadeMaps = true;
 
     private Cartographer cartographer;
-
-    private FlowerController flowerController;
 
     private const float WidthOfTile = 1f;
     private const float StartingXPosition = 0f;
@@ -97,7 +89,6 @@ public class MapCreator : MonoBehaviour
           tile.GetComponent<Tile>().row = row;
           tile.GetComponent<Tile>().column = columnNumber;
           if (tileType == 0) {configureLakeBorderTile(tile);}
-          tile.GetComponent<Tile>().SetMapCreator(this);
           zPosition += WidthOfTile/2;
           row++;
         }
@@ -133,7 +124,6 @@ public class MapCreator : MonoBehaviour
     public GameObject CreateTile(Vector3 position, GameObject tilePrefab)
     {
       GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
-      tile.GetComponent<Tile>().SetMapCreator(this);
       tile.SetActive(true);
       this.tiles.Add(tile);
       return tile;
@@ -144,7 +134,7 @@ public class MapCreator : MonoBehaviour
       if (Globals.test) {
         return meadowTilePrefab;
       }
-      int tileDecision = Random.Range(0, 15);
+      int tileDecision = Random.Range(0, 10);
       switch(tileDecision)
       {
         case 1:
@@ -177,8 +167,6 @@ public class MapCreator : MonoBehaviour
 
     public void DestroyTile(GameObject tile)
     {
-      Debug.Log("Destroying");
-      Debug.Log(tile);
       tiles.Remove(tile);
       Destroy(tile);
     }
@@ -188,30 +176,4 @@ public class MapCreator : MonoBehaviour
       return this.meadowTilePrefab;
 
     }
-
-    public void ChangeTileToMeadow(Vector3 position) {
-        if (isHiveSurrounded) {return;}
-        GameObject tile = tiles.Find(tile => tile.transform.position == position);
-        Debug.Log(tile);
-        DestroyTile(tile);
-        CreateTile(position, meadowTilePrefab);
-        tile.GetComponent<Tile>().Reveal();
-        meadowsAroundHive++;
-        Debug.Log(meadowsAroundHive);
-        if (meadowsAroundHive == 6) {
-          isHiveSurrounded = true;
-          flowerController.SetMeadows(this.tiles);
-        ;}
-
-    }
-
-    public bool IsHiveSurrounded() {
-      return this.isHiveSurrounded;
-    }
-
-    public void SetFlowerController(FlowerController flowerController) {
-      this.flowerController = flowerController; 
-    }
-
-  
 }

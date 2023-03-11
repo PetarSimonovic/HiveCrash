@@ -87,6 +87,7 @@ public class BeeLauncher : MonoBehaviour
 
     public virtual void SetEndPosition(Vector3 worldPosition)
     {
+      this.endPosition = fixYPosition(worldPosition);
     }
 
     public Vector3 GetEndPosition()

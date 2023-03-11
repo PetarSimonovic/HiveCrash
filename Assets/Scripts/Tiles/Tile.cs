@@ -14,8 +14,6 @@ public class Tile : MonoBehaviour
 
     private bool nextToHive;
 
-    private MapCreator mapCreator;
-
     protected bool isHidden = true; // why does this have to be false then immediately set to true in start?
 
     private MeshRenderer mesh;
@@ -44,13 +42,10 @@ public class Tile : MonoBehaviour
 
     public void checkCollision(Collider other)
     {
-      if (other.gameObject.tag == "hive" && !nextToHive && isHidden)
+      if (other.gameObject.tag == "hive")
       {
         nextToHive = true;
-        Debug.Log("next to hive!");
-        mapCreator.ChangeTileToMeadow(this.transform.position);
-        return;
-       // Reveal();
+        Reveal();
       }
       if (isHidden) 
       {
@@ -100,10 +95,6 @@ public class Tile : MonoBehaviour
     public bool IsNextToHive() 
     {
       return nextToHive;
-    }
-
-    public void SetMapCreator(MapCreator mapCreator) {
-      this.mapCreator = mapCreator;
     }
 
 

@@ -176,4 +176,63 @@ public class MapCreator : MonoBehaviour
       return this.meadowTilePrefab;
 
     }
+
+    public void SurroundHiveWithMeadows(int hiveColumn, int hiveRow) {
+
+      List<Coordinates> adjacentTiles = gethiveAdjacentTiles(hiveColumn);
+      adjacentTiles.ForEach(coordinates => {
+        GameObject tileObject = tiles.Find(
+          tileObject => 
+          tileObject.GetComponent<Tile>().row == (hiveRow + coordinates.row) &&  
+          tileObject.GetComponent<Tile>().column == (hiveColumn + coordinates.column));
+          if (!tileObject.GetComponent<Tile>().IsBorderTile()) {
+            Vector3 tilePosition = tileObject.transform.position;
+            DestroyTile(tileObject);
+            GameObject newMeadow = CreateTile(tilePosition, meadowTilePrefab);
+            newMeadow.GetComponent<Tile>().Reveal();
+          }
+      });
+
+
+    }
+
+    private List<Coordinates> gethiveAdjacentTiles(int column) {
+
+        bool even = column % 2  == 0 ? true : false;
+        List<Coordinates> adjacentHives = new List<Coordinates>();
+
+
+        switch (even) {
+          case true:
+            adjacentHives.Add(new Coordinates(0, 1));
+            adjacentHives.Add(new Coordinates(1, 0));
+            adjacentHives.Add(new Coordinates(1,  -1));
+            adjacentHives.Add(new Coordinates(0, -1));
+            adjacentHives.Add(new Coordinates(-1, -1));
+            adjacentHives.Add(new Coordinates(-1, 0));
+            break;
+          default:
+            adjacentHives.Add(new Coordinates(0, 1));
+            adjacentHives.Add(new Coordinates(1, 1));
+            adjacentHives.Add(new Coordinates(1, 0));
+            adjacentHives.Add(new Coordinates(-1, 0));
+            adjacentHives.Add(new Coordinates(0,-1));
+            adjacentHives.Add(new Coordinates(-1, 1));
+
+            break;
+        }
+        return adjacentHives;
+    }
+}
+
+class Coordinates {
+  public int row;
+  public int column;
+
+  public Coordinates(int column, int row)
+  {
+    this.column = column;
+    this.row = row;
+  }
+
 }

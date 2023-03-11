@@ -172,7 +172,6 @@ public class GameController : MonoBehaviour
       int row = chosenTile.GetComponent<Tile>().row;
       int column = chosenTile.GetComponent<Tile>().column;
       mapCreator.DestroyTile(chosenTile);
-      flowerController.SetHivePosition(hivePosition);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
       tile.tag = "playerHiveTile";
       tile.GetComponent<Tile>().row = row;
@@ -183,10 +182,12 @@ public class GameController : MonoBehaviour
       hiveIsPlaced = true;
       hive.SetPosition(hivePosition);
       hiveObject.name = hive.GetId();
-      beeLauncher.SetHive(hive);
       Debug.Log("Hive is on: ");
       tile.GetComponent<Tile>().PrintPosition();
-      surroundHiveWithMeadows(row, column);
+      beeLauncher.SetHive(hive);
+      mapCreator.SurroundHiveWithMeadows(column, row);
+      flowerController.SetHivePosition(hivePosition);
+
       return hive;
     }
 
@@ -197,33 +198,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    
-
-    private void surroundHiveWithMeadows(int hiveRow, int hiveColumn)
-    {
-      TileChecker tileChecker = new TileChecker();
-      List<GameObject> tilesToChange = new List<GameObject>();
-      List<Coordinate> coordinates = tileChecker.GetAdjacentTiles(hiveColumn);
-      Debug.Log(coordinates[0]);
-      foreach (Coordinate coordinate in coordinates ) 
-      {
-       // Debug.Log(coordinate);
-        // int tileRow = tile.GetComponent<Tile>().row;
-        // int tileColumn = tile.GetComponent<Tile>().column;
-        // if (tileChecker.TileJsTouchingHive(tileColumn, tileRow, hiveRow, hiveColumn))
-        // {
-        //   tilesToChange.Add(tile);
-        // }
-      }
-      foreach (GameObject tile in tilesToChange)
-      {
-          if (tile.GetComponent<Tile>().IsBorderTile()) {continue; }
-          Vector3 tilePosition = tile.transform.position;
-          mapCreator.DestroyTile(tile);
-          GameObject meadowTile = mapCreator.CreateTile(tilePosition, mapCreator.GetTile("meadow"));
-          meadowTile.GetComponent<Tile>().Reveal();
-      }
-    }
+  
 
     private void checkControllers()
     {

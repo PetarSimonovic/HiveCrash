@@ -177,7 +177,7 @@ public class MapCreator : MonoBehaviour
 
     }
 
-    public void SurroundHiveWithMeadows(int hiveColumn, int hiveRow) {
+    public void SurroundHiveWithMeadows(int hiveColumn, int hiveRow, bool isPlayer = true) {
 
       List<Coordinates> adjacentTiles = gethiveAdjacentTiles(hiveColumn);
       adjacentTiles.ForEach(coordinates => {
@@ -185,11 +185,12 @@ public class MapCreator : MonoBehaviour
           tileObject => 
           tileObject.GetComponent<Tile>().row == (hiveRow + coordinates.row) &&  
           tileObject.GetComponent<Tile>().column == (hiveColumn + coordinates.column));
-          if (!tileObject.GetComponent<Tile>().IsBorderTile()) {
+          Tile tile = tileObject.GetComponent<Tile>();
+          if (!tile.IsBorderTile() && tile.IsHidden()) {
             Vector3 tilePosition = tileObject.transform.position;
             DestroyTile(tileObject);
             GameObject newMeadow = CreateTile(tilePosition, meadowTilePrefab);
-            newMeadow.GetComponent<Tile>().Reveal();
+            if (isPlayer) {newMeadow.GetComponent<Tile>().Reveal();}
           }
       });
 

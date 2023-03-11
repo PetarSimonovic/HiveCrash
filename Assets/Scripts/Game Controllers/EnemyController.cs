@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
 
     private Timer timer;
 
+    private MapCreator mapCreator;
+
 
 
     void Update()
@@ -81,6 +83,7 @@ public class EnemyController : MonoBehaviour
         tile.GetComponent<Tile>().PrintPosition();
         Debug.Log("Distance from player is"); 
         Debug.Log(Vector3.Distance(tilePosition, playerHive.GetPosition()));   
+        mapCreator.SurroundHiveWithMeadows(column, row, false);
     }
 
     private bool invalidPositionForEnemy(GameObject tile) 
@@ -166,5 +169,9 @@ public class EnemyController : MonoBehaviour
       {
         enemyHive.LaunchTextBubble("HiveCrash", false);
       }
+    }
+
+    public void SetMapCreator(MapCreator mapCreator) {
+      this.mapCreator = mapCreator;
     }
 }

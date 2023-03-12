@@ -14,9 +14,9 @@ Explore the map.
 
 Collect pollen from flowers that are in bloom: bees need to eat pollen to survive.
 
-Ping bees at enemy hives to attack. 
+But bees are vulnerable when their on flowers. Try to push your enemies onto a flower then hit them with a fatal attack.
 
-Bees that hit a hive will steal pollen from it and return the spoils to their home.
+Ping bees at enemy hives to steal their pollen. 
 
 The more pollen a hive has, the heavier it is. Light hives are easy for even the smallest bee to move.
 

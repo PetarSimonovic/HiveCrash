@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour
         {
         timer = gameObject.GetComponent<Timer>();
         timer.SetOn(true);
-        timer.SetCountdownSeconds(10f);
+        timer.SetCountdownSeconds(3f);
         }
 
       private void checkTimer()

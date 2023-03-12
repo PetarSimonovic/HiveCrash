@@ -25,7 +25,7 @@ public class BeeBody : MonoBehaviour
 
     private bool collectingPollen = false;
 
-    private bool isIdling = false;
+    protected bool isIdling = false;
 
     private const float IDLE_SPEED = 1.5f;
 
@@ -139,6 +139,8 @@ public class BeeBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+      if (flower) {flower.RemoveBee();}
+
       if (isIdling) //&& other.gameObject.tag == "bee" 
       {
         bounceBack(other);

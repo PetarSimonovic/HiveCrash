@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class EnemyBeeBody : BeeBody
 {
-    private bool attacking = true;
-
     private float SPEED = 3F;
     private Vector3 playerHivePosition;
 
     protected override void moveBee()
     {
       // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
-      if (attacking)
+      if (!isIdling)
       {
         float step = SPEED * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, playerHivePosition, step);;

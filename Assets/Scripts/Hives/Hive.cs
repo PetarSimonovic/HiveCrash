@@ -151,6 +151,7 @@ public class Hive : MonoBehaviour
           bee.AddPollen(pollenTaken);
           string message = bee.GetName() + " stole " +  pollenTaken.ToString() + " pollen";
           LaunchTextBubble(message, false);
+          other.gameObject.GetComponent<BeeBody>().ReturnToHive();
           break;
       
         default:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3113081500205004417}
   - component: {fileID: 7372705103550867599}
   - component: {fileID: 7949324645395433046}
-  - component: {fileID: 3939239410727279762}
+  - component: {fileID: 2316521012532322329}
   m_Layer: 11
   m_Name: enemyBeeBody
   m_TagString: bee
@@ -64,7 +64,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.14
   m_Center: {x: 0, y: 0, z: 0.04}
---- !u!114 &3939239410727279762
+--- !u!114 &2316521012532322329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3113081500205004430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5263791667e49e1923199b88d1e010, type: 3}
+  m_Script: {fileID: 11500000, guid: 15f7dcc891e544b779d1e0ce15184cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   beeExploder: {fileID: 5687970307939334544, guid: bac3c8b86bfc84bfb8afae6357ce1045,

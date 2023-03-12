@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (enemyHiveIsPlaced && !enemyHiveTileStatus.IsHidden()) 
+        if (enemyHiveIsPlaced) 
         {
             if (!activated)
             {

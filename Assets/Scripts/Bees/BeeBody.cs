@@ -137,7 +137,7 @@ public class BeeBody : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
       if (flower) {flower.RemoveBee();}
 

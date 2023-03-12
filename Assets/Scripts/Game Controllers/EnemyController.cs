@@ -43,7 +43,6 @@ public class EnemyController : MonoBehaviour
             {
                 activate();            
             }
-            checkHive();
             checkTimer();
         }
     }
@@ -163,14 +162,6 @@ public class EnemyController : MonoBehaviour
       {
         this.displayController = displayController;
       }
-
-    private void checkHive() 
-    {
-      if (enemyHive.HasCrashed()) 
-      {
-        enemyHive.LaunchTextBubble("HiveCrash", false);
-      }
-    }
 
     public void SetMapCreator(MapCreator mapCreator) {
       this.mapCreator = mapCreator;

@@ -66,6 +66,7 @@ public class Hive : MonoBehaviour
     {
       this.crashed = true;
       LaunchTextBubble("No more bees", false);
+      launchHiveCrashTextBubble();
     }
 
   }
@@ -142,6 +143,7 @@ public class Hive : MonoBehaviour
         case "lake":
           LaunchTextBubble("Hive drowned", false);
           this.crashed = true;
+          launchHiveCrashTextBubble();
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
@@ -182,5 +184,15 @@ public class Hive : MonoBehaviour
     textPosition.y = 1.50f;
     GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
     textBubble.GetComponent<TextBubble>().SetText(message, isPositive);
+  }
+
+  private void launchHiveCrashTextBubble() {
+
+    int numberOfMessages = 100;
+  
+    for (int i = 0; i < numberOfMessages; i++) {
+      LaunchTextBubble("HiveCrash", false);
+    }
+
   }
 }

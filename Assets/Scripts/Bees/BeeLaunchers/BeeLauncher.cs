@@ -43,6 +43,8 @@ public class BeeLauncher : MonoBehaviour
         Vector3 direction = calculateDirection();
         Vector3 launchPosition = fixYPosition(hive.GetPosition());
         GameObject beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(-direction, Vector3.forward)); // Quaternion.identity affects rotation?
+        Debug.Log(beeBody);
+        Debug.Log(beeBody.GetComponent<BeeBody>());
         beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
         beeBody.GetComponent<BeeBody>().SetBee(this.loadedBee);
         beeBody.GetComponent<BeeBody>().SetHive(hive);

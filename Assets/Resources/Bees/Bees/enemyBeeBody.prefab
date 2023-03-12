@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3113081500205004417}
   - component: {fileID: 7372705103550867599}
-  - component: {fileID: 4630684809353592662}
   - component: {fileID: 7949324645395433046}
+  - component: {fileID: 3939239410727279762}
   m_Layer: 11
   m_Name: enemyBeeBody
   m_TagString: bee
@@ -51,7 +51,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 2
---- !u!114 &4630684809353592662
+--- !u!135 &7949324645395433046
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113081500205004430}
+  m_Material: {fileID: 13400000, guid: 3a2ff4798676d4914b5035dd93437a7e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.14
+  m_Center: {x: 0, y: 0, z: 0.04}
+--- !u!114 &3939239410727279762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,19 +82,6 @@ MonoBehaviour:
     type: 3}
   isEnteringHive: 0
   hivePositionY: 0
---- !u!135 &7949324645395433046
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113081500205004430}
-  m_Material: {fileID: 13400000, guid: 3a2ff4798676d4914b5035dd93437a7e, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.14
-  m_Center: {x: 0, y: 0, z: 0.04}
 --- !u!1001 &7149683919613907587
 PrefabInstance:
   m_ObjectHideFlags: 0

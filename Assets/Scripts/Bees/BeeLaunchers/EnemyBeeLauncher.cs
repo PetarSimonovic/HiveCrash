@@ -28,7 +28,6 @@ public class EnemyBeeLauncher : BeeLauncher
         beeBody.SetPlayer(isPlayer);
         beeBody.SetPlayerHivePosition(playerHivePosition);
         this.loadedBee.SetBody(beeObject);
-        ApplyForceToBeeBody(beeObject.GetComponent<Rigidbody>(), launchPosition);
       }
         reset();
     }

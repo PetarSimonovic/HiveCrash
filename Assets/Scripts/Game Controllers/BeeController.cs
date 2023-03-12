@@ -30,7 +30,7 @@ public class BeeController : MonoBehaviour
           {
             eat(bee);
           }
-          checkBeeTimer(bee);
+         // checkBeeTimer(bee);
           checkBeeHealth(bee);
         }
       }

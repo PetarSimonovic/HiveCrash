@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     private GameObject enemyHiveTile;
 
     [SerializeField]
-    private BeeLauncher beeLauncher; 
+    private EnemyBeeLauncher beeLauncher; 
 
     [SerializeField]
     private BeeController beeController; 
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (enemyHiveIsPlaced) 
+        if (enemyHiveIsPlaced && !enemyHiveTileStatus.IsHidden()) 
         {
             if (!activated)
             {
@@ -139,6 +139,7 @@ public class EnemyController : MonoBehaviour
         enemyHive = enemyHivePrefab.GetComponent<Hive>();
         enemyHivePrefab.name = enemyHive.GetId();
         beeLauncher.SetHive(enemyHive);
+        beeLauncher.SetPlayerHivePosition(playerHive.GetPosition());
         enemyHive.LaunchTextBubble("Rival hive disturbed", false);
       }
 

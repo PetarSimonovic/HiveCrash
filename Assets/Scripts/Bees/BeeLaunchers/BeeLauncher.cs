@@ -16,11 +16,10 @@ public class BeeLauncher : MonoBehaviour
 
     protected Vector3 endPosition;
 
-    protected BeeBody beeProperties;
 
     protected Hive hive;
 
-    private bool isPlayer;
+    protected bool isPlayer;
 
     
     protected virtual void Start() {
@@ -37,22 +36,7 @@ public class BeeLauncher : MonoBehaviour
 
     public virtual void LaunchBee()
     {
-      if (isLoaded)
-      {
-        this.loadedBee.Fly();
-        Vector3 direction = calculateDirection();
-        Vector3 launchPosition = fixYPosition(hive.GetPosition());
-        GameObject beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(-direction, Vector3.forward)); // Quaternion.identity affects rotation?
-        Debug.Log(beeBody);
-        Debug.Log(beeBody.GetComponent<BeeBody>());
-        beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
-        beeBody.GetComponent<BeeBody>().SetBee(this.loadedBee);
-        beeBody.GetComponent<BeeBody>().SetHive(hive);
-        beeBody.GetComponent<BeeBody>().SetPlayer(isPlayer);
-        this.loadedBee.SetBody(beeBody);
-        ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), launchPosition);
-      }
-        reset();
+      
     }
 
     protected virtual void ApplyForceToBeeBody(Rigidbody bee, Vector3 launchPosition)

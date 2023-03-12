@@ -10,14 +10,16 @@ The game is an early build. It currently runs in Unity's mobile simulator and ca
 
 Click, drag back and release to launch a bee from the hive.
 
-Explore the map.
+Explore the map but be careful: once you disturb a rival hive its bees will try to steal your pollen.
 
-Collect pollen from flowers that are in bloom: bees need to eat pollen to survive.
+Collect pollen from flowers that are in bloom or steal pollen from your rival to replenish the health of your hive.
 
-But bees are vulnerable when their on flowers. Try to push your enemies onto a flower then hit them with a fatal attack.
-
-Ping bees at enemy hives to steal their pollen. 
+Bees are vulnerable while collecting pollen from a flower. Knock your rivals onto a flower then hit them for a fatal attack.
 
 The more pollen a hive has, the heavier it is. Light hives are easy for even the smallest bee to move.
 
-Nudge the rival hive off the map or into a lake to defeat it, before its bees push you over the edge.
+Take all of your rival's pollen then then push it into water to defeat it, before its bees push you over the edge.
+
+## How to win
+
+Defeat the enemy hive and explore the entire map.

@@ -37,7 +37,11 @@ public class Hive : MonoBehaviour
   
   private void Update()
   {
-   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), bees.Count);
+    int beesInHive = 0;
+   bees.ForEach(bee => {
+    if (bee.IsInHive()) {beesInHive++;}
+   });
+   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), beesInHive, bees.Count);
    positionPollenCounter();
 
   }
@@ -109,8 +113,8 @@ public class Hive : MonoBehaviour
   private void setMass()
   {
     var percentage = GetPollenPercentage();
-    this.rigidBody.mass = (float)percentage/10;
-    if (this.rigidBody.mass < 0.2f) {this.rigidBody.mass = 0.2f;}
+    this.rigidBody.mass = (float)percentage/100;
+    if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
   }
 
   public int GetPollen()

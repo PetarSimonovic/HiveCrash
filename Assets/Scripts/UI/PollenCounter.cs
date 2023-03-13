@@ -14,17 +14,20 @@ public class PollenCounter : MonoBehaviour
     void Awake()
     {
         getComponents();
+        uiText.color = new Color32(200, 200, 200, 255);
+        uiText.GetComponent<TMP_Text>().fontSize = 35;
+
+
     }
 
     // Update is called once per frame
   
 
 
-    public void SetPollenCount(int pollenCount, int bees)
+    public void SetPollenCount(int pollenCount, int beesInHive, int bees)
     {
         
-        uiText.color = new Color32(255, 255, 255, 255);
-        uiText.SetText(bees + " " + pollenCount.ToString() + "%");
+        uiText.SetText(beesInHive + "/" + bees + " " + pollenCount.ToString() + "%");
     }
 
 

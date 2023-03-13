@@ -112,5 +112,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8752485405987206689, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+        type: 3}
+      propertyPath: pollenCounterPrefab
+      value: 
+      objectReference: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53, type: 3}

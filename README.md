@@ -8,9 +8,13 @@ The game is an early build. It currently runs in Unity's mobile simulator and ca
 
 ## How to play
 
+Your hive is home to five bees.
+
 Click, drag back and release to launch a bee from the hive.
 
-Explore the map but be careful: once you disturb a rival hive its bees will try to steal your pollen.
+Ping bees off rocks to rxplore the map. 
+
+But be careful: once you disturb a rival hive its bees will try to steal your pollen.
 
 Collect pollen from flowers that are in bloom or steal pollen from your rival to replenish the health of your hive.
 
@@ -23,3 +27,4 @@ Take all of your rival's pollen then then push it into water to defeat it, befor
 ## How to win
 
 Defeat the enemy hive and explore the entire map.
+

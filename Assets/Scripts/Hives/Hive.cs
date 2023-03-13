@@ -7,6 +7,10 @@ public class Hive : MonoBehaviour
   [SerializeField]
   private GameObject textBubblePrefab;
 
+  [SerializeField]
+  private GameObject pollenCounterPrefab;
+
+  private GameObject pollenCounter;
   private Rigidbody rigidBody;
 
   private bool isPlaced = false;
@@ -26,6 +30,12 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
+    launchPollenCounter();
+  }
+  
+  private void Update()
+  {
+   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage());
   }
 
   public void Place()
@@ -106,7 +116,7 @@ public class Hive : MonoBehaviour
   public int GetPollenPercentage()
   {
     var decimalValue = ((decimal)this.pollen/(decimal)this.pollenCapacity) * 100;
-    return (int)decimalValue;
+    return (byte)decimalValue;
   
   }
 
@@ -195,4 +205,11 @@ public class Hive : MonoBehaviour
     }
 
   }
+
+  private void launchPollenCounter() {
+    Vector3 textPosition = GetPosition();
+    textPosition.y = 1f;
+    pollenCounter = Instantiate(pollenCounterPrefab, textPosition, Quaternion.identity);
+  }
+
 }

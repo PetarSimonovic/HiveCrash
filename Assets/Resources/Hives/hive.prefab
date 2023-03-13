@@ -204,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubblePrefab: {fileID: 1698945753379636350, guid: 1ae3bc3888e0b4c59a569cfe2fffbc97,
     type: 3}
+  pollenCounterPrefab: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
+    type: 3}
 --- !u!54 &4752992641418033787
 Rigidbody:
   m_ObjectHideFlags: 0

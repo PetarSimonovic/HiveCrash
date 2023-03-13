@@ -20,11 +20,11 @@ public class PollenCounter : MonoBehaviour
   
 
 
-    public void SetPollenCount(int pollenCount)
+    public void SetPollenCount(int pollenCount, int bees)
     {
         
         uiText.color = new Color32(255, 255, 255, 255);
-        uiText.SetText(pollenCount.ToString() + "%");
+        uiText.SetText(bees + " " + pollenCount.ToString() + "%");
     }
 
 

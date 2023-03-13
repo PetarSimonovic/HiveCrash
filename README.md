@@ -8,7 +8,7 @@ The game is an early build. It currently runs in Unity's mobile simulator and ca
 
 ## How to play
 
-Your hive is home to five bees.
+Your hive starts with five bees and is full of pollen - the number of bees and pollen percentage are displayed above it.
 
 Click, drag back and release to launch a bee from the hive.
 

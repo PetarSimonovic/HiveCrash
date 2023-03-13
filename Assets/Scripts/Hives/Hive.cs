@@ -35,7 +35,7 @@ public class Hive : MonoBehaviour
   
   private void Update()
   {
-   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage());
+   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), bees.Count);
   }
 
   public void Place()

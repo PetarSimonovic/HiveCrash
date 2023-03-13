@@ -58,7 +58,7 @@ public class FlowerController : MonoBehaviour
       GameObject flower = Instantiate(flowerPrefab, flowerPosition, Quaternion.identity); // Quaternion.identity affects rotation?
       flowers.Add(flower);
       flower.GetComponent<Flower>().SetPosition(flowerPosition);
-      if (Random.Range(0, 10) == 1 || Globals.test &&(meadowTile.column == 4 && meadowTile.row == 6))
+      if (Random.Range(0, 15) == 1 || Globals.test &&(meadowTile.column == 4 && meadowTile.row == 6))
       {
         flower.GetComponent<Flower>().CreateBody();  
       }

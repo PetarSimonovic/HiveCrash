@@ -175,7 +175,11 @@ public class BeeBody : MonoBehaviour
           break;
       }
           otherBeeBody.ReturnToHive();
-          otherBeeBody.flower.RemoveBee();
+          if (otherBeeBody.CollectingPollen())
+          {
+            otherBeeBody.SetCollectingPollen(false);
+            otherBeeBody.flower.RemoveBee();
+          }
     }
 
     private void explodeBee(BeeBody otherBeeBody) 
@@ -306,6 +310,11 @@ public class BeeBody : MonoBehaviour
       textPosition.y = 1.00f;
       GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);
       textBubble.GetComponent<TextBubble>().SetText(message, isPositive);
+    }
+
+    public void SetCollectingPollen(bool collectingPollen)
+    {
+      this.collectingPollen = collectingPollen;
     }
 
  

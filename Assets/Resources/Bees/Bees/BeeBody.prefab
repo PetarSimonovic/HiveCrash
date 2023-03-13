@@ -67,8 +67,6 @@ MonoBehaviour:
     type: 3}
   textBubblePrefab: {fileID: 1698945753379636350, guid: 1ae3bc3888e0b4c59a569cfe2fffbc97,
     type: 3}
-  pollenCloudPrefab: {fileID: 2074237740946173504, guid: 2ce10f7e33189450789c2ec58889e800,
-    type: 3}
   isEnteringHive: 0
   hivePositionY: 0
 --- !u!135 &3084565828060223333

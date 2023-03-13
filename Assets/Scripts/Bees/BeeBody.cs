@@ -27,9 +27,13 @@ public class BeeBody : MonoBehaviour
 
     protected bool isIdling = false;
 
-    private const float IDLE_SPEED = 1.5f;
+    protected float moveSpeed = 6f;
 
-    private const float RETURN_SPEED = 3f;
+    protected const float IDLE_SPEED = 1.5f;
+
+    protected const float RETURN_SPEED = 3f;
+
+    protected const float DECELERATION_RATE = 150f;
 
     private string hiveId;
 
@@ -41,12 +45,11 @@ public class BeeBody : MonoBehaviour
 
     private Transform target;
 
-    protected float moveSpeed = 6f;
 
-    private Hive hive;
+    protected Hive hive;
 
 
-    private void Start()
+    protected virtual void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
       hivePositionY = rigidBody.transform.position.y;
@@ -76,7 +79,7 @@ public class BeeBody : MonoBehaviour
       // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       if (moveSpeed > IDLE_SPEED)
       {
-        moveSpeed = moveSpeed - 0.04f;
+        moveSpeed = moveSpeed - (moveSpeed/DECELERATION_RATE);
       }
       else
       {

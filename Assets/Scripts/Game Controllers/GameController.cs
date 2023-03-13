@@ -247,7 +247,7 @@ public class GameController : MonoBehaviour
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
       enemyController.SetMapCreator(this.mapCreator);
-      //displayController = Instantiate(displayController);
+      // displayController = Instantiate(displayController);
       enemyController.SetDisplayController(displayController);
     }
 

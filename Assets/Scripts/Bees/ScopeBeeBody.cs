@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScopeBeeBody : BeeBody
 {
 
-    protected float scopeSpeed = 200f;
+    protected float scopeSpeed = 50f;
 
     protected override void Update()
     {

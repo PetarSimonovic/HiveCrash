@@ -19,6 +19,8 @@ public class Bee
 
     private int pollenCollectionRate = 1;
 
+    private int pollenCapacity = 1000;
+
     private int appetite = 1000;
 
     private float hungerInterval = 60f;
@@ -54,6 +56,11 @@ public class Bee
     public string GetHiveId()
     {
       return this.hiveId;
+    }
+
+    public int GetPollenCapacity()
+    {
+      return this.pollenCapacity;
     }
 
     public bool IsInHive()

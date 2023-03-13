@@ -36,6 +36,8 @@ public class Hive : MonoBehaviour
   private void Update()
   {
    pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), bees.Count);
+   positionPollenCounter();
+
   }
 
   public void Place()
@@ -106,6 +108,7 @@ public class Hive : MonoBehaviour
   {
     var percentage = GetPollenPercentage();
     this.rigidBody.mass = (float)percentage/10;
+    if (this.rigidBody.mass < 0.2f) {this.rigidBody.mass = 0.2f;}
   }
 
   public int GetPollen()
@@ -134,12 +137,12 @@ public class Hive : MonoBehaviour
 
   public Vector3 GetPosition()
   {
-    return transform.position;
+    return gameObject.transform.position;
   }
 
-  private int calculatePollenTaken()
+  private int calculatePollenTaken(int beePollenCapacity)
   {
-    int pollenTaken = this.pollen - 100 <= 0 ? this.pollen : 100;
+    int pollenTaken = this.pollen - beePollenCapacity <= 0 ? this.pollen : beePollenCapacity;
     return pollenTaken;
   }
 
@@ -158,7 +161,7 @@ public class Hive : MonoBehaviour
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
           applyForce(other);
-          int pollenTaken = calculatePollenTaken();
+          int pollenTaken = calculatePollenTaken(bee.GetPollenCapacity());
           RemovePollen(pollenTaken);
           bee.AddPollen(pollenTaken);
           string message = bee.GetName() + " stole " +  pollenTaken.ToString() + " pollen";
@@ -198,7 +201,7 @@ public class Hive : MonoBehaviour
 
   private void launchHiveCrashTextBubble() {
 
-    int numberOfMessages = 100;
+    int numberOfMessages = 20;
   
     for (int i = 0; i < numberOfMessages; i++) {
       LaunchTextBubble("HiveCrash", false);
@@ -207,9 +210,15 @@ public class Hive : MonoBehaviour
   }
 
   private void launchPollenCounter() {
+  
+    pollenCounter = Instantiate(pollenCounterPrefab);
+    positionPollenCounter();
+  }
+
+  private void positionPollenCounter() {
     Vector3 textPosition = GetPosition();
     textPosition.y = 1f;
-    pollenCounter = Instantiate(pollenCounterPrefab, textPosition, Quaternion.identity);
+    pollenCounter.transform.position = textPosition;
   }
 
 }

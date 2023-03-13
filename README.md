@@ -22,7 +22,7 @@ Bees are vulnerable while collecting pollen from a flower. Knock your rivals ont
 
 The more pollen a hive has, the heavier it is. Light hives are easy for even the smallest bee to move.
 
-Take all of your rival's pollen then then push it into water to defeat it, before its bees push you over the edge.
+Destroy all of your rival's bees or take its pollen then then push it into water to defeat it, before its bees push you over the edge.
 
 ## How to win
 

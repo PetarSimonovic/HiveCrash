@@ -39,6 +39,8 @@ public class GameController : MonoBehaviour
 
     private Touch touch;
 
+    private bool gameOver = false;
+
 
     private void Awake() 
     {
@@ -54,9 +56,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-      checkIfMapIsComplete();
       checkInput();
       if (hiveIsPlaced) {
+        checkIfLevelIsComplete();
         checkControllers();
         checkHive();
       }
@@ -73,6 +75,7 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
+      if (gameOver) restartGame();
       Vector3 touchPosition = touch.position;
       Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = Camera.main.ScreenToWorldPoint(touchPosition);
@@ -216,8 +219,9 @@ public class GameController : MonoBehaviour
       flowerController.SetMeadows(tiles);
     }
 
-    private void checkIfMapIsComplete()
+    private void checkIfLevelIsComplete()
     {
+      if (enemyController.EnemyHasCrashed()) return;
       foreach (GameObject tile in tiles)
       {
         if (tile.GetComponent<Tile>().IsHidden() == true)
@@ -225,6 +229,8 @@ public class GameController : MonoBehaviour
           return;
         }
       }
+      gameOver = true;
+      hive.LaunchTextBubble("Garden is secure");
       restartGame();
     }
 
@@ -263,7 +269,8 @@ public class GameController : MonoBehaviour
       if (hive.HasCrashed()) 
       {
         hive.LaunchTextBubble("HiveCrash", false);
-        restartGame();
+        gameOver = true;
+
       }
     }
 

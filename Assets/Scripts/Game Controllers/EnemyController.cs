@@ -178,4 +178,10 @@ public class EnemyController : MonoBehaviour
     public void SetMapCreator(MapCreator mapCreator) {
       this.mapCreator = mapCreator;
     }
+
+    public bool EnemyHasCrashed() 
+    {
+      if (!activated) return false;
+      return enemyHive.HasCrashed();
+    }
 }

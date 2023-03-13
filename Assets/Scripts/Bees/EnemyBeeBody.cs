@@ -14,6 +14,7 @@ public class EnemyBeeBody : BeeBody
       {
         float step = SPEED * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
+        if (transform.position == target) {ReturnToHive();}
         }
       else
       {

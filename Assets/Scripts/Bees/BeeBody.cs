@@ -155,8 +155,9 @@ public class BeeBody : MonoBehaviour
           return;
 
       }
-      
+        if(isIdling || !isPlayer) {
         bounceBack(other);
+        }
 
     }
 

@@ -113,7 +113,7 @@ public class Hive : MonoBehaviour
   private void setMass()
   {
     var percentage = GetPollenPercentage();
-    this.rigidBody.mass = (float)percentage/100;
+    this.rigidBody.mass = (float)percentage/20;
     if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
   }
 

@@ -141,13 +141,9 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision other)
     {
-      if (flower) {flower.RemoveBee();}
 
-      if (isIdling) //&& other.gameObject.tag == "bee" 
-      {
-        bounceBack(other);
-      }
-      else if (collectingPollen) 
+    
+      if (collectingPollen) 
       {
         collectingPollen = false;
         flower.RemoveBee();
@@ -156,8 +152,11 @@ public class BeeBody : MonoBehaviour
           { 
             checkIfBeeKilledInCollision(otherBeeBody);
           }
+          return;
 
       }
+      
+        bounceBack(other);
 
     }
 
@@ -200,7 +199,7 @@ public class BeeBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 270;
+        var magnitude = 50;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude

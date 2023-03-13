@@ -145,9 +145,10 @@ public class EnemyController : MonoBehaviour
 
       private void launchBee()
       {
+        Vector3 target = getTarget();
         beeLauncher.LoadBee(enemyHive.GetBee());
-        //Vector3 endPosition = new Vector3 (Random.Range(-4.0f, 4.0f), 0.5f, Random.Range(-4.0f, 4.0f));
-        beeLauncher.SetTarget(playerHive.GetPosition());
+        //Vector3 endPosition = new Vector3 (Random.Range(-4.0f, 4.0f), 0.5f, Random.Range(-4.0f, 4.0f))
+        beeLauncher.SetTarget(target);
         if (beeLauncher.IsLoaded()) {
           beeLauncher.LaunchBee();
         }
@@ -156,6 +157,21 @@ public class EnemyController : MonoBehaviour
       public Hive GetEnemyHive()
       {
         return this.enemyHive;
+      }
+
+      private Vector3 getTarget() 
+      {
+       try {
+          Bee bee = playerHive.GetBees().Find(bee => bee.GetBody().GetComponent<BeeBody>().CollectingPollen() == true);
+          return bee.GetBody().transform.position;
+       }
+       catch {
+        // if (bee != null) 
+        // {
+        // } 
+       
+          return playerHive.GetPosition();
+       }
       }
 
       public void SetDisplayController(DisplayController displayController)

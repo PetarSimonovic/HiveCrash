@@ -22,7 +22,7 @@ public class EnemyBeeLauncher : BeeLauncher
       {
         this.loadedBee.Fly();
         Vector3 launchPosition = fixYPosition(hive.GetPosition());
-        GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(playerHivePosition, Vector3.forward)); // Quaternion.identity affects rotation?
+        GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
         EnemyBeeBody beeBody = beeObject.GetComponent<EnemyBeeBody>(); 
         beeBody.SetHiveId(this.loadedBee.GetHiveId());
         beeBody.SetBee(this.loadedBee);

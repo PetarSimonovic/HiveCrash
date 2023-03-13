@@ -14,7 +14,7 @@ public class ScopeBeeBody : BeeBody
     }
 
 
-    protected virtual void moveBee()
+    protected override void moveBee()
     {
       rigidBody.velocity = rigidBody.velocity.normalized * scopeSpeed;
       

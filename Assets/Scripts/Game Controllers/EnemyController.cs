@@ -166,10 +166,6 @@ public class EnemyController : MonoBehaviour
           return bee.GetBody().transform.position;
        }
        catch {
-        // if (bee != null) 
-        // {
-        // } 
-       
           return playerHive.GetPosition();
        }
       }

@@ -134,7 +134,7 @@ public class MapCreator : MonoBehaviour
       if (Globals.test) {
         return meadowTilePrefab;
       }
-      int tileDecision = Random.Range(0, 10);
+      int tileDecision = Random.Range(0, 20);
       switch(tileDecision)
       {
         case 1:

@@ -24,6 +24,8 @@ public class Hive : MonoBehaviour
   private int pollen;
 
   private int pollenCapacity = 10000;
+
+  private bool crashedTextBubbleSent;
   
   
   private void Awake()
@@ -76,7 +78,7 @@ public class Hive : MonoBehaviour
     this.bees.Remove(bee);
     if (this.bees.Count <= 0) 
     {
-      this.crashed = true;
+      this.crashed = true && !crashedTextBubbleSent;
       LaunchTextBubble("No more bees", false);
       launchHiveCrashTextBubble();
     }
@@ -201,8 +203,8 @@ public class Hive : MonoBehaviour
 
   private void launchHiveCrashTextBubble() {
 
+    crashedTextBubbleSent = true;
     int numberOfMessages = 20;
-  
     for (int i = 0; i < numberOfMessages; i++) {
       LaunchTextBubble("HiveCrash", false);
     }

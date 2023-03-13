@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBeeBody : BeeBody
 {
     private float SPEED = 3F;
-    private Vector3 playerHivePosition;
+    private Vector3 target;
 
     protected override void moveBee()
     {
@@ -13,7 +13,7 @@ public class EnemyBeeBody : BeeBody
       if (!isIdling)
       {
         float step = SPEED * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, playerHivePosition, step);;
+        transform.position = Vector3.MoveTowards(transform.position, target, step);;
         }
       else
       {
@@ -22,7 +22,7 @@ public class EnemyBeeBody : BeeBody
       }
     }
 
-    public void SetPlayerHivePosition(Vector3 playerHivePosition) {
-        this.playerHivePosition = playerHivePosition;
+    public void SetTarget(Vector3 target) {
+        this.target = target;
     }
 }

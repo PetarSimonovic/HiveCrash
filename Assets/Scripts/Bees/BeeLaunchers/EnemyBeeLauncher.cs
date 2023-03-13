@@ -6,6 +6,8 @@ public class EnemyBeeLauncher : BeeLauncher
 {
     private Vector3 playerHivePosition;
 
+    private Vector3 target;
+
     protected override void Start() {
       SetIsPlayer(false);
     }
@@ -26,7 +28,7 @@ public class EnemyBeeLauncher : BeeLauncher
         beeBody.SetBee(this.loadedBee);
         beeBody.SetHive(hive);
         beeBody.SetPlayer(isPlayer);
-        beeBody.SetPlayerHivePosition(playerHivePosition);
+        beeBody.SetTarget(target);
         this.loadedBee.SetBody(beeObject);
       }
         reset();
@@ -34,5 +36,10 @@ public class EnemyBeeLauncher : BeeLauncher
 
     public void SetPlayerHivePosition(Vector3 playerHivePosition) {
       this.playerHivePosition = playerHivePosition;
+    }
+
+    public void SetTarget(Vector3 target) 
+    {
+      this.target = target;
     }
 }

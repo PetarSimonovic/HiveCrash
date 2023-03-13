@@ -43,7 +43,6 @@ public class BeeBody : MonoBehaviour
 
     private Flower flower;
 
-    private Transform target;
 
 
     protected Hive hive;

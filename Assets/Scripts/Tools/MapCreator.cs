@@ -14,6 +14,8 @@ public class MapCreator : MonoBehaviour
     [SerializeField]
     private GameObject lakeTilePrefab;
 
+    private bool prevTileWasRock;
+
     private List<GameObject> tiles = new List<GameObject>();
 
     private List<List<int>> map = new List<List<int>>(); 
@@ -134,14 +136,21 @@ public class MapCreator : MonoBehaviour
       if (Globals.test) {
         return meadowTilePrefab;
       }
-      int tileDecision = Random.Range(0, 20);
+      if (prevTileWasRock) {
+        prevTileWasRock = false;
+        return lakeTilePrefab;
+        };
+      int tileDecision = Random.Range(0, 25);
       switch(tileDecision)
       {
         case 1:
+          prevTileWasRock = true;
           return rockTilePrefab;
-        case 2:
+        case <=4:
+          prevTileWasRock = false;
           return lakeTilePrefab;
         default:
+          prevTileWasRock = false;
           return meadowTilePrefab;
       }
     }

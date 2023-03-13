@@ -164,11 +164,12 @@ public class BeeBody : MonoBehaviour
     private void checkIfBeeKilledInCollision(BeeBody otherBeeBody) {
       collectingPollen = false; // repetition?
       flower.RemoveBee();
+      ReturnToHive();
+
       switch (otherBeeBody.hiveId == this.hiveId) 
       { 
         case true:
           Debug.Log("Friendly collision");
-          ReturnToHive();
           break;
         default:
           explodeBee(otherBeeBody);

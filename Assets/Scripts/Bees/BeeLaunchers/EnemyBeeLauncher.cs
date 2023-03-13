@@ -30,6 +30,7 @@ public class EnemyBeeLauncher : BeeLauncher
         beeBody.SetPlayer(isPlayer);
         beeBody.SetTarget(target);
         this.loadedBee.SetBody(beeObject);
+        ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
       }
         reset();
     }
@@ -41,5 +42,11 @@ public class EnemyBeeLauncher : BeeLauncher
     public void SetTarget(Vector3 target) 
     {
       this.target = target;
+    }
+
+    protected  void ApplyForceToBeeBody(Rigidbody bee, Vector3 target, Vector3 launchPosition)
+    {
+      bee.AddForceAtPosition((target - launchPosition).normalized, launchPosition, ForceMode.Impulse);
+
     }
 }

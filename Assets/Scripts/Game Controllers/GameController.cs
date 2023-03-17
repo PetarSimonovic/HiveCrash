@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private MapCreator mapCreator;
 
-    [SerializeField]
     private CameraController cameraController;
 
     [SerializeField]
@@ -41,23 +40,25 @@ public class GameController : MonoBehaviour
 
     private bool gameOver = false;
 
+    private bool gameStarted = false;
+
     
 
 
-    private void Awake() 
-    {
-      Application.targetFrameRate = 60;
-      instantiateObjects();
-    }
+  
 
-    private void Start()
+    public void StartGame()
     {
+      instantiateObjects();
       createMap();
+      gameStarted = true;
+
     }
 
     // Update is called once per frame
     private void Update()
     {
+      if (!gameStarted) return;
       checkGameInput();
       if (hiveIsPlaced) {
         checkIfLevelIsComplete();
@@ -274,6 +275,11 @@ public class GameController : MonoBehaviour
         gameOver = true;
 
       }
+    }
+
+    public void SetCameraController(CameraController cameraController) 
+    {
+      this.cameraController = cameraController;
     }
     
 

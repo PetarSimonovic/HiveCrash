@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
 
     private bool gameOver = false;
 
+    
+
 
     private void Awake() 
     {
@@ -56,7 +58,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-      checkInput();
+      checkGameInput();
       if (hiveIsPlaced) {
         checkIfLevelIsComplete();
         checkControllers();
@@ -64,7 +66,7 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void checkInput()
+    private void checkGameInput()
     {
       if (Input.touchCount > 0)
       {
@@ -77,8 +79,8 @@ public class GameController : MonoBehaviour
     {
       if (gameOver) restartGame();
       Vector3 touchPosition = touch.position;
-      Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
-      Vector3 worldTouchPoint = Camera.main.ScreenToWorldPoint(touchPosition);
+      Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
+      Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
       RaycastHit raycastHit;
       GameObject tile;
       if (Physics.Raycast(raycast, out raycastHit))
@@ -273,6 +275,7 @@ public class GameController : MonoBehaviour
 
       }
     }
+    
 
 
 }

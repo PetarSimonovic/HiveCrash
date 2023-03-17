@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private Vector3 centreTile = new Vector3(7.0f, 1.0f, 3.0f);
 
     [SerializeField]
-    Camera mainCamera;
+    Camera camera;
 
     private Vector3 startTouchPosition;
 
@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     {
         Debug.Log("Setting camera position at " + centreTile);
         transform.position = centreTile;
-        mainCamera.transform.LookAt(centreTile);
+        camera.transform.LookAt(centreTile);
     }
 
     public void ProcessTouch(Vector3 touchPosition)
@@ -74,28 +74,31 @@ public class CameraController : MonoBehaviour
     {
         float xRotation = 0.2f;
         transform.Rotate(xRotation, 0.0f, 0.0f);
-        mainCamera.transform.LookAt(centreTile);
+        camera.transform.LookAt(centreTile);
     }
 
     private void rotateDown()
     {
         float xRotation = -0.2f;
         transform.Rotate(xRotation, 0.0f, 0.0f);
-        mainCamera.transform.LookAt(centreTile);
+        camera.transform.LookAt(centreTile);
     }
 
     private void rotateLeft()
     {
         float yRotation = 0.2f;
         transform.Rotate(0.0f, yRotation, 0.0f);
-        mainCamera.transform.LookAt(centreTile);
+        camera.transform.LookAt(centreTile);
     }
 
     private void rotateRight()
     {
         float yRotation = -0.2f;
         transform.Rotate(0.0f, yRotation, 0.0f);
-        mainCamera.transform.LookAt(centreTile);
+        camera.transform.LookAt(centreTile);
     }
 
+    public Camera GetCamera() {
+      return this.camera;
+    }
 }

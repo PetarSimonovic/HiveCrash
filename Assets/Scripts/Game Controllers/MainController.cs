@@ -11,6 +11,13 @@ public class MainController : MonoBehaviour
     [SerializeField]
     private GameController gameController;
 
+     [SerializeField]
+    private TitleController titleController;
+
+    private bool gameIsPlaying;
+
+    private bool showTitle = false;
+
     void Awake() 
     {
         Application.targetFrameRate = 60;
@@ -19,13 +26,27 @@ public class MainController : MonoBehaviour
     void Start()
     {
         gameController = Instantiate(gameController);
+        titleController = Instantiate(titleController);
         gameController.SetCameraController(this.cameraController);
-        gameController.StartGame();
+        titleController.SetCameraController(this.cameraController);
     }
 
     // Update is called once per frame
+
+    public void StartGame() 
+    {
+        gameIsPlaying = true;
+    }
     void Update()
     {
-        
+
+        if (showTitle) 
+        {
+            titleController.IsPlayerReady();
+        }
+        if (!gameIsPlaying) {
+            gameIsPlaying = true;
+            gameController.StartGame();}
+
     }
 }

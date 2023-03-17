@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
 
     private Touch touch;
 
-    private bool gameOver = false;
+    private bool gameIsOver = false;
 
     private bool gameStarted = false;
 
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
-      if (gameOver) restartGame();
+      if (gameIsOver) restartGame();
       Vector3 touchPosition = touch.position;
       Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
@@ -232,7 +232,7 @@ public class GameController : MonoBehaviour
           return;
         }
       }
-      gameOver = true;
+      gameIsOver = true;
       hive.LaunchTextBubble("Garden is secure");
       restartGame();
     }
@@ -272,7 +272,7 @@ public class GameController : MonoBehaviour
       if (hive.HasCrashed()) 
       {
         hive.LaunchTextBubble("HiveCrash", false);
-        gameOver = true;
+        gameIsOver = true;
 
       }
     }
@@ -280,6 +280,11 @@ public class GameController : MonoBehaviour
     public void SetCameraController(CameraController cameraController) 
     {
       this.cameraController = cameraController;
+    }
+
+    public bool isGameOver() 
+    {
+      return gameIsOver;
     }
     
 

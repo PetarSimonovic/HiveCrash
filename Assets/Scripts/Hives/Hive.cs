@@ -41,7 +41,8 @@ public class Hive : MonoBehaviour
    bees.ForEach(bee => {
     if (bee.IsInHive()) {beesInHive++;}
    });
-   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), beesInHive, bees.Count);
+   string pollenCountText = beesInHive + "/" + bees.Count + " " + GetPollenPercentage().ToString() + "%";
+   pollenCounter.GetComponent<StaticTextBubble>().SetText(pollenCountText);
    positionPollenCounter();
 
   }

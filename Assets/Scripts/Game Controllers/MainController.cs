@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
 
     private bool gameIsPlaying;
 
-    private bool showTitle = false;
+    private bool showTitle = true;
 
     void Awake() 
     {
@@ -47,6 +47,5 @@ public class MainController : MonoBehaviour
         if (!gameIsPlaying) {
             gameIsPlaying = true;
             gameController.StartGame();}
-
     }
 }

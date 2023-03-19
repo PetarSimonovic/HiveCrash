@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private MapCreator mapCreator;
 
+    [SerializeField]
     private CameraController cameraController;
 
     [SerializeField]
@@ -43,9 +44,25 @@ public class GameController : MonoBehaviour
     private bool gameStarted = false;
 
     
+    private void Awake()
+    {
+      Application.targetFrameRate = 60;
 
+    }
 
-  
+    private void Start()
+    {
+    }
+
+      private void Update()
+    {
+      checkGameInput();
+      if (hiveIsPlaced) {
+        checkIfLevelIsComplete();
+        checkControllers();
+        checkHive();
+      }
+    }
 
     public void StartGame()
     {
@@ -56,16 +73,7 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
-      if (!gameStarted) return;
-      checkGameInput();
-      if (hiveIsPlaced) {
-        checkIfLevelIsComplete();
-        checkControllers();
-        checkHive();
-      }
-    }
+  
 
     private void checkGameInput()
     {
@@ -78,6 +86,7 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
+      if (!gameStarted) StartGame();
       if (gameIsOver) restartGame();
       Vector3 touchPosition = touch.position;
       Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
@@ -174,7 +183,7 @@ public class GameController : MonoBehaviour
 
     private Hive createHive(Vector3 hivePosition)
     {
-      GameObject chosenTile = getTileBeneathHive(hivePosition);
+      GameObject chosenTile = mapCreator.GetTileAtPosition(hivePosition);
       int row = chosenTile.GetComponent<Tile>().row;
       int column = chosenTile.GetComponent<Tile>().column;
       mapCreator.DestroyTile(chosenTile);
@@ -196,14 +205,6 @@ public class GameController : MonoBehaviour
 
       return hive;
     }
-
-    private GameObject getTileBeneathHive(Vector3 hivePosition) 
-    {
-      
-      return tiles.Find(tile => tile.transform.position == hivePosition);
-
-    }
-
   
 
     private void checkControllers()

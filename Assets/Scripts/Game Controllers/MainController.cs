@@ -21,15 +21,18 @@ public class MainController : MonoBehaviour
     void Awake() 
     {
         Application.targetFrameRate = 60;
+              gameController = Instantiate(gameController);
+        //titleController = Instantiate(titleController);
+        gameController.SetCameraController(this.cameraController);
+//titleController.SetCameraController(this.cameraController);
+  
 
     }
     void Start()
     {
-        gameController = Instantiate(gameController);
-        titleController = Instantiate(titleController);
-        gameController.SetCameraController(this.cameraController);
-        titleController.SetCameraController(this.cameraController);
+        gameController.StartGame();
     }
+    
 
     // Update is called once per frame
 
@@ -40,12 +43,12 @@ public class MainController : MonoBehaviour
     void Update()
     {
 
-        if (showTitle) 
-        {
-            titleController.IsPlayerReady();
-        }
-        if (!gameIsPlaying) {
-            gameIsPlaying = true;
-            gameController.StartGame();}
+        // if (showTitle) 
+        // {
+        //     titleController.IsPlayerReady();
+        // }
+        // if (!gameIsPlaying) {
+        //     gameIsPlaying = true;
+        //     gameController.StartGame();}
     }
 }

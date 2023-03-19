@@ -203,8 +203,14 @@ public class MapCreator : MonoBehaviour
           }
       });
 
-
     }
+
+     public GameObject GetTileAtPosition(Vector3 position)
+      {
+        return tiles.Find(tile => tile.transform.position == position);
+
+      }
+
 
     private List<Coordinates> gethiveAdjacentTiles(int column) {
 

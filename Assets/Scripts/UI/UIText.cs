@@ -20,4 +20,9 @@ public class UIText : MonoBehaviour
     {
       uiText.SetText(text);
     }
+
+    public void SetSize(int size) 
+    {
+      uiText.fontSize = size;
+    }
 }

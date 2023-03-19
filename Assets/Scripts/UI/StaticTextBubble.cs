@@ -7,7 +7,7 @@ public class StaticTextBubble : MonoBehaviour
 {
     private TMP_Text uiText;
 
-    private Color32 colour = new Color32(200, 200, 200, 255);
+    private Color32 colour = new Color32(233, 196, 106, 255); // Hive colour
 
 
 
@@ -40,5 +40,10 @@ public class StaticTextBubble : MonoBehaviour
     public void SetColour(Color32 colour) 
     {
         this.colour = colour;
+    }
+
+    public void SetSize(int size)
+    {
+        uiText.fontSize = size;
     }
 }

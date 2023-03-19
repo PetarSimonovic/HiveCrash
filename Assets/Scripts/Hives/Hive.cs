@@ -163,6 +163,7 @@ public class Hive : MonoBehaviour
         case "lake":
           LaunchTextBubble("Hive drowned", false);
           this.crashed = true;
+          stopMoving();
           launchHiveCrashTextBubble();
           break;
         case "bee":
@@ -221,6 +222,12 @@ public class Hive : MonoBehaviour
     pollenCounter = Instantiate(pollenCounterPrefab);
     positionPollenCounter();
   }
+
+   protected virtual void stopMoving()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
 
   private void positionPollenCounter() {
     Vector3 textPosition = GetPosition();

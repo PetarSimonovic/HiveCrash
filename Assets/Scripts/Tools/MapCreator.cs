@@ -25,14 +25,14 @@ public class MapCreator : MonoBehaviour
     private Cartographer cartographer;
 
     private const float WidthOfTile = 1f;
-    private const float StartingXPosition = 0f;
-    private const float StartingZPosition = 0f;
+    private const float StartingXPosition = 5f;
+    private const float StartingZPosition = 2f;
     private const int NumberOfRows = 9;
     private const int NumberOfColumns = 9;
     private const int RockFrequency = 1;
 
 
-    public void CreateMap()
+    public void CreateMap(bool usePremadeMaps = true)
     {
       Debug.Log("Tiles count " + tiles.Count);
       if (tiles.Count != 0) {resetTiles();}
@@ -67,15 +67,17 @@ public class MapCreator : MonoBehaviour
 
     private void generateMap(List<List<int>> map) 
     {
-      float xPosition = StartingXPosition;
-      float zPosition = StartingZPosition;
+      float mapXPosition = StartingXPosition - StartingXPosition;
+      float mapZPosition = StartingZPosition - StartingZPosition;
+      float xPosition = mapXPosition;
+      float zPosition = mapZPosition;
       int columnNumber = 0;
    //   CreateColumn(xPosition - WidthOfTile/2, zPosition - WidthOfTile/4, lakeTilePrefab);
       foreach (List<int> column in map)
       {
         CreateColumn(xPosition, zPosition, column, columnNumber);
         xPosition += WidthOfTile/2;
-        zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
+        zPosition = zPosition == mapZPosition ? mapZPosition + WidthOfTile/4 : mapZPosition;
         columnNumber++;
       }
     // CreateColumn(xPosition, zPosition - WidthOfTile/2, lakeTilePrefab);
@@ -90,7 +92,7 @@ public class MapCreator : MonoBehaviour
       {
         CreateColumn(xPosition, zPosition, column);
         xPosition += WidthOfTile/2;
-        zPosition = zPosition == 0 ? WidthOfTile/4 : 0;
+        zPosition = zPosition == StartingZPosition ? StartingZPosition + WidthOfTile/4 : StartingZPosition;
       }
     // CreateColumn(xPosition, zPosition - WidthOfTile/2, lakeTilePrefab);
     }

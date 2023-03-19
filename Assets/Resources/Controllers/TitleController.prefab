@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa1299f470ac4e81b399b5324ddb805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticTextBubblePrefab: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
+    type: 3}

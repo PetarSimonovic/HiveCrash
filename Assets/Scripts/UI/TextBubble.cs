@@ -12,11 +12,16 @@ public class TextBubble : MonoBehaviour
     private float countDownSeconds = 10.0f;
 
     private float riseSpeed = 0.013f;
+
+    private Color32 hiveCrashYellow = new Color32(233, 196, 106, 255);
+
+    private Color32 hiveCrashRed = new Color32(227, 12, 14, 255);
     
 
     void Awake()
     {
         getComponents();
+        uiText.overrideColorTags = true;
     }
 
     // Update is called once per frame
@@ -34,11 +39,14 @@ public class TextBubble : MonoBehaviour
         switch (isPositive) 
         {
             case true:
-                uiText.color = new Color32(233, 196, 106, 255);
+                uiText.color = hiveCrashYellow;
                 break;
             
             case false:
-                uiText.color = new Color32(227, 12, 14, 255);
+                uiText.color = hiveCrashRed;
+                uiText.faceColor = hiveCrashRed;
+                uiText.fontSharedMaterial.SetColor(ShaderUtilities.ID_GlowColor, hiveCrashRed);
+
                 break;
         }
         uiText.SetText(text);

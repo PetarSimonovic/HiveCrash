@@ -4,33 +4,52 @@ using UnityEngine;
 
 public class TitleController : MonoBehaviour
 {
+    [SerializeField]
+    GameObject staticTextBubblePrefab;
+
+    GameObject hiveCrashTitle;
 
     private bool playerIsReady = false;
 
 
 
-     private CameraController cameraController;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {        
+
     }
+
+    public void CreateTitles() 
+    {
+        createTitleText();
+    }
+
+    public void RemoveTitles()
+    {
+        Destroy(hiveCrashTitle);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetCameraController(CameraController cameraController) 
+   
+    
+
+    private void createTitleText()
     {
-        this.cameraController = cameraController;
+        hiveCrashTitle = Instantiate(staticTextBubblePrefab);
+        hiveCrashTitle.GetComponent<StaticTextBubble>().SetText("HiveCrash");
+        hiveCrashTitle.GetComponent<StaticTextBubble>().SetSize(90);
+        hiveCrashTitle.transform.position = new Vector3(Globals.centreTile.x, 2f, Globals.centreTile.z);
+
     }
 
-    public bool IsPlayerReady()
-    {
-        return playerIsReady;
-    }
+
+
 
 
 }

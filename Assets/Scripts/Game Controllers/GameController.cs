@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+
+    [SerializeField]
+    private GameObject titleController;
+
     [SerializeField]
     private MapCreator mapCreator;
 
@@ -48,8 +53,9 @@ public class GameController : MonoBehaviour
     {
       Application.targetFrameRate = 60;
       mapCreator = Instantiate(mapCreator);
-      mapCreator.CreateMap();
-
+      createMap(false);
+      titleController = Instantiate(titleController);
+      titleController.GetComponent<TitleController>().CreateTitles();
 
     }
 
@@ -70,8 +76,9 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+      titleController.GetComponent<TitleController>().RemoveTitles();
       instantiateObjects();
-      createMap();
+        createMap();
       gameStarted = true;
 
     }
@@ -216,9 +223,9 @@ public class GameController : MonoBehaviour
       flowerController.PlantRevealedMeadows();
     }
 
-    private void createMap()
+    private void createMap(bool usePremadeMaps = true)
     {
-      mapCreator.CreateMap();
+      mapCreator.CreateMap(usePremadeMaps);
       tiles = mapCreator.GetTiles();
     }
 

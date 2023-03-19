@@ -47,11 +47,15 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
       Application.targetFrameRate = 60;
+      mapCreator = Instantiate(mapCreator);
+      mapCreator.CreateMap();
+
 
     }
 
     private void Start()
     {
+      
     }
 
       private void Update()
@@ -253,7 +257,6 @@ public class GameController : MonoBehaviour
     private void instantiateObjects()
     {
       beeLauncher = Instantiate(beeLauncher);
-      mapCreator = Instantiate(mapCreator);
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
       enemyController.SetMapCreator(this.mapCreator);

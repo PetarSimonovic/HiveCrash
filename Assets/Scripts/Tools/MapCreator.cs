@@ -34,6 +34,8 @@ public class MapCreator : MonoBehaviour
 
     public void CreateMap()
     {
+      Debug.Log("Tiles count " + tiles.Count);
+      if (tiles.Count != 0) {resetTiles();}
       if (usePremadeMaps) 
       {
         drawMap();
@@ -42,6 +44,18 @@ public class MapCreator : MonoBehaviour
       {
         generateMap();
       }
+      Debug.Log("Tiles count " + tiles.Count);
+
+    }
+
+    private void resetTiles() 
+    {
+      for (int i = 0; i < 5; i++)  
+      {
+        DestroyTile(tiles[i]);
+      }
+      tiles.Clear();
+      Debug.Log("tiles reset " + tiles.Count);
     }
 
     private void drawMap() 

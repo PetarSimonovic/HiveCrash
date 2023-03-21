@@ -38,8 +38,6 @@ public class GameController : MonoBehaviour
 
     private Hive hive;
 
-    private List<GameObject> tiles;
-
     private bool hiveIsPlaced;
 
     private Touch touch;
@@ -52,10 +50,11 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
       Application.targetFrameRate = 60;
-      mapCreator = Instantiate(mapCreator);
-      createMap(false);
-      titleController = Instantiate(titleController);
-      titleController.GetComponent<TitleController>().CreateTitles();
+      instantiateObjects();
+
+      titleController.GetComponent<TitleController>().SetMapCreator(this.mapCreator);
+      showTitles();
+
 
     }
 
@@ -74,16 +73,29 @@ public class GameController : MonoBehaviour
       }
     }
 
-    public void StartGame()
+    private void showTitles()
     {
-      titleController.GetComponent<TitleController>().RemoveTitles();
-      instantiateObjects();
-        createMap();
-      gameStarted = true;
-
+      titleController.GetComponent<TitleController>().CreateTitles();
     }
 
-    // Update is called once per frame
+    public IEnumerator StartGame()
+    {
+      Debug.Log("in StartGame");
+      titleController.GetComponent<TitleController>().RemoveTitles();
+      mapCreator.ClearTiles();
+      while (mapCreator.GetTiles().Count > 0) 
+      {
+        Debug.Log("waiting for tiles to clear");
+        yield return null;
+      }
+      mapCreator.CreateMap();
+      while (!mapCreator.IsMapCreated()) 
+      {
+          Debug.Log("waiting for map creation");
+          yield return null;
+      }
+      gameStarted = true;
+    }
   
 
     private void checkGameInput()
@@ -97,8 +109,15 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
-      if (!gameStarted) StartGame();
-      if (gameIsOver) restartGame();
+      if (!gameStarted) { 
+        Debug.Log("About to launch cooroutine");
+        StartCoroutine(StartGame()); 
+        return;
+      }
+      if (gameIsOver) {
+        restartGame();
+        return;
+        }
       Vector3 touchPosition = touch.position;
       Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
@@ -189,12 +208,16 @@ public class GameController : MonoBehaviour
     private void initialiseEnemies()
     {
       enemyController.SetPlayerHive(hive);
-      enemyController.PlaceEnemyTile(tiles);
+      enemyController.PlaceEnemyTile(mapCreator.GetTiles());
     }
 
     private Hive createHive(Vector3 hivePosition)
     {
+      Debug.Log("HivePosition");
+      Debug.Log(hivePosition);
+      hivePosition.y = 0.0f;
       GameObject chosenTile = mapCreator.GetTileAtPosition(hivePosition);
+      Debug.Log(chosenTile);
       int row = chosenTile.GetComponent<Tile>().row;
       int column = chosenTile.GetComponent<Tile>().column;
       mapCreator.DestroyTile(chosenTile);
@@ -226,18 +249,17 @@ public class GameController : MonoBehaviour
     private void createMap(bool usePremadeMaps = true)
     {
       mapCreator.CreateMap(usePremadeMaps);
-      tiles = mapCreator.GetTiles();
     }
 
     private void updateFlowerController()
     {
-      flowerController.SetMeadows(tiles);
+      flowerController.SetMeadows(mapCreator.GetTiles());
     }
 
     private void checkIfLevelIsComplete()
     {
       if (enemyController.EnemyHasCrashed()) return;
-      foreach (GameObject tile in tiles)
+      foreach (GameObject tile in mapCreator.GetTiles())
       {
         if (tile.GetComponent<Tile>().IsHidden() == true)
         {
@@ -263,6 +285,9 @@ public class GameController : MonoBehaviour
 
     private void instantiateObjects()
     {
+      mapCreator = Instantiate(mapCreator);
+      titleController = Instantiate(titleController);
+
       beeLauncher = Instantiate(beeLauncher);
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
@@ -275,7 +300,7 @@ public class GameController : MonoBehaviour
 
     public List<GameObject> GetTiles() 
     {
-      return this.tiles;
+      return mapCreator.GetTiles();
     }
 
     public void checkHive() 

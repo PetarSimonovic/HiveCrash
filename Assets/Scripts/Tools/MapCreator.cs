@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 
 public class MapCreator : MonoBehaviour
 {
@@ -31,11 +33,12 @@ public class MapCreator : MonoBehaviour
     private const int NumberOfColumns = 9;
     private const int RockFrequency = 1;
 
+    private bool mapCreated = false;
+
 
     public void CreateMap(bool usePremadeMaps = true)
     {
       Debug.Log("Tiles count " + tiles.Count);
-      if (tiles.Count != 0) {resetTiles();}
       if (usePremadeMaps) 
       {
         drawMap();
@@ -48,13 +51,14 @@ public class MapCreator : MonoBehaviour
 
     }
 
-    private void resetTiles() 
+    public void ClearTiles() 
     {
-      for (int i = 0; i < 5; i++)  
+      while (tiles.Count > 0)  
       {
-        DestroyTile(tiles[i]);
+        DestroyTile(tiles.Last());
       }
       tiles.Clear();
+      mapCreated = false;
       Debug.Log("tiles reset " + tiles.Count);
     }
 
@@ -63,6 +67,7 @@ public class MapCreator : MonoBehaviour
       cartographer = GetComponent<Cartographer>();
       map = cartographer.GetHexMap();
       generateMap(map);
+      mapCreated = true;
     }
 
     private void generateMap(List<List<int>> map) 
@@ -255,6 +260,12 @@ public class MapCreator : MonoBehaviour
         }
         return adjacentHives;
     }
+
+
+  public bool IsMapCreated() 
+  {
+    return this.mapCreated;
+  }
 }
 
 class Coordinates {
@@ -266,5 +277,6 @@ class Coordinates {
     this.column = column;
     this.row = row;
   }
+
 
 }

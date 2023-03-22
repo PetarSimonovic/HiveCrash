@@ -232,6 +232,12 @@ public class MapCreator : MonoBehaviour
 
       }
 
+        public GameObject GetTileAtPosition(int column, int row)
+      {
+        return tiles.Find(tile => tile.GetComponent<Tile>().column == column && tile.GetComponent<Tile>().row == row);
+
+      }
+
 
     private List<Coordinates> gethiveAdjacentTiles(int column) {
 

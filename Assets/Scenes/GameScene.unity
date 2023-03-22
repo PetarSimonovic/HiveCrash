@@ -339,6 +339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3168837201570505610, guid: ddf2394a528074329a45d90c5c433080,
         type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 569414348}
+    - target: {fileID: 3168837201570505610, guid: ddf2394a528074329a45d90c5c433080,
+        type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 569414348}
@@ -605,6 +610,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2337308176348176969, guid: 17988493db59946ec9474bd190a9eb40,
+        type: 3}
+      propertyPath: titleController
+      value: 
+      objectReference: {fileID: 6013613807386383118, guid: 243a9e76eba92434687424846842d021,
+        type: 3}
     - target: {fileID: 2337308176348176969, guid: 17988493db59946ec9474bd190a9eb40,
         type: 3}
       propertyPath: cameraController

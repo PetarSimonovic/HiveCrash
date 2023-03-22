@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6142686248008296434}
   - component: {fileID: 1521070969284911730}
+  - component: {fileID: 3919585189643174733}
   m_Layer: 0
   m_Name: TitleController
   m_TagString: Untagged
@@ -46,3 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticTextBubblePrefab: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
     type: 3}
+  automatedController: {fileID: 7902477986679293441, guid: ba1b0d32c0a3341e1a36393c8dbff4f5,
+    type: 3}
+--- !u!114 &3919585189643174733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013613807386383118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59af72fdbc936448cbf888bb852d99f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiveObject: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+    type: 3}
+  beeLauncher: {fileID: 0}
+  beeController: {fileID: 0}

@@ -75,13 +75,13 @@ public class GameController : MonoBehaviour
 
     private void showTitles()
     {
-      titleController.GetComponent<TitleController>().CreateTitles();
+      titleController.GetComponent<TitleController>().CreateTitleScreen();
     }
 
     public IEnumerator StartGame()
     {
       Debug.Log("in StartGame");
-      titleController.GetComponent<TitleController>().RemoveTitles();
+      titleController.GetComponent<TitleController>().RemoveTitleScreen();
       mapCreator.ClearTiles();
       while (mapCreator.GetTiles().Count > 0) 
       {
@@ -213,7 +213,6 @@ public class GameController : MonoBehaviour
 
     private Hive createHive(Vector3 hivePosition)
     {
-      Debug.Log("HivePosition");
       Debug.Log(hivePosition);
       hivePosition.y = 0.0f;
       GameObject chosenTile = mapCreator.GetTileAtPosition(hivePosition);
@@ -222,7 +221,6 @@ public class GameController : MonoBehaviour
       int column = chosenTile.GetComponent<Tile>().column;
       mapCreator.DestroyTile(chosenTile);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
-      tile.tag = "playerHiveTile";
       tile.GetComponent<Tile>().row = row;
       tile.GetComponent<Tile>().column = column;
       hivePosition = new Vector3(hivePosition.x, (tile.transform.position.y + (tile.GetComponent<Tile>().GetHeight()/4)), hivePosition.z);

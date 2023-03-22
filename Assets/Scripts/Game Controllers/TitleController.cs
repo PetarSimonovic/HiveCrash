@@ -5,55 +5,81 @@ using UnityEngine;
 public class TitleController : MonoBehaviour
 {
     [SerializeField]
-    GameObject staticTextBubblePrefab;
+    private GameObject staticTextBubblePrefab;
+    private AutomatedController automatedController;
+    private  GameObject hiveCrashTitle;
 
-    GameObject hiveCrashTitle;
+    private GameObject playTitle;
 
-    MapCreator mapCreator;
+    private GameObject tutorialTitle;
+
+    private MapCreator mapCreator;
+
+    private Vector3 hivePosition;
+
+    int hiveColumn = 4;
+    int hiveRow = 4;
 
     private bool playerIsReady = false;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {        
+        automatedController = gameObject.GetComponent<AutomatedController>();
 
     }
-
-    public void CreateTitles() 
-    {
-        mapCreator.CreateMap(false);
-        GameObject tile = mapCreator.GetTileAtPosition(Globals.centreTile);
-        Destroy(tile);
-        GameObject centreTile = mapCreator.CreateTile(Globals.centreTile, mapCreator.GetMeadowTilePrefab());
-        centreTile.GetComponent<Tile>().Reveal();
-        createTitleText();
-    }
-
-    public void RemoveTitles()
-    {
-        Destroy(hiveCrashTitle);
-        mapCreator.ClearTiles();
-
-    }
-
 
     // Update is called once per frame
     void Update()
     {
 
     }
+    public void CreateTitleScreen() 
+    {
+        createTitleMap();
+        createTitleText();
+        placeHive();
+    }
+
+    public void RemoveTitleScreen()
+    {
+        Destroy(hiveCrashTitle);
+        Destroy(automatedController);
+        mapCreator.ClearTiles();
+
+    }
+
+    private void placeHive()
+    {
+        automatedController.PlaceHive(hivePosition);
+    }
 
    
-    
+    private void createTitleMap() 
+    {
+        mapCreator.CreateMap(false);
+        GameObject tile = mapCreator.GetTileAtPosition(hiveColumn, hiveRow);
+        mapCreator.SurroundHiveWithMeadows(hiveColumn, hiveRow);
+        Vector3 position = tile.transform.position;
+        Destroy(tile);
+        GameObject hiveTile = mapCreator.CreateTile(position, mapCreator.GetMeadowTilePrefab());
+        hiveTile.GetComponent<Tile>().Reveal();
+        hivePosition = hiveTile.transform.position;
+    }
 
     private void createTitleText()
     {
         hiveCrashTitle = Instantiate(staticTextBubblePrefab);
-        hiveCrashTitle.GetComponent<StaticTextBubble>().SetText("HiveCrash");
-        hiveCrashTitle.GetComponent<StaticTextBubble>().SetSize(90);
-        hiveCrashTitle.transform.position = new Vector3(Globals.centreTile.x, 2f, Globals.centreTile.z);
+        setTextProperties("HiveCrash", 90, 0f, 3.3f);
+    }
+
+    private void setTextProperties(string text, int fontSize, float xOffsetPosition, float yPosition)
+    {
+        hiveCrashTitle.GetComponent<StaticTextBubble>().SetText(text);
+        hiveCrashTitle.GetComponent<StaticTextBubble>().SetSize(fontSize);
+        hiveCrashTitle.transform.position = new Vector3(Globals.centreTile.x + xOffsetPosition, yPosition, Globals.centreTile.z);
 
     }
 

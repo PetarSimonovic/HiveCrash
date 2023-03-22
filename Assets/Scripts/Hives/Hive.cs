@@ -26,24 +26,29 @@ public class Hive : MonoBehaviour
   private int pollenCapacity = 10000;
 
   private bool crashedTextBubbleSent;
+
+  public bool titleHive = false;
   
   
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
-    launchPollenCounter();
   }
   
+
   private void Update()
   {
     int beesInHive = 0;
    bees.ForEach(bee => {
     if (bee.IsInHive()) {beesInHive++;}
    });
+   if (!titleHive) 
+   {
    string pollenCountText = beesInHive + "/" + bees.Count + " " + GetPollenPercentage().ToString() + "%";
    pollenCounter.GetComponent<StaticTextBubble>().SetText(pollenCountText);
    positionPollenCounter();
+   }
 
   }
 

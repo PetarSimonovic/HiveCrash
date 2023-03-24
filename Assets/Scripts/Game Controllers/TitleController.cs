@@ -6,7 +6,9 @@ public class TitleController : MonoBehaviour
 {
     [SerializeField]
     private GameObject staticTextBubblePrefab;
-    private AutomatedController automatedController;
+    
+    [SerializeField]
+    private GameObject automatedController;
     private  GameObject hiveCrashTitle;
 
     private GameObject playTitle;
@@ -25,9 +27,11 @@ public class TitleController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
-    {        
-        automatedController = gameObject.GetComponent<AutomatedController>();
+    private void Awake()
+    {
+      Application.targetFrameRate = 60;
+      instantiateObjects();
+
 
     }
 
@@ -36,6 +40,15 @@ public class TitleController : MonoBehaviour
     {
 
     }
+
+     private void instantiateObjects()
+    {
+      mapCreator = Instantiate(mapCreator);
+      automatedController = Instantiate(automatedController);
+
+
+    }
+
     public void CreateTitleScreen() 
     {
         createTitleMap();
@@ -43,17 +56,10 @@ public class TitleController : MonoBehaviour
         placeHive();
     }
 
-    public void RemoveTitleScreen()
-    {
-        Destroy(hiveCrashTitle);
-        Destroy(automatedController);
-        mapCreator.ClearTiles();
-
-    }
 
     private void placeHive()
     {
-        automatedController.PlaceHive(hivePosition);
+        automatedController.GetComponent<AutomatedController>().PlaceHive(hivePosition);
     }
 
    

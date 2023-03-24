@@ -34,6 +34,7 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
+    launchPollenCounter();
   }
   
 

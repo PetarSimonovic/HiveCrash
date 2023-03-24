@@ -20,6 +20,7 @@ public class AutomatedController : MonoBehaviour
     private MapCreator mapCreator;
 
     private bool hiveIsPlaced;
+    
 
     void Update()
     {
@@ -40,5 +41,10 @@ public class AutomatedController : MonoBehaviour
         hiveObject = Instantiate(hiveObject, tilePosition, Quaternion.identity);
         hiveObject.GetComponent<Hive>().titleHive = true;
         
-}
+    }
+
+    public void DestroyHive()
+    {
+        Destroy(hiveObject);
+    }
 }

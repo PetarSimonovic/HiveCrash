@@ -10,9 +10,6 @@ public class GameController : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject titleController;
-
-    [SerializeField]
     private MapCreator mapCreator;
 
     [SerializeField]
@@ -49,11 +46,9 @@ public class GameController : MonoBehaviour
     
     private void Awake()
     {
+      Debug.Log("Woken up!");
       Application.targetFrameRate = 60;
       instantiateObjects();
-
-      titleController.GetComponent<TitleController>().SetMapCreator(this.mapCreator);
-      showTitles();
 
 
     }
@@ -73,15 +68,11 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void showTitles()
-    {
-      titleController.GetComponent<TitleController>().CreateTitleScreen();
-    }
 
-    public IEnumerator StartGame()
+
+    public IEnumerator StartLevel()
     {
-      Debug.Log("in StartGame");
-      titleController.GetComponent<TitleController>().RemoveTitleScreen();
+      Debug.Log("In start level");
       mapCreator.ClearTiles();
       while (mapCreator.GetTiles().Count > 0) 
       {
@@ -102,6 +93,7 @@ public class GameController : MonoBehaviour
     {
       if (Input.touchCount > 0)
       {
+        Debug.Log("click click");
         touch = Input.GetTouch(0);
           processInput();
       }
@@ -110,8 +102,8 @@ public class GameController : MonoBehaviour
     private void processInput()
     {
       if (!gameStarted) { 
-        Debug.Log("About to launch cooroutine");
-        StartCoroutine(StartGame()); 
+        Debug.Log("Starting level");
+        StartCoroutine(StartLevel());
         return;
       }
       if (gameIsOver) {
@@ -284,7 +276,6 @@ public class GameController : MonoBehaviour
     private void instantiateObjects()
     {
       mapCreator = Instantiate(mapCreator);
-      titleController = Instantiate(titleController);
 
       beeLauncher = Instantiate(beeLauncher);
       flowerController = Instantiate(flowerController);

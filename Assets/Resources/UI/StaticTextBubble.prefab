@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HiveCrash is an abstract arcade beekeeping simulator
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72274d8945ab649b2b59f36ab80aae34, type: 2}
   m_sharedMaterial: {fileID: -3630281172610297370, guid: 72274d8945ab649b2b59f36ab80aae34,
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4285772735
   m_fontColor: {r: 0.7490196, g: 0.7019608, b: 0.4509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

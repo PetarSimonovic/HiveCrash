@@ -9,13 +9,18 @@ public class TitleController : MonoBehaviour
     
     [SerializeField]
     private GameObject automatedController;
+
+    [SerializeField]
+    private MapCreator mapCreator;
+
+       
+    [SerializeField]
+    private GameObject cameraController;
     private  GameObject hiveCrashTitle;
 
     private GameObject playTitle;
 
     private GameObject tutorialTitle;
-
-    private MapCreator mapCreator;
 
     private Vector3 hivePosition;
 
@@ -31,6 +36,7 @@ public class TitleController : MonoBehaviour
     {
       Application.targetFrameRate = 60;
       instantiateObjects();
+      CreateTitleScreen();
 
 
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8740211113338504772}
   - component: {fileID: 5238578165074461502}
+  - component: {fileID: 2145446946121503691}
   m_Layer: 0
   m_Name: AutomatedController
   m_TagString: Untagged
@@ -48,3 +49,15 @@ MonoBehaviour:
     type: 3}
   beeLauncher: {fileID: 0}
   beeController: {fileID: 0}
+--- !u!114 &2145446946121503691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211631396930418082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

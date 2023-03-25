@@ -55,7 +55,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-      
+        Debug.Log("Starting level");
+        StartCoroutine(StartLevel());
     }
 
       private void Update()
@@ -92,7 +93,6 @@ public class GameController : MonoBehaviour
     {
       if (Input.touchCount > 0)
       {
-        Debug.Log("click click");
         touch = Input.GetTouch(0);
           processInput();
       }
@@ -100,15 +100,13 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
-      if (!gameStarted) { 
-        Debug.Log("Starting level");
-        StartCoroutine(StartLevel());
-        return;
-      }
+
       if (gameIsOver) {
-        restartGame();
+        goToTitleScene();
         return;
         }
+     
+   
       Vector3 touchPosition = touch.position;
       Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
@@ -257,7 +255,7 @@ public class GameController : MonoBehaviour
       }
       gameIsOver = true;
       hive.LaunchTextBubble("Garden is secure");
-      restartGame();
+      goToTitleScene();
     }
 
     private void initialiseBeeController()
@@ -267,9 +265,9 @@ public class GameController : MonoBehaviour
       beeController.AddBees(5);
     }
 
-    private void restartGame()
+    private void goToTitleScene()
     {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      StartCoroutine(LoadSceneAfterDelay(2));
     }
 
     private void instantiateObjects()
@@ -311,6 +309,12 @@ public class GameController : MonoBehaviour
       return gameIsOver;
     }
     
+        public IEnumerator LoadSceneAfterDelay(int seconds)
+        {
+        
+            yield return new WaitForSecondsRealtime(seconds);
+            SceneManager.LoadScene("TitleScene");
 
+        }
 
 }

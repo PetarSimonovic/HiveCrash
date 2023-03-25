@@ -207,6 +207,7 @@ public class Hive : MonoBehaviour
 
   public void LaunchTextBubble(string message, bool isPositive = true)
   {
+    if (titleHive) return;
     Vector3 textPosition = GetPosition();
     textPosition.y = 1.50f;
     GameObject textBubble = Instantiate(textBubblePrefab, textPosition, Quaternion.identity);

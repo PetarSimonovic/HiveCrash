@@ -22,7 +22,7 @@ public class AutomatedHiveController : MonoBehaviour
 
     private bool hiveIsPlaced = false;
 
-    private float beeLaunchInterval = 4f;
+    private float beeLaunchInterval = 8f;
     
 
        void Awake()
@@ -48,11 +48,12 @@ public class AutomatedHiveController : MonoBehaviour
 
     public void InitialiseHive(Vector3 tilePosition)
     {
-        tilePosition.y = 5f;
+        tilePosition.y = 0.5f;
         hiveObject = Instantiate(hiveObject, tilePosition, Quaternion.identity);
         hive = hiveObject.GetComponent<Hive>();
         hive.titleHive = true;
         hive.SetPosition(hiveObject.transform.position);
+        Debug.Log(hive.GetPosition());
         beeLauncher.SetHive(hive);
         initialiseBeeController();
         initialiseTimer();
@@ -76,8 +77,11 @@ public class AutomatedHiveController : MonoBehaviour
 
        private void launchBee()
       {
+        Vector3 hivePosition = hive.GetPosition();
+        float hivePositionX =  hivePosition.x;
+        float hivePositionZ = hivePosition.z;
         beeLauncher.LoadBee(hive.GetBee());
-        Vector3 target = new Vector3 (Random.Range(-4.0f, 4.0f), 0.5f, Random.Range(-4.0f, 4.0f));
+        Vector3 target = new Vector3 (Random.Range(-(hivePositionX - 1f), (hivePositionX + 1)), 0.5f, Random.Range(-(hivePositionZ - 1), (hivePositionZ + 1)));
         beeLauncher.SetTarget(target);
         if (beeLauncher.IsLoaded()) {
           beeLauncher.LaunchBee();

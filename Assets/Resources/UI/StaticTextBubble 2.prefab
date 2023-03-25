@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5960103360051813338}
   - component: {fileID: 2893964749169456307}
   m_Layer: 14
-  m_Name: PollenCounter
+  m_Name: StaticTextBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

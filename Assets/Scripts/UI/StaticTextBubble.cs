@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PollenCounter : MonoBehaviour
+public class StaticTextBubble : MonoBehaviour
 {
     private TMP_Text uiText;
+
+    private Color32 colour = new Color32(233, 196, 106, 255); // Hive colour
 
 
 
@@ -14,7 +16,6 @@ public class PollenCounter : MonoBehaviour
     void Awake()
     {
         getComponents();
-        uiText.color = new Color32(200, 200, 200, 255);
         uiText.GetComponent<TMP_Text>().fontSize = 35;
 
 
@@ -24,15 +25,25 @@ public class PollenCounter : MonoBehaviour
   
 
 
-    public void SetPollenCount(int pollenCount, int beesInHive, int bees)
+    public void SetText(string text)
     {
-        
-        uiText.SetText(beesInHive + "/" + bees + " " + pollenCount.ToString() + "%");
+        uiText.color = colour;
+        uiText.SetText(text);
     }
 
 
     private void getComponents() 
     {
         uiText  = GetComponent<TMP_Text>();
+    }
+
+    public void SetColour(Color32 colour) 
+    {
+        this.colour = colour;
+    }
+
+    public void SetSize(int size)
+    {
+        uiText.fontSize = size;
     }
 }

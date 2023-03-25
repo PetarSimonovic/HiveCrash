@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeeController : MonoBehaviour
 {
-    private Hive hive;
+    protected Hive hive;
     private Bee bee;
     private BeeNamer beeNamer = new BeeNamer();
     private List<Bee> deadBees = new List<Bee>();
@@ -105,6 +105,8 @@ public class BeeController : MonoBehaviour
 
     public void SetHive(Hive hive)
     {
+      Debug.Log("Setting hive");
+      Debug.Log(hive);
       this.hive = hive;
       hive.LaunchTextBubble("Hive built");
 

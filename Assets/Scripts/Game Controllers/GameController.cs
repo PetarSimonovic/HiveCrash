@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+
     [SerializeField]
     private MapCreator mapCreator;
 
@@ -33,30 +35,32 @@ public class GameController : MonoBehaviour
 
     private Hive hive;
 
-    private List<GameObject> tiles;
-
     private bool hiveIsPlaced;
 
     private Touch touch;
 
-    private bool gameOver = false;
+    private bool gameIsOver = false;
 
+    private bool gameStarted = false;
 
-    private void Awake() 
+    
+    private void Awake()
     {
+      Debug.Log("Woken up!");
       Application.targetFrameRate = 60;
       instantiateObjects();
+
+
     }
 
     private void Start()
     {
-      createMap();
+      
     }
 
-    // Update is called once per frame
-    private void Update()
+      private void Update()
     {
-      checkInput();
+      checkGameInput();
       if (hiveIsPlaced) {
         checkIfLevelIsComplete();
         checkControllers();
@@ -64,10 +68,31 @@ public class GameController : MonoBehaviour
       }
     }
 
-    private void checkInput()
+
+
+    public IEnumerator StartLevel()
+    {
+      Debug.Log("In start level");
+      mapCreator.ClearTiles();
+      while (mapCreator.GetTiles().Count > 0) 
+      {
+        Debug.Log("waiting for tiles to clear");
+        yield return null;
+      }
+      mapCreator.CreateMap();
+      while (!mapCreator.IsMapCreated()) 
+      {
+          Debug.Log("waiting for map creation");
+          yield return null;
+      }
+      gameStarted = true;
+    }
+  
+    private void checkGameInput()
     {
       if (Input.touchCount > 0)
       {
+        Debug.Log("click click");
         touch = Input.GetTouch(0);
           processInput();
       }
@@ -75,10 +100,18 @@ public class GameController : MonoBehaviour
 
     private void processInput()
     {
-      if (gameOver) restartGame();
+      if (!gameStarted) { 
+        Debug.Log("Starting level");
+        StartCoroutine(StartLevel());
+        return;
+      }
+      if (gameIsOver) {
+        restartGame();
+        return;
+        }
       Vector3 touchPosition = touch.position;
-      Ray raycast = Camera.main.ScreenPointToRay(touchPosition);
-      Vector3 worldTouchPoint = Camera.main.ScreenToWorldPoint(touchPosition);
+      Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
+      Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
       RaycastHit raycastHit;
       GameObject tile;
       if (Physics.Raycast(raycast, out raycastHit))
@@ -166,17 +199,19 @@ public class GameController : MonoBehaviour
     private void initialiseEnemies()
     {
       enemyController.SetPlayerHive(hive);
-      enemyController.PlaceEnemyTile(tiles);
+      enemyController.PlaceEnemyTile(mapCreator.GetTiles());
     }
 
     private Hive createHive(Vector3 hivePosition)
     {
-      GameObject chosenTile = getTileBeneathHive(hivePosition);
+      Debug.Log(hivePosition);
+      hivePosition.y = 0.0f;
+      GameObject chosenTile = mapCreator.GetTileAtPosition(hivePosition);
+      Debug.Log(chosenTile);
       int row = chosenTile.GetComponent<Tile>().row;
       int column = chosenTile.GetComponent<Tile>().column;
       mapCreator.DestroyTile(chosenTile);
       GameObject tile = mapCreator.CreateTile(hivePosition, mapCreator.GetTile("meadow"));
-      tile.tag = "playerHiveTile";
       tile.GetComponent<Tile>().row = row;
       tile.GetComponent<Tile>().column = column;
       hivePosition = new Vector3(hivePosition.x, (tile.transform.position.y + (tile.GetComponent<Tile>().GetHeight()/4)), hivePosition.z);
@@ -193,14 +228,6 @@ public class GameController : MonoBehaviour
 
       return hive;
     }
-
-    private GameObject getTileBeneathHive(Vector3 hivePosition) 
-    {
-      
-      return tiles.Find(tile => tile.transform.position == hivePosition);
-
-    }
-
   
 
     private void checkControllers()
@@ -208,28 +235,27 @@ public class GameController : MonoBehaviour
       flowerController.PlantRevealedMeadows();
     }
 
-    private void createMap()
+    private void createMap(bool usePremadeMaps = true)
     {
-      mapCreator.CreateMap();
-      tiles = mapCreator.GetTiles();
+      mapCreator.CreateMap(usePremadeMaps);
     }
 
     private void updateFlowerController()
     {
-      flowerController.SetMeadows(tiles);
+      flowerController.SetMeadows(mapCreator.GetTiles());
     }
 
     private void checkIfLevelIsComplete()
     {
       if (enemyController.EnemyHasCrashed()) return;
-      foreach (GameObject tile in tiles)
+      foreach (GameObject tile in mapCreator.GetTiles())
       {
         if (tile.GetComponent<Tile>().IsHidden() == true)
         {
           return;
         }
       }
-      gameOver = true;
+      gameIsOver = true;
       hive.LaunchTextBubble("Garden is secure");
       restartGame();
     }
@@ -248,8 +274,9 @@ public class GameController : MonoBehaviour
 
     private void instantiateObjects()
     {
-      beeLauncher = Instantiate(beeLauncher);
       mapCreator = Instantiate(mapCreator);
+
+      beeLauncher = Instantiate(beeLauncher);
       flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
       enemyController.SetMapCreator(this.mapCreator);
@@ -261,7 +288,7 @@ public class GameController : MonoBehaviour
 
     public List<GameObject> GetTiles() 
     {
-      return this.tiles;
+      return mapCreator.GetTiles();
     }
 
     public void checkHive() 
@@ -269,10 +296,21 @@ public class GameController : MonoBehaviour
       if (hive.HasCrashed()) 
       {
         hive.LaunchTextBubble("HiveCrash", false);
-        gameOver = true;
+        gameIsOver = true;
 
       }
     }
+
+    public void SetCameraController(CameraController cameraController) 
+    {
+      this.cameraController = cameraController;
+    }
+
+    public bool isGameOver() 
+    {
+      return gameIsOver;
+    }
+    
 
 
 }

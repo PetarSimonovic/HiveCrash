@@ -2,51 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBeeLauncher : BeeLauncher
+public class EnemyBeeLauncher : AutomatedBeeLauncher
 {
     private Vector3 playerHivePosition;
 
-    private Vector3 target;
 
     protected override void Start() {
       SetIsPlayer(false);
-    }
-    protected override void reset()
-    {
-        this.isLoaded = false;
-    }
-
-    public override void LaunchBee()
-    {
-        base.LaunchBee();
-      {
-        this.loadedBee.Fly();
-        Vector3 launchPosition = fixYPosition(hive.GetPosition());
-        GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
-        EnemyBeeBody beeBody = beeObject.GetComponent<EnemyBeeBody>(); 
-        beeBody.SetHiveId(this.loadedBee.GetHiveId());
-        beeBody.SetBee(this.loadedBee);
-        beeBody.SetHive(hive);
-        beeBody.SetPlayer(isPlayer);
-        beeBody.SetTarget(target);
-        this.loadedBee.SetBody(beeObject);
-        ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
-      }
-        reset();
     }
 
     public void SetPlayerHivePosition(Vector3 playerHivePosition) {
       this.playerHivePosition = playerHivePosition;
     }
 
-    public void SetTarget(Vector3 target) 
+    public override void LaunchBee()
     {
-      this.target = target;
+     
+        this.loadedBee.Fly();
+        Vector3 launchPosition = fixYPosition(hive.GetPosition());
+        GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
+        EnemyBeeBody beeBody = beeObject.GetComponent<EnemyBeeBody>(); 
+        setBeeBodyProperties(beeObject);
+        beeBody.SetTarget(target);
+        ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
+    
+        reset();
     }
 
-    protected  void ApplyForceToBeeBody(Rigidbody bee, Vector3 target, Vector3 launchPosition)
-    {
-      bee.AddForceAtPosition((target - launchPosition).normalized, launchPosition, ForceMode.Impulse);
-
-    }
 }

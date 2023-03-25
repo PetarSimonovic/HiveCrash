@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
 
     private Timer timer;
 
+    private float beeLaunchInterval = 3f; 
+
     private MapCreator mapCreator;
 
 
@@ -110,7 +112,7 @@ public class EnemyController : MonoBehaviour
         {
         timer = gameObject.GetComponent<Timer>();
         timer.SetOn(true);
-        timer.SetCountdownSeconds(3f);
+        timer.SetCountdownSeconds(beeLaunchInterval);
         }
 
       private void checkTimer()

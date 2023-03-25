@@ -45,6 +45,7 @@ public class Bee
       this.timer = timer;
       timer.SetCountdownSeconds(this.hungerInterval);
       timer.Restart();
+      Debug.Log(GetHiveId());
     }
 
     public Timer GetTimer()

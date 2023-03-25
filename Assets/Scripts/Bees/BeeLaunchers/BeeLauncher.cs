@@ -39,6 +39,16 @@ public class BeeLauncher : MonoBehaviour
       
     }
 
+    protected void setBeeBodyProperties(GameObject beeObject)
+    {   BeeBody beeBody = beeObject.GetComponent<BeeBody>();
+        beeBody.SetHiveId(this.loadedBee.GetHiveId());
+        beeBody.SetBee(this.loadedBee);
+        beeBody.SetHive(hive);
+        beeBody.SetPlayer(isPlayer);
+        this.loadedBee.SetBody(beeObject);
+    }
+
+
     protected virtual void ApplyForceToBeeBody(Rigidbody bee, Vector3 launchPosition)
     {
       bee.AddForceAtPosition(calculateDirection().normalized, launchPosition, ForceMode.Impulse);
@@ -93,6 +103,8 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetHive(Hive hive)
     {
+      Debug.Log("Setting hive!");
+      Debug.Log(hive);
       this.hive = hive;
     }
 

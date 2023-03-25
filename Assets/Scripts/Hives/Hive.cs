@@ -26,6 +26,8 @@ public class Hive : MonoBehaviour
   private int pollenCapacity = 10000;
 
   private bool crashedTextBubbleSent;
+
+  public bool titleHive = false;
   
   
   private void Awake()
@@ -35,14 +37,19 @@ public class Hive : MonoBehaviour
     launchPollenCounter();
   }
   
+
   private void Update()
   {
     int beesInHive = 0;
    bees.ForEach(bee => {
     if (bee.IsInHive()) {beesInHive++;}
    });
-   pollenCounter.GetComponent<PollenCounter>().SetPollenCount(GetPollenPercentage(), beesInHive, bees.Count);
+   if (!titleHive) 
+   {
+   string pollenCountText = beesInHive + "/" + bees.Count + " " + GetPollenPercentage().ToString() + "%";
+   pollenCounter.GetComponent<StaticTextBubble>().SetText(pollenCountText);
    positionPollenCounter();
+   }
 
   }
 
@@ -162,6 +169,7 @@ public class Hive : MonoBehaviour
         case "lake":
           LaunchTextBubble("Hive drowned", false);
           this.crashed = true;
+          stopMoving();
           launchHiveCrashTextBubble();
           break;
         case "bee":
@@ -220,6 +228,12 @@ public class Hive : MonoBehaviour
     pollenCounter = Instantiate(pollenCounterPrefab);
     positionPollenCounter();
   }
+
+   protected virtual void stopMoving()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
 
   private void positionPollenCounter() {
     Vector3 textPosition = GetPosition();

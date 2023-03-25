@@ -25,7 +25,6 @@ public class EnemyBeeLauncher : AutomatedBeeLauncher
         setBeeBodyProperties(beeObject);
         beeBody.SetTarget(target);
         ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
-    
         reset();
     }
 

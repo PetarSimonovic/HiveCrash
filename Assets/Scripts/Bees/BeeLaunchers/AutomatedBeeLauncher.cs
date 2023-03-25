@@ -21,13 +21,8 @@ public class AutomatedBeeLauncher : BeeLauncher
      
         this.loadedBee.Fly();
         Vector3 launchPosition = fixYPosition(hive.GetPosition());
-        GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
-        BeeBody beeBody = beeObject.GetComponent<BeeBody>(); 
-        beeBody.SetHiveId(this.loadedBee.GetHiveId());
-        beeBody.SetBee(this.loadedBee);
-        beeBody.SetHive(hive);
-        beeBody.SetPlayer(isPlayer);
-        this.loadedBee.SetBody(beeObject);
+        GameObject beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
+        setBeeBodyProperties(beeBody);
         ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
     
         reset();

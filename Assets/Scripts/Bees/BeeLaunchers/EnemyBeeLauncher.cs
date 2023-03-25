@@ -17,18 +17,13 @@ public class EnemyBeeLauncher : AutomatedBeeLauncher
 
     public override void LaunchBee()
     {
-        base.LaunchBee();
      
         this.loadedBee.Fly();
         Vector3 launchPosition = fixYPosition(hive.GetPosition());
         GameObject beeObject = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(target, Vector3.forward)); // Quaternion.identity affects rotation?
         EnemyBeeBody beeBody = beeObject.GetComponent<EnemyBeeBody>(); 
-        beeBody.SetHiveId(this.loadedBee.GetHiveId());
-        beeBody.SetBee(this.loadedBee);
-        beeBody.SetHive(hive);
-        beeBody.SetPlayer(isPlayer);
+        setBeeBodyProperties(beeObject);
         beeBody.SetTarget(target);
-        this.loadedBee.SetBody(beeObject);
         ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), target, launchPosition);
     
         reset();

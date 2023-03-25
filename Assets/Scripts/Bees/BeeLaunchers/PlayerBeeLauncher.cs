@@ -39,15 +39,14 @@ public class PlayerBeeLauncher : BeeLauncher
         Vector3 direction = calculateDirection();
         Vector3 launchPosition = fixYPosition(hive.GetPosition());
         GameObject beeBody = Instantiate(beePrefab, launchPosition, Quaternion.LookRotation(-direction, Vector3.forward)); // Quaternion.identity affects rotation?
-        beeBody.GetComponent<BeeBody>().SetHiveId(this.loadedBee.GetHiveId());
-        beeBody.GetComponent<BeeBody>().SetBee(this.loadedBee);
-        beeBody.GetComponent<BeeBody>().SetHive(hive);
-        beeBody.GetComponent<BeeBody>().SetPlayer(isPlayer);
-        this.loadedBee.SetBody(beeBody);
+        setBeeBodyProperties(beeBody);
+       
         ApplyForceToBeeBody(beeBody.GetComponent<Rigidbody>(), launchPosition);
       }
         reset();
     }
+
+
 
     private void launchScopeBee()
     {

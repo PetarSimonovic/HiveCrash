@@ -34,7 +34,7 @@ public class AutomatedBeeLauncher : BeeLauncher
 
     protected  void ApplyForceToBeeBody(Rigidbody bee, Vector3 target, Vector3 launchPosition)
     {
-      bee.AddForceAtPosition((target - launchPosition).normalized, launchPosition, ForceMode.Impulse);
+      bee.AddForceAtPosition(((target - launchPosition).normalized/2), launchPosition, ForceMode.Impulse);
 
     }
 

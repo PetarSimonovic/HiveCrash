@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
@@ -44,6 +45,11 @@ public class TitleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+      if (Input.touchCount > 0)
+      {
+        StartCoroutine(LoadSceneAfterDelay(2));
+      }
 
     }
 
@@ -101,8 +107,14 @@ public class TitleController : MonoBehaviour
         this.mapCreator = mapCreator;
     }
 
+      public IEnumerator LoadSceneAfterDelay(int seconds)
+        {
+        
+            yield return new WaitForSecondsRealtime(seconds);
+            SceneManager.LoadScene("GameScene");
 
 
+        }
 
 
 }

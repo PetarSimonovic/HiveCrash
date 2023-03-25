@@ -44,10 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa1299f470ac4e81b399b5324ddb805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticTextBubblePrefab: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
-    type: 3}
-  automatedHiveController: {fileID: 211631396930418082, guid: d36e3daba5e5e4748b51a3b3eb3a1f59,
+  titleTextPrefab: {fileID: 7668063613195188360, guid: a1edf73317a4946f7aaf3761e6fc1a4a,
     type: 3}
   mapCreator: {fileID: 4990110836534656903, guid: 8f00b362286e64ab396da855fe03bdb9,
     type: 3}
-  cameraController: {fileID: 0}
+  automatedHiveController: {fileID: 4463030068687471392, guid: 08827eba132cc41d087dfc1903146e18,
+    type: 3}

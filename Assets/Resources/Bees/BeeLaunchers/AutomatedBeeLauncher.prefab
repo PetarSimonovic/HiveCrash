@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &211631396930418082
+--- !u!1 &7611291227781286251
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8740211113338504772}
-  - component: {fileID: 5238578165074461502}
-  - component: {fileID: 2145446946121503691}
+  - component: {fileID: 8309427271426151389}
+  - component: {fileID: 7847590773537344221}
   m_Layer: 0
-  m_Name: AutomatedController
+  m_Name: AutomatedBeeLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8740211113338504772
+--- !u!4 &8309427271426151389
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211631396930418082}
+  m_GameObject: {fileID: 7611291227781286251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.0009136, y: 0.63787127, z: 4.4990673}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,31 +32,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5238578165074461502
+--- !u!114 &7847590773537344221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211631396930418082}
+  m_GameObject: {fileID: 7611291227781286251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59af72fdbc936448cbf888bb852d99f8, type: 3}
+  m_Script: {fileID: 11500000, guid: ed4248fc167914549ba360c24fe04dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hiveObject: {fileID: 4174066498392556052, guid: 7eb3a2b4dfecc4b7c902a273cb6dbb53,
+  beePrefab: {fileID: 8047048267425654717, guid: 615fd581e36f54a36b6bfd8cf2ff3363,
     type: 3}
-  beeLauncher: {fileID: 0}
-  beeController: {fileID: 0}
---- !u!114 &2145446946121503691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211631396930418082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

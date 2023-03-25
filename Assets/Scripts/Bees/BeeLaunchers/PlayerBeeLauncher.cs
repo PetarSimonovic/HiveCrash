@@ -31,9 +31,8 @@ public class PlayerBeeLauncher : BeeLauncher
       launchScopeBee();
     }
 
-    public override void LaunchBee()
+    public void LaunchBee()
     {
-        base.LaunchBee();
         if (isLoaded)
       {
         this.loadedBee.Fly();

@@ -8,7 +8,7 @@ public class TitleController : MonoBehaviour
     private GameObject staticTextBubblePrefab;
     
     [SerializeField]
-    private GameObject automatedController;
+    private GameObject automatedHiveController;
 
     [SerializeField]
     private MapCreator mapCreator;
@@ -49,8 +49,9 @@ public class TitleController : MonoBehaviour
 
      private void instantiateObjects()
     {
-      mapCreator = Instantiate(mapCreator);
-      automatedController = Instantiate(automatedController);
+        automatedHiveController = Instantiate(automatedHiveController);
+
+        mapCreator = Instantiate(mapCreator);
 
 
     }
@@ -59,13 +60,13 @@ public class TitleController : MonoBehaviour
     {
         createTitleMap();
         createTitleText();
-        placeHive();
+        initialiseHive();
     }
 
 
-    private void placeHive()
+    private void initialiseHive()
     {
-        automatedController.GetComponent<AutomatedController>().PlaceHive(hivePosition);
+        automatedHiveController.GetComponent<AutomatedHiveController>().InitialiseHive(hivePosition);
     }
 
    

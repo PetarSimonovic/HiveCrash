@@ -93,6 +93,8 @@ public class BeeLauncher : MonoBehaviour
 
     public void SetHive(Hive hive)
     {
+      Debug.Log("Setting hive!");
+      Debug.Log(hive);
       this.hive = hive;
     }
 

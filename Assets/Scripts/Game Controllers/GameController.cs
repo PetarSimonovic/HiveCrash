@@ -88,7 +88,6 @@ public class GameController : MonoBehaviour
       gameStarted = true;
     }
   
-
     private void checkGameInput()
     {
       if (Input.touchCount > 0)

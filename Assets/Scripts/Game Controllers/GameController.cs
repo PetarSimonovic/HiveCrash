@@ -46,7 +46,6 @@ public class GameController : MonoBehaviour
     
     private void Awake()
     {
-      Debug.Log("Woken up!");
       Application.targetFrameRate = 60;
       instantiateObjects();
 

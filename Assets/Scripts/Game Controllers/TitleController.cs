@@ -46,7 +46,7 @@ public class TitleController : MonoBehaviour
     void Update()
     {
 
-      if (Input.touchCount > 0)
+      if (Input.anyKey)
       {
         StartCoroutine(LoadSceneAfterDelay(2));
       }

@@ -46,7 +46,6 @@ public class GameController : MonoBehaviour
     
     private void Awake()
     {
-      Debug.Log("Woken up!");
       Application.targetFrameRate = 60;
       instantiateObjects();
 
@@ -91,9 +90,8 @@ public class GameController : MonoBehaviour
   
     private void checkGameInput()
     {
-      if (Input.touchCount > 0)
+      if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
       {
-        touch = Input.GetTouch(0);
           processInput();
       }
     }
@@ -107,7 +105,7 @@ public class GameController : MonoBehaviour
         }
      
    
-      Vector3 touchPosition = touch.position;
+      Vector3 touchPosition = Input.mousePosition;
       Ray raycast = cameraController.GetCamera().ScreenPointToRay(touchPosition);
       Vector3 worldTouchPoint = cameraController.GetCamera().ScreenToWorldPoint(touchPosition);
       RaycastHit raycastHit;
@@ -143,17 +141,19 @@ public class GameController : MonoBehaviour
 
     private void processMapInput(Vector3 tilePosition, Vector3 worldTouchPoint)
     {
-      switch(touch.phase)
+      if (Input.GetMouseButtonDown(0))
       {
-      case TouchPhase.Began:
         processTouchOnMap(tilePosition);
-        break;
-      case TouchPhase.Moved:
+        return;
+      }
+      if (Input.GetMouseButton(0)) 
+      {
           beeLauncher.SetEndPosition(worldTouchPoint);
-        break;
-      case TouchPhase.Ended:
+        return;
+      }
+      if (Input.GetMouseButtonUp(0)) 
+      {
           beeLauncher.LaunchBee();
-        break;
       }
     }
 

@@ -16,7 +16,7 @@ Bees in flight/total bees and pollen percentage are displayed above it.
 
 Click, drag back and release to launch a bee from the hive.
 
-Ping bees off rocks to rxplore the map. 
+Ping bees off rocks to explore the map. 
 
 But be careful: once you disturb a rival hive its bees will try to steal your pollen.
 

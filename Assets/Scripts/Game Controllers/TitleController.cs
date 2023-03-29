@@ -35,7 +35,7 @@ public class TitleController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-      Application.targetFrameRate = 60;
+    //  Application.targetFrameRate = 60;
       instantiateObjects();
       CreateTitleScreen();
 

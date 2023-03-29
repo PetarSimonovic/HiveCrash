@@ -107,22 +107,22 @@ public class Flower : MonoBehaviour
       timer.SetCountdownSeconds(20f);
     }
 
-    private void createPollenCloud()
-    {
-      Vector3 pollenCloudPositiion = flower.transform.position;
-      pollenCloudPositiion.y = 0.75f;
-      pollenCloud = Instantiate(pollenCloudPrefab, pollenCloudPositiion, Quaternion.identity);
-    }
+    // private void createPollenCloud()
+    // {
+    //   Vector3 pollenCloudPositiion = flower.transform.position;
+    //   pollenCloudPositiion.y = 0.75f;
+    //   pollenCloud = Instantiate(pollenCloudPrefab, pollenCloudPositiion, Quaternion.identity);
+    // }
 
     public void PlaceBee() {
       hasBee = true;
-      createPollenCloud();
+     // createPollenCloud();
 
     }
 
     public void RemoveBee() {
       hasBee = false;
-      Destroy(pollenCloud);
+      //Destroy(pollenCloud);
     }
 
     public bool HasBee() {

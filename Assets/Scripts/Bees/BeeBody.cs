@@ -13,6 +13,11 @@ public class BeeBody : MonoBehaviour
     private GameObject beeExploder;
 
     [SerializeField]
+    private GameObject pollenCloudPrefab;
+
+    private GameObject pollenCloud;
+
+    [SerializeField]
     private GameObject textBubblePrefab;
     
     private Bee bee;
@@ -60,8 +65,10 @@ public class BeeBody : MonoBehaviour
       if (hive.HasCrashed()) 
       {
         explodeBee();
+        return;
       }
-      else if (collectingPollen)
+      checkPollenCloud();
+      if (collectingPollen)
       {
         collectPollen();
       }
@@ -190,6 +197,7 @@ public class BeeBody : MonoBehaviour
           LaunchTextBubble(message, false);
           beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
           this.bee.SetHealth(0);
+          RemovePollenCloud();
     }
 
     private void explodeBee() 
@@ -199,6 +207,7 @@ public class BeeBody : MonoBehaviour
           LaunchTextBubble(message, false);
           beeExploder.GetComponent<BeeExploder>().explodeBee(transform.position, isPlayer);
           this.bee.SetHealth(0);
+          RemovePollenCloud();
     }
 
     private void bounceBack(Collision other)
@@ -318,5 +327,35 @@ public class BeeBody : MonoBehaviour
       this.collectingPollen = collectingPollen;
     }
 
- 
+     private void createPollenCloud()
+    {
+      
+      Vector3 pollenCloudPositiion = rigidBody.transform.position;
+      pollenCloudPositiion.y = 0.75f;
+      pollenCloud = Instantiate(pollenCloudPrefab, pollenCloudPositiion, Quaternion.identity);
+    }
+
+    private void updatePollenCloud()
+    {
+      pollenCloud.transform.position = rigidBody.transform.position;
+    }
+
+    private void checkPollenCloud() {
+      if (bee.GetPollen() <= 0) {
+        return;
+      }
+      if (pollenCloud == null)
+      {
+        createPollenCloud();
+      } 
+      else 
+      {
+        updatePollenCloud();
+      }
+    }
+
+    public void RemovePollenCloud()
+    {
+      Destroy(pollenCloud);
+    }
 }

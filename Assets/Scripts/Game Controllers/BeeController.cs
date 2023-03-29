@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeeController : MonoBehaviour
 {
-    protected Hive hive;
+    private Hive hive;
     private Bee bee;
     private BeeNamer beeNamer = new BeeNamer();
     private List<Bee> deadBees = new List<Bee>();
@@ -45,6 +45,7 @@ public class BeeController : MonoBehaviour
 
     private void checkBeeIsEnteringHive(Bee bee, GameObject beeBody)
     {
+      // why pass both bee and beebody as args? Can get beebody from bee?
       if (beeBody.GetComponent<BeeBody>().isEnteringHive)
       {
           hive.AddPollen(bee.GetPollen());
@@ -52,6 +53,7 @@ public class BeeController : MonoBehaviour
           hive.LaunchTextBubble(message, true);
           bee.EnterHive();
           bee.RemoveAllPollen();
+          beeBody.GetComponent<BeeBody>().RemovePollenCloud();
           Destroy(beeBody);
           Destroy(bee.GetBody());
       }
@@ -105,8 +107,6 @@ public class BeeController : MonoBehaviour
 
     public void SetHive(Hive hive)
     {
-      Debug.Log("Setting hive");
-      Debug.Log(hive);
       this.hive = hive;
       hive.LaunchTextBubble("Hive built");
 

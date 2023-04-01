@@ -150,7 +150,7 @@ public class BeeBody : MonoBehaviour
     {
       if (pollenCloud != null)
       {
-        RemovePollenCloud();
+        shedPollen();
       }
     
       if (collectingPollen) 
@@ -355,6 +355,12 @@ public class BeeBody : MonoBehaviour
       {
         updatePollenCloud();
       }
+    }
+
+    private void shedPollen()
+    {
+      pollenCloud.GetComponent<PollenCloud>().Pollenate(rigidBody.transform.position);
+      pollenCloud = null;
     }
 
     public void RemovePollenCloud()

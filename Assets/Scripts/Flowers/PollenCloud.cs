@@ -22,4 +22,9 @@ public class PollenCloud : MonoBehaviour
             rotationSpeed += 1f;
         }
     }
+
+    public void Pollenate(Vector3 position)
+    {
+        Debug.Log("Pollenating!");
+    }
 }

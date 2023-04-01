@@ -25,9 +25,6 @@ public class GameController : MonoBehaviour
     private BeeController beeController;
 
     [SerializeField]
-    private FlowerController flowerController;
-
-    [SerializeField]
     private EnemyController enemyController;
 
     [SerializeField]
@@ -63,7 +60,6 @@ public class GameController : MonoBehaviour
       checkGameInput();
       if (hiveIsPlaced) {
         checkIfLevelIsComplete();
-        checkControllers();
         checkHive();
       }
     }
@@ -146,7 +142,6 @@ public class GameController : MonoBehaviour
       {
           initialiseHive(tilePosition);
           initialiseEnemies();
-          updateFlowerController();
           return;
       }
       if (Input.GetMouseButtonDown(0))
@@ -215,26 +210,17 @@ public class GameController : MonoBehaviour
       tile.GetComponent<Tile>().PrintPosition();
       beeLauncher.SetHive(hive);
       mapCreator.SurroundHiveWithMeadows(column, row);
-      flowerController.SetHivePosition(hivePosition);
 
       return hive;
     }
   
-
-    private void checkControllers()
-    {
-      flowerController.PlantRevealedMeadows();
-    }
 
     private void createMap(bool usePremadeMaps = true)
     {
       mapCreator.CreateMap(usePremadeMaps);
     }
 
-    private void updateFlowerController()
-    {
-      flowerController.SetMeadows(mapCreator.GetTiles());
-    }
+  
 
     private void checkIfLevelIsComplete()
     {
@@ -268,7 +254,6 @@ public class GameController : MonoBehaviour
       mapCreator = Instantiate(mapCreator);
 
       beeLauncher = Instantiate(beeLauncher);
-      flowerController = Instantiate(flowerController);
       enemyController = Instantiate(enemyController);
       enemyController.SetMapCreator(this.mapCreator);
       // displayController = Instantiate(displayController);

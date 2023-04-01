@@ -7,11 +7,6 @@ public class Flower : MonoBehaviour
     [SerializeField]
     private GameObject flowerBody;
 
-    [SerializeField]
-    private GameObject pollenCloudPrefab;
-
-    private GameObject pollenCloud;
-
     public Timer timer; 
 
     private GameObject flower;

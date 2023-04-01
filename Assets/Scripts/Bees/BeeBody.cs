@@ -259,9 +259,13 @@ public class BeeBody : MonoBehaviour
       moveSpeed = IDLE_SPEED;
      // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
       float step = RETURN_SPEED * Time.deltaTime;
-      transform.position = Vector3.MoveTowards(transform.localPosition, flower.GetPosition(), step);
+      Vector3 beePosition = flower.GetPosition();
+      beePosition.y += 0.1f; // offset so player bees won't fly over each other
+      
+      transform.position = Vector3.MoveTowards(transform.localPosition, beePosition, step);
       Quaternion rotation = Quaternion.LookRotation(Vector3.up, Vector3.up);
       transform.rotation = rotation;
+      transform.Rotate(0, 1, 0);
     }
 
     private void checkPollenCollection() 

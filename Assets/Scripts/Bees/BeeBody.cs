@@ -360,6 +360,7 @@ public class BeeBody : MonoBehaviour
     private void shedPollen()
     {
       pollenCloud.GetComponent<PollenCloud>().Pollenate(rigidBody.transform.position);
+      bee.RemoveAllPollen();
       pollenCloud = null;
     }
 

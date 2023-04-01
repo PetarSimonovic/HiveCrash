@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PollenCloud : MonoBehaviour
 {
-
+    [SerializeField]
+    GameObject flower;
     private float rotationSpeed = 50f;
     private float maxRotationSpeed = 960;
+
+    private bool hasBeenShed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +29,11 @@ public class PollenCloud : MonoBehaviour
     public void Pollenate(Vector3 position)
     {
         Debug.Log("Pollenating!");
+        hasBeenShed = true;
+    }
+
+    public bool HasBeenShed()
+    {
+        return this.hasBeenShed;
     }
 }

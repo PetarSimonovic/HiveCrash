@@ -141,9 +141,17 @@ public class GameController : MonoBehaviour
 
     private void processMapInput(Vector3 tilePosition, Vector3 worldTouchPoint)
     {
+
+      if (!hiveIsPlaced)
+      {
+          initialiseHive(tilePosition);
+          initialiseEnemies();
+          updateFlowerController();
+          return;
+      }
       if (Input.GetMouseButtonDown(0))
       {
-        processTouchOnMap(tilePosition);
+        beeLauncher.LoadBee(hive.GetBee());
         return;
       }
       if (Input.GetMouseButton(0)) 
@@ -172,21 +180,6 @@ public class GameController : MonoBehaviour
             break;
         }
       }
-
-    private void processTouchOnMap(Vector3 clickPosition)
-    {
-      switch (hiveIsPlaced) 
-        {
-        case false:
-          initialiseHive(clickPosition);
-          initialiseEnemies();
-          updateFlowerController();
-          break;
-        default:
-          beeLauncher.LoadBee(hive.GetBee());
-          break;
-        }
-    }
 
     private void initialiseHive(Vector3 hivePosition)
     {

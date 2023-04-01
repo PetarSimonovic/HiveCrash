@@ -13,6 +13,7 @@ TagManager:
   - bee
   - playerHiveTile
   - lakeBed
+  - pollen
   layers:
   - Default
   - TransparentFX

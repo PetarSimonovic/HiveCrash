@@ -366,6 +366,10 @@ public class BeeBody : MonoBehaviour
 
     public void RemovePollenCloud()
     {
+      if (pollenCloud == null || pollenCloud.GetComponent<PollenCloud>().HasBeenShed())
+      {
+        return;
+      } 
       Destroy(pollenCloud);
     }
 }

@@ -28,7 +28,6 @@ public class PollenCloud : MonoBehaviour
 
     public void Pollenate(Vector3 position)
     {
-        Debug.Log("Pollenating!");
         hasBeenShed = true;
     }
 

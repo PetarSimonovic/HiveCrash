@@ -119,7 +119,7 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-      processTriggerCollision(other);
+      processTriggerCollision(other);// does it need a separate method to handle this? why not do it here?
 
     }
 
@@ -148,7 +148,10 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision other)
     {
-
+      if (pollenCloud != null)
+      {
+        RemovePollenCloud();
+      }
     
       if (collectingPollen) 
       {

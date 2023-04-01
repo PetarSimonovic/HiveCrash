@@ -11,7 +11,7 @@ public class TextBubble : MonoBehaviour
 
     private float countDownSeconds = 10.0f;
 
-    private float riseSpeed = 0.013f;
+    private float riseSpeed = 0.008f;
 
     private Color32 hiveCrashYellow = new Color32(233, 196, 106, 255);
 

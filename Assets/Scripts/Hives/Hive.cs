@@ -28,6 +28,8 @@ public class Hive : MonoBehaviour
   private bool crashedTextBubbleSent;
 
   public bool titleHive = false;
+
+  public int beePollenCost = 5000;
   
  private BeeNamer beeNamer = new BeeNamer();
 
@@ -108,7 +110,8 @@ public class Hive : MonoBehaviour
     this.pollen += pollen;
     if (this.pollen > this.pollenCapacity) 
     {
-      this.pollen = this.pollenCapacity;
+      RemovePollen(pollen);
+    //  AddBee();
     }
   setMass();
   }
@@ -164,6 +167,24 @@ public class Hive : MonoBehaviour
   {
     int pollenTaken = this.pollen - beePollenCapacity <= 0 ? this.pollen : beePollenCapacity;
     return pollenTaken;
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.tag == "bee") 
+    {
+          BeeBody beeBody= other.gameObject.GetComponent<BeeBody>();
+          if (!beeBody.isEnteringHive) {return;}
+          Bee bee = beeBody.GetBee();
+          AddPollen(bee.GetPollen());
+          string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
+          LaunchTextBubble(message, true);
+          bee.EnterHive();
+          bee.RemoveAllPollen();
+          beeBody.GetComponent<BeeBody>().RemovePollenCloud();
+          Destroy(beeBody);
+          Destroy(bee.GetBody());
+    }
   }
 
   private void OnCollisionEnter(Collision other)

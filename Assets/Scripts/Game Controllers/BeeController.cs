@@ -23,7 +23,7 @@ public class BeeController : MonoBehaviour
           if (!bee.IsInHive())
           {
             GameObject beeBody = bee.GetBody();
-            checkBeeIsEnteringHive(bee, beeBody);
+         //   checkBeeIsEnteringHive(bee, beeBody);
             checkPollenCollection(bee, beeBody);
           }
           else if (bee.IsHungry())

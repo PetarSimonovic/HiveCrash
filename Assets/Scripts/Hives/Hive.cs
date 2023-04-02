@@ -29,6 +29,8 @@ public class Hive : MonoBehaviour
 
   public bool titleHive = false;
   
+ private BeeNamer beeNamer = new BeeNamer();
+
   
   private void Awake()
   {
@@ -73,8 +75,13 @@ public class Hive : MonoBehaviour
     return this.bees;
   }
 
-  public void AddBee(Bee bee)
+  public void AddBee()
   {
+    Timer timer = gameObject.GetComponent<Timer>();
+    string name = beeNamer.ChooseName();
+    Bee bee =  new Bee(name, GetId(), timer);
+    string message = name + " hatched";
+    LaunchTextBubble(message);
     this.bees.Add(bee);
   }
 

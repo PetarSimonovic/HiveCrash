@@ -127,7 +127,7 @@ public class HiveTest
     for (int i = 0; i < 5; i++)
      {
        var bee = new Bee(testHive.GetId());
-       testHive.AddBee(bee);
+       testHive.AddBee();
      }
   }
 

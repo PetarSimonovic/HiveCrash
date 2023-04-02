@@ -116,12 +116,7 @@ public class BeeController : MonoBehaviour
     {
       for (int i = 0; i < beeCount; i++)
       {
-        Timer timer = initaliseTimer();
-        string name = beeNamer.ChooseName();
-        Bee bee =  new Bee(name, this.hive.GetId(), timer);
-        string message = name + " hatched";
-        hive.LaunchTextBubble(message);
-        hive.AddBee(bee);
+        hive.AddBee();
       }
     }
 

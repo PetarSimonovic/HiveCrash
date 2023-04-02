@@ -277,6 +277,7 @@ public class BeeBody : MonoBehaviour
     {
       checkPollenCollection();
       placeBeeOnFlower();
+      bee.CollectPollen();
     }
 
     public float GetMoveSpeed()

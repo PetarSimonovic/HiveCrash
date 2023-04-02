@@ -11,7 +11,7 @@ public class BeeController : MonoBehaviour
 
     private void Update()
     {
-      checkBees();
+     // checkBees();
       removeDeadBees();
     }
 
@@ -24,7 +24,7 @@ public class BeeController : MonoBehaviour
           {
             GameObject beeBody = bee.GetBody();
          //   checkBeeIsEnteringHive(bee, beeBody);
-            checkPollenCollection(bee, beeBody);
+         //   checkPollenCollection(bee, beeBody);
           }
           else if (bee.IsHungry())
           {
@@ -43,21 +43,7 @@ public class BeeController : MonoBehaviour
       }
     }
 
-    private void checkBeeIsEnteringHive(Bee bee, GameObject beeBody)
-    {
-      // why pass both bee and beebody as args? Can get beebody from bee?
-      if (beeBody.GetComponent<BeeBody>().isEnteringHive)
-      {
-          hive.AddPollen(bee.GetPollen());
-          string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
-          hive.LaunchTextBubble(message, true);
-          bee.EnterHive();
-          bee.RemoveAllPollen();
-          beeBody.GetComponent<BeeBody>().RemovePollenCloud();
-          Destroy(beeBody);
-          Destroy(bee.GetBody());
-      }
-    }
+
 
     private void checkPollenCollection(Bee bee, GameObject beeBody)
     {

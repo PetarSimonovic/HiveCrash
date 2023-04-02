@@ -113,13 +113,13 @@ public class BeeBody : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
-    {
-      if (other.gameObject.tag.ToString() == "hive")
-      {
-        isOutsideHive = true;
-      }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //   if (other.gameObject.tag.ToString() == "hive")
+    //   {
+    //     isOutsideHive = true;
+    //   }
+    // }
 
     protected virtual void OnTriggerEnter(Collider other)
     {

@@ -35,12 +35,12 @@ PrefabInstance:
     - target: {fileID: 1890558537708680535, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37
+      value: -0.358
       objectReference: {fileID: 0}
     - target: {fileID: 1890558537708680535, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1890558537708680535, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 2338884524149936851, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}
       propertyPath: m_TagString
-      value: lakeBed
+      value: lake
       objectReference: {fileID: 0}
     - target: {fileID: 5357171959781212287, guid: d9c405d9229264833aad40efef3e40f0,
         type: 3}

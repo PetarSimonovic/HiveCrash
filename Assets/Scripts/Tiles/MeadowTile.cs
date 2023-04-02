@@ -13,7 +13,7 @@ public class MeadowTile : Tile
     int chanceOfFlower = 10;
     void Start()
     {
-        
+        plantFlower();
     }
 
     // Update is called once per frame
@@ -31,6 +31,8 @@ public class MeadowTile : Tile
         if (Random.Range(0, chanceOfFlower) == 1)
         {
             plantFlower();
+            flower.SetGrowthStage(3);
+            flower.Grow();
         }
 
     }
@@ -42,7 +44,6 @@ public class MeadowTile : Tile
         GameObject flowerObject = Instantiate(flowerPrefab, flowerPosition, Quaternion.identity); // Quaternion.identity affects rotation?
         flower = flowerObject.GetComponent<Flower>();
         flower.SetPosition(flowerPosition);
-        flower.CreateBody();  
 
     }
 
@@ -51,7 +52,16 @@ public class MeadowTile : Tile
         base.OnTriggerEnter(other);
         if (other.gameObject.tag == "pollen")
         {
+            growFlower();  
+        }
+    }
+
+    private void growFlower()
+    {
+        if (flower == null) 
+        {
             plantFlower();
         }
+         flower.Grow();
     }
 }

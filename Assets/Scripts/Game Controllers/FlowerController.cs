@@ -60,7 +60,7 @@ public class FlowerController : MonoBehaviour
       flower.GetComponent<Flower>().SetPosition(flowerPosition);
       if (Random.Range(0, 15) == 1 || Globals.test && (meadowTile.column == 4 && meadowTile.row == 6))
       {
-        flower.GetComponent<Flower>().CreateBody();  
+        flower.GetComponent<Flower>().CreateFlower();  
       }
     }
 

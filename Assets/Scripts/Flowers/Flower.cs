@@ -5,13 +5,22 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     [SerializeField]
-    private GameObject flowerBody;
+    private GameObject flowerBody1;
+
+
+    [SerializeField]
+    private GameObject flowerBody2;
+
+
+    [SerializeField]
+    private GameObject flowerBody3;
+    
 
     public Timer timer; 
 
     private GameObject flower;
 
-    private bool isPlanted = false;
+    private bool isFullyGrown = false;
 
     private bool inBloom = false;
 
@@ -20,6 +29,8 @@ public class Flower : MonoBehaviour
     private FlowerAnimator flowerAnimator;
 
     private bool hasBee;
+
+    private int growthStage = 1;
 
 
 
@@ -32,7 +43,7 @@ public class Flower : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-      if (isPlanted)
+      if (isFullyGrown)
       {
         checkTimer();
       }
@@ -44,9 +55,9 @@ public class Flower : MonoBehaviour
     }
 
 
-    public bool IsPlanted()
+    public bool IsFullyGrown()
     {
-        return this.isPlanted;
+        return this.isFullyGrown;
     }
 
     public Vector3 GetPosition()
@@ -59,11 +70,22 @@ public class Flower : MonoBehaviour
       this.position = position;
     }
 
-    public void CreateBody()
+    
+
+    private GameObject getFlowerPrefab()
     {
-      isPlanted = true;
-      flower = Instantiate(flowerBody, transform.position, Quaternion.identity, this.transform); 
-      flowerAnimator = flower.GetComponent<FlowerAnimator>();
+      switch (growthStage) 
+      {
+        case 1:
+          Debug.Log(flowerBody1);
+          return flowerBody1;
+        case 2: 
+          Debug.Log(flowerBody2);
+          return flowerBody2;
+        default:
+          return flowerBody3;
+
+      }
     }
 
     private void openFlower()
@@ -102,22 +124,39 @@ public class Flower : MonoBehaviour
       timer.SetCountdownSeconds(20f);
     }
 
-    // private void createPollenCloud()
-    // {
-    //   Vector3 pollenCloudPositiion = flower.transform.position;
-    //   pollenCloudPositiion.y = 0.75f;
-    //   pollenCloud = Instantiate(pollenCloudPrefab, pollenCloudPositiion, Quaternion.identity);
-    // }
+    public void SetGrowthStage(int growthStage) 
+    {
+      this.growthStage = growthStage;
+    }
+
+    public void Grow() 
+    {
+      Debug.Log("Growing flower " + growthStage);
+      if (isFullyGrown) {return;}
+      CreateFlower();
+      growthStage += 1;
+      if (growthStage == 4)
+      {
+        isFullyGrown = true;
+      }
+
+      }
+
+      public void CreateFlower()
+    {
+      Debug.Log("Creating flower");
+      if (flower != null) {Destroy(flower);}
+      flower = Instantiate(getFlowerPrefab(), transform.position, Quaternion.identity, this.transform); 
+      flowerAnimator = flower.GetComponent<FlowerAnimator>();
+    }
+
 
     public void PlaceBee() {
       hasBee = true;
-     // createPollenCloud();
-
     }
 
     public void RemoveBee() {
       hasBee = false;
-      //Destroy(pollenCloud);
     }
 
     public bool HasBee() {

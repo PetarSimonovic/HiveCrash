@@ -95,7 +95,10 @@ public class Hive : MonoBehaviour
 
   public void RemoveBee(Bee bee)
   {
+    Debug.Log("Removing bee " + bees.Count );
+    Destroy(bee.GetBody());
     this.bees.Remove(bee);
+
     if (this.bees.Count <= 0) 
     {
       this.crashed = true && !crashedTextBubbleSent;
@@ -169,22 +172,34 @@ public class Hive : MonoBehaviour
     return pollenTaken;
   }
 
+  private void OnTriggerStay(Collider other) 
+  {
+    if (other.gameObject.tag == "bee") 
+    {
+        returnBeeToHive(other.gameObject.GetComponent<BeeBody>());
+
+    }
+  }
   private void OnTriggerEnter(Collider other)
   {
     if (other.gameObject.tag == "bee") 
     {
-          BeeBody beeBody= other.gameObject.GetComponent<BeeBody>();
-          if (!beeBody.isEnteringHive) {return;}
-          Bee bee = beeBody.GetBee();
-          AddPollen(bee.GetPollen());
-          string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
-          LaunchTextBubble(message, true);
-          bee.EnterHive();
-          bee.RemoveAllPollen();
-          beeBody.GetComponent<BeeBody>().RemovePollenCloud();
-          Destroy(beeBody);
-          Destroy(bee.GetBody());
+        returnBeeToHive(other.gameObject.GetComponent<BeeBody>());
     }
+  }
+
+  private void returnBeeToHive(BeeBody beeBody)
+  {
+        if (!beeBody.isEnteringHive) {return;}
+        Bee bee = beeBody.GetBee();
+        AddPollen(bee.GetPollen());
+        string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
+        LaunchTextBubble(message, true);
+        bee.EnterHive();
+        bee.RemoveAllPollen();
+        beeBody.GetComponent<BeeBody>().RemovePollenCloud();
+        Destroy(beeBody);
+        Destroy(bee.GetBody());
   }
 
   private void OnCollisionEnter(Collision other)

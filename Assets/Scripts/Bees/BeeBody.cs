@@ -64,7 +64,9 @@ public class BeeBody : MonoBehaviour
     {
       if (hive.HasCrashed()) 
       {
-        explodeBee();
+        String message = this.bee.GetName() + " lost its hive";
+        Vector3 position = rigidBody.transform.position;
+        explodeBee(message, position);
         return;
       }
       checkPollenCloud();
@@ -89,6 +91,7 @@ public class BeeBody : MonoBehaviour
       }
       else
       {
+        Debug.Log("Velocity" + " " +  GetComponent<Rigidbody>().velocity + " " +isEnteringHive);
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized;
         ReturnToHive();
       }
@@ -101,6 +104,7 @@ public class BeeBody : MonoBehaviour
 
     public void ReturnToHive()
     {
+      isOutsideHive = true;
       isIdling = true;
       moveSpeed = IDLE_SPEED;
       float step = RETURN_SPEED * Time.deltaTime;
@@ -182,7 +186,9 @@ public class BeeBody : MonoBehaviour
           Debug.Log("Friendly collision");
           break;
         default:
-          explodeBee(otherBeeBody);
+          String message = otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName();
+          Vector3 position = flower.GetPosition();
+          explodeBee(message, position);
           break;
       }
           otherBeeBody.ReturnToHive();
@@ -193,26 +199,16 @@ public class BeeBody : MonoBehaviour
           }
     }
 
-    private void explodeBee(BeeBody otherBeeBody) 
+
+    private void explodeBee(String message, Vector3 position) 
     {
+          hive.RemoveBee(this.bee);
           beeExploder = Instantiate(beeExploder);
-          string message = otherBeeBody.GetBee().GetName() + " killed " + this.bee.GetName();
           LaunchTextBubble(message, false);
-          beeExploder.GetComponent<BeeExploder>().explodeBee(flower.GetPosition(), isPlayer);
+          beeExploder.GetComponent<BeeExploder>().explodeBee(position, isPlayer);
           this.bee.SetHealth(0);
           RemovePollenCloud();
     }
-
-    private void explodeBee() 
-    {
-          beeExploder = Instantiate(beeExploder);
-          string message = this.bee.GetName() + " lost its hive";
-          LaunchTextBubble(message, false);
-          beeExploder.GetComponent<BeeExploder>().explodeBee(transform.position, isPlayer);
-          this.bee.SetHealth(0);
-          RemovePollenCloud();
-    }
-
     private void bounceBack(Collision other)
     {
 

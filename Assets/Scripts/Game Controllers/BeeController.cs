@@ -12,7 +12,7 @@ public class BeeController : MonoBehaviour
     private void Update()
     {
      // checkBees();
-      removeDeadBees();
+    //  removeDeadBees();
     }
 
 

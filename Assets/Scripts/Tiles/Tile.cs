@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
       this.gameObject.name = material.ToString();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
       checkCollision(other);
     }

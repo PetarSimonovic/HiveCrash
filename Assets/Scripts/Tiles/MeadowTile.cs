@@ -10,7 +10,7 @@ public class MeadowTile : Tile
     Flower flower;
     // Start is called before the first frame update
 
-    int chanceOfFlower = 15;
+    int chanceOfFlower = 10;
     void Start()
     {
         
@@ -24,12 +24,14 @@ public class MeadowTile : Tile
 
     public override void Reveal()
     {
+    
         base.Reveal();
+        
 
-      if (Random.Range(0, chanceOfFlower) == 1)
-      {
-        plantFlower();
-      }
+        if (Random.Range(0, chanceOfFlower) == 1)
+        {
+            plantFlower();
+        }
 
     }
 
@@ -42,5 +44,14 @@ public class MeadowTile : Tile
         flower.SetPosition(flowerPosition);
         flower.CreateBody();  
 
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.tag == "pollen")
+        {
+            plantFlower();
+        }
     }
 }

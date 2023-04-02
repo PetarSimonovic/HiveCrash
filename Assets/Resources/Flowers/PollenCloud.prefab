@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2074237740946173505}
   - component: {fileID: -1655435447429371689}
   - component: {fileID: 3635947678296164577}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PollenCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2464753456947538241}
   - component: {fileID: 8005229635530839920}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: collider
   m_TagString: pollen
   m_Icon: {fileID: 0}

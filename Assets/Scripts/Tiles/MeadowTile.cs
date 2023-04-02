@@ -10,7 +10,7 @@ public class MeadowTile : Tile
     Flower flower;
     // Start is called before the first frame update
 
-    int chanceOfFlower = 25;
+    int chanceOfFlower = 35;
     void Start()
     {
         plantFlower();

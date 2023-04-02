@@ -38,6 +38,7 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
+    setMass();
     launchPollenCounter();
   }
   
@@ -110,11 +111,16 @@ public class Hive : MonoBehaviour
 
   public void AddPollen(int pollen)
   {
-    this.pollen += pollen;
     if (this.pollen > this.pollenCapacity) 
     {
+      this.pollen = pollenCapacity;
       RemovePollen(pollen);
-    //  AddBee();
+      AddBee();
+    }
+    else 
+    {
+      this.pollen += pollen;
+
     }
   setMass();
   }
@@ -192,9 +198,13 @@ public class Hive : MonoBehaviour
   {
         if (!beeBody.isEnteringHive) {return;}
         Bee bee = beeBody.GetBee();
-        AddPollen(bee.GetPollen());
-        string message = (bee.GetName() + ": +" + bee.GetPollen().ToString() + " pollen");
-        LaunchTextBubble(message, true);
+        int pollen = bee.GetPollen();
+        AddPollen(pollen);
+        if (pollen > 0)
+        {
+          string message = (bee.GetName() + ": +" + pollen.ToString() + " pollen");
+          LaunchTextBubble(message, true);
+        }
         bee.EnterHive();
         bee.RemoveAllPollen();
         beeBody.GetComponent<BeeBody>().RemovePollenCloud();

@@ -38,20 +38,13 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
-    this.rigidBody.mass = 10f;
+    setMass();
     launchPollenCounter();
-  }
-
-   private void Start()
-  {
-    this.rigidBody.mass = 10f;
-    stopMoving();
   }
   
 
   private void Update()
   {
-
     int beesInHive = 0;
    bees.ForEach(bee => {
     if (bee.IsInHive()) {beesInHive++;}
@@ -147,7 +140,7 @@ public class Hive : MonoBehaviour
   {
     var percentage = GetPollenPercentage();
     this.rigidBody.mass = (float)percentage/20;
-    if (this.rigidBody.mass < 0.5f) {this.rigidBody.mass = 0.5f;}
+    if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
   }
 
   public int GetPollen()
@@ -219,13 +212,6 @@ public class Hive : MonoBehaviour
         Destroy(bee.GetBody());
   }
 
-  private void OnTriggerStay(Collision other)
-  {
-    if (other.gameObject.tag == "lake")
-    {
-        drownHive();
-    }
-  }
   private void OnCollisionEnter(Collision other)
   { 
     switch (other.gameObject.tag) {
@@ -234,7 +220,10 @@ public class Hive : MonoBehaviour
           rigidBody.angularVelocity = Vector3.zero;
           break;
         case "lake":
-          drownHive();
+          LaunchTextBubble("Hive drowned", false);
+          this.crashed = true;
+          stopMoving();
+          launchHiveCrashTextBubble();
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
@@ -249,14 +238,6 @@ public class Hive : MonoBehaviour
         default:
           break;
       }
-  }
-
-  private void drownHive()
-  {
-        LaunchTextBubble("Hive drowned", false);
-        this.crashed = true;
-        stopMoving();
-        launchHiveCrashTextBubble();
   }
 
   private void applyForce(Collision other)

@@ -91,7 +91,6 @@ public class BeeBody : MonoBehaviour
       }
       else
       {
-        Debug.Log("Velocity" + " " +  GetComponent<Rigidbody>().velocity + " " +isEnteringHive);
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized;
         ReturnToHive();
       }

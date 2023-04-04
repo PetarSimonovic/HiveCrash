@@ -154,9 +154,7 @@ public class MapCreator : MonoBehaviour
 
     private GameObject chooseRandomTile()
     {
-      if (Globals.test) {
-        return meadowTilePrefab;
-      }
+    
       if (prevTileWasRock) {
         prevTileWasRock = false;
         return lakeTilePrefab;
@@ -165,6 +163,9 @@ public class MapCreator : MonoBehaviour
       switch(tileDecision)
       {
         case 1:
+          if (Globals.test) {
+            return meadowTilePrefab;
+         }
           prevTileWasRock = true;
           return rockTilePrefab;
         case <=4:

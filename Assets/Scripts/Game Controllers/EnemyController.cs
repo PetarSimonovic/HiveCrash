@@ -127,10 +127,11 @@ public class EnemyController : MonoBehaviour
 
       private void activate()
       {
-        activated = true;
         initialiseHive();
         initialiseBeeController();
         initialiseTimer();
+        activated = true;
+
       }  
 
       private void initialiseHive()

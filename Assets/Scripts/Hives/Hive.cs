@@ -37,8 +37,8 @@ public class Hive : MonoBehaviour
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
+    Debug.Log("Hive created with mass " + rigidBody.mass);
     this.pollen = this.pollenCapacity;
-   // setMass();
     launchPollenCounter();
   }
 

@@ -12,6 +12,8 @@ public class PlayerBeeLauncher : BeeLauncher
     private GameObject scopeBee;
 
     private Rigidbody scopeBeeBody;
+
+    private bool drag = false;
  
     public override void SetEndPosition(Vector3 endPosition)
     {
@@ -25,6 +27,7 @@ public class PlayerBeeLauncher : BeeLauncher
         return;
       }
       this.endPosition = newPosition;
+      drag = true;
 
       /// side effects? move into different method
       Destroy(scopeBee);
@@ -33,7 +36,7 @@ public class PlayerBeeLauncher : BeeLauncher
 
     public void LaunchBee()
     {
-        if (isLoaded)
+        if (isLoaded && drag) 
       {
         this.loadedBee.Fly();
         Vector3 direction = calculateDirection();
@@ -61,6 +64,7 @@ public class PlayerBeeLauncher : BeeLauncher
     protected override void reset()
     {
       base.reset();
+      drag = false;
       Destroy(scopeBee);
     }
 

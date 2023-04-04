@@ -228,7 +228,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: df2a877814b6741f8ad8e4f8664b8bc2, type: 2}
   heightRange:
   - 0
-  - 0
+  - 0.05
   row: 0
   column: 0
   isBorderTile: 0

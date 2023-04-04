@@ -44,7 +44,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4569761366483259690}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.01
   m_Drag: 0.5
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beeExploder: {fileID: 0}
+  pollenCloudPrefab: {fileID: 0}
   textBubblePrefab: {fileID: 0}
   isEnteringHive: 0
   hivePositionY: 0

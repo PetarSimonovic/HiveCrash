@@ -38,10 +38,11 @@ public class Hive : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody>();
     this.pollen = this.pollenCapacity;
-    setMass();
+   // setMass();
     launchPollenCounter();
   }
-  
+
+
 
   private void Update()
   {
@@ -222,12 +223,12 @@ public class Hive : MonoBehaviour
         case "lake":
           LaunchTextBubble("Hive drowned", false);
           this.crashed = true;
-          stopMoving();
+         //StopMoving();
           launchHiveCrashTextBubble();
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
-          applyForce(other);
+       //   applyForce(other);
           int pollenTaken = calculatePollenTaken(bee.GetPollenCapacity());
           RemovePollen(pollenTaken);
           bee.AddPollen(pollenTaken);
@@ -282,7 +283,7 @@ public class Hive : MonoBehaviour
     positionPollenCounter();
   }
 
-   protected virtual void stopMoving()
+   public virtual void StopMoving()
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

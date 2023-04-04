@@ -11,9 +11,6 @@ public class EnemyController : MonoBehaviour
     private EnemyBeeLauncher beeLauncher; 
 
     [SerializeField]
-    private BeeController beeController; 
-
-    [SerializeField]
     private GameObject enemyHivePrefab;
 
     [SerializeField]
@@ -101,12 +98,7 @@ public class EnemyController : MonoBehaviour
           return tiles[index];
     }
 
-        private void initialiseBeeController()
-        {
-            beeController = Instantiate(beeController);
-            beeController.SetHive(enemyHive);
-            beeController.AddBees(5);
-        }
+      
 
       private void initialiseTimer()
         {
@@ -128,7 +120,6 @@ public class EnemyController : MonoBehaviour
       private void activate()
       {
         initialiseHive();
-        initialiseBeeController();
         initialiseTimer();
         activated = true;
 
@@ -143,6 +134,11 @@ public class EnemyController : MonoBehaviour
         beeLauncher.SetHive(enemyHive);
         beeLauncher.SetPlayerHivePosition(playerHive.GetPosition());
         enemyHive.LaunchTextBubble("Rival hive disturbed", false);
+        int starterBees = 5;
+        for (int i = 0; i < starterBees; i++)
+          {
+            enemyHive.AddBee();
+          }
       }
 
 

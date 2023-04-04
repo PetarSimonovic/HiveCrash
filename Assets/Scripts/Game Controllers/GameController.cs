@@ -22,9 +22,6 @@ public class GameController : MonoBehaviour
     private PlayerBeeLauncher beeLauncher;
 
     [SerializeField]
-    private BeeController beeController;
-
-    [SerializeField]
     private EnemyController enemyController;
 
     [SerializeField]
@@ -178,8 +175,12 @@ public class GameController : MonoBehaviour
 
     private void initialiseHive(Vector3 hivePosition)
     {
+      int starterBees = 5;
       Hive hive = createHive(hivePosition);
-      initialiseBeeController();
+      for (int i = 0; i < starterBees; i++)
+      {
+        hive.AddBee();
+      }
     }
 
     private void initialiseEnemies()
@@ -235,13 +236,6 @@ public class GameController : MonoBehaviour
       gameIsOver = true;
       hive.LaunchTextBubble("Garden is secure");
       goToTitleScene();
-    }
-
-    private void initialiseBeeController()
-    {
-      beeController = Instantiate(beeController);
-      beeController.SetHive(hive);
-      beeController.AddBees(5);
     }
 
     private void goToTitleScene()

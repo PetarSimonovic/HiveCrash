@@ -27,10 +27,40 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1511281119512912225, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511281119512912225, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511281119512912225, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511281119512912225, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1634090466982107132, guid: 7c29a1717d27c4437bb9b3964534c592,
         type: 3}
       propertyPath: m_TagString
       value: scope
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114661365349208569, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114661365349208569, guid: 7c29a1717d27c4437bb9b3964534c592,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 6686130565964496578, guid: 7c29a1717d27c4437bb9b3964534c592,
         type: 3}

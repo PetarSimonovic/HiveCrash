@@ -221,10 +221,7 @@ public class Hive : MonoBehaviour
           rigidBody.angularVelocity = Vector3.zero;
           break;
         case "lake":
-          LaunchTextBubble("Hive drowned", false);
-          this.crashed = true;
-         //StopMoving();
-          launchHiveCrashTextBubble();
+          drown();
           break;
         case "bee":
           Bee bee = other.gameObject.GetComponent<BeeBody>().GetBee();
@@ -239,6 +236,14 @@ public class Hive : MonoBehaviour
         default:
           break;
       }
+  }
+
+  private void drown()
+  {
+    LaunchTextBubble("Hive drowned", false);
+    this.crashed = true;
+    StopMoving();
+    launchHiveCrashTextBubble();
   }
 
   private void applyForce(Collision other)

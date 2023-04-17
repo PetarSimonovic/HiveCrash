@@ -225,14 +225,7 @@ public class GameController : MonoBehaviour
 
     private void checkIfLevelIsComplete()
     {
-      if (enemyController.EnemyHasCrashed()) return;
-      foreach (GameObject tile in mapCreator.GetTiles())
-      {
-        if (tile.GetComponent<Tile>().IsHidden() == true)
-        {
-          return;
-        }
-      }
+      if (!enemyController.EnemyHasCrashed()) return;
       gameIsOver = true;
       hive.LaunchTextBubble("Garden is secure");
       goToTitleScene();

@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private EnemyController enemyController;
 
+
+    [SerializeField]
+    private SpawnController spawnController;
+
     [SerializeField]
     private DisplayController displayController;
 

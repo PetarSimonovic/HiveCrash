@@ -51,11 +51,9 @@ MonoBehaviour:
     type: 3}
   beeLauncher: {fileID: 8605789134918623136, guid: 4ac1c0bb6a3774c24802ba1e8d30c8ae,
     type: 3}
-  beeController: {fileID: 49204925441863120, guid: 7d25449d718f34b449147085a627f6b8,
-    type: 3}
-  flowerController: {fileID: -1370986189296179200, guid: f977adc5d371d43e98a70769f8ab04aa,
-    type: 3}
   enemyController: {fileID: 5888405589446877573, guid: c60bce6d9f3ca4ba7a4150b42e045146,
+    type: 3}
+  spawnController: {fileID: -2013978491560387460, guid: dcce65bf9a3134dc5a5e855a6ec2dd1c,
     type: 3}
   displayController: {fileID: -974149619326059351, guid: b7ea7fd5b366e4165a9645799f6087b5,
     type: 3}

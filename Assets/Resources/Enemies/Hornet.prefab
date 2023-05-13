@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148480362599635985}
+  - component: {fileID: 1312180699182405655}
   m_Layer: 0
   m_Name: Hornet
   m_TagString: Untagged
@@ -33,6 +34,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312180699182405655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341121706933552811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c3977462791465e80f45f4dbfd9aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3495012478630035096
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,8 +75,8 @@ Transform:
   m_GameObject: {fileID: 3495012478630035096}
   m_LocalRotation: {x: 0.8660254, y: 0.5, z: 0.00000008692426, w: 0.00000003699172}
   m_LocalPosition: {x: -0, y: 0, z: 0.7}
-  m_LocalScale: {x: 0.70000005, y: 0.78096217, z: 0.87879485}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.9}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1148480362599635985}
   m_RootOrder: 1
@@ -176,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 9105658742224083657}
   m_LocalRotation: {x: 0.8660254, y: 0.5, z: 0.00000008692426, w: 0.000000036991718}
   m_LocalPosition: {x: -0, y: 0, z: 0.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1148480362599635985}

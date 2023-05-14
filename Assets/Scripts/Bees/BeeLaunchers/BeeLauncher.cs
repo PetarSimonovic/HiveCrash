@@ -12,7 +12,7 @@ public class BeeLauncher : MonoBehaviour
     protected bool isLoaded = false;
 
 
-    protected float launchPositionY = 0.7f;
+    protected float launchPositionY = 0.5f;
 
     protected Vector3 endPosition;
 

@@ -10,6 +10,8 @@ public class SpawnController : MonoBehaviour
 
         private float spawnInterval = 5; 
 
+        private float launchPositionY = 0.2f;
+
 
 
 
@@ -27,7 +29,9 @@ public class SpawnController : MonoBehaviour
 
     private void spawn()
     {
-        Debug.Log("Spawn!");
+        Vector3 position = choosePosition();
+        Debug.Log(position);
+        
     }
 
       public void SetPlayerHive(Hive playerHive)
@@ -51,5 +55,9 @@ public class SpawnController : MonoBehaviour
         timer = gameObject.GetComponent<Timer>();
         timer.SetOn(true);
         timer.SetCountdownSeconds(spawnInterval);
+        }
+
+        private Vector3 choosePosition() {
+            return new Vector3(Random.Range(-2.0f, 2.0f), launchPositionY, Random.Range(-2.0f, 2.0f));
         }
 }

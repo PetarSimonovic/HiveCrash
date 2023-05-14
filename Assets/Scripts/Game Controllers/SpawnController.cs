@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject enemyPrefab;
     private Hive playerHive;
 
-        private Timer timer;
+    private Timer timer;
 
-        private float spawnInterval = 5; 
+    private float spawnInterval = 5; 
 
-        private float launchPositionY = 0.2f;
+    private float launchPositionY = 0.7f;
+
+    private bool activated = false;    
 
 
 
@@ -24,19 +28,27 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (activated)  {
         checkTimer();
+        }
     }
 
     private void spawn()
     {
         Vector3 position = choosePosition();
-        Debug.Log(position);
-        
+        Debug.Log("EnemyPrefab");
+        Debug.Log(enemyPrefab, playerHive);
+        GameObject enemyObject = Instantiate(enemyPrefab, position, Quaternion.LookRotation(playerHive.GetPosition(), Vector3.forward)); // Quaternion.identity affects rotation?
+        EnemyBody enemyBody = enemyObject.GetComponent<EnemyBody>(); 
+        enemyBody.SetTarget(playerHive.GetPosition());
     }
 
       public void SetPlayerHive(Hive playerHive)
     {
+        Debug.Log("Setting player hive in spawner");
+        Debug.Log(playerHive);
         this.playerHive = playerHive;
+        activated = true;
     }
 
        private void checkTimer()

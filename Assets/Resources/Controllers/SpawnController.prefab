@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8633251209784191591}
+  - component: {fileID: -2013978491560387460}
+  - component: {fileID: 3890041388518486067}
   m_Layer: 0
   m_Name: SpawnController
   m_TagString: Untagged
@@ -31,3 +33,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2013978491560387460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474595609390507468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cdc188cf9e174255a10c3cdf918a8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3890041388518486067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474595609390507468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6140bfb0574ddb96fbff3e944d447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

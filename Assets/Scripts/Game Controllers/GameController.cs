@@ -191,6 +191,8 @@ public class GameController : MonoBehaviour
     {
       enemyController.SetPlayerHive(hive);
       enemyController.PlaceEnemyTile(mapCreator.GetTiles());
+      spawnController.SetPlayerHive(hive);
+      
     }
 
     private Hive createHive(Vector3 hivePosition)
@@ -246,6 +248,7 @@ public class GameController : MonoBehaviour
 
       beeLauncher = Instantiate(beeLauncher);
       enemyController = Instantiate(enemyController);
+      spawnController = Instantiate(spawnController);
       enemyController.SetMapCreator(this.mapCreator);
       // displayController = Instantiate(displayController);
       enemyController.SetDisplayController(displayController);

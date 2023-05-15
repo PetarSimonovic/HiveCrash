@@ -9,6 +9,8 @@ public class EnemyBody : MonoBehaviour
 
     private Rigidbody rigidBody;
 
+    private Hive hive;
+
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
@@ -31,12 +33,29 @@ public class EnemyBody : MonoBehaviour
       {
         
         float step = SPEED * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(rigidBody.transform.position, target, step);
+        transform.position = Vector3.MoveTowards(rigidBody.transform.position, hive.GetPosition(), step);
         }
     }
 
-    
-    public void SetTarget(Vector3 target) {
-        this.target = target;
+     private void OnCollisionEnter(Collision other) {
+       bounceBack(other);
+     }
+
+    public void SetHive(Hive hive) {
+        this.hive = hive;
     } 
+
+     private void bounceBack(Collision other)
+    {
+
+        // how much the character should be knocked back
+        var magnitude = 130;
+        // calculate force vector
+        var force = transform.position - other.transform.position;
+        // normalize force vector to get direction only and trim magnitude
+        force.Normalize();
+        rigidBody.AddForce(force * magnitude);
+        
+
+    }
 }

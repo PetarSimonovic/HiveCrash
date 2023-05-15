@@ -40,7 +40,8 @@ public class SpawnController : MonoBehaviour
         Debug.Log(enemyPrefab, playerHive);
         GameObject enemyObject = Instantiate(enemyPrefab, position, Quaternion.LookRotation(playerHive.GetPosition(), Vector3.forward)); // Quaternion.identity affects rotation?
         EnemyBody enemyBody = enemyObject.GetComponent<EnemyBody>(); 
-        enemyBody.SetTarget(playerHive.GetPosition());
+        enemyBody.SetHive(playerHive);
+        
     }
 
       public void SetPlayerHive(Hive playerHive)

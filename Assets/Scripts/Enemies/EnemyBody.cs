@@ -24,7 +24,7 @@ public class EnemyBody : MonoBehaviour
 
     private void faceForward() 
     {
-        Quaternion rotation = Quaternion.LookRotation(rigidBody.velocity, Vector3.up);
+        Quaternion rotation = Quaternion.LookRotation(rigidBody.position, Vector3.forward);
         transform.rotation = rotation;
     }
     private void move()
@@ -38,7 +38,8 @@ public class EnemyBody : MonoBehaviour
     }
 
      private void OnCollisionEnter(Collision other) {
-       bounceBack(other);
+      // bounceBack(other);
+      Debug.Log("Enemy collided with " + other.gameObject.tag);
      }
 
     public void SetHive(Hive hive) {
@@ -54,7 +55,7 @@ public class EnemyBody : MonoBehaviour
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-        rigidBody.AddForceAtPosition(force * magnitude, transform.position);
+       rigidBody.AddForceAtPosition(force * magnitude, transform.position);
         
 
     }

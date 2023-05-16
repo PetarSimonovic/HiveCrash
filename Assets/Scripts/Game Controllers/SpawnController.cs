@@ -12,7 +12,7 @@ public class SpawnController : MonoBehaviour
 
     private float spawnInterval = 5; 
 
-    private float launchPositionY = 0.7f;
+    private float launchPositionY = 0.5f;
 
     private bool activated = false;    
 

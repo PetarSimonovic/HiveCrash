@@ -54,7 +54,7 @@ public class EnemyBody : MonoBehaviour
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-        rigidBody.AddForce(force * magnitude);
+        rigidBody.AddForceAtPosition(force * magnitude, transform.position);
         
 
     }

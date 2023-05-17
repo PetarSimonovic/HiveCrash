@@ -98,7 +98,6 @@ public class BeeBody : MonoBehaviour
 
     protected virtual void rotateBeeForward(){
       
-      // Fix needed here for "Look rotation viewing vector is zero"
       Quaternion rotation; 
       if (rigidBody.velocity != Vector3.zero) {
         rotation = Quaternion.LookRotation(rigidBody.velocity);

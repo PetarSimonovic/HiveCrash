@@ -24,12 +24,17 @@ public class EnemyBody : MonoBehaviour
 
     private void faceForward() 
     {
-        Quaternion rotation = Quaternion.LookRotation(rigidBody.position, Vector3.forward);
-        transform.rotation = rotation;
+        Quaternion rotation; 
+      if (rigidBody.velocity != Vector3.zero) {
+        rotation = Quaternion.LookRotation(rigidBody.velocity);
+      } else {
+          rotation = Quaternion.identity;
+      }
+       transform.rotation = rotation;
     }
     private void move()
     {
-      // rigidBody.velocity = rigidBody.velocity.normalized * moveSpeed;
+      // rigidBody.velocity = rigidBody.velocity.normalized * SPEED;
       {
         
         float step = SPEED * Time.deltaTime;

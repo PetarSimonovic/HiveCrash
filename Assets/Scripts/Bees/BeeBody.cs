@@ -211,7 +211,7 @@ public class BeeBody : MonoBehaviour
           hive.RemoveBee(this.bee);
           beeExploder = Instantiate(beeExploder);
           LaunchTextBubble(message, false);
-          beeExploder.GetComponent<BeeExploder>().explodeBee(position, isPlayer);
+          beeExploder.GetComponent<BeeExploder>().explodeBee(gameObject.transform.GetChild(0), position, isPlayer);
           this.bee.SetHealth(0);
           RemovePollenCloud();
     }

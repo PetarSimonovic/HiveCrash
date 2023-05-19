@@ -73,5 +73,7 @@ public class PlayerBeeLauncher : BeeLauncher
       Vector3 direction = this.endPosition - hive.GetPosition();
       return -direction;
     }
-
+    
 }
+
+

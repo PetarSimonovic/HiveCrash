@@ -8,20 +8,6 @@ using UnityEngine;
 public class BeeExploder : MonoBehaviour
 {
 
-[SerializeField]
-private GameObject beeAnatomyHexBlack;
-
-[SerializeField]
-private GameObject beeAnatomyHexYellow;
-
-[SerializeField]
-private GameObject beeAnatomyHexOrange;
-
-[SerializeField]
-private GameObject beeAnatomyTail;
-
-[SerializeField]
-private GameObject beeAnatomyHead;
 
 private Vector3 position;
 
@@ -40,13 +26,13 @@ private bool isPlayer;
       // if (!timer.IsOn() && beeParts.Count > 0) {destroyBeeParts();}
     }
 
-    public void explodeBee(Vector3 position, bool isPlayer) 
+    public void explodeBee(Transform bee, Vector3 position, bool isPlayer) 
     {   
         beeParts.Clear();
         initialiseTimer();
         this.position = position;
         this.isPlayer = isPlayer;
-        addBeeParts();
+        addBeeParts(bee);
         addForceToBeeParts();
         
     }
@@ -58,19 +44,26 @@ private bool isPlayer;
         timer.SetCountdownSeconds(10f);
     }
 
-    private void addBeeParts() {
+    private void addBeeParts(Transform bee) {
 
-        GameObject hexBlack = instantiateBeePart(beeAnatomyHexBlack);
-        GameObject hexOne = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
-        GameObject hexTwo = isPlayer ? instantiateBeePart(beeAnatomyHexYellow) : instantiateBeePart(beeAnatomyHexOrange);
-        GameObject tail = instantiateBeePart(beeAnatomyTail);
-        GameObject head = instantiateBeePart(beeAnatomyHead); 
-        beeParts.Add(hexBlack);
-        beeParts.Add(hexOne);
-        beeParts.Add(hexTwo);
-        beeParts.Add(tail);
-        beeParts.Add(head);
+        foreach (Transform child in bee) {
+            Debug.Log(child.gameObject.name);
+            child.gameObject.AddComponent<Rigidbody>();
+            child.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            Rigidbody rigidBody = child.gameObject.GetComponent<Rigidbody>();
+            rigidBody.isKinematic = false;
+            rigidBody.useGravity = true;
+            rigidBody.mass = 0.35f;
+            GameObject part = Instantiate(child.gameObject, position, Quaternion.identity);
+            beeParts.Add(part);
+        }    
+            Debug.Log("Bee parts");
+                foreach (GameObject beePart in beeParts) {
+                    Debug.Log(beePart);
+                }
+            
     }
+
 
     private GameObject instantiateBeePart(GameObject part) {
 

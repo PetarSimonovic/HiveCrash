@@ -44,7 +44,6 @@ public class EnemyBody : MonoBehaviour
 
      private void OnCollisionEnter(Collision other) {
       // bounceBack(other);
-      Debug.Log("Enemy collided with " + other.gameObject.tag);
      }
 
     public void SetHive(Hive hive) {

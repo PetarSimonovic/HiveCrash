@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyBeeBody : BeeBody
 {
     private float SPEED = 3F;
+
     private Vector3 target;
+
 
     protected override void moveBee()
     {
@@ -29,5 +31,6 @@ public class EnemyBeeBody : BeeBody
         this.target = target;
     }
 
- 
+
+
 }

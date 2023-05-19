@@ -16,7 +16,7 @@ public class SpawnController : MonoBehaviour
 
     private bool activated = false;    
 
-
+    private List<EnemyBody> spawnedEnemies = new List<EnemyBody>();
 
 
     // Start is called before the first frame update
@@ -30,6 +30,7 @@ public class SpawnController : MonoBehaviour
     {
         if (activated)  {
         checkTimer();
+        checkEnemies();
         }
     }
 
@@ -41,7 +42,22 @@ public class SpawnController : MonoBehaviour
         GameObject enemyObject = Instantiate(enemyPrefab, position, Quaternion.LookRotation(playerHive.GetPosition(), Vector3.forward)); // Quaternion.identity affects rotation?
         EnemyBody enemyBody = enemyObject.GetComponent<EnemyBody>(); 
         enemyBody.SetHive(playerHive);
+        spawnedEnemies.Add(enemyBody);
         
+    }
+
+    private void checkEnemies() {
+        List<EnemyBody> deadEnemies = new List<EnemyBody>();
+        foreach (EnemyBody enemy in spawnedEnemies) {
+            if (enemy.IsDead()) {
+                deadEnemies.Add(enemy);
+            }
+        }
+        foreach (EnemyBody enemy in deadEnemies) {
+
+            Destroy(enemy.gameObject);
+            spawnedEnemies.Remove(enemy);
+        }
     }
 
       public void SetPlayerHive(Hive playerHive)

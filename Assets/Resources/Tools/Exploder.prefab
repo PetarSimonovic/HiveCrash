@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3667686155680333589}
   - component: {fileID: -3916158374579586280}
   m_Layer: 0
-  m_Name: BeeExploder
+  m_Name: Exploder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

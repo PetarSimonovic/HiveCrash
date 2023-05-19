@@ -215,6 +215,7 @@ public class BeeBody : MonoBehaviour
           this.bee.SetHealth(0);
           RemovePollenCloud();
     }
+    
     private void bounceBack(Collision other)
     {
 

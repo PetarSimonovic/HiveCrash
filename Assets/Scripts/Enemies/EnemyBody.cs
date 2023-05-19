@@ -11,6 +11,8 @@ public class EnemyBody : MonoBehaviour
 
     private Hive hive;
 
+    private bool isDead = false;
+
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
@@ -43,7 +45,10 @@ public class EnemyBody : MonoBehaviour
     }
 
      private void OnCollisionEnter(Collision other) {
-      // bounceBack(other);
+       if (other.gameObject.tag.ToString() == "bee")
+       {
+         isDead = true;
+       }
      }
 
     public void SetHive(Hive hive) {
@@ -62,5 +67,9 @@ public class EnemyBody : MonoBehaviour
        rigidBody.AddForceAtPosition(force * magnitude, transform.position);
         
 
+    }
+
+        public bool IsDead() {
+          return isDead;
     }
 }

@@ -13,6 +13,8 @@ public class EnemyBody : MonoBehaviour
 
     private bool isDead = false;
 
+    private Exploder exploder;
+
     private void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
@@ -48,6 +50,7 @@ public class EnemyBody : MonoBehaviour
        if (other.gameObject.tag.ToString() == "bee")
        {
          isDead = true;
+         explode();
        }
      }
 
@@ -69,7 +72,17 @@ public class EnemyBody : MonoBehaviour
 
     }
 
-        public bool IsDead() {
-          return isDead;
+    private void explode()
+    { 
+      exploder = GetComponent<Exploder>();
+      Debug.Log("Hornet explode!");
+      Debug.Log(transform.GetChild(0));
+      exploder.explodeEntity(transform.GetChild(0), transform.position, false);
+    }
+
+
+    public bool IsDead() 
+    {
+      return isDead;
     }
 }

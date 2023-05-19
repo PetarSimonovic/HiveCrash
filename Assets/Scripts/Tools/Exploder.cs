@@ -5,13 +5,13 @@ using UnityEngine;
 
 
 
-public class BeeExploder : MonoBehaviour
+public class Exploder : MonoBehaviour
 {
 
 
 private Vector3 position;
 
-private List<GameObject> beeParts = new List<GameObject>();
+private List<GameObject> parts = new List<GameObject>();
 
 private float forceMultiplier = 1.5f;
 
@@ -22,58 +22,56 @@ private bool timing;
 private bool isPlayer;
 
 
+    
     private void Update() {
       // if (!timer.IsOn() && beeParts.Count > 0) {destroyBeeParts();}
     }
 
-    public void explodeBee(Transform bee, Vector3 position, bool isPlayer) 
+    public void explodeEntity(Transform entity, Vector3 position, bool isPlayer) 
     {   
-        beeParts.Clear();
+        parts.Clear();
         initialiseTimer();
         this.position = position;
         this.isPlayer = isPlayer;
-        addBeeParts(bee);
-        addForceToBeeParts();
+        addParts(entity);
+        addForceToParts();
         
     }
 
     private void initialiseTimer()
     {
-        timer = gameObject.GetComponent<Timer>();
+        timer = new Timer();
         timer.SetOn(true);
         timer.SetCountdownSeconds(10f);
     }
 
-    private void addBeeParts(Transform bee) {
+    private void addParts(Transform entity) {
 
-        foreach (Transform child in bee) {
+        foreach (Transform child in entity) {
             Debug.Log(child.gameObject.name);
             child.gameObject.AddComponent<Rigidbody>();
             child.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             Rigidbody rigidBody = child.gameObject.GetComponent<Rigidbody>();
             rigidBody.isKinematic = false;
             rigidBody.useGravity = true;
-            rigidBody.mass = 0.35f;
+            rigidBody.mass = 0.2f;
             GameObject part = Instantiate(child.gameObject, position, Quaternion.identity);
-            beeParts.Add(part);
+            parts.Add(part);
         }    
-            Debug.Log("Bee parts");
-                foreach (GameObject beePart in beeParts) {
-                    Debug.Log(beePart);
-                }
+         
             
     }
 
 
-    private GameObject instantiateBeePart(GameObject part) {
+    private GameObject instantiatePart(GameObject part) {
 
       return Instantiate(part, position, Quaternion.identity);
 
     }
 
-    private void addForceToBeeParts() {
-        foreach (GameObject beePart in beeParts) {
-            Rigidbody rigidBody = beePart.GetComponent<Rigidbody>();
+    private void addForceToParts() {
+        foreach (GameObject part in parts) {
+            Rigidbody rigidBody = part.GetComponent<Rigidbody>();
             rigidBody.AddForce(transform.up * forceMultiplier, ForceMode.Impulse);
             applyRandomDirectionalForce(rigidBody);
         }
@@ -100,11 +98,11 @@ private bool isPlayer;
         }
     }
 
-    private void destroyBeeParts() {
-        foreach (GameObject beePart in beeParts) {
-            Destroy(beePart);
+    private void destroyparts() {
+        foreach (GameObject part in parts) {
+            Destroy(part);
         }
-        beeParts.Clear();
+        parts.Clear();
     }
 
 

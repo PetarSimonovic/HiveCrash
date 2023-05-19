@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2507982554032830908}
   - component: {fileID: 350233685129850469}
   - component: {fileID: 3084565828060223333}
+  - component: {fileID: 4693777982904386232}
   m_Layer: 10
   m_Name: BeeBody
   m_TagString: bee
@@ -63,8 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5263791667e49e1923199b88d1e010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beeExploder: {fileID: 5687970307939334544, guid: bac3c8b86bfc84bfb8afae6357ce1045,
-    type: 3}
   pollenCloudPrefab: {fileID: 2074237740946173504, guid: 2ce10f7e33189450789c2ec58889e800,
     type: 3}
   textBubblePrefab: {fileID: 1698945753379636350, guid: 1ae3bc3888e0b4c59a569cfe2fffbc97,
@@ -84,6 +83,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.14
   m_Center: {x: 0, y: 0, z: 0.04}
+--- !u!114 &4693777982904386232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047048267425654717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4ad84fa769c4ee78a310e315a73da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1145771924078542292
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7372705103550867599}
   - component: {fileID: 7949324645395433046}
   - component: {fileID: 2316521012532322329}
+  - component: {fileID: 8673367950891838155}
   m_Layer: 11
   m_Name: enemyBeeBody
   m_TagString: bee
@@ -76,14 +77,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f7dcc891e544b779d1e0ce15184cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beeExploder: {fileID: 5687970307939334544, guid: bac3c8b86bfc84bfb8afae6357ce1045,
-    type: 3}
   pollenCloudPrefab: {fileID: 2074237740946173504, guid: 2ce10f7e33189450789c2ec58889e800,
     type: 3}
   textBubblePrefab: {fileID: 1698945753379636350, guid: 1ae3bc3888e0b4c59a569cfe2fffbc97,
     type: 3}
   isEnteringHive: 0
   hivePositionY: 0
+--- !u!114 &8673367950891838155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113081500205004430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4ad84fa769c4ee78a310e315a73da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7149683919613907587
 PrefabInstance:
   m_ObjectHideFlags: 0

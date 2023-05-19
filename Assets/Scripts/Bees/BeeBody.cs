@@ -9,8 +9,6 @@ public class BeeBody : MonoBehaviour
   {
   
 
-    [SerializeField]
-    private GameObject beeExploder;
 
     [SerializeField]
     private GameObject pollenCloudPrefab;
@@ -208,14 +206,14 @@ public class BeeBody : MonoBehaviour
 
     private void explodeBee(String message, Vector3 position) 
     {
+          Exploder exploder = GetComponent<Exploder>();
           hive.RemoveBee(this.bee);
-          beeExploder = Instantiate(beeExploder);
           LaunchTextBubble(message, false);
-          beeExploder.GetComponent<BeeExploder>().explodeBee(gameObject.transform.GetChild(0), position, isPlayer);
+          exploder.explodeEntity(gameObject.transform.GetChild(0), position, isPlayer);
           this.bee.SetHealth(0);
           RemovePollenCloud();
     }
-    
+
     private void bounceBack(Collision other)
     {
 

@@ -58,7 +58,6 @@ private bool isPlayer;
             GameObject part = Instantiate(child.gameObject, position, Quaternion.identity);
             parts.Add(part);
         }    
-         
             
     }
 

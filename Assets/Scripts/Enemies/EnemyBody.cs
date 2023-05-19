@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour
 {
-    private float SPEED = 3F;
+    private float SPEED = 2f;
     private Vector3 target;
 
     private Rigidbody rigidBody;
@@ -28,12 +28,12 @@ public class EnemyBody : MonoBehaviour
 
     private void faceForward() 
     {
-        Quaternion rotation; 
-      if (rigidBody.velocity != Vector3.zero) {
-        rotation = Quaternion.LookRotation(rigidBody.velocity);
-      } else {
-          rotation = Quaternion.identity;
-      }
+      Quaternion rotation; 
+     // if (rigidBody.velocity != Vector3.zero) {
+        rotation = Quaternion.LookRotation(hive.GetPosition());
+      // } else {
+      //     rotation = Quaternion.identity;
+      // }
        transform.rotation = rotation;
     }
     private void move()
@@ -46,19 +46,22 @@ public class EnemyBody : MonoBehaviour
         }
     }
 
-     private void OnCollisionEnter(Collision other) {
-       if (other.gameObject.tag.ToString() == "bee")
-       {
-         isDead = true;
-         explode();
-       }
-     }
+    private void OnCollisionEnter(Collision other) {
+      if (other.gameObject.tag.ToString() == "bee")
+      {
+        BeeBody beeBody = other.gameObject.GetComponent<BeeBody>();
+        if (!beeBody.CollectingPollen()) 
+        {
+            explode();
+        }
+      }
+    }
 
     public void SetHive(Hive hive) {
         this.hive = hive;
     } 
 
-     private void bounceBack(Collision other)
+    private void bounceBack(Collision other)
     {
 
         // how much the character should be knocked back
@@ -74,8 +77,8 @@ public class EnemyBody : MonoBehaviour
 
     private void explode()
     { 
+      isDead = true;
       exploder = GetComponent<Exploder>();
-      Debug.Log("Hornet explode!");
       Debug.Log(transform.GetChild(0));
       exploder.explodeEntity(transform.GetChild(0), transform.position, false);
     }

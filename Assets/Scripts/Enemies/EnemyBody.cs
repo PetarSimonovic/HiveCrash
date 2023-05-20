@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour
 {
-    private float SPEED = 2f;
+    private float SPEED = 3f;
     private Vector3 target;
 
     private Rigidbody rigidBody;
@@ -54,7 +54,7 @@ public class EnemyBody : MonoBehaviour
             explode();
         }
       }
-      //bounceBack(other);
+      bounceBack(other);
     }
 
     public void SetHive(Hive hive) {
@@ -65,12 +65,12 @@ public class EnemyBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 1;
+        var magnitude = 25;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-       rigidBody.AddForce(force * magnitude, ForceMode.Impulse);
+       rigidBody.AddForce(force * magnitude);
         
 
     }

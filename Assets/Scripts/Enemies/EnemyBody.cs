@@ -23,18 +23,17 @@ public class EnemyBody : MonoBehaviour
     private void Update() 
     {
       move(); 
-      faceForward();
+            faceForward();
+
     }
 
     private void faceForward() 
     {
-      Quaternion rotation; 
-     // if (rigidBody.velocity != Vector3.zero) {
-        rotation = Quaternion.LookRotation(hive.GetPosition());
-      // } else {
-      //     rotation = Quaternion.identity;
-      // }
-       transform.rotation = rotation;
+    // float degreesPerSecond = 120f;
+    //  transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
+    transform.LookAt(hive.GetPosition());
+
+
     }
     private void move()
     {
@@ -55,6 +54,7 @@ public class EnemyBody : MonoBehaviour
             explode();
         }
       }
+      //bounceBack(other);
     }
 
     public void SetHive(Hive hive) {
@@ -65,12 +65,12 @@ public class EnemyBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 130;
+        var magnitude = 1;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-       rigidBody.AddForceAtPosition(force * magnitude, transform.position);
+       rigidBody.AddForce(force * magnitude, ForceMode.Impulse);
         
 
     }

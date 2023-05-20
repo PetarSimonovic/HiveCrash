@@ -98,11 +98,11 @@ public class BeeBody : MonoBehaviour
       
       Quaternion rotation; 
       if (rigidBody.velocity != Vector3.zero) {
-        rotation = Quaternion.LookRotation(rigidBody.velocity);
+        rotation = Quaternion.LookRotation(-rigidBody.velocity);
       } else {
           rotation = Quaternion.identity;
       }
-       transform.rotation = rotation;
+      transform.rotation = rotation;
     
     }
 

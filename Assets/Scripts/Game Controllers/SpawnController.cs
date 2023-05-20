@@ -37,9 +37,7 @@ public class SpawnController : MonoBehaviour
     private void spawn()
     {
         Vector3 position = choosePosition();
-        Debug.Log("EnemyPrefab");
-        Debug.Log(enemyPrefab, playerHive);
-        GameObject enemyObject = Instantiate(enemyPrefab, position, Quaternion.LookRotation(playerHive.GetPosition(), Vector3.forward)); // Quaternion.identity affects rotation?
+        GameObject enemyObject = Instantiate(enemyPrefab, position, Quaternion.identity); // Quaternion.identity affects rotation?
         EnemyBody enemyBody = enemyObject.GetComponent<EnemyBody>(); 
         enemyBody.SetHive(playerHive);
         spawnedEnemies.Add(enemyBody);
@@ -62,7 +60,6 @@ public class SpawnController : MonoBehaviour
 
       public void SetPlayerHive(Hive playerHive)
     {
-        Debug.Log("Setting player hive in spawner");
         Debug.Log(playerHive);
         this.playerHive = playerHive;
         activated = true;
@@ -72,7 +69,6 @@ public class SpawnController : MonoBehaviour
       {
         if (!timer.IsOn())
         {
-            Debug.Log("Spawn Timer");
             timer.SetOn(true);
             timer.Restart();
             spawn();
@@ -87,6 +83,6 @@ public class SpawnController : MonoBehaviour
         }
 
         private Vector3 choosePosition() {
-            return new Vector3(Random.Range(-2.0f, 2.0f), launchPositionY, Random.Range(-2.0f, 2.0f));
+            return new Vector3(Random.Range(-2.0f, 16.0f), launchPositionY, Random.Range(-2.0f, 16.0f));
         }
 }

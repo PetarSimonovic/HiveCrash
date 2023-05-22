@@ -15,16 +15,19 @@ public class EnemyBody : MonoBehaviour
 
     private Exploder exploder;
 
-    private void Start()
+    protected virtual void Start()
     {
       rigidBody = GetComponent<Rigidbody>();
     }
     
     private void Update() 
     {
+      if (hive != null) 
+      {
       move(); 
-            faceForward();
-
+      faceForward();      
+      }
+    
     }
 
     private void faceForward() 
@@ -39,9 +42,10 @@ public class EnemyBody : MonoBehaviour
     {
       // rigidBody.velocity = rigidBody.velocity.normalized * SPEED;
       {
-        
+        Debug.Log("Hive");
+        Debug.Log(hive);
         float step = SPEED * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(rigidBody.transform.position, hive.GetPosition(), step);
+        transform.position = Vector3.MoveTowards(transform.position, hive.GetPosition(), step);
         }
     }
 
@@ -58,7 +62,9 @@ public class EnemyBody : MonoBehaviour
     }
 
     public void SetHive(Hive hive) {
+      Debug.Log("Setting hive");
         this.hive = hive;
+        Debug.Log(this.hive);
     } 
 
     private void bounceBack(Collision other)

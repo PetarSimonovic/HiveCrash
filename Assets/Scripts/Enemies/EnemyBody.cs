@@ -71,12 +71,12 @@ public class EnemyBody : MonoBehaviour
     {
 
         // how much the character should be knocked back
-        var magnitude = 25;
+        var magnitude = 130;
         // calculate force vector
         var force = transform.position - other.transform.position;
         // normalize force vector to get direction only and trim magnitude
         force.Normalize();
-       rigidBody.AddForce(force * magnitude);
+        rigidBody.AddForce(force * magnitude);
         
 
     }

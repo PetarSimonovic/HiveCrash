@@ -131,7 +131,6 @@ public class Flower : MonoBehaviour
 
     public void Grow() 
     {
-      Debug.Log("Growing flower " + growthStage);
       if (isFullyGrown) {return;}
       CreateFlower();
       growthStage += 1;
@@ -144,7 +143,6 @@ public class Flower : MonoBehaviour
 
       public void CreateFlower()
     {
-      Debug.Log("Creating flower");
       if (flower != null) {Destroy(flower);}
       flower = Instantiate(getFlowerPrefab(), transform.position, Quaternion.identity, this.transform); 
       flowerAnimator = flower.GetComponent<FlowerAnimator>();
@@ -161,6 +159,10 @@ public class Flower : MonoBehaviour
 
     public bool HasBee() {
       return hasBee;
+    }
+    
+    public void DestroySelf() {
+      Debug.Log("FLower is destroying itself!");
     }
 
 

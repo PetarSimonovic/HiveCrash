@@ -191,10 +191,17 @@ public class Hive : MonoBehaviour
   }
   private void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.tag == "bee") 
-    {
+    switch (other.gameObject.tag) {
+      case "bee":
         returnBeeToHive(other.gameObject.GetComponent<BeeBody>());
+        return;
+      case "flower":
+        other.gameObject.GetComponent<DestroySelf>();
+        return;
+      default:
+        return; 
     }
+   
   }
 
   private void returnBeeToHive(BeeBody beeBody)

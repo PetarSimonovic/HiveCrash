@@ -196,7 +196,7 @@ public class Hive : MonoBehaviour
         returnBeeToHive(other.gameObject.GetComponent<BeeBody>());
         return;
       case "flower":
-        other.gameObject.GetComponent<DestroySelf>();
+      //  other.gameObject.GetComponent<DestroySelf>();
         return;
       default:
         return; 

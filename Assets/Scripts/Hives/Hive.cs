@@ -37,8 +37,9 @@ public class Hive : MonoBehaviour
   private void Awake()
   {
     rigidBody = GetComponent<Rigidbody>();
+   // this.rigidBody.mass = 0.3f;
     Debug.Log("Hive created with mass " + rigidBody.mass);
-    this.pollen = this.pollenCapacity;
+    this.pollen = 0;
     launchPollenCounter();
   }
 
@@ -140,6 +141,7 @@ public class Hive : MonoBehaviour
   private void setMass()
   {
     var percentage = GetPollenPercentage();
+ //   return; // not setting mass as part of expriment to see if making game harder makes it more fun
     this.rigidBody.mass = (float)percentage/20;
     if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
   }

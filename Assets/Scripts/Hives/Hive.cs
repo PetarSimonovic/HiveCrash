@@ -81,6 +81,7 @@ public class Hive : MonoBehaviour
 
   public void AddBee()
   {
+    this.pollen = 0;
     Timer timer = gameObject.GetComponent<Timer>();
     string name = beeNamer.ChooseName();
     Bee bee =  new Bee(name, GetId(), timer);
@@ -139,9 +140,12 @@ public class Hive : MonoBehaviour
 
   private void setMass()
   {
-    var percentage = GetPollenPercentage();
-    this.rigidBody.mass = (float)percentage/20;
-    if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
+    // experimenting with light hives
+    this.rigidBody.mass = 0.1f;
+    // code below will tie mass to pollenCount
+    // var percentage = GetPollenPercentage();
+    // this.rigidBody.mass = (float)percentage/20;
+    // if (this.rigidBody.mass < 0.1f) {this.rigidBody.mass = 0.1f;}
   }
 
   public int GetPollen()

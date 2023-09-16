@@ -32,7 +32,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -70,13 +69,14 @@ MonoBehaviour:
   m_text: pollen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72274d8945ab649b2b59f36ab80aae34, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3630281172610297370, guid: 72274d8945ab649b2b59f36ab80aae34,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4285772735
   m_fontColor: {r: 0.7490196, g: 0.7019608, b: 0.4509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
